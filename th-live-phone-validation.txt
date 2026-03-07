@@ -1,0 +1,24 @@
+th-live.online Phone Number Validation (Registration)
+======================================================
+
+Source: https://th-live.online/js/app.af6c1ab3.js
+
+Validation regex: /^0\d{9}$/
+
+Rules:
+- Must start with the digit 0
+- Followed by exactly 9 more digits
+- Total length: exactly 10 digits
+- Only digits are accepted (non-digit characters are stripped automatically)
+
+Example of a valid phone number: 0812345678
+
+This matches the standard Thai mobile phone number format (e.g. 08x, 09x, 06x numbers).
+
+The field has a maxlength of 10 characters and strips any non-digit input via onKeyup handler:
+  registerForm.phone = registerForm.phone.replace(/[^\d]/g, "")
+
+If the phone number does not match the regex, the site shows the error:
+  "กรุณากรอกหมายเลขโทรศัพท์ที่ถูกต้อง" (TH) - "Please enter a valid phone number"
+  "请输入正确的电话号码" (ZH)
+  "Mời nhập chính xác số điện thoại" (VN)

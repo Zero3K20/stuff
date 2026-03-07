@@ -5,7 +5,7 @@ Short answer
 ------------
 These sites are built as phone-only apps.  On a wide desktop display the
 Vue app fills the full browser window width, producing an ugly stretched
-layout.  The userscript fixes this in four complementary ways:
+layout.  The userscript fixes this in five complementary ways:
 
   1. It overrides window.innerWidth and document.documentElement.clientWidth
      at document-start (before any site JavaScript runs) so that flexible.js,
@@ -13,15 +13,22 @@ layout.  The userscript fixes this in four complementary ways:
      desktop viewport width.  This is the primary fix for text sizing and
      fixed-element positioning.
 
-  2. It overrides the page's <meta name="viewport"> to width=390.  This makes
+  2. It emulates touch capability — the same way Chrome DevTools Device
+     Toolbar does — by overriding navigator.maxTouchPoints to 5 and
+     setting window.ontouchstart to null.  Without this, Vue/Vant skip swipe
+     gesture handlers, bottom-sheet pull-to-close, tap ripple effects, and
+     other mobile-only code paths, making the page feel like a desktop site
+     even inside the 390 px column.
+
+  3. It overrides the page's <meta name="viewport"> to width=390.  This makes
      the browser lay out the entire page as if the viewport were a phone
      (390 CSS px wide), so the site's own CSS works as the designers intended.
 
-  3. It pins the HTML root font-size to 39 px in CSS with !important as a
+  4. It pins the HTML root font-size to 39 px in CSS with !important as a
      belt-and-suspenders fix in case flexible.js fires before the override in
      step 1 can be installed.
 
-  4. It injects CSS that (a) centers the #app column on a dark desktop
+  5. It injects CSS that (a) centers the #app column on a dark desktop
      background, (b) repositions known Vant UI fixed-position components
      (bottom nav bar, top nav bar, popups, overlays) into the phone column,
      and (c) after page load scans all elements by computed style (not by
@@ -90,9 +97,9 @@ viewport width, and works even if the viewport override fails (e.g. the
 browser ignores the late meta change).
 
 
-How the layout is fixed (v0.4)
+How the layout is fixed (v0.5)
 ------------------------------
-Four bugs / gaps cumulatively caused the stretched layout and oversized
+Five bugs / gaps cumulatively caused the stretched layout and oversized
 text seen on desktop in v0.3 and earlier:
 
 Bug 1 — Duplicate viewport meta (fixed in v0.3)
@@ -135,6 +142,18 @@ Bug 4 — Custom navigation bars not covered by Vant CSS selectors (v0.4)
   and applies left/width/right constraints via inline style with !important.
   The scan repeats every 500 ms for 6 seconds to catch elements that
   become fixed during Vue's mounted() lifecycle or after lazy hydration.
+
+Gap 5 — No touch capability (fixed in v0.5)
+  Chrome DevTools Device Toolbar does more than resize the viewport — it
+  also enables touch event emulation.  Without this, Vue/Vant detect a
+  desktop (navigator.maxTouchPoints === 0, 'ontouchstart' not in window)
+  and skip swipe gesture handlers, bottom-sheet pull-to-close, tap ripple
+  effects, and other mobile-only code paths.
+
+  Fix: override navigator.maxTouchPoints to 5 and set window.ontouchstart
+  to null at document-start.  This is exactly what DevTools device toolbar
+  does when you click it, and it activates the same mobile code paths the
+  site runs on a real phone.
 
 Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
 to catch any late SPA viewport reset.

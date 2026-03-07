@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.4
+// @version      0.5
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -68,7 +68,49 @@
     });
   } catch (e) {}
 
-  // ── 2. Viewport meta override ──────────────────────────────────────────────
+  // ── 2. Touch capability emulation ─────────────────────────────────────────
+  //
+  // Chrome DevTools Device Toolbar does more than just resize the viewport — it
+  // also enables touch event emulation.  Without this, sites that check for
+  // touch capability keep running their desktop code paths even in a 390 px
+  // column:
+  //
+  //   • navigator.maxTouchPoints === 0 (desktop default) → Vant, Vue Router
+  //     and many SPA frameworks skip swipe handlers, bottom-sheet gestures,
+  //     and tap ripple effects entirely.
+  //
+  //   • 'ontouchstart' in window === false → older jQuery-style checks bail
+  //     out of the touch branch.
+  //
+  // Overriding these at document-start (before any framework code runs)
+  // activates the same mobile code paths the site would use on a real phone.
+  //
+  // The real values are saved so they can be restored when the user toggles to
+  // full-width mode.
+
+  var realMaxTouchPoints = navigator.maxTouchPoints;
+
+  try {
+    Object.defineProperty(navigator, 'maxTouchPoints', {
+      get: function () {
+        return phoneMode ? 5 : realMaxTouchPoints;
+      },
+      configurable: true
+    });
+  } catch (e) {}
+
+  // 'ontouchstart' in window is the classic touch-capability check.
+  // Setting it to null is enough — the property exists (returns true for `in`)
+  // and is falsy (avoids breaking code that also reads the value).
+  // ensureOntouchstart() is also called when toggling back to phone mode.
+  function ensureOntouchstart() {
+    if (!('ontouchstart' in window)) {
+      try { window.ontouchstart = null; } catch (e) {}
+    }
+  }
+  ensureOntouchstart();
+
+  // ── 3. Viewport meta override ──────────────────────────────────────────────
   //
   // Two independent observers keep the viewport meta locked to PHONE_WIDTH:
   //
@@ -160,7 +202,7 @@
     }, 500);
   });
 
-  // ── 3. CSS ─────────────────────────────────────────────────────────────────
+  // ── 4. CSS ─────────────────────────────────────────────────────────────────
   //
   // Layer A — root font-size pin
   //   Ensures the rem baseline is correct even if flexible.js already ran
@@ -241,7 +283,7 @@
   styleEl.textContent = CSS;
   (document.head || document.documentElement).appendChild(styleEl);
 
-  // ── 4. JS fixed-element scan ───────────────────────────────────────────────
+  // ── 5. JS fixed-element scan ───────────────────────────────────────────────
   //
   // The CSS layer above covers known Vant class names, but QTM Live sites also
   // have custom components (e.g. the home-page section tab bar) with site-
@@ -302,7 +344,7 @@
     }, 500);
   });
 
-  // ── 5. Toggle button ───────────────────────────────────────────────────────
+  // ── 6. Toggle button ───────────────────────────────────────────────────────
   //
   // A small button fixed to the top-right corner.  Clicking it switches
   // between phone-width mode and full-width mode.
@@ -330,12 +372,21 @@
           configurable: true
         });
       } catch (e) {}
+      // Restore touch emulation.
+      try {
+        Object.defineProperty(navigator, 'maxTouchPoints', {
+          get: function () { return phoneMode ? 5 : realMaxTouchPoints; },
+          configurable: true
+        });
+      } catch (e) {}
+      ensureOntouchstart();
       applyViewport();
       fixAllFixedEls();
     } else {
       // Full-width mode: remove our property overrides so native values return.
       try { delete window.innerWidth; } catch (e) {}
       try { delete document.documentElement.clientWidth; } catch (e) {}
+      try { delete navigator.maxTouchPoints; } catch (e) {}
       disconnectVpAttrObservers();
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';

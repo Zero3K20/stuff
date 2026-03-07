@@ -1,0 +1,251 @@
+QTM Live Platform — Desktop Width Fix (th-live.online / qqlive.online / etc.)
+==============================================================================
+
+Short answer
+------------
+These sites are built as phone-only apps.  On a wide desktop display the
+Vue app fills the full browser window width, producing an ugly stretched
+layout.  The userscript below fixes this in two complementary ways:
+
+  1. It overrides the page's <meta name="viewport"> to width=390 at
+     document-start.  This makes the browser lay out the entire page as
+     if the viewport were a phone (390 CSS px wide), so the site's own
+     CSS works exactly as the mobile designers intended — no element
+     overrides needed.
+
+  2. It injects a small block of CSS that centers the #app column on a
+     dark background for a "phone on a desk" visual effect.
+
+A small toggle button in the top-right corner lets you switch back to
+full-width at any time without editing the script.
+
+
+Why the site looks stretched
+-----------------------------
+The app bundle (app.*.js) uses Vant UI, a component library built for
+mobile.  Its components are designed for a ~390 px wide viewport:
+
+  - The root component sets the #app element to width:100%.
+  - Icon sizes, font sizes, padding, and grid columns are all tuned for
+    ~360–430 px.
+  - There are no CSS breakpoints for desktop widths — none are needed on
+    a phone.
+
+When viewed in a desktop browser the 100% width stretches across 1 000–
+2 000 px, so every component is proportionally oversized.
+
+
+Why overriding the viewport meta is the right fix
+--------------------------------------------------
+The CSS-only alternatives (max-width: 390px on #app; transform: scale)
+cannot change the value reported by window.innerWidth or CSS viewport
+units (vw / vh / dvh).  Media queries and calc() expressions that
+reference those units still see the full desktop width and render
+incorrectly.
+
+Setting <meta name="viewport" content="width=390"> tells the browser to
+treat the layout viewport as 390 px wide.  Every CSS length unit, every
+media query, and every JS window.innerWidth call then sees 390 px, and
+the site renders identically to how it looks on an actual phone.
+
+The browser scales the result up to fill the physical window (just as it
+does when you open a desktop page on a phone without a viewport tag) but
+the layout itself is computed at 390 px.
+
+
+----------------------------------------------------------------------
+// ==UserScript==
+// @name         QTM Live — Desktop Width Fix
+// @namespace    https://th-live.online
+// @version      0.1
+// @description  Constrains QTM-platform live-streaming sites to a
+//               phone-width column when viewed on a wide desktop screen.
+//               Overrides the viewport meta at document-start and adds
+//               a CSS phone-frame background.  A toggle button lets you
+//               switch between phone width and full width on the fly.
+// @match        https://th-live.online/*
+// @match        https://qqlive.online/*
+// @match        https://www.qqlive.online/*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==
+
+// To add more QTM-clone domains, copy one of the @match lines above and
+// change the hostname.  All sites on this platform share the same #app
+// structure and will be fixed by the same CSS.
+
+(function () {
+  'use strict';
+
+  var PHONE_WIDTH = 390;     // logical CSS px — matches iPhone 14 (common design baseline)
+  var VIEWPORT    = 'width=' + PHONE_WIDTH + ',initial-scale=1';
+
+  // Only activate on screens wider than PHONE_WIDTH.
+  // On an actual phone we leave the layout untouched.
+  if (window.screen.width <= PHONE_WIDTH) return;
+
+  // ── 1. Viewport meta override ──────────────────────────────────────────────
+  //
+  // At document-start the <head> may be partially parsed.  We:
+  //   a) Write our viewport tag immediately (appended to <html> if <head>
+  //      is not yet available).
+  //   b) Watch via MutationObserver for the site's own viewport tag and
+  //      overwrite its content before the browser acts on it.
+  //   c) Re-apply after DOMContentLoaded as a final safety net.
+
+  function applyViewport() {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) {
+      if (vp.content !== VIEWPORT) vp.content = VIEWPORT;
+    } else {
+      vp = document.createElement('meta');
+      vp.name    = 'viewport';
+      vp.content = VIEWPORT;
+      (document.head || document.documentElement).appendChild(vp);
+    }
+  }
+
+  applyViewport();
+
+  var vpObserver = new MutationObserver(applyViewport);
+  vpObserver.observe(document.documentElement, { childList: true, subtree: true });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    vpObserver.disconnect();
+    applyViewport();
+  });
+
+  // ── 2. CSS: phone-frame appearance on the desktop ─────────────────────────
+  //
+  // Belt-and-suspenders: even with the viewport at 390 px the site's own
+  // CSS sets #app to width:100%, which now equals 390 px — so this block
+  // mainly provides the dark surround and centring.  It also adds a subtle
+  // shadow to visually frame the app column.
+
+  var CSS = [
+    'html {',
+    '  background: #111 !important;',
+    '}',
+    'body {',
+    '  display: flex !important;',
+    '  justify-content: center !important;',
+    '  min-height: 100vh !important;',
+    '  background: #111 !important;',
+    '  margin: 0 !important;',
+    '  padding: 0 !important;',
+    '}',
+    '#app, [data-v-app] {',
+    '  max-width: ' + PHONE_WIDTH + 'px !important;',
+    '  width: 100% !important;',
+    '  box-shadow: 0 0 60px rgba(0,0,0,.7) !important;',
+    '  min-height: 100vh !important;',
+    '  overflow-x: hidden !important;',
+    '  position: relative !important;',
+    '}'
+  ].join('\n');
+
+  var styleEl = document.createElement('style');
+  styleEl.id          = '__qtm_width_fix';
+  styleEl.textContent = CSS;
+  (document.head || document.documentElement).appendChild(styleEl);
+
+  // ── 3. Toggle button ───────────────────────────────────────────────────────
+  //
+  // A small button fixed to the top-right corner.  Clicking it switches
+  // between phone-width mode and full-width mode.
+
+  var phoneMode = true;
+
+  function applyMode() {
+    styleEl.disabled = !phoneMode;
+    if (phoneMode) {
+      applyViewport();
+    } else {
+      var vp = document.querySelector('meta[name="viewport"]');
+      if (vp) vp.content = 'width=device-width,initial-scale=1';
+    }
+    if (btn) {
+      btn.textContent = phoneMode ? '\u229e Full width' : '\u260e Phone width';
+      btn.title = phoneMode
+        ? 'Click to restore full-width layout'
+        : 'Click to re-enable phone-width fix';
+    }
+  }
+
+  var btn = null;
+
+  window.addEventListener('load', function () {
+    btn = document.createElement('button');
+    btn.textContent = '\u229e Full width';
+    btn.title = 'Click to restore full-width layout';
+    btn.style.cssText = [
+      'position:fixed',
+      'top:8px',
+      'right:8px',
+      'z-index:2147483647',
+      'background:rgba(0,0,0,.55)',
+      'color:#fff',
+      'border:1px solid rgba(255,255,255,.25)',
+      'border-radius:6px',
+      'padding:4px 9px',
+      'font-size:11px',
+      'line-height:1.5',
+      'cursor:pointer',
+      'font-family:sans-serif',
+      'user-select:none',
+      '-webkit-user-select:none'
+    ].join(';');
+    btn.onclick = function () {
+      phoneMode = !phoneMode;
+      applyMode();
+    };
+    document.body.appendChild(btn);
+  });
+})();
+----------------------------------------------------------------------
+
+
+What to expect
+~~~~~~~~~~~~~~
+  - Install the script in Tampermonkey (or any GM-compatible extension).
+  - Open https://th-live.online (or qqlive.online) in a desktop browser.
+  - The page will render in a narrow ~390 px column centered on a dark
+    background, exactly as it looks on a phone.
+  - A small "⊞ Full width" button appears in the top-right corner.
+    Clicking it restores the full-width layout for the current tab.
+    Clicking it again re-applies the phone-width fix.
+  - The button only appears after the page has fully loaded.  During the
+    initial load the phone-width layout is already active via the
+    viewport meta override.
+
+
+Adding more domains
+~~~~~~~~~~~~~~~~~~~~
+Any site running the same QTM Live Hub codebase will be fixed by the
+same script.  To add a domain:
+
+  1. Open the Tampermonkey editor for this script.
+  2. Add a new @match line, e.g.:
+       // @match  https://example-clone.com/*
+  3. Save.
+
+Sites on this platform can be identified by:
+  - The same pink (#eb457e) color scheme.
+  - Avatar images loaded from oss-th*.qtmlivehub.com.
+  - The Tencent IM SDK (tim-js.js) in the page source.
+
+
+Known limitations
+~~~~~~~~~~~~~~~~~
+  - The viewport override runs at document-start, before any page CSS or
+    JS.  On sites that dynamically reset the viewport meta via JavaScript
+    after load, the toggle button's "Phone width" mode may need a click
+    to re-apply.
+  - Some sites set position:fixed on overlays (navigation bars, gift
+    panels) relative to the viewport.  At 390 px viewport width these
+    will be correctly contained within the phone column.  However, if
+    you click "Full width" and then reload the page, the site's own
+    viewport tag will take over until Tampermonkey injects again — this
+    is expected behaviour.
+  - The dark (#111) surround color can be changed by editing the CSS
+    block in the script.

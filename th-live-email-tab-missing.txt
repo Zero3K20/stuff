@@ -124,20 +124,7 @@ Tampermonkey, then navigate to https://th-live.online/register.
 It adds a "Register with Email" button that patches the component
 state and calls the email OTP flow directly.
 
-----------------------------------------------------------------------
 The full userscript is in th-live-email-tab-missing.user.js.
-
-// ==UserScript==
-// @name         th-live.online — Email Registration Attempt
-// @namespace    https://th-live.online
-// @version      0.3
-// @description  Tries to restore the removed email registration tab.
-//               The backend may or may not honor the email OTP call.
-// @match        https://th-live.online/*
-// @run-at       document-idle
-// @grant        none
-// ==/UserScript==
-----------------------------------------------------------------------
 
 What to expect when running the script (v0.3)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

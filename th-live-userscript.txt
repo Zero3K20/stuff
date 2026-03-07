@@ -98,20 +98,7 @@ IMPORTANT: Even with this script active, the live room will show an
 empty state (no video, no chat, no room info) because the server will
 reject all API calls that carry the fake token.
 
---------------------------------------------------------------------
 The full userscript is in th-live-userscript.user.js.
-
-// ==UserScript==
-// @name         th-live.online — No-Login Demo
-// @namespace    https://th-live.online
-// @version      0.1
-// @description  Demonstrates the client-side login guard bypass.
-//               NOTE: live streams will NOT work (server rejects fake token).
-// @match        https://th-live.online/*
-// @run-at       document-start
-// @grant        none
-// ==/UserScript==
---------------------------------------------------------------------
 
 
 Why the script still cannot play streams

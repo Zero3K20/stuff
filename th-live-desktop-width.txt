@@ -101,25 +101,7 @@ Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
 to catch any late SPA initialisation that might reset the tag.
 
 
-----------------------------------------------------------------------
 The full userscript is in th-live-desktop-width.user.js.
-
-// ==UserScript==
-// @name         QTM Live — Desktop Width Fix
-// @namespace    https://th-live.online
-// @version      0.2
-// @description  Constrains QTM-platform live-streaming sites to a
-//               phone-width column when viewed on a wide desktop screen.
-//               Overrides the viewport meta at document-start and adds
-//               a CSS phone-frame background.  A toggle button lets you
-//               switch between phone width and full width on the fly.
-// @match        https://th-live.online/*
-// @match        https://qqlive.online/*
-// @match        https://www.qqlive.online/*
-// @run-at       document-start
-// @grant        none
-// ==/UserScript==
-----------------------------------------------------------------------
 
 
 What to expect

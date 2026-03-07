@@ -254,14 +254,33 @@
   //   • every 500 ms for 6 seconds after window load (catches elements that
   //     become fixed during Vue's mounted() lifecycle or after lazy hydration)
   //
-  // Elements are tagged with data-qtm-fixed="1" so they are only processed
-  // once per scan cycle.
+  // For performance the scan is targeted: it checks
+  //   • direct children of <body>  (Vant teleports overlays/popups here)
+  //   • all descendants of #app / [data-v-app]  (catches sticky navs and
+  //     custom bars inside the Vue component tree)
+  // rather than every element in the full DOM, which keeps each pass fast
+  // even on complex pages.
 
   function fixAllFixedEls() {
     if (!phoneMode || !document.body) return;
-    var els = document.body.querySelectorAll('*');
-    for (var i = 0; i < els.length; i++) {
-      var el = els[i];
+
+    // Build a de-duplicated candidate list: body's direct children + everything
+    // inside the Vue app root.
+    var candidates = [];
+    var bodyChildren = document.body.children;
+    for (var bi = 0; bi < bodyChildren.length; bi++) {
+      candidates.push(bodyChildren[bi]);
+    }
+    var appRoots = document.querySelectorAll('#app, [data-v-app]');
+    for (var ai = 0; ai < appRoots.length; ai++) {
+      var appEls = appRoots[ai].querySelectorAll('*');
+      for (var ae = 0; ae < appEls.length; ae++) {
+        candidates.push(appEls[ae]);
+      }
+    }
+
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
       if (el.id === '__qtm_btn') continue;
       if (window.getComputedStyle(el).position !== 'fixed') continue;
       el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
@@ -293,16 +312,21 @@
 
     if (phoneMode) {
       // Re-establish the innerWidth / clientWidth overrides in case the toggle
-      // was clicked while they had been deleted.
+      // was clicked while they had been deleted.  Use the same phoneMode-aware
+      // getters as the initial setup so a rapid double-click can never leave
+      // them in an inconsistent state.
       try {
         Object.defineProperty(window, 'innerWidth', {
-          get: function () { return PHONE_WIDTH; },
+          get: function () { return phoneMode ? PHONE_WIDTH : realViewportWidth; },
           configurable: true
         });
       } catch (e) {}
       try {
         Object.defineProperty(document.documentElement, 'clientWidth', {
-          get: function () { return PHONE_WIDTH; },
+          get: function () {
+            if (phoneMode) return PHONE_WIDTH;
+            return _elCWDesc ? _elCWDesc.get.call(this) : realViewportWidth;
+          },
           configurable: true
         });
       } catch (e) {}
@@ -310,8 +334,8 @@
       fixAllFixedEls();
     } else {
       // Full-width mode: remove our property overrides so native values return.
-      try { delete window.innerWidth; }                       catch (e) {}
-      try { delete document.documentElement.clientWidth; }   catch (e) {}
+      try { delete window.innerWidth; } catch (e) {}
+      try { delete document.documentElement.clientWidth; } catch (e) {}
       disconnectVpAttrObservers();
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';

@@ -5,14 +5,19 @@ Short answer
 ------------
 These sites are built as phone-only apps.  On a wide desktop display the
 Vue app fills the full browser window width, producing an ugly stretched
-layout.  The userscript below fixes this in two complementary ways:
+layout.  The userscript fixes this in three complementary ways:
 
   1. It overrides the page's <meta name="viewport"> to width=390 at
      document-start.  This makes the browser lay out the entire page as
      if the viewport were a phone (390 CSS px wide), so the site's own
      CSS works exactly as the mobile designers intended.
 
-  2. It injects CSS that (a) centers the #app column on a dark desktop
+  2. It pins the HTML root font-size to 39 px (= 390 ÷ 10), which is what
+     the site's own flexible.js would compute on a real 390 px phone.
+     This prevents text from being oversized when the viewport override
+     is applied after the site's font-size calculation has already run.
+
+  3. It injects CSS that (a) centers the #app column on a dark desktop
      background and (b) repositions Vant UI's fixed-position components
      (bottom nav bar, top nav bar, popups, overlays) so they sit inside
      the phone column rather than spanning the full viewport.
@@ -79,23 +84,39 @@ viewport width, and works even if the viewport override fails (e.g. the
 browser ignores the late meta change).
 
 
-How the viewport override is kept robust
------------------------------------------
-The site's Vue app may reset the viewport meta after the page loads via
-a plain JS attribute assignment:
+How the viewport override is kept robust (v0.3)
+-----------------------------------------------
+Two bugs in v0.2 caused the viewport override to silently fail on desktop:
 
-    document.querySelector('meta[name="viewport"]').content = '...';
+Bug 1 — Duplicate viewport meta
+  The script runs at document-start before the HTML is parsed, so any
+  <meta name="viewport"> it creates is inserted *before* the site's own
+  tag.  Browsers (Chrome, Firefox) use the *last* duplicate viewport meta,
+  so the site's later-parsed tag — still set to width=device-width —
+  silently won.
 
-A MutationObserver watching only for child-node additions misses this.
-The script therefore uses TWO observers:
+  Fix: applyViewport() now uses querySelectorAll (not querySelector) so it
+  finds and overrides *every* viewport meta in the document, and attaches
+  a MutationObserver to each one.  When the site's tag is parsed and added
+  to the DOM, vpChildObserver fires, applyViewport() runs again, and the
+  new tag is immediately corrected and watched.
 
-  vpChildObserver  — watches the whole document tree for a new <meta>
-                     element being inserted.  Catches the static HTML
-                     meta tag and any createElement/appendChild calls.
+Bug 2 — Font size set before viewport propagates
+  These sites run a flexible.js snippet early in <head> that sets:
 
-  vpAttrObserver   — watches the content attribute of the specific meta
-                     element.  Immediately reverses any assignment that
-                     changes it away from width=390.
+      html.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+
+  On a 390 px phone this gives 39 px.  On a 1440 px desktop where the
+  viewport override hasn't propagated yet, clientWidth is still 1440 and
+  the snippet sets 144 px, making every rem-sized element far too large.
+
+  Fix: the injected CSS now includes:
+
+      html { font-size: 39px !important; }
+
+  This pins the root font-size to the phone value regardless of when the
+  viewport override takes effect, ensuring all rem-based text fits the
+  390 px column correctly.
 
 Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
 to catch any late SPA initialisation that might reset the tag.

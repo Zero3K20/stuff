@@ -3,15 +3,15 @@ th-live.online — Can the Registration Page SMS US Numbers?
 
 Short answer
 ------------
-No. The phone registration tab accepts only Thai-format numbers
-(10 digits, leading zero), so a US number will always fail client-side
-validation before any SMS is ever sent.  However, the site offers a
-second registration path — email — that requires no phone number at
-all, which is the practical solution for users without a Thai number.
+No. The registration page accepts only Thai-format phone numbers
+(10 digits, leading zero).  There is no alternative registration path
+in the current production UI.  The only way to register is with a real
+or virtual Thai mobile number.  See th-live-phone-validation.txt for
+services that supply one-time-use Thai numbers at low or no cost.
 
 
-Why a US number cannot work on the phone tab
----------------------------------------------
+Why a US number cannot work
+---------------------------
 Source: https://th-live.online/js/app.af6c1ab3.js
 
 1. Hard-coded Thai phone regex
@@ -38,7 +38,7 @@ Source: https://th-live.online/js/app.af6c1ab3.js
 
 3. No country code selector
    There is no dropdown, picker, or any UI element on the registration
-   page to choose a country calling code.  The phone tab is designed
+   page to choose a country calling code.  The form is designed
    exclusively for Thai mobile numbers (08x, 09x, 06x prefix range).
 
 4. No areaCode sent in the OTP request
@@ -53,39 +53,32 @@ Source: https://th-live.online/js/app.af6c1ab3.js
    would not know to route an SMS to the US (+1) country code.
 
 
-The email registration path (no phone required)
-------------------------------------------------
-The registration page has two tabs controlled by the `active` state
-variable (0 = phone, non-zero = email).  When the email tab is active
-the OTP flow switches entirely:
+Is there an email registration option?
+---------------------------------------
+No — not in the current production UI.
 
-  Phone tab (active = 0):
-    OTP endpoint  → POST /order/sms/config/send/vcode
-    Validate OTP  → POST /center-client/sys/auth/phone/reg/codeValidate
-    Create account→ POST /center-client/sys/auth/phone/reg/info
+The JS bundle does contain i18n strings for email registration (keys
+"emailRegister", "suEmailTitle", etc.) in all three app languages
+(ZH/TH/VN), and the component code has dead-code branches for an email
+OTP flow.  But:
 
-  Email tab (active ≠ 0):
-    OTP endpoint  → POST /order/email/config/send/vcode
-    Validate OTP  → POST /center-client/sys/auth/email/reg/codeValidate
-    Create account→ POST /center-client/sys/auth/email/reg/info
+  - The registration render function contains ZERO email references and
+    ZERO tab-switching elements.  The emailRegister i18n keys appear
+    only inside the JSON translation blobs; no $t("register.emailRegister")
+    call exists anywhere in any rendered template.
+  - The registerForm data object contains {phone, code, password,
+    confirmPassword, nickname, phoneHide} — no email field.
+  - The login page similarly has maxlength:10 on the username field,
+    which is too short for any email address despite having email login
+    code in its logic layer.
+  - Switching the app language to Chinese (or any language) does NOT
+    reveal an email tab; the tab was removed from the UI but orphaned
+    strings and logic were left in the bundle.
 
-The email tab has no phone-format validation at all.  Any valid e-mail
-address works.  A free Gmail, Outlook, ProtonMail, or similar address
-is sufficient — no Thai or US phone number is involved.
+There is currently no route, no URL parameter, and no language setting
+that exposes email registration.  A Thai phone number is the only path.
 
-Steps to register via email:
-  1. Open https://th-live.online and tap the register / sign-up link.
-  2. On the registration page look for a tab or toggle labelled:
-       "ลงทะเบียนผ่านอีเมล"  (TH)
-       "邮箱注册"              (ZH)
-       "Đăng ký email"        (VN)
-  3. Enter any valid e-mail address.
-  4. Tap "Get code" — an OTP is sent to the e-mail inbox.
-  5. Enter the OTP, choose a password, pick a nickname, and submit.
-
-Note: if the email tab is not visible on your UI, try switching the
-app language to Chinese (ZH), which consistently exposes the email
-option in the observed source.
+See th-live-email-tab-missing.txt for the full technical analysis.
 
 
 Could a userscript bypass the phone regex for US numbers?
@@ -115,9 +108,10 @@ Summary
 
   Question                                      | Answer
   ----------------------------------------------|-------
-  Phone tab accepts US numbers?                 | No
+  Registration page accepts US numbers?         | No
   Is there a country code selector?             | No
   Can userscript bypass the regex?              | Yes (client-side only)
   Will the SMS actually reach a US number?      | Almost certainly not
-  Is there a phone-free registration path?      | Yes — email tab
-  Does email registration work from any country?| Yes
+  Is there an email registration tab/path?      | No (removed; dead code remains)
+  Does switching language reveal email tab?     | No
+  Practical solution without a Thai number?     | Virtual Thai SIM (see th-live-phone-validation.txt)

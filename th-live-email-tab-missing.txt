@@ -1,0 +1,276 @@
+th-live.online — "I Don't See the Email Registration Tab"
+==========================================================
+
+Short answer
+------------
+The email registration tab does not exist in the current production
+version of th-live.online.  It was removed from the UI at some point
+but left orphaned code and translation strings behind in the app
+bundle.  No language setting, URL parameter, or browser workaround
+can bring it back — the HTML is simply never rendered.
+
+
+Evidence from the app source
+-----------------------------
+Source: https://th-live.online/js/app.af6c1ab3.js
+
+1. Registration render function (Vl / component Br, route "/register")
+   The actual rendered HTML template is produced by a single Vue3
+   render function (function Tr, bytes 177987–190674 in the bundle).
+   That render function:
+
+     - Contains ZERO occurrences of "email", "emailRegister", or
+       "van-tab" / "van-tabs".
+     - Renders only: title bar, avatar picker, nickname, sex toggle,
+       phone field (maxlength 10), OTP field + "Get code" button,
+       password, confirm-password, and submit.
+     - Has no tab bar, no toggle, and no conditional branches that
+       would show a different form based on language, device, or any
+       flag.
+
+2. i18n translation strings exist — but are never called
+   The bundle contains JSON translation blobs (ZH / TH / VN) that
+   define these keys:
+
+       register.emailRegister  — "邮箱注册" / "ลงทะเบียนผ่านอีเมล" / "Đăng ký email"
+       register.suEmailTitle   — subtitle prompting for email address
+       register.entryEmailTip  — input placeholder for email
+       register.confirmEmailTips
+       register.checkEmailError
+       register.hasEmailRegister
+
+   Not one of these keys is ever called via $t() in any render
+   function.  They are orphaned strings left over from a previous
+   version.
+
+3. registerForm data object has no email field
+   The component's data() initialiser:
+
+       registerForm: {
+         phone: "", code: "", password: "", confirmPassword: "",
+         nickname: "", phoneHide: ""
+       }
+
+   There is no email property.  Any code branch that referenced
+   this.registerForm.email would receive undefined.
+
+4. Dead-code branches in the component logic
+   The component's methods (isRegiste, sendVcoderegister, regInfo,
+   codeValidate) all contain branches like:
+
+       0 == this.active
+         ? (o.mobile = this.registerForm.phone, t = phoneAPI)
+         : (o.email  = this.registerForm.email, t = emailAPI)
+
+   Because the render function never shows a tab-switching UI element,
+   this.active is always 0 and the email branch is permanently
+   unreachable.
+
+5. Login page also limited to Thai numbers
+   The login page's username field has maxlength:10 — too short for
+   any email address — even though the login() method has the same
+   phone-or-email branching logic in its code.
+
+6. There is only one registration route
+   The Vue Router configuration contains exactly one registration
+   route:
+
+       { path: "/register", name: "register", component: Br }
+
+   There is no /register2, no /register?type=email, and no alternate
+   path.  The bundle has no lazy-loaded chunks for an email registration
+   page.
+
+
+Why does this happen?
+----------------------
+A feature-flag approach appears to have been used during development:
+the code was written to support both phone and email registration, but
+the product configuration for this deployment removed the email tab
+from the UI while leaving the underlying API calls and translation
+strings intact.  The backend APIs for email registration still exist:
+
+    POST /center-client/sys/user/email/isRegiste
+    POST /order/email/config/send/vcode
+    POST /center-client/sys/auth/email/reg/codeValidate
+    POST /center-client/sys/auth/email/reg/info
+
+They are simply unreachable from the UI.
+
+
+Can a userscript restore the email tab?
+----------------------------------------
+Technically, a Tampermonkey script could:
+
+  a) After Vue mounts, locate the component instance for the
+     /register route (via __vue_app__ or similar).
+  b) Force this.active to a non-zero value.
+  c) Inject an email field into this.registerForm.
+  d) Intercept the "Get code" click to call sendVcoderegister()
+     instead of getAccountCode().
+
+If the backend email APIs are live and accepting requests this would
+allow email registration.  However:
+
+  - Injecting into a production minified Vue3 app's component instance
+    requires non-trivial tooling (finding the fiber/internal, etc.).
+  - The backend may have the email OTP endpoint disabled server-side
+    even if the route exists.
+  - It is far simpler to use a free virtual Thai number (see
+    th-live-phone-validation.txt) which takes about 2 minutes.
+
+A proof-of-concept userscript is shown below.  Run it with
+Tampermonkey, then navigate to https://th-live.online/register.
+It adds a "Register with Email" button that patches the component
+state and calls the email OTP flow directly.
+
+----------------------------------------------------------------------
+// ==UserScript==
+// @name         th-live.online — Email Registration Attempt
+// @namespace    https://th-live.online
+// @version      0.1
+// @description  Tries to restore the removed email registration tab.
+//               The backend may or may not honour the email OTP call.
+// @match        https://th-live.online/*
+// @run-at       document-idle
+// @grant        none
+// ==/UserScript==
+
+(function () {
+  'use strict';
+
+  // Wait for Vue to mount and the route to be /register
+  function tryPatch() {
+    if (location.hash !== '#/register' && !location.pathname.endsWith('/register')) {
+      return;
+    }
+
+    // Find the Vue app root
+    const root = document.querySelector('#app') || document.querySelector('[data-v-app]');
+    if (!root || !root.__vue_app__) return;
+
+    // Walk the component tree to find the register component instance
+    // (it has a registerForm property in its data)
+    function findComp(vnode) {
+      if (!vnode) return null;
+      const comp = vnode.component;
+      if (comp && comp.data && comp.data.registerForm !== undefined) return comp;
+      if (vnode.subTree) {
+        const r = findComp(vnode.subTree);
+        if (r) return r;
+      }
+      if (vnode.children && Array.isArray(vnode.children)) {
+        for (const c of vnode.children) {
+          const r = findComp(c);
+          if (r) return r;
+        }
+      }
+      return null;
+    }
+
+    const app = root.__vue_app__;
+    const instance = findComp(app._instance.subTree);
+    if (!instance) {
+      console.warn('[email-reg] Could not find register component instance.');
+      return;
+    }
+
+    const proxy = instance.proxy;  // the public `this` equivalent in Vue3
+
+    // Inject email field into registerForm if missing
+    if (!('email' in proxy.registerForm)) {
+      proxy.registerForm.email = '';
+    }
+
+    // Build a simple email input + button overlay
+    if (document.getElementById('__email_reg_overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.id = '__email_reg_overlay';
+    overlay.style.cssText = [
+      'position:fixed', 'top:80px', 'left:50%', 'transform:translateX(-50%)',
+      'background:#fff', 'border:2px solid #eb457e', 'border-radius:12px',
+      'padding:16px', 'z-index:9999', 'width:90vw', 'max-width:360px',
+      'box-shadow:0 4px 20px rgba(0,0,0,.2)', 'font-family:sans-serif'
+    ].join(';');
+
+    overlay.innerHTML = `
+      <p style="margin:0 0 8px;font-weight:bold;color:#eb457e;">Register with Email (experimental)</p>
+      <input id="__email_inp" type="email" placeholder="your@email.com"
+        style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;" />
+      <input id="__email_code" type="text" placeholder="OTP code"
+        style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;margin-top:8px;" />
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        <button id="__email_send" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">
+          Send OTP
+        </button>
+        <button id="__email_verify" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">
+          Verify &amp; Register
+        </button>
+      </div>
+      <p id="__email_status" style="margin:8px 0 0;font-size:12px;color:#666;"></p>
+      <p style="margin:4px 0 0;font-size:11px;color:#999;">Note: backend may not honour this request.</p>
+    `;
+    document.body.appendChild(overlay);
+
+    document.getElementById('__email_send').onclick = function () {
+      const email = document.getElementById('__email_inp').value.trim();
+      if (!email) return;
+      proxy.registerForm.email = email;
+      // Switch to email mode
+      proxy.active = 1;
+      // Call sendVcoderegister which now uses email branch
+      proxy.sendVcoderegister();
+      document.getElementById('__email_status').textContent = 'OTP sent (if backend allows)…';
+    };
+
+    document.getElementById('__email_verify').onclick = function () {
+      const code = document.getElementById('__email_code').value.trim();
+      if (!code) return;
+      proxy.registerForm.code = code;
+      proxy.codeValidate();
+      document.getElementById('__email_status').textContent = 'Attempting verification…';
+    };
+
+    console.info('[email-reg] Email registration overlay injected.');
+  }
+
+  // Poll until the register page mounts
+  const timer = setInterval(() => {
+    tryPatch();
+  }, 1000);
+
+  // Stop polling after 60 s
+  setTimeout(() => clearInterval(timer), 60000);
+})();
+----------------------------------------------------------------------
+
+What to expect when running the script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - If the backend /order/email/config/send/vcode endpoint is live,
+    "Send OTP" will request an OTP to the entered address and the app
+    will show its "Code sent successfully" toast.
+  - If the backend has that endpoint disabled, the app will show an
+    error toast with the server's error message.
+  - If the OTP is received and verified, registration proceeds normally
+    (the codeValidate → reg/info flow is the same as for phone).
+
+
+Practical recommendation
+-------------------------
+The fastest, most reliable path is still a virtual Thai number:
+
+  1. Go to https://sms-activate.org (paid) or https://receive-smss.com
+     (free, public/shared numbers) and get a Thai mobile number that
+     starts with 0.
+  2. Enter it in the normal registration form.
+  3. Retrieve the OTP from the service's inbox page.
+  4. Complete registration.
+
+Total time: ≈2 minutes.  See th-live-phone-validation.txt for a full
+list of virtual-number services and important caveats.
+
+Security note: free virtual-number services use publicly visible
+shared inboxes — anyone browsing the site can read the OTP.  Complete
+registration promptly after requesting the code, and do not reuse the
+same number for any account where security matters.  For higher
+security, use a paid one-time-use number or a physical Thai SIM.

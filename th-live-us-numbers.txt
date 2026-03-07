@@ -1,0 +1,123 @@
+th-live.online — Can the Registration Page SMS US Numbers?
+==========================================================
+
+Short answer
+------------
+No. The phone registration tab accepts only Thai-format numbers
+(10 digits, leading zero), so a US number will always fail client-side
+validation before any SMS is ever sent.  However, the site offers a
+second registration path — email — that requires no phone number at
+all, which is the practical solution for users without a Thai number.
+
+
+Why a US number cannot work on the phone tab
+---------------------------------------------
+Source: https://th-live.online/js/app.af6c1ab3.js
+
+1. Hard-coded Thai phone regex
+   The "Get code" button is wired to getAccountCode(), which runs:
+
+       let e = /^0\d{9}$/;
+       e.test(this.registerForm.phone)
+           ? this.isRegiste(0)
+           : this.$toast(this.$t("register.checkPhoneError"));
+
+   The regex /^0\d{9}$/ requires:
+     - Exactly 10 digits
+     - First digit must be 0
+
+   A US 10-digit number (e.g. 2125551234) starts with a non-zero digit
+   → test() returns false → error toast, no OTP is requested.
+
+2. Input field constraints
+   The phone input has:
+     - maxlength: 10  (cannot type more than 10 characters)
+     - onKeyup: strips all non-digit characters
+         registerForm.phone = registerForm.phone.replace(/[^\d]/g, "")
+   There is no "+" or country code prefix accepted anywhere in the field.
+
+3. No country code selector
+   There is no dropdown, picker, or any UI element on the registration
+   page to choose a country calling code.  The phone tab is designed
+   exclusively for Thai mobile numbers (08x, 09x, 06x prefix range).
+
+4. No areaCode sent in the OTP request
+   When the phone validation passes (Thai number), the OTP is sent via:
+
+       POST /order/sms/config/send/vcode
+       { mobile: <phone>, type: 1, os: 0, ... }
+
+   No areaCode field is included.  The backend therefore treats the
+   number as a bare Thai local number (the implicit country is Thailand).
+   Even if the client-side regex were somehow bypassed, the SMS backend
+   would not know to route an SMS to the US (+1) country code.
+
+
+The email registration path (no phone required)
+------------------------------------------------
+The registration page has two tabs controlled by the `active` state
+variable (0 = phone, non-zero = email).  When the email tab is active
+the OTP flow switches entirely:
+
+  Phone tab (active = 0):
+    OTP endpoint  → POST /order/sms/config/send/vcode
+    Validate OTP  → POST /center-client/sys/auth/phone/reg/codeValidate
+    Create account→ POST /center-client/sys/auth/phone/reg/info
+
+  Email tab (active ≠ 0):
+    OTP endpoint  → POST /order/email/config/send/vcode
+    Validate OTP  → POST /center-client/sys/auth/email/reg/codeValidate
+    Create account→ POST /center-client/sys/auth/email/reg/info
+
+The email tab has no phone-format validation at all.  Any valid e-mail
+address works.  A free Gmail, Outlook, ProtonMail, or similar address
+is sufficient — no Thai or US phone number is involved.
+
+Steps to register via email:
+  1. Open https://th-live.online and tap the register / sign-up link.
+  2. On the registration page look for a tab or toggle labelled:
+       "ลงทะเบียนผ่านอีเมล"  (TH)
+       "邮箱注册"              (ZH)
+       "Đăng ký email"        (VN)
+  3. Enter any valid e-mail address.
+  4. Tap "Get code" — an OTP is sent to the e-mail inbox.
+  5. Enter the OTP, choose a password, pick a nickname, and submit.
+
+Note: if the email tab is not visible on your UI, try switching the
+app language to Chinese (ZH), which consistently exposes the email
+option in the observed source.
+
+
+Could a userscript bypass the phone regex for US numbers?
+----------------------------------------------------------
+Technically a Tampermonkey script could:
+  a) Intercept the "Get code" click before getAccountCode() fires.
+  b) Skip the /^0\d{9}$/ check and call isRegiste(0) directly.
+  c) Inject an areaCode of 1 (US) and a 10-digit US number into the
+     POST /order/sms/config/send/vcode payload.
+
+However this does not mean the SMS would be delivered:
+  - The server-side SMS gateway is configured for Thai numbers.  Sending
+    to a +1 (US) destination would require the gateway to have a US
+    SMS route, which is not a standard configuration for a Thai-market
+    live streaming app.
+  - Even if the OTP is somehow delivered, the server validates the OTP
+    against the number that was originally registered, so the US number
+    would need to pass all server-side checks too.
+
+In short, bypassing the client-side regex is easy but the server is
+highly unlikely to route an SMS to a US number.  The email path is
+simpler, more reliable, and requires no scripting.
+
+
+Summary
+-------
+
+  Question                                      | Answer
+  ----------------------------------------------|-------
+  Phone tab accepts US numbers?                 | No
+  Is there a country code selector?             | No
+  Can userscript bypass the regex?              | Yes (client-side only)
+  Will the SMS actually reach a US number?      | Almost certainly not
+  Is there a phone-free registration path?      | Yes — email tab
+  Does email registration work from any country?| Yes

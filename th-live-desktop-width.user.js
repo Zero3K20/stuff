@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.6
+// @version      0.7
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -286,12 +286,13 @@
   // ── 5. JS fixed-element scan ───────────────────────────────────────────────
   //
   // The CSS layer above covers known Vant class names, but QTM Live sites also
-  // have custom components (e.g. the home-page section tab bar) with site-
-  // specific class names not in the Vant selector list.
+  // have custom components (e.g. the home-page section tab bar, live-room
+  // like/gift/follow controls) with site-specific class names not in the Vant
+  // selector list.
   //
   // This scan iterates every element in the live DOM, finds those whose
-  // *computed* position is "fixed", and inlines the same left/width constraints
-  // with !important priority.  It runs:
+  // *computed* position is "fixed", and applies phone-column constraints with
+  // !important priority.  It runs:
   //   • once immediately after DOMContentLoaded (catches initial Vant setup)
   //   • every 500 ms for 6 seconds after window load (catches elements that
   //     become fixed during Vue's mounted() lifecycle or after lazy hydration)
@@ -302,6 +303,14 @@
   //     custom bars inside the Vue component tree)
   // rather than every element in the full DOM, which keeps each pass fast
   // even on complex pages.
+  //
+  // Constraint strategy (v0.7):
+  //   Wide elements (width ≥ 60 % of PHONE_WIDTH) — nav bars, overlays, popups
+  //     → full column constraint: left=COL_LEFT, width=COL_WIDTH, right=auto
+  //   Narrow elements (width < 60 % of PHONE_WIDTH) — floating action buttons,
+  //     live-room like/gift/follow icons, badges
+  //     → preserve width; re-anchor left/right relative to the phone column
+  //       so they stay inside the column without being stretched.
 
   function fixAllFixedEls() {
     if (!phoneMode || !document.body) return;
@@ -321,14 +330,53 @@
       }
     }
 
+    // The phone column's right edge measured from the *right* side of the
+    // viewport.  Used to re-anchor right-positioned narrow elements so they
+    // stay inside the phone column rather than drifting off-screen.
+    //   = calc(max(0px, (100vw - 390px) / 2))   (mirrors COL_LEFT by symmetry)
+    var COL_RIGHT_INSET = 'max(0px,calc((100vw - ' + PHONE_WIDTH + 'px) / 2))';
+
     for (var i = 0; i < candidates.length; i++) {
       var el = candidates[i];
       if (el.id === '__qtm_btn') continue;
-      if (window.getComputedStyle(el).position !== 'fixed') continue;
-      el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
-      el.style.setProperty('width',     COL_WIDTH,           'important');
-      el.style.setProperty('left',      COL_LEFT,            'important');
-      el.style.setProperty('right',     'auto',              'important');
+      var cs = window.getComputedStyle(el);
+      if (cs.position !== 'fixed') continue;
+
+      var elW = parseFloat(cs.width) || 0;
+
+      if (elW >= PHONE_WIDTH * 0.6) {
+        // ── Wide element (nav bar, overlay, popup, backdrop) ────────────────
+        // Constrain to the phone column exactly as before.
+        el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
+        el.style.setProperty('width',     COL_WIDTH,           'important');
+        el.style.setProperty('left',      COL_LEFT,            'important');
+        el.style.setProperty('right',     'auto',              'important');
+      } else {
+        // ── Narrow element (floating action button, badge, live-room control)
+        // DON'T stretch its width.  Only re-anchor it so it stays within the
+        // phone column.  Elements positioned from the right (right: Xpx) get
+        // their right inset adjusted relative to the column's right edge.
+        // Elements positioned from the left get their left offset adjusted
+        // relative to the column's left edge.
+        el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
+
+        var csRight = cs.right;
+        var csLeft  = cs.left;
+        var rawRight = parseFloat(csRight);
+        var rawLeft  = parseFloat(csLeft);
+
+        if (csRight !== 'auto' && !isNaN(rawRight)) {
+          // Right-anchored: shift inset so it's relative to column right edge.
+          el.style.setProperty('right',
+            'calc(' + COL_RIGHT_INSET + ' + ' + rawRight + 'px)', 'important');
+          el.style.removeProperty('left');
+        } else if (csLeft !== 'auto' && !isNaN(rawLeft)) {
+          // Left-anchored: shift offset so it's relative to column left edge.
+          el.style.setProperty('left',
+            'calc(' + COL_LEFT + ' + ' + rawLeft + 'px)', 'important');
+          el.style.removeProperty('right');
+        }
+      }
     }
   }
 

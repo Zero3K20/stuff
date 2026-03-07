@@ -5,7 +5,7 @@ Short answer
 ------------
 These sites are built as phone-only apps.  On a wide desktop display the
 Vue app fills the full browser window width, producing an ugly stretched
-layout.  The userscript fixes this in six complementary ways:
+layout.  The userscript fixes this in six complementary ways (v0.7):
 
   1. It overrides window.innerWidth and document.documentElement.clientWidth
      at document-start (before any site JavaScript runs) so that flexible.js,

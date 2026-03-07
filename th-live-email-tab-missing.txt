@@ -128,9 +128,9 @@ state and calls the email OTP flow directly.
 // ==UserScript==
 // @name         th-live.online — Email Registration Attempt
 // @namespace    https://th-live.online
-// @version      0.1
+// @version      0.2
 // @description  Tries to restore the removed email registration tab.
-//               The backend may or may not honour the email OTP call.
+//               The backend may or may not honor the email OTP call.
 // @match        https://th-live.online/*
 // @run-at       document-idle
 // @grant        none
@@ -139,52 +139,73 @@ state and calls the email OTP flow directly.
 (function () {
   'use strict';
 
-  // Wait for Vue to mount and the route to be /register
+  var patchTimer;
+
+  // Walk a Vue3 VNode tree to find the first component instance whose
+  // data() contains a 'registerForm' property.
+  //
+  // Vue3 VNode structure:
+  //   vnode.component        — present when the vnode represents a component;
+  //                            this is the component *instance* object
+  //   componentInstance.subTree
+  //                          — the VNode tree rendered by that component
+  //   vnode.children         — child VNodes for plain element / Fragment nodes
+  function findComp(node) {
+    if (!node) return null;
+
+    // Component VNode: check the instance, then recurse into its rendered output
+    if (node.component) {
+      var ci = node.component;
+      if (ci.data && 'registerForm' in ci.data) return ci;
+      var r = findComp(ci.subTree);
+      if (r) return r;
+    }
+
+    // Plain element / Fragment: recurse into child VNodes
+    if (Array.isArray(node.children)) {
+      for (var i = 0; i < node.children.length; i++) {
+        var child = node.children[i];
+        if (child && typeof child === 'object') {
+          var r2 = findComp(child);
+          if (r2) return r2;
+        }
+      }
+    }
+
+    return null;
+  }
+
   function tryPatch() {
     if (location.hash !== '#/register' && !location.pathname.endsWith('/register')) {
       return;
     }
 
-    // Find the Vue app root
-    const root = document.querySelector('#app') || document.querySelector('[data-v-app]');
+    // Find the Vue app root element
+    var root = document.querySelector('#app') || document.querySelector('[data-v-app]');
     if (!root || !root.__vue_app__) return;
 
-    // Walk the component tree to find the register component instance
-    // (it has a registerForm property in its data)
-    function findComp(vnode) {
-      if (!vnode) return null;
-      const comp = vnode.component;
-      if (comp && comp.data && comp.data.registerForm !== undefined) return comp;
-      if (vnode.subTree) {
-        const r = findComp(vnode.subTree);
-        if (r) return r;
-      }
-      if (vnode.children && Array.isArray(vnode.children)) {
-        for (const c of vnode.children) {
-          const r = findComp(c);
-          if (r) return r;
-        }
-      }
-      return null;
-    }
+    var app = root.__vue_app__;
 
-    const app = root.__vue_app__;
-    const instance = findComp(app._instance.subTree);
-    if (!instance) {
-      console.warn('[email-reg] Could not find register component instance.');
-      return;
-    }
+    // _instance is null until Vue has fully mounted the root component —
+    // return silently and wait for the next poll tick.
+    if (!app._instance || !app._instance.subTree) return;
 
-    const proxy = instance.proxy;  // the public `this` equivalent in Vue3
+    var instance = findComp(app._instance.subTree);
+    if (!instance) return;  // not on /register yet, keep polling
+
+    // Component found — stop polling
+    clearInterval(patchTimer);
+
+    var proxy = instance.proxy;  // the public Vue3 component `this`
 
     // Inject email field into registerForm if missing
     if (!('email' in proxy.registerForm)) {
       proxy.registerForm.email = '';
     }
 
-    // Build a simple email input + button overlay
+    // Build an email input + OTP overlay (only once)
     if (document.getElementById('__email_reg_overlay')) return;
-    const overlay = document.createElement('div');
+    var overlay = document.createElement('div');
     overlay.id = '__email_reg_overlay';
     overlay.style.cssText = [
       'position:fixed', 'top:80px', 'left:50%', 'transform:translateX(-50%)',
@@ -193,54 +214,42 @@ state and calls the email OTP flow directly.
       'box-shadow:0 4px 20px rgba(0,0,0,.2)', 'font-family:sans-serif'
     ].join(';');
 
-    overlay.innerHTML = `
-      <p style="margin:0 0 8px;font-weight:bold;color:#eb457e;">Register with Email (experimental)</p>
-      <input id="__email_inp" type="email" placeholder="your@email.com"
-        style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;" />
-      <input id="__email_code" type="text" placeholder="OTP code"
-        style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;margin-top:8px;" />
-      <div style="display:flex;gap:8px;margin-top:8px;">
-        <button id="__email_send" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">
-          Send OTP
-        </button>
-        <button id="__email_verify" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">
-          Verify &amp; Register
-        </button>
-      </div>
-      <p id="__email_status" style="margin:8px 0 0;font-size:12px;color:#666;"></p>
-      <p style="margin:4px 0 0;font-size:11px;color:#999;">Note: backend may not honour this request.</p>
-    `;
+    overlay.innerHTML =
+      '<p style="margin:0 0 8px;font-weight:bold;color:#eb457e;">Register with Email (experimental)</p>' +
+      '<input id="__email_inp" type="email" placeholder="your@email.com"' +
+      ' style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;" />' +
+      '<input id="__email_code" type="text" placeholder="OTP code"' +
+      ' style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font-size:14px;margin-top:8px;" />' +
+      '<div style="display:flex;gap:8px;margin-top:8px;">' +
+      '<button id="__email_send" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">Send OTP</button>' +
+      '<button id="__email_verify" style="flex:1;background:#eb457e;color:#fff;border:none;border-radius:8px;padding:10px;cursor:pointer;">Verify &amp; Register</button>' +
+      '</div>' +
+      '<p id="__email_status" style="margin:8px 0 0;font-size:12px;color:#666;"></p>' +
+      '<p style="margin:4px 0 0;font-size:11px;color:#999;">Note: backend may not honor this request.</p>';
+
     document.body.appendChild(overlay);
 
     document.getElementById('__email_send').onclick = function () {
-      const email = document.getElementById('__email_inp').value.trim();
+      var email = document.getElementById('__email_inp').value.trim();
       if (!email) return;
       proxy.registerForm.email = email;
-      // Switch to email mode
-      proxy.active = 1;
-      // Call sendVcoderegister which now uses email branch
-      proxy.sendVcoderegister();
-      document.getElementById('__email_status').textContent = 'OTP sent (if backend allows)…';
+      proxy.active = 1;                // switch to email mode
+      proxy.sendVcoderegister();       // request OTP via email branch
+      document.getElementById('__email_status').textContent = 'OTP sent (if backend allows)\u2026';
     };
 
     document.getElementById('__email_verify').onclick = function () {
-      const code = document.getElementById('__email_code').value.trim();
+      var code = document.getElementById('__email_code').value.trim();
       if (!code) return;
       proxy.registerForm.code = code;
       proxy.codeValidate();
-      document.getElementById('__email_status').textContent = 'Attempting verification…';
+      document.getElementById('__email_status').textContent = 'Attempting verification\u2026';
     };
-
-    console.info('[email-reg] Email registration overlay injected.');
   }
 
-  // Poll until the register page mounts
-  const timer = setInterval(() => {
-    tryPatch();
-  }, 1000);
-
-  // Stop polling after 60 s
-  setTimeout(() => clearInterval(timer), 60000);
+  // Poll every 500 ms; stop automatically after 60 s
+  patchTimer = setInterval(tryPatch, 500);
+  setTimeout(function () { clearInterval(patchTimer); }, 60000);
 })();
 ----------------------------------------------------------------------
 

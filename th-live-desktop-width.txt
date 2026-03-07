@@ -10,11 +10,12 @@ layout.  The userscript below fixes this in two complementary ways:
   1. It overrides the page's <meta name="viewport"> to width=390 at
      document-start.  This makes the browser lay out the entire page as
      if the viewport were a phone (390 CSS px wide), so the site's own
-     CSS works exactly as the mobile designers intended — no element
-     overrides needed.
+     CSS works exactly as the mobile designers intended.
 
-  2. It injects a small block of CSS that centers the #app column on a
-     dark background for a "phone on a desk" visual effect.
+  2. It injects CSS that (a) centers the #app column on a dark desktop
+     background and (b) repositions Vant UI's fixed-position components
+     (bottom nav bar, top nav bar, popups, overlays) so they sit inside
+     the phone column rather than spanning the full viewport.
 
 A small toggle button in the top-right corner lets you switch back to
 full-width at any time without editing the script.
@@ -53,11 +54,58 @@ does when you open a desktop page on a phone without a viewport tag) but
 the layout itself is computed at 390 px.
 
 
+Why the viewport override alone is not enough
+----------------------------------------------
+Even with the viewport locked to 390 px, Vant UI's navigation and overlay
+components use  position:fixed; left:0; right:0  which attaches them to
+the viewport edges, not to the #app container.  This means:
+
+  - .van-tabbar  (bottom navigation bar)
+  - .van-nav-bar (top title bar)
+  - .van-overlay / popups / action sheets
+
+…would all span the full desktop viewport even after the viewport meta is
+overridden, because the browser still needs a CSS rule to constrain them.
+
+The script therefore also includes explicit CSS for all known Vant UI
+fixed components:
+
+    left:  max(0px, calc(50vw - 195px))
+    width: min(390px, 100vw)
+    right: auto
+
+This positions them exactly over the phone column regardless of the
+viewport width, and works even if the viewport override fails (e.g. the
+browser ignores the late meta change).
+
+
+How the viewport override is kept robust
+-----------------------------------------
+The site's Vue app may reset the viewport meta after the page loads via
+a plain JS attribute assignment:
+
+    document.querySelector('meta[name="viewport"]').content = '...';
+
+A MutationObserver watching only for child-node additions misses this.
+The script therefore uses TWO observers:
+
+  vpChildObserver  — watches the whole document tree for a new <meta>
+                     element being inserted.  Catches the static HTML
+                     meta tag and any createElement/appendChild calls.
+
+  vpAttrObserver   — watches the content attribute of the specific meta
+                     element.  Immediately reverses any assignment that
+                     changes it away from width=390.
+
+Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
+to catch any late SPA initialisation that might reset the tag.
+
+
 ----------------------------------------------------------------------
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.1
+// @version      0.2
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -81,48 +129,113 @@ the layout itself is computed at 390 px.
   var VIEWPORT    = 'width=' + PHONE_WIDTH + ',initial-scale=1';
 
   // Only activate on screens wider than PHONE_WIDTH.
-  // On an actual phone we leave the layout untouched.
-  if (window.screen.width <= PHONE_WIDTH) return;
+  // Use window.innerWidth (CSS pixels) so the check is DPI-independent.
+  // At document-start innerWidth may be 0; fall back to screen.width.
+  var viewportWidth = window.innerWidth || window.screen.width;
+  if (viewportWidth <= PHONE_WIDTH) return;
 
   // ── 1. Viewport meta override ──────────────────────────────────────────────
   //
-  // At document-start the <head> may be partially parsed.  We:
-  //   a) Write our viewport tag immediately (appended to <html> if <head>
-  //      is not yet available).
-  //   b) Watch via MutationObserver for the site's own viewport tag and
-  //      overwrite its content before the browser acts on it.
-  //   c) Re-apply after DOMContentLoaded as a final safety net.
+  // Two independent observers work together:
+  //
+  //   vpChildObserver  — watches the whole document for a new <meta> element
+  //                      being inserted (catches the static HTML meta and any
+  //                      createElement + appendChild calls).
+  //   vpAttrObserver   — watches the content *attribute* of the specific meta
+  //                      element we found/created, so that a JS assignment
+  //                      like  meta.content = '...'  is immediately reversed.
+  //                      This is the most common way Vue apps reset the tag.
+  //
+  // After window load an interval runs for a few extra seconds as a final
+  // safety net against late-initialising SPA code.
+
+  var vpAttrObserver = null;
 
   function applyViewport() {
     var vp = document.querySelector('meta[name="viewport"]');
     if (vp) {
       if (vp.content !== VIEWPORT) vp.content = VIEWPORT;
+      // Attach attribute observer to THIS element if not yet done
+      if (!vpAttrObserver) {
+        vpAttrObserver = new MutationObserver(function () {
+          if (vp.content !== VIEWPORT) vp.content = VIEWPORT;
+        });
+        vpAttrObserver.observe(vp, { attributes: true });
+      }
     } else {
       vp = document.createElement('meta');
       vp.name    = 'viewport';
       vp.content = VIEWPORT;
       (document.head || document.documentElement).appendChild(vp);
+      // The childList observer will call applyViewport again after insertion,
+      // at which point the element exists and the attribute observer is set up.
     }
   }
 
   applyViewport();
 
-  var vpObserver = new MutationObserver(applyViewport);
-  vpObserver.observe(document.documentElement, { childList: true, subtree: true });
+  // Watch for new <meta> elements being added anywhere in the document
+  var vpChildObserver = new MutationObserver(applyViewport);
+  vpChildObserver.observe(document.documentElement, { childList: true, subtree: true });
 
   document.addEventListener('DOMContentLoaded', function () {
-    vpObserver.disconnect();
+    vpChildObserver.disconnect();   // static DOM is complete; attribute observer takes over
     applyViewport();
+
+    // Poll for ~5 s to catch any late SPA viewport reset (e.g. Vue mounted hook)
+    var ticks = 0;
+    var MAX_POLL_TICKS = 10;   // 10 ticks × 500 ms = 5 s
+    var poll = setInterval(function () {
+      applyViewport();
+      if (++ticks >= MAX_POLL_TICKS) clearInterval(poll);
+    }, 500);
   });
 
-  // ── 2. CSS: phone-frame appearance on the desktop ─────────────────────────
+  // ── 2. CSS ─────────────────────────────────────────────────────────────────
   //
-  // Belt-and-suspenders: even with the viewport at 390 px the site's own
-  // CSS sets #app to width:100%, which now equals 390 px — so this block
-  // mainly provides the dark surround and centring.  It also adds a subtle
-  // shadow to visually frame the app column.
+  // Two complementary layers:
+  //
+  //   Layer A — container centering
+  //     Centers #app on a dark desktop background and caps its width at
+  //     PHONE_WIDTH px.  This is the primary visual fix and works even on the
+  //     rare browser that ignores the viewport meta change.
+  //
+  //   Layer B — fixed-element repositioning
+  //     Vant UI components such as van-tabbar (bottom nav), van-nav-bar (top
+  //     nav) and popups use  position:fixed; left:0; right:0  so they span the
+  //     full *viewport* width, not the #app container width.  Without this
+  //     layer those bars remain full-screen-wide even when the viewport meta
+  //     override is working perfectly.
+  //
+  //     The fix:  left: max(0px, calc(50vw - 195px))
+  //               width: min(390px, 100vw)
+  //               right: auto
+  //     …centres them over the phone column regardless of viewport width.
+
+  var PHONE_HALF_WIDTH = (PHONE_WIDTH / 2) + 'px';          // 195px — half of phone column width
+  var COL_LEFT  = 'max(0px,calc(50vw - ' + PHONE_HALF_WIDTH + '))';
+  var COL_WIDTH = 'min(' + PHONE_WIDTH + 'px,100vw)';
+
+  // Selectors for every Vant UI element that uses position:fixed / sticky
+  // and spans the full viewport width.
+  var FIXED_SELECTORS = [
+    '.van-tabbar',
+    '.van-nav-bar',
+    '.van-sticky > .van-nav-bar',
+    '.van-sticky > [class]',
+    '.van-notify',
+    '.van-overlay',
+    '.van-popup--bottom',
+    '.van-popup--top',
+    '.van-popup--left',
+    '.van-popup--right',
+    '.van-action-sheet',
+    '.van-share-sheet',
+    '.van-number-keyboard'
+  ].join(',\n  ');
 
   var CSS = [
+    '/* ── container ── */',
     'html {',
     '  background: #111 !important;',
     '}',
@@ -141,6 +254,19 @@ the layout itself is computed at 390 px.
     '  min-height: 100vh !important;',
     '  overflow-x: hidden !important;',
     '  position: relative !important;',
+    '}',
+    '',
+    '/* ── fixed / overlay elements ── */',
+    '  ' + FIXED_SELECTORS + ' {',
+    '  left:  ' + COL_LEFT  + ' !important;',
+    '  width: ' + COL_WIDTH + ' !important;',
+    '  right: auto !important;',
+    '  max-width: ' + PHONE_WIDTH + 'px !important;',
+    '}',
+    '',
+    '/* van-toast is centred by transform; keep its anchor in the column */',
+    '.van-toast {',
+    '  left: 50vw !important;',
     '}'
   ].join('\n');
 
@@ -161,6 +287,7 @@ the layout itself is computed at 390 px.
     if (phoneMode) {
       applyViewport();
     } else {
+      if (vpAttrObserver) { vpAttrObserver.disconnect(); vpAttrObserver = null; }
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';
     }
@@ -237,15 +364,9 @@ Sites on this platform can be identified by:
 
 Known limitations
 ~~~~~~~~~~~~~~~~~
-  - The viewport override runs at document-start, before any page CSS or
-    JS.  On sites that dynamically reset the viewport meta via JavaScript
-    after load, the toggle button's "Phone width" mode may need a click
-    to re-apply.
-  - Some sites set position:fixed on overlays (navigation bars, gift
-    panels) relative to the viewport.  At 390 px viewport width these
-    will be correctly contained within the phone column.  However, if
-    you click "Full width" and then reload the page, the site's own
-    viewport tag will take over until Tampermonkey injects again — this
-    is expected behaviour.
+  - If the site uses a custom fixed component whose class name is not in
+    the Vant list (e.g. a bespoke live-room controls bar), that bar may
+    still appear full-width.  In that case, identify the element's class
+    in DevTools and add a rule to the CSS block.
   - The dark (#111) surround color can be changed by editing the CSS
     block in the script.

@@ -5,22 +5,28 @@ Short answer
 ------------
 These sites are built as phone-only apps.  On a wide desktop display the
 Vue app fills the full browser window width, producing an ugly stretched
-layout.  The userscript fixes this in three complementary ways:
+layout.  The userscript fixes this in four complementary ways:
 
-  1. It overrides the page's <meta name="viewport"> to width=390 at
-     document-start.  This makes the browser lay out the entire page as
-     if the viewport were a phone (390 CSS px wide), so the site's own
-     CSS works exactly as the mobile designers intended.
+  1. It overrides window.innerWidth and document.documentElement.clientWidth
+     at document-start (before any site JavaScript runs) so that flexible.js,
+     Vant Sticky, and all other layout code see 390 px instead of the real
+     desktop viewport width.  This is the primary fix for text sizing and
+     fixed-element positioning.
 
-  2. It pins the HTML root font-size to 39 px (= 390 ÷ 10), which is what
-     the site's own flexible.js would compute on a real 390 px phone.
-     This prevents text from being oversized when the viewport override
-     is applied after the site's font-size calculation has already run.
+  2. It overrides the page's <meta name="viewport"> to width=390.  This makes
+     the browser lay out the entire page as if the viewport were a phone
+     (390 CSS px wide), so the site's own CSS works as the designers intended.
 
-  3. It injects CSS that (a) centers the #app column on a dark desktop
-     background and (b) repositions Vant UI's fixed-position components
-     (bottom nav bar, top nav bar, popups, overlays) so they sit inside
-     the phone column rather than spanning the full viewport.
+  3. It pins the HTML root font-size to 39 px in CSS with !important as a
+     belt-and-suspenders fix in case flexible.js fires before the override in
+     step 1 can be installed.
+
+  4. It injects CSS that (a) centers the #app column on a dark desktop
+     background, (b) repositions known Vant UI fixed-position components
+     (bottom nav bar, top nav bar, popups, overlays) into the phone column,
+     and (c) after page load scans all elements by computed style (not by
+     class name) to constrain any remaining fixed-position elements —
+     including site-specific custom navigation bars.
 
 A small toggle button in the top-right corner lets you switch back to
 full-width at any time without editing the script.
@@ -84,42 +90,54 @@ viewport width, and works even if the viewport override fails (e.g. the
 browser ignores the late meta change).
 
 
-How the viewport override is kept robust (v0.3)
------------------------------------------------
-Two bugs in v0.2 caused the viewport override to silently fail on desktop:
+How the layout is fixed (v0.4)
+------------------------------
+Four bugs / gaps cumulatively caused the stretched layout and oversized
+text seen on desktop in v0.3 and earlier:
 
-Bug 1 — Duplicate viewport meta
+Bug 1 — Duplicate viewport meta (fixed in v0.3)
   The script runs at document-start before the HTML is parsed, so any
   <meta name="viewport"> it creates is inserted *before* the site's own
-  tag.  Browsers (Chrome, Firefox) use the *last* duplicate viewport meta,
-  so the site's later-parsed tag — still set to width=device-width —
-  silently won.
+  tag.  Browsers use the *last* duplicate viewport meta, so the site's
+  later-parsed tag silently won.
 
-  Fix: applyViewport() now uses querySelectorAll (not querySelector) so it
-  finds and overrides *every* viewport meta in the document, and attaches
-  a MutationObserver to each one.  When the site's tag is parsed and added
-  to the DOM, vpChildObserver fires, applyViewport() runs again, and the
-  new tag is immediately corrected and watched.
+  Fix: applyViewport() uses querySelectorAll to find and lock *every*
+  viewport meta.  A MutationObserver fires when the site's tag is parsed
+  and immediately corrects and watches it.
 
-Bug 2 — Font size set before viewport propagates
-  These sites run a flexible.js snippet early in <head> that sets:
+Bug 2 — Font size computed from desktop clientWidth (fixed in v0.3 / v0.4)
+  flexible.js runs: html.style.fontSize = clientWidth / 10 + 'px'.
+  On a 1440 px desktop it sets 144 px instead of 39 px.
 
-      html.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+  Fix (CSS, v0.3): html { font-size: 39px !important }.
+  Fix (JS, v0.4):  override document.documentElement.clientWidth to
+  return 390 before any site JS runs, so flexible.js computes 39 px
+  naturally without needing the CSS override to fight it.
 
-  On a 390 px phone this gives 39 px.  On a 1440 px desktop where the
-  viewport override hasn't propagated yet, clientWidth is still 1440 and
-  the snippet sets 144 px, making every rem-sized element far too large.
+Bug 3 — Vant Sticky reads window.innerWidth for fixed-element width (v0.4)
+  Vant Sticky initialises by calling window.innerWidth to determine the
+  width it should give to fixed-position elements.  On a 1440 px desktop
+  (where the viewport meta override may not have propagated yet) it sets
+  style="width: 1440px" on the sticky bar, making it span the full screen.
 
-  Fix: the injected CSS now includes:
+  Fix: override window.innerWidth at document-start to return PHONE_WIDTH
+  (390).  All Vant Sticky initialisation therefore computes 390 px widths.
+  When the toggle button switches to full-width mode, the override is
+  deleted so native values are restored automatically.
 
-      html { font-size: 39px !important; }
+Bug 4 — Custom navigation bars not covered by Vant CSS selectors (v0.4)
+  QTM Live sites include custom Vue components (home-page section tabs,
+  live-room controls) that use position:fixed but have site-specific class
+  names not in the Vant selector list.  CSS alone cannot constrain them.
 
-  This pins the root font-size to the phone value regardless of when the
-  viewport override takes effect, ensuring all rem-based text fits the
-  390 px column correctly.
+  Fix: after page load, a JS scan iterates every element in the DOM, finds
+  those whose *computed* position is "fixed" (regardless of class name),
+  and applies left/width/right constraints via inline style with !important.
+  The scan repeats every 500 ms for 6 seconds to catch elements that
+  become fixed during Vue's mounted() lifecycle or after lazy hydration.
 
 Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
-to catch any late SPA initialisation that might reset the tag.
+to catch any late SPA viewport reset.
 
 
 The full userscript is in th-live-desktop-width.user.js.
@@ -157,9 +175,11 @@ Sites on this platform can be identified by:
 
 Known limitations
 ~~~~~~~~~~~~~~~~~
-  - If the site uses a custom fixed component whose class name is not in
-    the Vant list (e.g. a bespoke live-room controls bar), that bar may
-    still appear full-width.  In that case, identify the element's class
-    in DevTools and add a rule to the CSS block.
+  - The JS fixed-element scan runs once at page load and then every 500 ms
+    for 6 seconds.  A fixed element added after that window (e.g. opened
+    very late by user interaction) will be constrained by the CSS Vant
+    selectors only; if it uses a custom class it may still appear full-width.
+    In that case, identify its class in DevTools and add a CSS rule to the
+    script's FIXED_SELECTORS list.
   - The dark (#111) surround color can be changed by editing the CSS
     block in the script.

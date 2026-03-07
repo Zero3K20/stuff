@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.3
+// @version      0.4
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -24,24 +24,65 @@
   var PHONE_WIDTH = 390;     // logical CSS px — matches iPhone 14 (common design baseline)
   var VIEWPORT    = 'width=' + PHONE_WIDTH + ',initial-scale=1';
 
-  // Only activate on screens wider than PHONE_WIDTH.
-  // Use window.innerWidth (CSS pixels) so the check is DPI-independent.
-  // At document-start innerWidth may be 0; fall back to screen.width.
-  var viewportWidth = window.innerWidth || window.screen.width;
-  if (viewportWidth <= PHONE_WIDTH) return;
+  // Read the REAL viewport width before we override window.innerWidth.
+  // screen.width is the physical screen CSS-pixel width and is never overridden.
+  var realViewportWidth = window.screen.width;
+  if (realViewportWidth <= PHONE_WIDTH) return;
 
-  // ── 1. Viewport meta override ──────────────────────────────────────────────
+  // phoneMode must be declared here (before the property getters below reference it
+  // via closure) even though it is assigned before any getter is ever called.
+  var phoneMode = true;
+
+  // ── 1. Override window.innerWidth / document.documentElement.clientWidth ───
   //
-  // Bug in v0.2: the script runs at document-start before the HTML is parsed,
-  // so any <meta> we create is inserted *before* the site's own viewport meta.
-  // Browsers (Chrome, Firefox) use the *last* <meta name="viewport"> when
-  // duplicates exist, so the site's later-parsed meta silently wins.
+  // These must be intercepted at document-start — before flexible.js or any
+  // Vant component initialises — so that every JS layout calculation that reads
+  // these values uses PHONE_WIDTH instead of the actual desktop viewport width.
   //
-  // Fix: use querySelectorAll so we find and update *every* viewport meta that
-  // exists at call time — including the site's own tag after it is parsed —
-  // and attach a MutationObserver to each one so JS attribute-reassignments
-  // are immediately reversed.  vpChildObserver watches for new metas being
-  // added (covers both the static HTML parse and any createElement calls).
+  // Without this, flexible.js reads clientWidth = 1440 and sets
+  //   html { font-size: 144px }
+  // and Vant Sticky reads innerWidth = 1440 when it positions fixed elements,
+  // making them span the full desktop screen.
+  //
+  // When the user toggles to full-width mode we delete the overrides so the
+  // native browser values are restored automatically.
+
+  try {
+    Object.defineProperty(window, 'innerWidth', {
+      get: function () { return phoneMode ? PHONE_WIDTH : realViewportWidth; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    // document.documentElement.clientWidth is what most flexible.js variants read.
+    // Overriding it on the *instance* (not Element.prototype) keeps the override
+    // isolated to just this element.
+    var _elCWDesc = Object.getOwnPropertyDescriptor(Element.prototype, 'clientWidth');
+    Object.defineProperty(document.documentElement, 'clientWidth', {
+      get: function () {
+        if (phoneMode) return PHONE_WIDTH;
+        return _elCWDesc ? _elCWDesc.get.call(this) : realViewportWidth;
+      },
+      configurable: true
+    });
+  } catch (e) {}
+
+  // ── 2. Viewport meta override ──────────────────────────────────────────────
+  //
+  // Two independent observers keep the viewport meta locked to PHONE_WIDTH:
+  //
+  //   vpChildObserver  — watches the whole document for a new <meta> element
+  //                      being inserted (catches the static HTML meta and any
+  //                      createElement + appendChild calls).
+  //   vpAttrObservers  — one per viewport meta; watches the content attribute
+  //                      so that a plain JS assignment like
+  //                        meta.content = '...'
+  //                      is immediately reversed.
+  //
+  // querySelectorAll is used (not querySelector) so ALL duplicate viewport metas
+  // are corrected — browsers use the *last* one, so any site-inserted tag that
+  // comes after ours must also be locked.
 
   var vpAttrObservers = [];   // one entry per watched <meta name="viewport">
   var vpLocked = false;       // re-entrancy guard
@@ -68,13 +109,12 @@
       return;
     }
 
-    // Override every existing viewport meta (the browser uses the last one,
-    // so we must update all of them, not just the first).
+    // Lock every existing viewport meta.
     for (var i = 0; i < all.length; i++) {
       if (all[i].content !== VIEWPORT) all[i].content = VIEWPORT;
     }
 
-    // Reconnect attribute observers so any JS content-assignment is reversed.
+    // Reconnect attribute observers.
     disconnectVpAttrObservers();
     for (var j = 0; j < all.length; j++) {
       (function watchMeta(el) {
@@ -91,7 +131,7 @@
 
   applyViewport();
 
-  // Watch for new <meta name="viewport"> elements being added to the document.
+  // Watch for new <meta name="viewport"> elements being added.
   var vpChildObserver = new MutationObserver(function (mutations) {
     for (var mi = 0; mi < mutations.length; mi++) {
       var added = mutations[mi].addedNodes;
@@ -111,7 +151,7 @@
     vpChildObserver.disconnect();   // static DOM is complete; attribute observers take over
     applyViewport();
 
-    // Poll for ~5 s to catch any late SPA viewport reset (e.g. Vue mounted hook)
+    // Poll for ~5 s to catch any late SPA viewport reset (e.g. Vue mounted hook).
     var ticks = 0;
     var MAX_POLL_TICKS = 10;   // 10 ticks × 500 ms = 5 s
     var poll = setInterval(function () {
@@ -120,43 +160,29 @@
     }, 500);
   });
 
-  // ── 2. CSS ─────────────────────────────────────────────────────────────────
+  // ── 3. CSS ─────────────────────────────────────────────────────────────────
   //
-  // Three complementary layers:
+  // Layer A — root font-size pin
+  //   Ensures the rem baseline is correct even if flexible.js already ran
+  //   before our window.innerWidth override was applied.
   //
-  //   Layer A — root font-size pin
-  //     QTM Live sites use the "flexible" rem layout: the page's own JS sets
-  //     html { font-size: clientWidth / 10 }.  On a real 390 px phone that
-  //     gives 39 px.  When the viewport meta override is applied late (or the
-  //     browser hasn't propagated the change yet), the site's script may read
-  //     the full desktop clientWidth and set a much larger font-size, making
-  //     every rem-sized element too big to fit the 390 px column.
-  //     Pinning the root font-size with !important fixes this regardless of
-  //     when the viewport override takes effect.
+  // Layer B — container centering
+  //   Centers #app in a dark desktop surround, capped at PHONE_WIDTH px.
   //
-  //   Layer B — container centering
-  //     Centers #app on a dark desktop background and caps its width at
-  //     PHONE_WIDTH px.
-  //
-  //   Layer C — fixed-element repositioning
-  //     Vant UI components such as van-tabbar (bottom nav), van-nav-bar (top
-  //     nav) and popups use  position:fixed; left:0; right:0  so they span the
-  //     full *viewport* width, not the #app container width.  Without this
-  //     layer those bars remain full-screen-wide.
-  //
-  //     The formula:  left: max(0px, calc(50vw - 195px))
-  //                   width: min(390px, 100vw)
-  //                   right: auto
-  //     centres them over the phone column whether the viewport is 390 px
-  //     (meta override working) or the full desktop width (fallback mode).
+  // Layer C — named fixed-element repositioning (Vant UI class names)
+  //   CSS !important overrides inline styles set by Vant's own JS.
+  //   Centres fixed elements over the phone column:
+  //     left:  max(0px, calc(50vw - 195px))
+  //     width: min(390px, 100vw)
+  //   Works whether the viewport is 390 px (meta override succeeded) or the
+  //   full desktop width (meta override failed — CSS-only fallback).
 
-  var PHONE_HALF_WIDTH    = (PHONE_WIDTH / 2) + 'px';        // '195px'
-  var COL_LEFT            = 'max(0px,calc(50vw - ' + PHONE_HALF_WIDTH + '))';
-  var COL_WIDTH           = 'min(' + PHONE_WIDTH + 'px,100vw)';
-  var PHONE_ROOT_FONT_SIZE = (PHONE_WIDTH / 10) + 'px';      // '39px' (flexible.js at 390 px)
+  var PHONE_HALF_WIDTH     = (PHONE_WIDTH / 2) + 'px';        // '195px'
+  var COL_LEFT             = 'max(0px,calc(50vw - ' + PHONE_HALF_WIDTH + '))';
+  var COL_WIDTH            = 'min(' + PHONE_WIDTH + 'px,100vw)';
+  var PHONE_ROOT_FONT_SIZE = (PHONE_WIDTH / 10) + 'px';        // '39px'
 
-  // Selectors for every Vant UI element that uses position:fixed / sticky
-  // and spans the full viewport width.
+  // Vant UI selectors for elements that use position:fixed and span the viewport.
   var FIXED_SELECTORS = [
     '.van-tabbar',
     '.van-nav-bar',
@@ -196,7 +222,7 @@
     '  position: relative !important;',
     '}',
     '',
-    '/* ── fixed / overlay elements ── */',
+    '/* ── Vant fixed / overlay elements ── */',
     '  ' + FIXED_SELECTORS + ' {',
     '  left:  ' + COL_LEFT  + ' !important;',
     '  width: ' + COL_WIDTH + ' !important;',
@@ -215,22 +241,82 @@
   styleEl.textContent = CSS;
   (document.head || document.documentElement).appendChild(styleEl);
 
-  // ── 3. Toggle button ───────────────────────────────────────────────────────
+  // ── 4. JS fixed-element scan ───────────────────────────────────────────────
+  //
+  // The CSS layer above covers known Vant class names, but QTM Live sites also
+  // have custom components (e.g. the home-page section tab bar) with site-
+  // specific class names not in the Vant selector list.
+  //
+  // This scan iterates every element in the live DOM, finds those whose
+  // *computed* position is "fixed", and inlines the same left/width constraints
+  // with !important priority.  It runs:
+  //   • once immediately after DOMContentLoaded (catches initial Vant setup)
+  //   • every 500 ms for 6 seconds after window load (catches elements that
+  //     become fixed during Vue's mounted() lifecycle or after lazy hydration)
+  //
+  // Elements are tagged with data-qtm-fixed="1" so they are only processed
+  // once per scan cycle.
+
+  function fixAllFixedEls() {
+    if (!phoneMode || !document.body) return;
+    var els = document.body.querySelectorAll('*');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.id === '__qtm_btn') continue;
+      if (window.getComputedStyle(el).position !== 'fixed') continue;
+      el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
+      el.style.setProperty('width',     COL_WIDTH,           'important');
+      el.style.setProperty('left',      COL_LEFT,            'important');
+      el.style.setProperty('right',     'auto',              'important');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', fixAllFixedEls);
+
+  window.addEventListener('load', function () {
+    fixAllFixedEls();
+    var scanTicks = 0;
+    var scanMax   = 12;   // 12 × 500 ms = 6 s
+    var scanPoll  = setInterval(function () {
+      fixAllFixedEls();
+      if (++scanTicks >= scanMax) clearInterval(scanPoll);
+    }, 500);
+  });
+
+  // ── 5. Toggle button ───────────────────────────────────────────────────────
   //
   // A small button fixed to the top-right corner.  Clicking it switches
   // between phone-width mode and full-width mode.
 
-  var phoneMode = true;
-
   function applyMode() {
     styleEl.disabled = !phoneMode;
+
     if (phoneMode) {
+      // Re-establish the innerWidth / clientWidth overrides in case the toggle
+      // was clicked while they had been deleted.
+      try {
+        Object.defineProperty(window, 'innerWidth', {
+          get: function () { return PHONE_WIDTH; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(document.documentElement, 'clientWidth', {
+          get: function () { return PHONE_WIDTH; },
+          configurable: true
+        });
+      } catch (e) {}
       applyViewport();
+      fixAllFixedEls();
     } else {
+      // Full-width mode: remove our property overrides so native values return.
+      try { delete window.innerWidth; }                       catch (e) {}
+      try { delete document.documentElement.clientWidth; }   catch (e) {}
       disconnectVpAttrObservers();
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';
     }
+
     if (btn) {
       btn.textContent = phoneMode ? '\u229e Full width' : '\u260e Phone width';
       btn.title = phoneMode
@@ -243,8 +329,9 @@
 
   window.addEventListener('load', function () {
     btn = document.createElement('button');
+    btn.id          = '__qtm_btn';
     btn.textContent = '\u229e Full width';
-    btn.title = 'Click to restore full-width layout';
+    btn.title       = 'Click to restore full-width layout';
     btn.style.cssText = [
       'position:fixed',
       'top:8px',

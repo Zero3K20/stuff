@@ -22,3 +22,24 @@ If the phone number does not match the regex, the site shows the error:
   "กรุณากรอกหมายเลขโทรศัพท์ที่ถูกต้อง" (TH) - "Please enter a valid phone number"
   "请输入正确的电话号码" (ZH)
   "Mời nhập chính xác số điện thoại" (VN)
+
+Where to get a valid number
+---------------------------
+
+Because registration requires an SMS OTP, you need a real or virtual Thai
+mobile number. Options:
+
+1. Thai SIM card — If you are in Thailand, any prepaid SIM from AIS, DTAC,
+   or TRUE Move H gives you a 10-digit Thai number starting with 0.
+
+2. Online virtual-number services — Several services sell one-time-use Thai
+   numbers that can receive SMS. Examples include:
+     - https://sms-activate.org  (search for "Thailand")
+     - https://smspva.com        (search for "TH")
+     - https://5sim.net          (search for "Thailand")
+   Choose a number, buy it, enter it on the registration form, then retrieve
+   the OTP from the service's dashboard and enter it to complete sign-up.
+
+Note: virtual numbers are sometimes already registered on a site. If the
+site returns "this number has already been registered", try a different
+number from the same service.

@@ -5,7 +5,7 @@ Short answer
 ------------
 These sites are built as phone-only apps.  On a wide desktop display the
 Vue app fills the full browser window width, producing an ugly stretched
-layout.  The userscript fixes this in five complementary ways:
+layout.  The userscript fixes this in six complementary ways:
 
   1. It overrides window.innerWidth and document.documentElement.clientWidth
      at document-start (before any site JavaScript runs) so that flexible.js,
@@ -34,6 +34,12 @@ layout.  The userscript fixes this in five complementary ways:
      and (c) after page load scans all elements by computed style (not by
      class name) to constrain any remaining fixed-position elements —
      including site-specific custom navigation bars.
+
+  6. It hooks history.pushState, history.replaceState, and the popstate event
+     to detect Vue Router SPA navigations (including the browser back/forward
+     buttons).  On each navigation it re-applies the viewport lock and
+     re-runs a fresh 6-second fixed-element scan burst, so every new page
+     rendered by the router is constrained the same way as the initial load.
 
 A small toggle button in the top-right corner lets you switch back to
 full-width at any time without editing the script.
@@ -97,7 +103,7 @@ viewport width, and works even if the viewport override fails (e.g. the
 browser ignores the late meta change).
 
 
-How the layout is fixed (v0.5)
+How the layout is fixed (v0.6)
 ------------------------------
 Five bugs / gaps cumulatively caused the stretched layout and oversized
 text seen on desktop in v0.3 and earlier:
@@ -154,6 +160,22 @@ Gap 5 — No touch capability (fixed in v0.5)
   to null at document-start.  This is exactly what DevTools device toolbar
   does when you click it, and it activates the same mobile code paths the
   site runs on a real phone.
+
+Gap 6 — SPA navigation reverts phone-width constraints (fixed in v0.6)
+  QTM Live sites are Vue Router SPAs (history mode).  Using the browser
+  back/forward buttons, or clicking navigation links, does NOT trigger a
+  page reload — Vue Router re-renders the page in-place.  The initial
+  DOMContentLoaded / load listeners only fire once, so after the first
+  6-second scan window expires, newly mounted fixed-position components on
+  later pages are never constrained.  Additionally, some routes reset the
+  viewport meta in their own mounted() hook.
+
+  Fix: wrap history.pushState and history.replaceState (the methods Vue
+  Router uses for programmatic navigation), and listen to the popstate
+  event (back/forward buttons).  On each SPA navigation, re-apply the
+  viewport lock and start a fresh 6-second fixAllFixedEls polling burst.
+  This ensures every route rendered by the SPA receives the same
+  phone-width treatment as the initial page load.
 
 Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
 to catch any late SPA viewport reset.

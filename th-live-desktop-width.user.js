@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.5
+// @version      0.6
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -344,7 +344,66 @@
     }, 500);
   });
 
-  // ── 6. Toggle button ───────────────────────────────────────────────────────
+  // ── 6. SPA navigation hook ────────────────────────────────────────────────
+  //
+  // QTM Live sites are Vue Router SPAs (history mode).  Navigating between
+  // pages (including the browser back/forward buttons) does NOT trigger a
+  // page reload, so the DOMContentLoaded / load listeners above only fire
+  // once — on the initial page load.
+  //
+  // After that, two things can undo the phone-width constraints:
+  //   a) Vue Router re-creates fixed-position components (nav bars, overlays)
+  //      with fresh inline styles from Vant Sticky, sized with the native
+  //      (desktop) window.innerWidth.  Our window.innerWidth override is
+  //      still in place, but Vant cached the value at its first init.
+  //   b) Some routes reset the viewport meta via their own mounted() hook.
+  //
+  // Fix:
+  //   • Wrap history.pushState / history.replaceState so we are notified of
+  //     programmatic SPA navigations (clicking links, tabs, etc.).
+  //   • Listen to the `popstate` event for back/forward button presses.
+  //   • On each navigation, re-run applyViewport() and start a fresh 6-second
+  //     fixAllFixedEls polling burst to constrain newly mounted components.
+
+  var _spaNavScanPoll = null;
+
+  function onSpaNav() {
+    if (!phoneMode) return;
+    applyViewport();
+
+    // Clear any in-flight scan timer, then start a fresh burst.
+    if (_spaNavScanPoll) clearInterval(_spaNavScanPoll);
+    var navTicks = 0;
+    var navMax   = 12;   // 12 × 500 ms = 6 s
+    _spaNavScanPoll = setInterval(function () {
+      fixAllFixedEls();
+      if (++navTicks >= navMax) {
+        clearInterval(_spaNavScanPoll);
+        _spaNavScanPoll = null;
+      }
+    }, 500);
+  }
+
+  // Wrap pushState / replaceState.  These are the methods Vue Router calls
+  // when navigating programmatically (link clicks, router.push(), etc.).
+  (function () {
+    var origPush    = history.pushState.bind(history);
+    var origReplace = history.replaceState.bind(history);
+
+    history.pushState = function () {
+      origPush.apply(history, arguments);
+      onSpaNav();
+    };
+    history.replaceState = function () {
+      origReplace.apply(history, arguments);
+      onSpaNav();
+    };
+  })();
+
+  // popstate fires on back/forward button presses.
+  window.addEventListener('popstate', onSpaNav);
+
+  // ── 7. Toggle button ───────────────────────────────────────────────────────
   //
   // A small button fixed to the top-right corner.  Clicking it switches
   // between phone-width mode and full-width mode.

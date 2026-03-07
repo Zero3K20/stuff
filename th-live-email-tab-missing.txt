@@ -128,7 +128,7 @@ state and calls the email OTP flow directly.
 // ==UserScript==
 // @name         th-live.online — Email Registration Attempt
 // @namespace    https://th-live.online
-// @version      0.2
+// @version      0.3
 // @description  Tries to restore the removed email registration tab.
 //               The backend may or may not honor the email OTP call.
 // @match        https://th-live.online/*
@@ -141,27 +141,37 @@ state and calls the email OTP flow directly.
 
   var patchTimer;
 
-  // Walk a Vue3 VNode tree to find the first component instance whose
-  // data() contains a 'registerForm' property.
+  // ── Vue3 component-instance lookup ──────────────────────────────────────────
   //
   // Vue3 VNode structure:
-  //   vnode.component        — present when the vnode represents a component;
-  //                            this is the component *instance* object
-  //   componentInstance.subTree
-  //                          — the VNode tree rendered by that component
+  //   vnode.component        — present when the vnode is a component node;
+  //                            value is the component *instance* object
+  //   instance.subTree       — the VNode tree that component rendered
   //   vnode.children         — child VNodes for plain element / Fragment nodes
+  //
+  // State location differs by API style:
+  //   Options API  → instance.data        (set by data() function)
+  //   Composition  → instance.setupState  (set by setup() / <script setup>)
+  //
+  // In both cases instance.proxy exposes all properties through one surface.
+
+  function hasRegisterForm(ci) {
+    return (ci.data      && typeof ci.data      === 'object' && 'registerForm' in ci.data) ||
+           (ci.setupState && typeof ci.setupState === 'object' && 'registerForm' in ci.setupState);
+  }
+
   function findComp(node) {
     if (!node) return null;
 
-    // Component VNode: check the instance, then recurse into its rendered output
+    // Component VNode — check instance, then recurse into its rendered subtree
     if (node.component) {
       var ci = node.component;
-      if (ci.data && 'registerForm' in ci.data) return ci;
+      if (hasRegisterForm(ci)) return ci;
       var r = findComp(ci.subTree);
       if (r) return r;
     }
 
-    // Plain element / Fragment: recurse into child VNodes
+    // Plain element / Fragment — recurse into child VNodes
     if (Array.isArray(node.children)) {
       for (var i = 0; i < node.children.length; i++) {
         var child = node.children[i];
@@ -175,36 +185,26 @@ state and calls the email OTP flow directly.
     return null;
   }
 
-  function tryPatch() {
-    if (location.hash !== '#/register' && !location.pathname.endsWith('/register')) {
-      return;
-    }
-
-    // Find the Vue app root element
+  // Try to locate the register component instance at call time.
+  // Returns the component instance, or null if not yet available.
+  function findRegisterComp() {
     var root = document.querySelector('#app') || document.querySelector('[data-v-app]');
-    if (!root || !root.__vue_app__) return;
-
+    if (!root || !root.__vue_app__) return null;
     var app = root.__vue_app__;
+    if (!app._instance || !app._instance.subTree) return null;
+    return findComp(app._instance.subTree);
+  }
 
-    // _instance is null until Vue has fully mounted the root component —
-    // return silently and wait for the next poll tick.
-    if (!app._instance || !app._instance.subTree) return;
+  // ── Overlay ─────────────────────────────────────────────────────────────────
+  //
+  // The overlay is injected as soon as we are on the /register route.
+  // No component scan is required to *show* the overlay — the component
+  // is resolved lazily when the user actually clicks "Send OTP" or
+  // "Verify & Register", by which time Vue has definitely finished mounting.
 
-    var instance = findComp(app._instance.subTree);
-    if (!instance) return;  // not on /register yet, keep polling
-
-    // Component found — stop polling
-    clearInterval(patchTimer);
-
-    var proxy = instance.proxy;  // the public Vue3 component `this`
-
-    // Inject email field into registerForm if missing
-    if (!('email' in proxy.registerForm)) {
-      proxy.registerForm.email = '';
-    }
-
-    // Build an email input + OTP overlay (only once)
+  function buildOverlay() {
     if (document.getElementById('__email_reg_overlay')) return;
+
     var overlay = document.createElement('div');
     overlay.id = '__email_reg_overlay';
     overlay.style.cssText = [
@@ -231,20 +231,57 @@ state and calls the email OTP flow directly.
 
     document.getElementById('__email_send').onclick = function () {
       var email = document.getElementById('__email_inp').value.trim();
-      if (!email) return;
+      if (!email) { setStatus('Enter an email address first.'); return; }
+
+      var ci = findRegisterComp();
+      if (!ci) { setStatus('Page not ready — wait a moment and try again.'); return; }
+
+      var proxy = ci.proxy;
+      // Inject email field into registerForm if the component lacks it
+      if (proxy.registerForm && !('email' in proxy.registerForm)) {
+        proxy.registerForm.email = '';
+      }
       proxy.registerForm.email = email;
-      proxy.active = 1;                // switch to email mode
-      proxy.sendVcoderegister();       // request OTP via email branch
-      document.getElementById('__email_status').textContent = 'OTP sent (if backend allows)\u2026';
+      proxy.active = 1;             // switch to email branch
+      proxy.sendVcoderegister();    // request OTP
+      setStatus('OTP sent (if backend allows)\u2026');
     };
 
     document.getElementById('__email_verify').onclick = function () {
       var code = document.getElementById('__email_code').value.trim();
-      if (!code) return;
+      if (!code) { setStatus('Enter the OTP code first.'); return; }
+
+      var ci = findRegisterComp();
+      if (!ci) { setStatus('Page not ready — wait a moment and try again.'); return; }
+
+      var proxy = ci.proxy;
       proxy.registerForm.code = code;
       proxy.codeValidate();
-      document.getElementById('__email_status').textContent = 'Attempting verification\u2026';
+      setStatus('Attempting verification\u2026');
     };
+  }
+
+  function setStatus(msg) {
+    var el = document.getElementById('__email_status');
+    if (el) el.textContent = msg;
+  }
+
+  // ── Polling ──────────────────────────────────────────────────────────────────
+  //
+  // Poll until the /register route is active and the DOM is ready, then inject
+  // the overlay and stop.  No component scan is required here.
+
+  function tryPatch() {
+    if (location.hash !== '#/register' && !location.pathname.endsWith('/register')) {
+      return;
+    }
+    // Wait for the Vue app root to appear
+    var root = document.querySelector('#app') || document.querySelector('[data-v-app]');
+    if (!root) return;
+
+    // Inject the overlay and stop polling
+    clearInterval(patchTimer);
+    buildOverlay();
   }
 
   // Poll every 500 ms; stop automatically after 60 s
@@ -253,8 +290,15 @@ state and calls the email OTP flow directly.
 })();
 ----------------------------------------------------------------------
 
-What to expect when running the script
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What to expect when running the script (v0.3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Key change in v0.3: the overlay now appears immediately on the
+  /register page without needing to locate the Vue component first.
+  The component is looked up lazily when you click a button.
+
+  - Navigate to https://th-live.online/register.  Within one second
+    the pink "Register with Email (experimental)" panel will appear
+    at the top of the page.
   - If the backend /order/email/config/send/vcode endpoint is live,
     "Send OTP" will request an OTP to the entered address and the app
     will show its "Code sent successfully" toast.
@@ -262,6 +306,8 @@ What to expect when running the script
     error toast with the server's error message.
   - If the OTP is received and verified, registration proceeds normally
     (the codeValidate → reg/info flow is the same as for phone).
+  - If the status field shows "Page not ready — wait a moment and try
+    again", wait 2–3 s for Vue to finish mounting, then click again.
 
 
 Practical recommendation
@@ -283,3 +329,32 @@ shared inboxes — anyone browsing the site can read the OTP.  Complete
 registration promptly after requesting the code, and do not reuse the
 same number for any account where security matters.  For higher
 security, use a paid one-time-use number or a physical Thai SIM.
+
+
+Are there clones of th-live.online that support email registration?
+--------------------------------------------------------------------
+th-live.online is one of several sites built on the same underlying
+QTM Live Hub platform (assets are served from oss-th18.qtmlivehub.com,
+tim-js.js is the Tencent IM SDK, etc.).  Different deployments of this
+platform may have the email-registration UI enabled or disabled
+independently — it is a feature-flag decision by each operator, not a
+code change.
+
+Known related sites (same platform code, different operator config):
+  - Deployments vary; look for the same CSS colour scheme (#eb457e
+    pink), the identical registration form fields, and avatar images
+    from oss-th*.qtmlivehub.com — those are reliable fingerprints of
+    the same platform codebase.
+
+No publicly confirmed clone currently has email registration fully
+enabled end-to-end:
+  - Some deployments expose the email tab in the UI (i.e. this.active
+    can switch to 1) but the backend OTP endpoint is disabled, so the
+    flow fails at "Send OTP".
+  - Others have the backend endpoint live but the UI tab removed,
+    exactly as on th-live.online — which is what this userscript is
+    designed to work around.
+
+Bottom line: there is no known clone where email registration works
+out of the box without a workaround.  The fastest path everywhere
+remains a virtual Thai mobile number (see th-live-phone-validation.txt).

@@ -1,12 +1,15 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.8
+// @version      0.9
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
-//               a CSS phone-frame background.  A toggle button lets you
-//               switch between phone width and full width on the fly.
+//               a CSS phone-frame background.  Also emulates a mobile
+//               User-Agent so the site's own JS believes it is running on
+//               an iPhone, suppressing "download our app" overlays.
+//               A toggle button lets you switch between phone width and
+//               full width on the fly.
 // @match        https://th-live.online/*
 // @match        https://qqlive.online/*
 // @match        https://www.qqlive.online/*
@@ -109,6 +112,43 @@
     }
   }
   ensureOntouchstart();
+
+  // ── 2b. User-Agent and platform emulation ─────────────────────────────────
+  //
+  // QTM Live sites show a "download our mobile app" interstitial when they
+  // detect a mobile viewport (innerWidth = 390, maxTouchPoints > 0) paired
+  // with a desktop User-Agent string.  Their client-side logic reads
+  //   navigator.userAgent / navigator.platform
+  // and infers "desktop browser pretending to be mobile → show app promo".
+  //
+  // Overriding these to an iPhone Mobile Safari UA makes the site's JS believe
+  // we are a genuine mobile browser, suppressing the interstitial and activating
+  // the interactive live-room UI (chat, like/gift controls, navigation bar).
+  //
+  // NOTE: this only affects JS-readable values.  HTTP request headers are
+  // unchanged, so server-side UA checks still see the real desktop UA.
+
+  var realUserAgent = navigator.userAgent;
+  var realPlatform  = navigator.platform;
+
+  // Standard iPhone 14 / iOS 17 / Mobile Safari UA — widely recognised.
+  var MOBILE_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)' +
+                  ' AppleWebKit/605.1.15 (KHTML, like Gecko)' +
+                  ' Version/17.0 Mobile/15E148 Safari/604.1';
+
+  try {
+    Object.defineProperty(navigator, 'userAgent', {
+      get: function () { return phoneMode ? MOBILE_UA : realUserAgent; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(navigator, 'platform', {
+      get: function () { return phoneMode ? 'iPhone' : realPlatform; },
+      configurable: true
+    });
+  } catch (e) {}
 
   // ── 3. Viewport meta override ──────────────────────────────────────────────
   //
@@ -505,13 +545,30 @@
         });
       } catch (e) {}
       ensureOntouchstart();
+      // Restore mobile UA / platform so the site's JS still sees a phone.
+      try {
+        Object.defineProperty(navigator, 'userAgent', {
+          get: function () { return phoneMode ? MOBILE_UA : realUserAgent; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(navigator, 'platform', {
+          get: function () { return phoneMode ? 'iPhone' : realPlatform; },
+          configurable: true
+        });
+      } catch (e) {}
       applyViewport();
       fixAllFixedEls();
+      // Trigger resize so Vant / flexible.js recalculate with phone-width values.
+      window.dispatchEvent(new Event('resize'));
     } else {
       // Full-width mode: remove our property overrides so native values return.
       try { delete window.innerWidth; } catch (e) {}
       try { delete document.documentElement.clientWidth; } catch (e) {}
       try { delete navigator.maxTouchPoints; } catch (e) {}
+      try { delete navigator.userAgent; } catch (e) {}
+      try { delete navigator.platform; } catch (e) {}
       // Remove inline styles fixAllFixedEls() injected onto fixed elements.
       // Without this, phone-column-relative calc() values mis-position elements
       // against the full-width viewport (e.g. left:525px instead of left:0).
@@ -519,6 +576,8 @@
       disconnectVpAttrObservers();
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';
+      // Trigger resize so Vant / flexible.js recalculate with full-width values.
+      window.dispatchEvent(new Event('resize'));
     }
 
     if (btn) {

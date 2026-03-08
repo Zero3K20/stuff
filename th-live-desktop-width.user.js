@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.13
+// @version      0.14
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -28,10 +28,14 @@
   var PHONE_HEIGHT = 844;     // logical CSS px — matches iPhone 14 screen height
   var VIEWPORT    = 'width=' + PHONE_WIDTH + ',initial-scale=1';
 
-  // Read the REAL viewport dimensions before we override window.inner{Width,Height}.
-  // screen.width/height are the physical screen CSS-pixel values and are never overridden.
+  // Read the REAL viewport dimensions before we override any of them.
+  // These captured values are used as fallbacks in full-width mode.
   var realViewportWidth  = window.screen.width;
   var realViewportHeight = window.screen.height;
+  var realAvailWidth     = window.screen.availWidth;
+  var realAvailHeight    = window.screen.availHeight;
+  var realOuterWidth     = window.outerWidth;
+  var realOuterHeight    = window.outerHeight;
   if (realViewportWidth <= PHONE_WIDTH) return;
 
   // phoneMode must be declared here (before the property getters below reference it
@@ -100,6 +104,57 @@
         if (phoneMode) return PHONE_HEIGHT;
         return _elCHDesc ? _elCHDesc.get.call(this) : realViewportHeight;
       },
+      configurable: true
+    });
+  } catch (e) {}
+
+  // ── 1c. Override screen.width/height and window.outerWidth/outerHeight ────
+  //
+  // Chrome DevTools Device Toolbar also sets screen.width, screen.height,
+  // screen.availWidth, screen.availHeight, window.outerWidth and
+  // window.outerHeight to the emulated device dimensions.  Several flexible.js
+  // variants (and some Vue/Vant internals) read screen.width as the primary
+  // viewport reference rather than window.innerWidth, so these overrides are
+  // required to make the phone-width mode indistinguishable from Device Toolbar.
+
+  try {
+    Object.defineProperty(window.screen, 'width', {
+      get: function () { return phoneMode ? PHONE_WIDTH : realViewportWidth; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(window.screen, 'availWidth', {
+      get: function () { return phoneMode ? PHONE_WIDTH : realAvailWidth; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(window.screen, 'height', {
+      get: function () { return phoneMode ? PHONE_HEIGHT : realViewportHeight; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(window.screen, 'availHeight', {
+      get: function () { return phoneMode ? PHONE_HEIGHT : realAvailHeight; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(window, 'outerWidth', {
+      get: function () { return phoneMode ? PHONE_WIDTH : realOuterWidth; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(window, 'outerHeight', {
+      get: function () { return phoneMode ? PHONE_HEIGHT : realOuterHeight; },
       configurable: true
     });
   } catch (e) {}
@@ -669,6 +724,44 @@
           configurable: true
         });
       } catch (e) {}
+      // Restore screen/outer dimension overrides so all JS property reads reflect
+      // phone dimensions (matching what Chrome DevTools Device Toolbar exposes).
+      try {
+        Object.defineProperty(window.screen, 'width', {
+          get: function () { return phoneMode ? PHONE_WIDTH : realViewportWidth; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(window.screen, 'availWidth', {
+          get: function () { return phoneMode ? PHONE_WIDTH : realAvailWidth; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(window.screen, 'height', {
+          get: function () { return phoneMode ? PHONE_HEIGHT : realViewportHeight; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(window.screen, 'availHeight', {
+          get: function () { return phoneMode ? PHONE_HEIGHT : realAvailHeight; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(window, 'outerWidth', {
+          get: function () { return phoneMode ? PHONE_WIDTH : realOuterWidth; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(window, 'outerHeight', {
+          get: function () { return phoneMode ? PHONE_HEIGHT : realOuterHeight; },
+          configurable: true
+        });
+      } catch (e) {}
       applyViewport();
       fixAllFixedEls();
       // Trigger resize so Vant / flexible.js recalculate with phone-width values.
@@ -682,6 +775,12 @@
       try { delete navigator.maxTouchPoints; } catch (e) {}
       try { delete navigator.userAgent; } catch (e) {}
       try { delete navigator.platform; } catch (e) {}
+      try { delete window.screen.width; } catch (e) {}
+      try { delete window.screen.availWidth; } catch (e) {}
+      try { delete window.screen.height; } catch (e) {}
+      try { delete window.screen.availHeight; } catch (e) {}
+      try { delete window.outerWidth; } catch (e) {}
+      try { delete window.outerHeight; } catch (e) {}
       // Remove inline styles fixAllFixedEls() injected onto fixed elements.
       // Without this, phone-column-relative calc() values mis-position elements
       // against the full-width viewport (e.g. left:525px instead of left:0).

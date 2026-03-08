@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.11
+// @version      0.12
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -351,11 +351,14 @@
     '}',
     '',
     '/* Bottom popups (including the app-download banner) must not use the full',
-    '   desktop viewport height.  CSS vh units are unaffected by our',
-    '   window.innerHeight override, so force height to auto here so the',
-    '   popup sizes itself to its content — as it does on a real phone. */',
-    '.van-popup--bottom {',
+    '   desktop viewport height.  The JS scan above handles any inline !important',
+    '   height set by Vant/Vue; these CSS rules are a belt-and-suspenders fallback',
+    '   for heights set purely through stylesheets (which CSS !important can reach). */',
+    '.van-popup--bottom,',
+    '.van-action-sheet,',
+    '.van-share-sheet {',
     '  height: auto !important;',
+    '  max-height: ' + PHONE_HEIGHT + 'px !important;',
     '}'
   ].join('\n');
 
@@ -470,6 +473,17 @@
         el.style.setProperty('width',     COL_WIDTH,           'important');
         el.style.setProperty('left',      COL_LEFT,            'important');
         el.style.setProperty('right',     'auto',              'important');
+        // If the element is taller than a phone screen it is almost certainly
+        // a bottom-sheet or interstitial whose height was calculated from the
+        // real desktop window.innerHeight (or set as 100vh inline).  Force it
+        // to size itself to its content instead.  This wins over any inline
+        // `!important` height that CSS-level rules cannot override.
+        // Overlays that use both `top:0` and `bottom:0` are unaffected because
+        // the browser ignores the `height` property when both are set.
+        var elH = parseFloat(cs.height) || 0;
+        if (elH > PHONE_HEIGHT) {
+          el.style.setProperty('height', 'auto', 'important');
+        }
       } else {
         // ── Narrow element (floating action button, badge, live-room control)
         // DON'T stretch its width.  Only re-anchor it so it stays within the
@@ -505,6 +519,7 @@
       el.style.removeProperty('width');
       el.style.removeProperty('left');
       el.style.removeProperty('right');
+      el.style.removeProperty('height');
       el.removeAttribute('data-qtm-fixed');
     }
   }

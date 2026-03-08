@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.9
+// @version      0.10
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -344,7 +344,11 @@
   // rather than every element in the full DOM, which keeps each pass fast
   // even on complex pages.
   //
-  // Constraint strategy (v0.7):
+  // Constraint strategy (v0.10):
+  //   Center-anchored elements (left ≈ 50 % of visual viewport, typically paired
+  //   with transform:translate(-50%,…)) — small in-stream popups, gift dialogs
+  //     → preserve natural width; re-anchor left to the phone column center so
+  //       the translateX keeps the popup centered over the column.
   //   Wide elements (width ≥ 60 % of PHONE_WIDTH) — nav bars, overlays, popups
   //     → full column constraint: left=COL_LEFT, width=COL_WIDTH, right=auto
   //   Narrow elements (width < 60 % of PHONE_WIDTH) — floating action buttons,
@@ -376,18 +380,49 @@
     //   = calc(max(0px, (100vw - 390px) / 2))   (mirrors COL_LEFT by symmetry)
     var COL_RIGHT_INSET = 'max(0px,calc((100vw - ' + PHONE_WIDTH + 'px) / 2))';
 
+    // Phone column centre as a CSS calc() for re-anchoring centred popups.
+    // left=COL_CENTER_LEFT with transform:translateX(-50%) centres the popup.
+    var COL_CENTER_LEFT = 'calc(' + COL_LEFT + ' + ' + (PHONE_WIDTH / 2) + 'px)';
+
+    // Real visual viewport width.  position:fixed elements are positioned
+    // relative to the visual viewport (browser window), not the layout viewport
+    // set by the meta tag.  window.visualViewport.width gives this directly;
+    // fall back to screen.width (captured before our innerWidth override).
+    var realVW = (window.visualViewport && window.visualViewport.width)
+                   ? Math.round(window.visualViewport.width)
+                   : realViewportWidth;
+
     for (var i = 0; i < candidates.length; i++) {
       var el = candidates[i];
       if (el.id === '__qtm_btn') continue;
       var cs = window.getComputedStyle(el);
       if (cs.position !== 'fixed') continue;
 
-      var elW = parseFloat(cs.width) || 0;
+      var elW    = parseFloat(cs.width) || 0;
+      var csLeft  = cs.left;
+      var csRight = cs.right;
+      var rawLeft  = parseFloat(csLeft);
+      var rawRight = parseFloat(csRight);
 
       // Mark the element so clearFixedElStyles() can find and clean it up.
       el.setAttribute('data-qtm-fixed', '1');
 
-      if (elW >= PHONE_WIDTH * 0.6) {
+      // ── Center-anchored element (left ≈ 50 % of visual viewport) ──────────
+      // These use CSS `left:50%` + `transform:translate(-50%,…)` to center
+      // themselves.  If we apply COL_LEFT to them the transform shifts them
+      // further left, placing them outside the column.  Instead we set left to
+      // the column center; the existing translateX(-50%) then centers the
+      // element over the phone column.  Width is intentionally preserved so
+      // small popups (gift dialogs, join prompts) remain their natural size.
+      var isCenteredX = csLeft !== 'auto' &&
+                        !isNaN(rawLeft) &&
+                        Math.abs(rawLeft - realVW / 2) < 5;
+
+      if (isCenteredX) {
+        el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
+        el.style.setProperty('left',      COL_CENTER_LEFT,     'important');
+        el.style.removeProperty('right');
+      } else if (elW >= PHONE_WIDTH * 0.6) {
         // ── Wide element (nav bar, overlay, popup, backdrop) ────────────────
         // Constrain to the phone column exactly as before.
         el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
@@ -402,11 +437,6 @@
         // Elements positioned from the left get their left offset adjusted
         // relative to the column's left edge.
         el.style.setProperty('max-width', PHONE_WIDTH + 'px', 'important');
-
-        var csRight = cs.right;
-        var csLeft  = cs.left;
-        var rawRight = parseFloat(csRight);
-        var rawLeft  = parseFloat(csLeft);
 
         if (csRight !== 'auto' && !isNaN(rawRight)) {
           // Right-anchored: shift inset so it's relative to column right edge.

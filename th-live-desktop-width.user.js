@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.10
+// @version      0.11
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -24,12 +24,14 @@
 (function () {
   'use strict';
 
-  var PHONE_WIDTH = 390;     // logical CSS px — matches iPhone 14 (common design baseline)
+  var PHONE_WIDTH  = 390;     // logical CSS px — matches iPhone 14 (common design baseline)
+  var PHONE_HEIGHT = 844;     // logical CSS px — matches iPhone 14 screen height
   var VIEWPORT    = 'width=' + PHONE_WIDTH + ',initial-scale=1';
 
-  // Read the REAL viewport width before we override window.innerWidth.
-  // screen.width is the physical screen CSS-pixel width and is never overridden.
-  var realViewportWidth = window.screen.width;
+  // Read the REAL viewport dimensions before we override window.inner{Width,Height}.
+  // screen.width/height are the physical screen CSS-pixel values and are never overridden.
+  var realViewportWidth  = window.screen.width;
+  var realViewportHeight = window.screen.height;
   if (realViewportWidth <= PHONE_WIDTH) return;
 
   // phoneMode must be declared here (before the property getters below reference it
@@ -66,6 +68,37 @@
       get: function () {
         if (phoneMode) return PHONE_WIDTH;
         return _elCWDesc ? _elCWDesc.get.call(this) : realViewportWidth;
+      },
+      configurable: true
+    });
+  } catch (e) {}
+
+  // ── 1b. Override window.innerHeight / document.documentElement.clientHeight ─
+  //
+  // The "download our app" bottom sheet (and any other component that reads
+  // viewport height in JS) uses window.innerHeight to calculate its own height.
+  // On a 900 px desktop screen it renders full-screen tall; on a 844 px phone it
+  // renders as a compact banner.  Spoofing innerHeight to PHONE_HEIGHT makes
+  // those JS calculations produce phone-sized results.
+  //
+  // CSS `vh` units are not affected by this override (they resolve against the
+  // visual viewport regardless of JS property values), so the companion CSS rule
+  // `height: auto !important` on `.van-popup--bottom` handles vh-based heights.
+
+  var _elCHDesc = Object.getOwnPropertyDescriptor(Element.prototype, 'clientHeight');
+
+  try {
+    Object.defineProperty(window, 'innerHeight', {
+      get: function () { return phoneMode ? PHONE_HEIGHT : realViewportHeight; },
+      configurable: true
+    });
+  } catch (e) {}
+
+  try {
+    Object.defineProperty(document.documentElement, 'clientHeight', {
+      get: function () {
+        if (phoneMode) return PHONE_HEIGHT;
+        return _elCHDesc ? _elCHDesc.get.call(this) : realViewportHeight;
       },
       configurable: true
     });
@@ -315,6 +348,14 @@
     '/* van-toast is centred by transform; keep its anchor in the column */',
     '.van-toast {',
     '  left: 50vw !important;',
+    '}',
+    '',
+    '/* Bottom popups (including the app-download banner) must not use the full',
+    '   desktop viewport height.  CSS vh units are unaffected by our',
+    '   window.innerHeight override, so force height to auto here so the',
+    '   popup sizes itself to its content — as it does on a real phone. */',
+    '.van-popup--bottom {',
+    '  height: auto !important;',
     '}'
   ].join('\n');
 
@@ -588,6 +629,22 @@
           configurable: true
         });
       } catch (e) {}
+      // Restore innerHeight override so JS popup height calculations use phone size.
+      try {
+        Object.defineProperty(window, 'innerHeight', {
+          get: function () { return phoneMode ? PHONE_HEIGHT : realViewportHeight; },
+          configurable: true
+        });
+      } catch (e) {}
+      try {
+        Object.defineProperty(document.documentElement, 'clientHeight', {
+          get: function () {
+            if (phoneMode) return PHONE_HEIGHT;
+            return _elCHDesc ? _elCHDesc.get.call(this) : realViewportHeight;
+          },
+          configurable: true
+        });
+      } catch (e) {}
       applyViewport();
       fixAllFixedEls();
       // Trigger resize so Vant / flexible.js recalculate with phone-width values.
@@ -596,6 +653,8 @@
       // Full-width mode: remove our property overrides so native values return.
       try { delete window.innerWidth; } catch (e) {}
       try { delete document.documentElement.clientWidth; } catch (e) {}
+      try { delete window.innerHeight; } catch (e) {}
+      try { delete document.documentElement.clientHeight; } catch (e) {}
       try { delete navigator.maxTouchPoints; } catch (e) {}
       try { delete navigator.userAgent; } catch (e) {}
       try { delete navigator.platform; } catch (e) {}

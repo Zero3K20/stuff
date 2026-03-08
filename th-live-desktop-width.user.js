@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.12
+// @version      0.13
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -335,6 +335,15 @@
     '  min-height: 100vh !important;',
     '  overflow-x: hidden !important;',
     '  position: relative !important;',
+    '}',
+    '',
+    '/* ── Live-stream video player ── */',
+    '/* The HLS player (hls.js / video.js) often sets an explicit pixel width  */',
+    '/* matching the full desktop viewport.  Constrain it to the phone column.  */',
+    '#app video,',
+    '[data-v-app] video {',
+    '  max-width: 100% !important;',
+    '  width: 100% !important;',
     '}',
     '',
     '/* ── Vant fixed / overlay elements ── */',

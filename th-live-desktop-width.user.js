@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Desktop Width Fix
 // @namespace    https://th-live.online
-// @version      0.7
+// @version      0.8
 // @description  Constrains QTM-platform live-streaming sites to a
 //               phone-width column when viewed on a wide desktop screen.
 //               Overrides the viewport meta at document-start and adds
@@ -344,6 +344,9 @@
 
       var elW = parseFloat(cs.width) || 0;
 
+      // Mark the element so clearFixedElStyles() can find and clean it up.
+      el.setAttribute('data-qtm-fixed', '1');
+
       if (elW >= PHONE_WIDTH * 0.6) {
         // ── Wide element (nav bar, overlay, popup, backdrop) ────────────────
         // Constrain to the phone column exactly as before.
@@ -377,6 +380,21 @@
           el.style.removeProperty('right');
         }
       }
+    }
+  }
+
+  // Remove all inline styles that fixAllFixedEls() applied when we switch to
+  // full-width mode.  Without this, the phone-column-relative calc() values
+  // remain on elements and mis-position them against the full-width viewport.
+  function clearFixedElStyles() {
+    var tagged = document.querySelectorAll('[data-qtm-fixed]');
+    for (var i = 0; i < tagged.length; i++) {
+      var el = tagged[i];
+      el.style.removeProperty('max-width');
+      el.style.removeProperty('width');
+      el.style.removeProperty('left');
+      el.style.removeProperty('right');
+      el.removeAttribute('data-qtm-fixed');
     }
   }
 
@@ -494,6 +512,10 @@
       try { delete window.innerWidth; } catch (e) {}
       try { delete document.documentElement.clientWidth; } catch (e) {}
       try { delete navigator.maxTouchPoints; } catch (e) {}
+      // Remove inline styles fixAllFixedEls() injected onto fixed elements.
+      // Without this, phone-column-relative calc() values mis-position elements
+      // against the full-width viewport (e.g. left:525px instead of left:0).
+      clearFixedElStyles();
       disconnectVpAttrObservers();
       var vp = document.querySelector('meta[name="viewport"]');
       if (vp) vp.content = 'width=device-width,initial-scale=1';

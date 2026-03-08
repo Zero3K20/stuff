@@ -1,15 +1,30 @@
 // ==UserScript==
 // @name         QTM Live — Allow Mixed Content
 // @namespace    https://th-live.online
-// @version      0.2
+// @version      0.3
 // @description  Allows live streams served over plain http:// to play on
 //               QTM-platform pages (which are served over https://).
 //               Because the stream servers do not support HTTPS, URL-upgrading
-//               cannot be used.  Instead, every http:// XMLHttpRequest and
-//               fetch() call made by the player (hls.js loads .m3u8 manifests
-//               and .ts segments this way) is transparently routed through
+//               cannot be used.  Every http:// XMLHttpRequest and fetch() call
+//               made by the player (hls.js loads .m3u8 manifests and .ts
+//               segments this way) is transparently routed through
 //               GM_xmlhttpRequest, which runs in the extension context and is
 //               not subject to the browser's mixed-content policy.
+//
+//               v0.3: On Chromium-based browsers (Chrome, Edge, Brave) running
+//               Tampermonkey, the userscript sandbox runs in an isolated V8
+//               world that is separate from the page's own JavaScript context.
+//               Assigning a ProxiedXHR class directly to unsafeWindow.
+//               XMLHttpRequest does not work because Chrome prevents
+//               cross-world constructor invocation.
+//
+//               Fix: the XHR/fetch interception shim is serialised as a string
+//               and injected into the page world via an inline <script> element
+//               at document-start (before any page code runs).  Requests are
+//               forwarded to the userscript (which has GM_xmlhttpRequest access)
+//               via window.postMessage; responses are returned the same way.
+//               ArrayBuffers are transferred (not cloned) to avoid a redundant
+//               copy when loading .ts video segments.
 // @match        https://th-live.online/*
 // @match        https://qqlive.online/*
 // @match        https://www.qqlive.online/*
@@ -26,359 +41,361 @@
 (function () {
   'use strict';
 
-  // unsafeWindow is the real page Window object.  With @grant directives
-  // active the userscript runs in an isolated sandbox, so we must write to
-  // unsafeWindow (not `window`) to replace XMLHttpRequest / fetch for the
-  // page's own scripts.
+  // unsafeWindow IS the real page Window DOM node.  With @grant directives
+  // Tampermonkey runs in an isolated sandbox; we use unsafeWindow to share
+  // the postMessage channel with the injected page-world shim below.
   var w = (typeof unsafeWindow !== 'undefined') ? unsafeWindow : window;
 
-  // Only intercept plain http:// URLs — everything else passes through.
-  function isHTTP(url) {
-    return typeof url === 'string' && url.startsWith('http://');
-  }
-
-  // Parse a raw HTTP response-headers string into a plain object.
-  function parseHeaders(raw) {
-    var h = {};
-    (raw || '').split(/\r?\n/).forEach(function (line) {
-      var colon = line.indexOf(':');
-      if (colon > 0) {
-        h[line.slice(0, colon).trim().toLowerCase()] = line.slice(colon + 1).trim();
-      }
-    });
-    return h;
-  }
-
-  // ── 1. XMLHttpRequest proxy ────────────────────────────────────────────────
+  // ── 1. Page-world interception shim ───────────────────────────────────────
   //
-  // hls.js (and video.js's HLS plugin) load .m3u8 manifests and every .ts
-  // segment via XMLHttpRequest.  The browser blocks these as active mixed
-  // content when the page is HTTPS.  We replace window.XMLHttpRequest with a
-  // shim that:
-  //   • for http:// URLs — uses GM_xmlhttpRequest (extension context, no
-  //     mixed-content restriction) and fires the same events / populates the
-  //     same properties that hls.js expects.
-  //   • for all other URLs — delegates 100 % to a real native XHR so that
-  //     ordinary API calls are completely unaffected.
+  // The function below is serialised and injected as an inline <script> so it
+  // runs in the page's own V8 context (not the Tampermonkey sandbox).  From
+  // there it can replace window.XMLHttpRequest / window.fetch and the
+  // replacements are visible to all page scripts (hls.js, video.js …).
+  //
+  // Message protocol (both directions use window.postMessage / addEventListener):
+  //   page  → userscript : { __qtm: 'req', reqType: 'xhr'|'fetch',
+  //                          id, method, url, headers, body,
+  //                          responseType, timeout }
+  //   userscript → page  : { __qtm: 'res', reqType: 'xhr'|'fetch',
+  //                          id, status, statusText, responseURL,
+  //                          responseHeaders, response [, error, url] }
 
-  var NativeXHR = w.XMLHttpRequest;
+  // IMPORTANT: This function is self-contained — it must not reference any
+  // variable from the outer userscript scope because it is serialised with
+  // .toString() and injected as a plain <script> string into the page world.
+  // All dependencies (native XHR, native fetch, helpers) are captured inside
+  // the function itself at injection time.
+  var pageShimFn = function () {
+    var _NXhr    = window.XMLHttpRequest;   // native XHR (captured before shim)
+    var _nFetch  = window.fetch;            // native fetch (captured before shim)
+    var _pending  = {};                     // id → PXhr awaiting GM response
+    var _fPending = {};                     // id → {resolve,reject} for fetch
+    var _seq      = 0;                      // monotonic request counter
 
-  function ProxiedXHR() {
-    // Proxy-mode state
-    this._isProxy    = false;
-    this._url        = '';
-    this._method     = 'GET';
-    this._reqHeaders = {};
-    this._gmReq      = null;
-    this._listeners  = {};
+    function isHTTP(url) {
+      return typeof url === 'string' && url.startsWith('http://');
+    }
 
-    // Public XHR IDL attributes (proxy mode — native mode syncs from _native)
-    this.readyState       = 0;
-    this.status           = 0;
-    this.statusText       = '';
-    this.response         = null;
-    this.responseText     = '';
-    this.responseXML      = null;
-    this.responseURL      = '';
-    this._responseType    = '';
-    this._responseHeaders = {};
-    this.timeout          = 0;
-    this.withCredentials  = false;
+    function parseHeaders(raw) {
+      var h = {};
+      (raw || '').split(/\r?\n/).forEach(function (line) {
+        var c = line.indexOf(':');
+        if (c > 0) h[line.slice(0, c).trim().toLowerCase()] = line.slice(c + 1).trim();
+      });
+      return h;
+    }
 
-    // Event handler properties
-    this.onreadystatechange = null;
-    this.onload             = null;
-    this.onerror            = null;
-    this.ontimeout          = null;
-    this.onprogress         = null;
-    this.onloadstart        = null;
-    this.onloadend          = null;
-    this.onabort            = null;
+    // ── XHR shim ──────────────────────────────────────────────────────────────
+    function PXhr() {
+      this._proxy  = false;
+      this._id     = 0;
+      this._method = 'GET';
+      this._url    = '';
+      this._rh     = {};    // request headers
+      this._ls     = {};    // addEventListener listeners
+      this._nat    = null;  // native XHR for non-http requests
+      this._rt     = '';    // responseType
+      this._rspH   = {};    // parsed response headers
 
-    // upload stub — hls.js checks that xhr.upload exists
-    this.upload = {
-      onprogress:          null,
-      addEventListener:    function () {},
-      removeEventListener: function () {},
-      dispatchEvent:       function () {}
+      this.readyState      = 0;
+      this.status          = 0;
+      this.statusText      = '';
+      this.response        = null;
+      this.responseText    = '';
+      this.responseXML     = null;
+      this.responseURL     = '';
+      this.timeout         = 0;
+      this.withCredentials = false;
+
+      this.onreadystatechange = null;
+      this.onload      = null;
+      this.onerror     = null;
+      this.ontimeout   = null;
+      this.onprogress  = null;
+      this.onloadstart = null;
+      this.onloadend   = null;
+      this.onabort     = null;
+
+      this.upload = {
+        onprogress:          null,
+        addEventListener:    function () {},
+        removeEventListener: function () {},
+        dispatchEvent:       function () {}
+      };
+    }
+
+    PXhr.UNSENT           = 0;
+    PXhr.OPENED           = 1;
+    PXhr.HEADERS_RECEIVED = 2;
+    PXhr.LOADING          = 3;
+    PXhr.DONE             = 4;
+
+    PXhr.prototype.UNSENT           = 0;
+    PXhr.prototype.OPENED           = 1;
+    PXhr.prototype.HEADERS_RECEIVED = 2;
+    PXhr.prototype.LOADING          = 3;
+    PXhr.prototype.DONE             = 4;
+
+    Object.defineProperty(PXhr.prototype, 'responseType', {
+      get: function () { return this._rt; },
+      set: function (v) {
+        this._rt = v || '';
+        if (this._nat) { try { this._nat.responseType = v; } catch (e) {} }
+      },
+      configurable: true
+    });
+
+    PXhr.prototype.open = function (method, url, async, user, pass) {
+      this._method = method || 'GET';
+      this._url    = url;
+      if (isHTTP(url)) {
+        this._proxy = true;
+        this._nat   = null;
+        this.readyState = 1;
+        this._fire('readystatechange', {});
+      } else {
+        this._proxy = false;
+        this._nat   = new _NXhr();
+        if (this._rt) { try { this._nat.responseType = this._rt; } catch (e) {} }
+        this._nat.open(method, url, async === undefined ? true : !!async, user, pass);
+      }
     };
 
-    // Delegate instance for non-http:// requests
-    this._native = null;
-  }
+    PXhr.prototype.setRequestHeader = function (name, value) {
+      if (this._proxy)       { this._rh[name] = value; }
+      else if (this._nat)    { this._nat.setRequestHeader(name, value); }
+    };
 
-  // readyState constants on constructor
-  ProxiedXHR.UNSENT           = 0;
-  ProxiedXHR.OPENED           = 1;
-  ProxiedXHR.HEADERS_RECEIVED = 2;
-  ProxiedXHR.LOADING          = 3;
-  ProxiedXHR.DONE             = 4;
+    PXhr.prototype.send = function (body) {
+      if (!this._proxy) { this._sendNative(body); return; }
+      this._id = ++_seq;
+      _pending[this._id] = this;
+      var ev = { type: 'loadstart', target: this };
+      this._fire('loadstart', ev);
+      if (this.onloadstart) this.onloadstart(ev);
+      window.postMessage({
+        __qtm: 'req', reqType: 'xhr',
+        id: this._id, method: this._method, url: this._url,
+        headers: this._rh, body: body || null,
+        responseType: this._rt || 'text', timeout: this.timeout || 0
+      }, '*');
+    };
 
-  // readyState constants on prototype (so `xhr.DONE` works too)
-  ProxiedXHR.prototype.UNSENT           = 0;
-  ProxiedXHR.prototype.OPENED           = 1;
-  ProxiedXHR.prototype.HEADERS_RECEIVED = 2;
-  ProxiedXHR.prototype.LOADING          = 3;
-  ProxiedXHR.prototype.DONE             = 4;
-
-  // responseType must be a get/set property so we can forward it to _native
-  Object.defineProperty(ProxiedXHR.prototype, 'responseType', {
-    get: function () { return this._responseType; },
-    set: function (v) {
-      this._responseType = v || '';
-      if (this._native) { try { this._native.responseType = v; } catch (e) {} }
-    },
-    configurable: true
-  });
-
-  ProxiedXHR.prototype.open = function (method, url, async, user, pass) {
-    this._method = method || 'GET';
-    this._url    = url;
-    if (isHTTP(url)) {
-      this._isProxy = true;
-      this._native  = null;
-      this.readyState = 1;  // OPENED
-      this._fire('readystatechange', {});
-    } else {
-      this._isProxy = false;
-      this._native  = new NativeXHR();
-      if (this._responseType) {
-        try { this._native.responseType = this._responseType; } catch (e) {}
-      }
-      this._native.open(method, url,
-        async === undefined ? true : !!async, user, pass);
-    }
-  };
-
-  ProxiedXHR.prototype.setRequestHeader = function (name, value) {
-    if (this._isProxy) {
-      this._reqHeaders[name] = value;
-    } else if (this._native) {
-      this._native.setRequestHeader(name, value);
-    }
-  };
-
-  ProxiedXHR.prototype.send = function (body) {
-    if (this._isProxy) {
-      this._sendViaGM(body);
-    } else if (this._native) {
-      this._sendViaNative(body);
-    }
-  };
-
-  ProxiedXHR.prototype._sendViaGM = function (body) {
-    var self   = this;
-    var gmType = self._responseType === 'arraybuffer' ? 'arraybuffer' :
-                 self._responseType === 'blob'        ? 'blob'        : 'text';
-
-    var startEvt = { type: 'loadstart', target: self };
-    self._fire('loadstart', startEvt);
-    if (self.onloadstart) self.onloadstart(startEvt);
-
-    self._gmReq = GM_xmlhttpRequest({
-      method:       self._method,
-      url:          self._url,
-      headers:      self._reqHeaders,
-      data:         body || null,
-      responseType: gmType,
-      timeout:      self.timeout || undefined,
-      anonymous:    !self.withCredentials,
-
-      onload: function (res) {
-        self.status           = res.status;
-        self.statusText       = res.statusText || '';
-        self.responseURL      = res.finalUrl   || self._url;
-        self._responseHeaders = parseHeaders(res.responseHeaders || '');
-
-        if (gmType === 'arraybuffer' || gmType === 'blob') {
-          self.response     = res.response;
-          self.responseText = '';
-        } else {
-          self.response     = res.responseText || '';
-          self.responseText = res.responseText || '';
+    PXhr.prototype._sendNative = function (body) {
+      var self = this;
+      var n    = this._nat;
+      try { if (self.timeout)         n.timeout         = self.timeout;        } catch (e) {}
+      try { if (self.withCredentials) n.withCredentials = self.withCredentials; } catch (e) {}
+      ['onreadystatechange', 'onload', 'onerror', 'ontimeout',
+       'onprogress', 'onloadstart', 'onloadend', 'onabort'].forEach(function (k) {
+        if (self[k]) n[k] = self[k];
+      });
+      n.addEventListener('readystatechange', function () {
+        self.readyState = n.readyState;
+        if (n.readyState >= 2) { self.status = n.status; self.statusText = n.statusText; }
+        if (n.readyState === 4) {
+          try { self.response     = n.response;     } catch (e) {}
+          try { self.responseText = n.responseText; } catch (e) {}
+          try { self.responseURL  = n.responseURL;  } catch (e) {}
         }
+      });
+      Object.keys(self._ls).forEach(function (type) {
+        self._ls[type].forEach(function (fn) { n.addEventListener(type, fn); });
+      });
+      n.send(body);
+    };
 
-        self.readyState = 4;
-        self._fire('readystatechange', {});
-
-        var loadEvt = { type: 'load', target: self };
-        self._fire('load', loadEvt);
-        if (self.onload) self.onload(loadEvt);
-
-        var endEvt = { type: 'loadend', target: self };
-        self._fire('loadend', endEvt);
-        if (self.onloadend) self.onloadend(endEvt);
-      },
-
-      onerror: function () {
-        self.readyState = 4;
-        var evErr = { type: 'error', target: self };
-        self._fire('error', evErr);
-        if (self.onerror) self.onerror(evErr);
-        var evEnd = { type: 'loadend', target: self };
-        self._fire('loadend', evEnd);
-        if (self.onloadend) self.onloadend(evEnd);
-      },
-
-      ontimeout: function () {
-        self.readyState = 4;
-        var evTm = { type: 'timeout', target: self };
-        self._fire('timeout', evTm);
-        if (self.ontimeout) self.ontimeout(evTm);
-      },
-
-      onprogress: function (res) {
-        var evPr = {
-          type: 'progress', target: self,
-          loaded: res.loaded || 0, total: res.total || 0,
-          lengthComputable: !!(res.total)
-        };
-        self._fire('progress', evPr);
-        if (self.onprogress) self.onprogress(evPr);
+    PXhr.prototype.abort = function () {
+      if (this._nat) {
+        this._nat.abort();
+      } else if (_pending[this._id]) {
+        delete _pending[this._id];
       }
-    });
-  };
+      this.readyState = 0;
+      var ev = { type: 'abort', target: this };
+      this._fire('abort', ev);
+      if (this.onabort) this.onabort(ev);
+    };
 
-  ProxiedXHR.prototype._sendViaNative = function (body) {
-    var self = this;
-    var n    = this._native;
+    PXhr.prototype.getResponseHeader = function (name) {
+      if (this._proxy) return this._rspH[name.toLowerCase()] || null;
+      return this._nat ? this._nat.getResponseHeader(name) : null;
+    };
 
-    // Transfer writable properties that may have been set before send()
-    try { if (self.timeout)         n.timeout         = self.timeout;         } catch (e) {}
-    try { if (self.withCredentials) n.withCredentials = self.withCredentials; } catch (e) {}
-
-    // Forward on* handler properties to the native instance
-    ['onreadystatechange', 'onload', 'onerror', 'ontimeout',
-     'onprogress', 'onloadstart', 'onloadend', 'onabort'].forEach(function (ev) {
-      if (self[ev]) n[ev] = self[ev];
-    });
-
-    // Sync readable state back to this proxy whenever the native XHR changes
-    n.addEventListener('readystatechange', function () {
-      self.readyState = n.readyState;
-      if (n.readyState >= 2) {
-        self.status     = n.status;
-        self.statusText = n.statusText;
+    PXhr.prototype.getAllResponseHeaders = function () {
+      if (this._proxy) {
+        var lines = Object.keys(this._rspH).map(function (k) {
+          return k + ': ' + this._rspH[k];
+        }, this);
+        return lines.length ? lines.join('\r\n') + '\r\n' : '';
       }
-      if (n.readyState === 4) {
-        try { self.response     = n.response;     } catch (e) {}
-        try { self.responseText = n.responseText; } catch (e) {}
-        try { self.responseURL  = n.responseURL;  } catch (e) {}
+      return this._nat ? this._nat.getAllResponseHeaders() : '';
+    };
+
+    PXhr.prototype.addEventListener = function (type, fn, opts) {
+      if (!this._ls[type]) this._ls[type] = [];
+      if (this._ls[type].indexOf(fn) === -1) this._ls[type].push(fn);
+      if (this._nat) this._nat.addEventListener(type, fn, opts);
+    };
+
+    PXhr.prototype.removeEventListener = function (type, fn) {
+      if (this._ls[type]) {
+        var i = this._ls[type].indexOf(fn);
+        if (i !== -1) this._ls[type].splice(i, 1);
       }
-    });
+      if (this._nat) this._nat.removeEventListener(type, fn);
+    };
 
-    // Forward any addEventListener-registered listeners to native
-    var ls = self._listeners;
-    Object.keys(ls).forEach(function (type) {
-      ls[type].forEach(function (fn) { n.addEventListener(type, fn); });
-    });
+    PXhr.prototype._fire = function (type, evt) {
+      var fns = this._ls[type];
+      if (!fns || !fns.length) return;
+      evt.target = evt.target || this;
+      evt.type   = type;
+      for (var i = 0; i < fns.length; i++) { try { fns[i](evt); } catch (e) {} }
+    };
 
-    n.send(body);
-  };
+    window.XMLHttpRequest = PXhr;
 
-  ProxiedXHR.prototype.abort = function () {
-    if (this._isProxy && this._gmReq) {
-      try { this._gmReq.abort(); } catch (e) {}
-    } else if (this._native) {
-      this._native.abort();
-    }
-    this.readyState = 0;
-    var ev = { type: 'abort', target: this };
-    this._fire('abort', ev);
-    if (this.onabort) this.onabort(ev);
-  };
-
-  ProxiedXHR.prototype.getResponseHeader = function (name) {
-    if (this._isProxy) {
-      return this._responseHeaders[name.toLowerCase()] || null;
-    }
-    return this._native ? this._native.getResponseHeader(name) : null;
-  };
-
-  ProxiedXHR.prototype.getAllResponseHeaders = function () {
-    if (this._isProxy) {
-      var lines = Object.keys(this._responseHeaders).map(function (k) {
-        return k + ': ' + this._responseHeaders[k];
-      }, this);
-      // Per XHR spec the return value ends with a trailing CRLF when non-empty.
-      return lines.length ? lines.join('\r\n') + '\r\n' : '';
-    }
-    return this._native ? this._native.getAllResponseHeaders() : '';
-  };
-
-  ProxiedXHR.prototype.addEventListener = function (type, fn, options) {
-    if (!this._listeners[type]) this._listeners[type] = [];
-    if (this._listeners[type].indexOf(fn) === -1) this._listeners[type].push(fn);
-    if (this._native) this._native.addEventListener(type, fn, options);
-  };
-
-  ProxiedXHR.prototype.removeEventListener = function (type, fn) {
-    if (this._listeners[type]) {
-      var i = this._listeners[type].indexOf(fn);
-      if (i !== -1) this._listeners[type].splice(i, 1);
-    }
-    if (this._native) this._native.removeEventListener(type, fn);
-  };
-
-  ProxiedXHR.prototype._fire = function (type, evt) {
-    var fns = this._listeners[type];
-    if (!fns || !fns.length) return;
-    evt.target = evt.target || this;
-    evt.type   = type;
-    for (var i = 0; i < fns.length; i++) {
-      try { fns[i](evt); } catch (e) {}
-    }
-  };
-
-  try { w.XMLHttpRequest = ProxiedXHR; } catch (e) {}
-
-  // ── 2. fetch() proxy ──────────────────────────────────────────────────────
-  //
-  // Some players use fetch() instead of XHR.  The same GM_xmlhttpRequest
-  // trick is used; the result is wrapped into a standard Response so that
-  // the caller cannot tell the difference.
-
-  var nativeFetch = w.fetch;
-  try {
-    w.fetch = function (input, init) {
+    // ── fetch() shim ──────────────────────────────────────────────────────────
+    window.fetch = function (input, init) {
       var url = typeof input === 'string' ? input
               : (input && input.url ? input.url : '');
-      if (!isHTTP(url)) return nativeFetch.apply(w, arguments);
-
+      if (!isHTTP(url)) return _nFetch.apply(window, arguments);
       var method     = (init && init.method)  || (input && input.method)  || 'GET';
       var reqHeaders = (init && init.headers) || (input && input.headers) || {};
       var body       = (init && init.body)    || null;
-
-      var headersObj = {};
+      var hObj = {};
       if (typeof reqHeaders.forEach === 'function') {
-        reqHeaders.forEach(function (v, k) { headersObj[k] = v; });
+        reqHeaders.forEach(function (v, k) { hObj[k] = v; });
       } else {
-        headersObj = reqHeaders;
+        hObj = reqHeaders;
       }
-
       return new Promise(function (resolve, reject) {
-        GM_xmlhttpRequest({
-          method:       method,
-          url:          url,
-          headers:      headersObj,
-          data:         body,
-          responseType: 'arraybuffer',
-          onload: function (res) {
-            try {
-              resolve(new Response(res.response, {
-                status:     res.status,
-                statusText: res.statusText || '',
-                headers:    parseHeaders(res.responseHeaders || '')
-              }));
-            } catch (e) { reject(e); }
-          },
-          onerror: function () {
-            reject(new TypeError(
-              'GM_xmlhttpRequest proxy: network error loading ' + url));
-          }
-        });
+        var id = ++_seq;
+        _fPending[id] = { resolve: resolve, reject: reject };
+        window.postMessage({
+          __qtm: 'req', reqType: 'fetch',
+          id: id, method: method, url: url,
+          headers: hObj, body: body
+        }, '*');
       });
     };
-  } catch (e) {}
+
+    // ── Response listener (receives GM_xmlhttpRequest results from userscript)
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (!d || d.__qtm !== 'res') return;
+
+      if (d.reqType === 'xhr') {
+        var xhr = _pending[d.id];
+        if (!xhr) return;
+        delete _pending[d.id];
+        xhr._rspH       = parseHeaders(d.responseHeaders || '');
+        xhr.status      = d.status     || 0;
+        xhr.statusText  = d.statusText || '';
+        xhr.responseURL = d.responseURL || xhr._url;
+        if (d.error) {
+          xhr.readyState = 4;
+          var ee = { type: 'error',   target: xhr };
+          xhr._fire('error',   ee); if (xhr.onerror)   xhr.onerror(ee);
+          var el = { type: 'loadend', target: xhr };
+          xhr._fire('loadend', el); if (xhr.onloadend) xhr.onloadend(el);
+          return;
+        }
+        xhr.response     = d.response;
+        xhr.responseText = typeof d.response === 'string' ? d.response : '';
+        xhr.readyState   = 4;
+        xhr._fire('readystatechange', {});
+        var ev1 = { type: 'load',    target: xhr };
+        xhr._fire('load',    ev1); if (xhr.onload)    xhr.onload(ev1);
+        var ev2 = { type: 'loadend', target: xhr };
+        xhr._fire('loadend', ev2); if (xhr.onloadend) xhr.onloadend(ev2);
+
+      } else if (d.reqType === 'fetch') {
+        var p = _fPending[d.id];
+        if (!p) return;
+        delete _fPending[d.id];
+        if (d.error) {
+          p.reject(new TypeError('QTM proxy: network error loading ' + d.url));
+          return;
+        }
+        try {
+          p.resolve(new Response(d.response, {
+            status:     d.status,
+            statusText: d.statusText || '',
+            headers:    parseHeaders(d.responseHeaders || '')
+          }));
+        } catch (ex) { p.reject(ex); }
+      }
+    });
+  };
+
+  // Serialise the shim function and inject it as an inline <script> element.
+  // Running inside a <script> tag executes in the page's own V8 world, so
+  // window.XMLHttpRequest = PXhr is visible to all page scripts.
+  var scriptEl = document.createElement('script');
+  scriptEl.textContent = '(' + pageShimFn.toString() + ')()';
+  (document.head || document.documentElement).appendChild(scriptEl);
+  try { scriptEl.remove(); } catch (e) {}
+
+  // ── 2. Bridge: receive page requests, call GM_xmlhttpRequest, reply ────────
+  //
+  // The page shim posts { __qtm:'req', ... } messages on window.
+  // Because w = unsafeWindow shares the same DOM event bus as the page, our
+  // listener here fires when the page shim calls window.postMessage().
+  // We then call GM_xmlhttpRequest (extension context, no mixed-content block)
+  // and postMessage the result back so the shim can resolve the XHR / fetch.
+  //
+  // ArrayBuffers are transferred (postMessage transferList) rather than cloned
+  // to avoid a redundant copy for every .ts video segment.
+
+  w.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || d.__qtm !== 'req') return;
+
+    var id      = d.id;
+    var reqType = d.reqType;
+    var gmType  = d.responseType === 'arraybuffer' ? 'arraybuffer'
+                : d.responseType === 'blob'        ? 'blob'
+                :                                    'text';
+
+    GM_xmlhttpRequest({
+      method:       d.method || 'GET',
+      url:          d.url,
+      headers:      d.headers   || {},
+      data:         d.body      || null,
+      responseType: gmType,
+      timeout:      d.timeout   || undefined,
+      anonymous:    true,
+
+      onload: function (res) {
+        var response = res.response;
+        var transfer = (response instanceof ArrayBuffer) ? [response] : [];
+        w.postMessage({
+          __qtm:           'res',
+          reqType:         reqType,
+          id:              id,
+          status:          res.status,
+          statusText:      res.statusText      || '',
+          responseURL:     res.finalUrl        || d.url,
+          responseHeaders: res.responseHeaders || '',
+          response:        response
+        }, '*', transfer);
+      },
+
+      onerror: function () {
+        w.postMessage({
+          __qtm: 'res', reqType: reqType, id: id, error: true, url: d.url
+        }, '*');
+      },
+
+      ontimeout: function () {
+        w.postMessage({
+          __qtm: 'res', reqType: reqType, id: id, error: true, url: d.url
+        }, '*');
+      }
+    });
+  });
 
 })();

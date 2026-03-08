@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Allow Mixed Content
 // @namespace    https://th-live.online
-// @version      0.4
+// @version      0.5
 // @description  Allows live streams served over plain http:// to play on
 //               QTM-platform pages (which are served over https://).
 //               Because the stream servers do not support HTTPS, URL-upgrading
@@ -25,6 +25,13 @@
 //               via window.postMessage; responses are returned the same way.
 //               ArrayBuffers are transferred (not cloned) to avoid a redundant
 //               copy when loading .ts video segments.
+//
+//               v0.5: hls.js registers its response handler as
+//               xhr.onreadystatechange = fn (property assignment, not
+//               addEventListener), so PXhr._fire('readystatechange') silently
+//               skipped it — the clearTimeout() call inside hls.js's handler
+//               never ran, causing every request to hit the watchdog timer.
+//               Fix: call xhr.onreadystatechange() explicitly alongside _fire().
 // @match        https://th-live.online/*
 // @match        https://qqlive.online/*
 // @match        https://www.qqlive.online/*
@@ -153,7 +160,9 @@
         this._proxy = true;
         this._nat   = null;
         this.readyState = 1;
-        this._fire('readystatechange', {});
+        var evRSo = { type: 'readystatechange', target: this };
+        this._fire('readystatechange', evRSo);
+        if (this.onreadystatechange) this.onreadystatechange(evRSo);
       } else {
         this._proxy = false;
         this._nat   = new _NXhr();
@@ -314,6 +323,9 @@
         xhr.responseURL = d.responseURL || xhr._url;
         if (d.error) {
           xhr.readyState = 4;
+          var evRSe = { type: 'readystatechange', target: xhr };
+          xhr._fire('readystatechange', evRSe);
+          if (xhr.onreadystatechange) xhr.onreadystatechange(evRSe);
           var ee = { type: 'error',   target: xhr };
           xhr._fire('error',   ee); if (xhr.onerror)   xhr.onerror(ee);
           var el = { type: 'loadend', target: xhr };
@@ -323,7 +335,9 @@
         xhr.response     = d.response;
         xhr.responseText = typeof d.response === 'string' ? d.response : '';
         xhr.readyState   = 4;
-        xhr._fire('readystatechange', {});
+        var evRS = { type: 'readystatechange', target: xhr };
+        xhr._fire('readystatechange', evRS);
+        if (xhr.onreadystatechange) xhr.onreadystatechange(evRS);
         var ev1 = { type: 'load',    target: xhr };
         xhr._fire('load',    ev1); if (xhr.onload)    xhr.onload(ev1);
         var ev2 = { type: 'loadend', target: xhr };

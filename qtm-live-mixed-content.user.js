@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         QTM Live — Allow Mixed Content
 // @namespace    https://th-live.online
-// @version      0.3
+// @version      0.4
 // @description  Allows live streams served over plain http:// to play on
 //               QTM-platform pages (which are served over https://).
 //               Because the stream servers do not support HTTPS, URL-upgrading
@@ -285,7 +285,24 @@
     // ── Response listener (receives GM_xmlhttpRequest results from userscript)
     window.addEventListener('message', function (e) {
       var d = e.data;
-      if (!d || d.__qtm !== 'res') return;
+      if (!d || !d.__qtm) return;
+
+      // Progress event — keep hls.js's internal timeout watchdog alive.
+      // hls.js clears/resets its JS timeout on every XHR progress event; without
+      // these the watchdog fires before long .ts segments finish downloading.
+      if (d.__qtm === 'prg') {
+        var xhr = _pending[d.id];
+        if (xhr) {
+          var evPr = { type: 'progress', target: xhr,
+                       loaded: d.loaded || 0, total: d.total || 0,
+                       lengthComputable: !!(d.total) };
+          xhr._fire('progress', evPr);
+          if (xhr.onprogress) xhr.onprogress(evPr);
+        }
+        return;
+      }
+
+      if (d.__qtm !== 'res') return;
 
       if (d.reqType === 'xhr') {
         var xhr = _pending[d.id];
@@ -382,6 +399,15 @@
           responseHeaders: res.responseHeaders || '',
           response:        response
         }, '*', transfer);
+      },
+
+      onprogress: function (res) {
+        w.postMessage({
+          __qtm:  'prg',
+          id:     id,
+          loaded: res.loaded || 0,
+          total:  res.total  || 0
+        }, '*');
       },
 
       onerror: function () {

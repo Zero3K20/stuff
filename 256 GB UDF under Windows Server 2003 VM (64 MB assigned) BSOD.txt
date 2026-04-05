@@ -1,0 +1,1429 @@
+
+Microsoft (R) Windows Debugger Version 6.12.0002.633 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+Opened \\.\pipe\kd_Windows_Server_2003
+Waiting to reconnect...
+Connected to Windows Server 2003 3790 x86 compatible target at (Sat Apr  4 23:40:25.535 2026 (UTC - 4:00)), ptr64 FALSE
+Kernel Debugger connection established.
+Symbol search path is: D:\reactos\output-VS-i386\msvc_pdb;*srv*C:\symbols*https://msdl.microsoft.com/download/symbols;D:\gtk-gnutella
+Executable search path is: D:\reactos
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for ntoskrnl.exe - 
+Windows Server 2003 Kernel Version 3790 UP Free x86 compatible
+Built by: 3790.srv03_sp2_rtm.070216-1710
+Machine Name:
+Kernel base = 0x80800000 PsLoadedModuleList = 0x808a8e48
+System Uptime: not available
+IPRT: RTMpPoke => rtMpPokeCpuUsingDpc
+vgdrvHeartbeatInit: Setting up heartbeat to trigger every 2000 milliseconds
+vgdrvNtSetupDevice: Device is ready!
+BffInitialize: RegistryPath=\Registry\Machine\System\CurrentControlSet\Services\BusFilter
+IPRT: RTMpPoke => rtMpPokeCpuUsingDpc
+Btrfs ERR : volume_arrival : IOCTL_DISK_GET_LENGTH_INFO returned c0000013
+IPRT: RTMpPoke => rtMpPokeCpuUsingDpc
+UDF Init: OS should be ReactOS
+UDF: Init memory manager
+UDF: Init delayed close queues
+UDF: Init zones
+UDF: Init pointers
+UDF: Create CD dev obj
+UDFCreateFsDeviceObject: create dev
+UDF: Create HDD dev obj
+UDFCreateFsDeviceObject: create dev
+UDFCreateFsDeviceObject: IoRegisterFileSystem() for CD
+UDFCreateFsDeviceObject: IoRegisterFileSystem() for HDD
+
+UDFCommonFSControl
+
+  UDFFSControl: MOUNT_VOLUME request ....
+
+ !!! UDFMountVolume
+UDFPhDevIOCTL: Code    74800  
+    Alloc Irp MDL=0, ctx=ffa7c7b8
+Enter wait state on evt ffa7c7b8
+Exit wait state on evt ffa7c7b8, status 00000000
+UDFPhDevIOCTL: Code    70000  
+    Alloc Irp MDL=0, ctx=ffa7c7b8
+Enter wait state on evt ffa7c7b8
+Exit wait state on evt ffa7c7b8, status 00000000
+UDFMountVolume: create device
+UDF: SectorSize=512 SectorShift=9 BitmapShiftBits=3 (early init, ~4096 bytes/FSBM bit)
+UDFGetDiskInfo
+UDFGetBlockSize: HDD
+UDFPhDevIOCTL: Code    700a0  
+    Alloc Irp MDL=0, ctx=81469178
+Enter wait state on evt 81469178
+Exit wait state on evt 81469178, status 00000000
+UDFPhDevIOCTL: Code    74004  
+    Alloc Irp MDL=0, ctx=81469178
+Enter wait state on evt 81469178
+Exit wait state on evt 81469178, status 00000000
+UDFGetBlockSize:
+Block size is 200, Block size bits 9, Last LBA is 1fffffff
+UDFPhDevIOCTL: Code    24054  
+    Alloc Irp MDL=0, ctx=ffbb1790
+Enter wait state on evt ffbb1790
+Exit wait state on evt ffbb1790, status c0000010
+UDFPhDevIOCTL: Code    24054  
+    Alloc Irp MDL=0, ctx=ffbb1790
+Enter wait state on evt ffbb1790
+Exit wait state on evt ffbb1790, status c0000010
+UDF: ------------------------------------------
+UDF: Media characteristics
+UDF: Last session: 1
+UDF: First track in first session: 1
+UDF: First track in last session: 0
+UDF: Last track in last session: 1
+UDF: First LBA in first session: 0
+UDF: First LBA in last session: 0
+UDF: Last LBA in last session: 1fffffff
+UDF: First writable LBA (NWA) in last session: 0
+UDF: Last available LBA beyond end of last session: 1fffffff
+UDF: Flags: WR 
+UDF: ------------------------------------------
+UDFGetDiskInfo: 0
+UDFGetDiskInfoAndVerify
+UDFFindAnchor
+check Anchor 100
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Found AVD at 100 (point 0)
+check Anchor 200
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: location mismatch block 200, tag ffffffff != 200
+check Anchor 100
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Found AVD at 100 (point 2)
+check Anchor 200
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: location mismatch block 200, tag ffffffff != 200
+check Anchor 1ffffeff
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1ffffeff, Location=1ffffeff: read failed
+check Anchor 1fffff00
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1fffff00, Location=1fffff00: read failed
+check Anchor 1ffffefd
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1ffffefd, Location=1ffffefd: read failed
+check Anchor 1ffffffd
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1ffffffd, Location=1ffffffd: read failed
+check Anchor 1fffffff
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1fffffff, Location=1fffffff: read failed
+check Anchor 1ffffdff
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Block=1ffffdff, Location=1ffffdff: read failed
+UDF: -----------------
+UDF: Last block 1fffffff
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+-----------------------------------
+UDF: Main sequence:
+UDF: Read VDS (60 - 70)
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 60, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 61, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 62, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 63, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 64, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 65, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=ffa93008, ctx=81469178
+UDFAsyncCompletionRoutine ctx=81469178
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=ffa93008, ctx=ffbb0628
+UDFAsyncCompletionRoutine ctx=ffbb0628
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=ffa93008, ctx=ffbb0628
+UDFAsyncCompletionRoutine ctx=ffbb0628
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=ffa93008, ctx=8146a3f8
+UDFAsyncCompletionRoutine ctx=8146a3f8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=ffa93008, ctx=8146a3f8
+UDFAsyncCompletionRoutine ctx=8146a3f8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=ffa93008, ctx=8146a3f8
+UDFAsyncCompletionRoutine ctx=8146a3f8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFBuildFreeSpaceBitmap: LastPossibleLBA=0x1fffffff UDF_BM_SHIFT=3 FSBM_BitCount=67108864 FSBM_ByteCount=8388608 (8192 KB)
+UDFAddXSpaceBitmap: at block=20, partition=0
+ClrModified
+-----------------------------------
+UDF: Main sequence failed.
+UDF: Reserve sequence
+UDF: Read VDS (1fffefe0 - 1fffeff0)
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe0, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe1, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe2, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe3, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe4, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe5, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=ffa93008, ctx=814b6ec0
+UDFAsyncCompletionRoutine ctx=814b6ec0
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=ffa93008, ctx=81475cf8
+UDFAsyncCompletionRoutine ctx=81475cf8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=ffa93008, ctx=81475cf8
+UDFAsyncCompletionRoutine ctx=81475cf8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=ffa93008, ctx=81475cf8
+UDFAsyncCompletionRoutine ctx=81475cf8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=ffa93008, ctx=81475cf8
+UDFAsyncCompletionRoutine ctx=81475cf8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=ffa93008, ctx=81475cf8
+UDFAsyncCompletionRoutine ctx=81475cf8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFAddXSpaceBitmap: at block=20, partition=0
+ClrModified
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+-----------------------------------
+UDF: Main sequence:
+UDF: Read VDS (60 - 70)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 60, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 61, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 62, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 63, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 64, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 65, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFAddXSpaceBitmap: at block=20, partition=0
+ClrModified
+-----------------------------------
+UDF: Main sequence failed.
+UDF: Reserve sequence
+UDF: Read VDS (1fffefe0 - 1fffeff0)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe0, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe1, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe2, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe3, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe4, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+LBA 1fffefe5, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=ffa93008, ctx=8146dee8
+UDFAsyncCompletionRoutine ctx=8146dee8
+    Unlock MDL=ffa93008
+    Free MDL=ffa93008
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFAddXSpaceBitmap: at block=20, partition=0
+ClrModified
+No Anchor block found
+UDFCloseResidual: NonAllocFileInfo 0
+UDFCloseResidual: NonAllocFileInfo 0
+UDFCloseResidual: VatFileInfo 0
+UDFCloseResidual: SysSDirFileInfo 0
+UDFCloseResidual: RootDirFCB 0
+UDFDeleteVCB
+UDF: Delete resources
+UDF: Cleanup VCB
+UDFMountVolume: final RC = c000014f
+
+UDFCommonFSControl
+
+  UDFFSControl: MOUNT_VOLUME request ....
+
+ !!! UDFMountVolume
+UDFPhDevIOCTL: Code    74800  
+    Alloc Irp MDL=0, ctx=ffa2b108
+Enter wait state on evt ffa2b108
+Exit wait state on evt ffa2b108, status 00000000
+UDFPhDevIOCTL: Code    70000  
+    Alloc Irp MDL=0, ctx=ffa2b108
+Enter wait state on evt ffa2b108
+Exit wait state on evt ffa2b108, status 00000000
+UDFMountVolume: create device
+UDF: SectorSize=512 SectorShift=9 BitmapShiftBits=3 (early init, ~4096 bytes/FSBM bit)
+UDFGetDiskInfo
+UDFGetBlockSize: HDD
+UDFPhDevIOCTL: Code    700a0  
+    Alloc Irp MDL=0, ctx=ffa2b108
+Enter wait state on evt ffa2b108
+Exit wait state on evt ffa2b108, status 00000000
+UDFPhDevIOCTL: Code    74004  
+    Alloc Irp MDL=0, ctx=ffa2b108
+Enter wait state on evt ffa2b108
+Exit wait state on evt ffa2b108, status 00000000
+UDFGetBlockSize:
+Block size is 200, Block size bits 9, Last LBA is 1fffffff
+UDFPhDevIOCTL: Code    24054  
+    Alloc Irp MDL=0, ctx=ffa2a520
+Enter wait state on evt ffa2a520
+Exit wait state on evt ffa2a520, status c0000010
+UDFPhDevIOCTL: Code    24054  
+    Alloc Irp MDL=0, ctx=ffa2a520
+Enter wait state on evt ffa2a520
+Exit wait state on evt ffa2a520, status c0000010
+UDF: ------------------------------------------
+UDF: Media characteristics
+UDF: Last session: 1
+UDF: First track in first session: 1
+UDF: First track in last session: 0
+UDF: Last track in last session: 1
+UDF: First LBA in first session: 0
+UDF: First LBA in last session: 0
+UDF: Last LBA in last session: 1fffffff
+UDF: First writable LBA (NWA) in last session: 0
+UDF: Last available LBA beyond end of last session: 1fffffff
+UDF: Flags: WR 
+UDF: ------------------------------------------
+UDFGetDiskInfo: 0
+UDFGetDiskInfoAndVerify
+UDFFindAnchor
+check Anchor 100
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Found AVD at 100 (point 0)
+check Anchor 200
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: location mismatch block 200, tag ffffffff != 200
+check Anchor 100
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Found AVD at 100 (point 2)
+check Anchor 200
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: location mismatch block 200, tag ffffffff != 200
+check Anchor 1ffffeff
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1ffffeff, Location=1ffffeff: read failed
+check Anchor 1fffff00
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1fffff00, Location=1fffff00: read failed
+check Anchor 1ffffefd
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1ffffefd, Location=1ffffefd: read failed
+check Anchor 1ffffffd
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1ffffffd, Location=1ffffffd: read failed
+check Anchor 1fffffff
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1fffffff, Location=1fffffff: read failed
+check Anchor 1ffffdff
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Block=1ffffdff, Location=1ffffdff: read failed
+UDF: -----------------
+UDF: Last block 1fffffff
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+-----------------------------------
+UDF: Main sequence:
+UDF: Read VDS (60 - 70)
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 60, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 61, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 62, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 63, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 64, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 65, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=81468ed8, ctx=ffa2b108
+UDFAsyncCompletionRoutine ctx=ffa2b108
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=81468ed8, ctx=814c1988
+UDFAsyncCompletionRoutine ctx=814c1988
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=81468ed8, ctx=814c1988
+UDFAsyncCompletionRoutine ctx=814c1988
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=81468ed8, ctx=814c1988
+UDFAsyncCompletionRoutine ctx=814c1988
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=81468ed8, ctx=814c1988
+UDFAsyncCompletionRoutine ctx=814c1988
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=81468ed8, ctx=814c1988
+UDFAsyncCompletionRoutine ctx=814c1988
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFBuildFreeSpaceBitmap: LastPossibleLBA=0x1fffffff UDF_BM_SHIFT=7 FSBM_BitCount=4194304 FSBM_ByteCount=524288 (512 KB)
+UDFAddXSpaceBitmap: at block=20, partition=0
+ClrModified
+-----------------------------------
+UDF: Main sequence failed.
+UDF: Reserve sequence
+UDF: Read VDS (1fffefe0 - 1fffeff0)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe0, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe1, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe2, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe3, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe4, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 1fffefe5, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFAddXSpaceBitmap: at block=20, partition=0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+    !IoBuf
+ClrModified
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+-----------------------------------
+UDF: Main sequence:
+UDF: Read VDS (60 - 70)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 60, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 61, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 62, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 63, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 64, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+LBA 65, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: PrimaryVolDesc:
+volDescSeqNum     = 1
+primaryVolDescNum = 0
+volIdent[] = 'UDF Volume'
+volSeqNum         = 1
+maxVolSeqNum      = 1
+interchangeLvl    = 2
+maxInterchangeLvl = 2
+charSetList       = 1
+maxCharSetList    = 1
+volSetIdent[] = '17273311 UDF Volume Set'
+flags             = 0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Unallocated Space Desc:
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: LogicalVolDesc
+UDF: volDescSeqNum = 3
+UDF: logicalBlockSize=512 SectorSize=512 LB2B_Bits=0 BitmapShiftBits=3 UDF_BM_SHIFT=3 (~4096 bytes/FSBM bit)
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDF: mapTableLength = 6
+UDF: numPartitionMaps = 1
+Partition (0) type 1, len 6
+FileSet found in LogicalVolDesc at block=0, partition=0
+UDF: Reading LVID @80 (2000)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Reading LVID @81 (1e00)
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Last LVID:
+     minR: 201
+     minW: 201
+     maxW: 201
+     Type: Close
+     nFiles: 0
+     nDirs: 1
+     Next FID: 10
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+UDF: Pard Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFAddXSpaceBitmap: at block=20, partition=0
+    Alloc async Irp MDL=81468ed8, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=81468ed8
+    Free MDL=81468ed8
+    Alloc async Irp MDL=ffa299d0, ctx=814b0790
+UDFAsyncCompletionRoutine ctx=814b0790
+    Unlock MDL=ffa299d0
+    Free MDL=ffa299d0
+UDFAddXSpaceBitmap: on-disk LBlock bits=536866240 grp=8 -> in-mem bits=67108280 (FSBM i=36..lim=4194304)
+    Alloc async Irp MDL=ffa299d0, ctx=ffbccec0
+UDFAsyncCompletionRoutine ctx=ffbccec0
+    Unlock MDL=ffa299d0
+    Free MDL=ffa299d0
+    Alloc async Irp MDL=ff8a8780, ctx=ffbccec0
+UDFAsyncCompletionRoutine ctx=ffbccec0
+    Unlock MDL=ff8a8780
+    Free MDL=ff8a8780
+    Alloc async Irp MDL=ff8a8780, ctx=ffbccec0
+UDFAsyncCompletionRoutine ctx=ffbccec0
+    Unlock MDL=ff8a8780
+    Free MDL=ff8a8780
+    Alloc async Irp MDL=ff8a8780, ctx=ffbccec0
+UDFAsyncCompletionRoutine ctx=ffbccec0
+    Unlock MDL=ff8a8780
+    Free MDL=ff8a8780
+    Alloc async Irp MDL=ff8a7008, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=ff8a7008
+    Free MDL=ff8a7008
+    Alloc async Irp MDL=ff8a83c0, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=ff8a83c0
+    Free MDL=ff8a83c0
+    Alloc async Irp MDL=ff8a83c0, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=ff8a83c0
+    Free MDL=ff8a83c0
+UDFAddXSpaceBitmap: 4177883/67108280 in-mem bitmap groups marked free
+ClrModified
+Partition (8192:0 type 1511) starts at physical 120, length 1fffedc0
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+ClrModified
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+UDF: Imp Use Vol Desc:
+ volDescSeqNum = 5
+UDF: Imp Use Vol Desc Imp Use:
+00 4f 53 54 41 20 43 6f 6d 70 72 65 73 73 65 64 
+20 55 6e 69 63 6f 64 65 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 2a 4d 69 
+63 72 6f 73 6f 66 74 20 57 69 6e 64 6f 77 73 00 
+00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 
+    Alloc async Irp MDL=8146cb50, ctx=ffbc54c8
+UDFAsyncCompletionRoutine ctx=ffbc54c8
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+UDF: Read VDS (1fffefe0 - 1fffeff0)
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe0, Ident = 1, vdsn = 1
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe1, Ident = 5, vdsn = 2
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe2, Ident = 6, vdsn = 3
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe3, Ident = 7, vdsn = 4
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe4, Ident = 4, vdsn = 5
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+LBA 1fffefe5, Ident = 8, vdsn = 0
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+UDF: Verify Part Descr:
+ volDescSeqNum   = 2
+ partitionFlags  = 1
+ partitionNumber = 2000
+ accessType      = 4
+ partitionStartingLocation = 120
+ partitionLength = 1fffedc0
+Searching map: (8192 == 8192)
+Access mode 4
+unallocatedSpaceBitmap (part 0) @ 20
+UDFVerifyFreeSpaceBitmap:
+ UDFVerifyXSpaceBitmap: part 0
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+ BM Lba 140
+Partition (8192:0 type 1511) starts at physical 120, length 1fffedc0
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+UDFVerifyFreeSpaceBitmap:
+ Lba @1fffefe3
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+-----------------------------------
+Using anchor in block 100
+    Alloc async Irp MDL=8146cb50, ctx=ffbc5498
+UDFAsyncCompletionRoutine ctx=ffbc5498
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+Rootdir at block=2001f, partition=0
+SysStream at block=0, partition=0
+volIdent[] = '(null)'
+UDF: Entity Id:
+flags: 0
+ident[0]: 2a
+ident[1]: 4f
+ident[2]: 53
+ident[3]: 54
+UDF: Entity Id Domain:
+Effective Revision: 201
+UDFCompleteMount:
+UDFCompleteMount: open Root Dir
+    Alloc async Irp MDL=8146cb50, ctx=ffbbef58
+UDFAsyncCompletionRoutine ctx=ffbbef58
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFReadMappingFromXEntry: mode 3, loc ffffffff, len 28
+  FExtInfo->Length 28
+UDF: scaning directory
+Thrd:81606b40:Read ExtInfo ff8a7e38, Mapping ff8a87c8
+ExtLen 200
+    Alloc async Irp MDL=8146cb50, ctx=ff8a7c18
+UDFAsyncCompletionRoutine ctx=ff8a7c18
+    Unlock MDL=8146cb50
+    Free MDL=8146cb50
+  ExtInfo->Length 28
+  Offset 0
+  final Offset 28
+  Count 1
+  FileId: offs 0, filen 0, iulen 0
+  DirNdx: Length 28, Charact a
+  parent
+..
+ClrModified
+
+*** Fatal System Error: 0x00000050
+                       (0xFFA4A000,0x00000000,0xB9F38AD1,0x00000000)
+
+Driver at fault: 
+***      udfs.sys - Address B9F38AD1 base at B9F37000, DateStamp 69d1d4a5
+.
+Break instruction exception - code 80000003 (first chance)
+
+A fatal system error has occurred.
+Debugger entered on first try; Bugcheck callbacks have not been invoked.
+
+A fatal system error has occurred.
+
+Connected to Windows Server 2003 3790 x86 compatible target at (Sat Apr  4 23:40:29.607 2026 (UTC - 4:00)), ptr64 FALSE
+Loading Kernel Symbols
+...............................................................
+...........................................
+Loading User Symbols
+
+Loading unloaded module list
+.....
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+Use !analyze -v to get detailed debugging information.
+
+BugCheck 50, {ffa4a000, 0, b9f38ad1, 0}
+
+Probably caused by : udfs.sys ( udfs!UDFGetPartFreeSpace+a1 )
+
+Followup: MachineOwner
+---------
+
+nt!RtlpBreakWithStatusInstruction:
+8081dace cc              int     3
+kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+PAGE_FAULT_IN_NONPAGED_AREA (50)
+Invalid system memory was referenced.  This cannot be protected by try-except,
+it must be protected by a Probe.  Typically the address is just plain bad or it
+is pointing at freed memory.
+Arguments:
+Arg1: ffa4a000, memory referenced.
+Arg2: 00000000, value 0 = read operation, 1 = write operation.
+Arg3: b9f38ad1, If non-zero, the instruction address which referenced the bad memory
+	address.
+Arg4: 00000000, (reserved)
+
+Debugging Details:
+------------------
+
+
+READ_ADDRESS:  ffa4a000 Nonpaged pool expansion
+
+FAULTING_IP: 
+udfs!UDFGetPartFreeSpace+a1 [D:\reactos\drivers\filesystems\udfs\udf_info\alloc.cpp @ 866]
+b9f38ad1 0fb602          movzx   eax,byte ptr [edx]
+
+MM_INTERNAL_CODE:  0
+
+IMAGE_NAME:  udfs.sys
+
+DEBUG_FLR_IMAGE_TIMESTAMP:  69d1d4a5
+
+MODULE_NAME: udfs
+
+FAULTING_MODULE: b9f37000 udfs
+
+DEFAULT_BUCKET_ID:  INTEL_CPU_MICROCODE_ZERO
+
+BUGCHECK_STR:  0x50
+
+PROCESS_NAME:  System
+
+CURRENT_IRQL:  1
+
+TRAP_FRAME:  fe7e73d8 -- (.trap 0xfffffffffe7e73d8)
+ErrCode = 00000000
+eax=000a1000 ebx=ffa2a008 ecx=000a1000 edx=ffa4a000 esi=fe7e7490 edi=fe7e7554
+eip=b9f38ad1 esp=fe7e744c ebp=fe7e7464 iopl=0         nv up ei ng nz na pe nc
+cs=0008  ss=0010  ds=0023  es=0023  fs=0030  gs=0000             efl=00010286
+udfs!UDFGetPartFreeSpace+0xa1:
+b9f38ad1 0fb602          movzx   eax,byte ptr [edx]         ds:0023:ffa4a000=??
+Resetting default scope
+
+LAST_CONTROL_TRANSFER:  from 80875895 to 8081dace
+
+STACK_TEXT:  
+fe7e6f6c 80875895 00000003 ffa4a000 00000000 nt!RtlpBreakWithStatusInstruction
+fe7e6fb8 808766cd 00000003 808ad5e0 81606b40 nt!KiBugCheckDebugBreak+0x19
+fe7e7350 80876ae0 00000050 ffa4a000 00000000 nt!KeBugCheck2+0x5d1
+fe7e7370 808629ad 00000050 ffa4a000 00000000 nt!KeBugCheckEx+0x1b
+fe7e73c0 8082648a 00000000 ffa4a000 00000000 nt!MmAccessFault+0x7af
+fe7e73c0 b9f38ad1 00000000 ffa4a000 00000000 nt!KiTrap0E+0xd8
+fe7e7464 b9f38969 cccccccc cccccccc cccccccc udfs!UDFGetPartFreeSpace+0xa1 [D:\reactos\drivers\filesystems\udfs\udf_info\alloc.cpp @ 866]
+fe7e7488 b9f7579e fe7e7604 fe7e757c ffa2a008 udfs!UDFGetFreeSpace+0x69 [D:\reactos\drivers\filesystems\udfs\udf_info\alloc.cpp @ 891]
+fe7e756c b9f733a1 81466488 ffa2a008 fe7e75a0 udfs!UDFMountVolume+0x63e [D:\reactos\drivers\filesystems\udfs\fscntrl.cpp @ 502]
+fe7e7590 b9f85a01 81466488 ffa2a008 ffa2a16c udfs!UDFCommonFsControl+0xe1 [D:\reactos\drivers\filesystems\udfs\fscntrl.cpp @ 74]
+fe7e761c 80828e83 ffbc2278 ffa2a008 ffa2a190 udfs!UDFFsdDispatch+0x2a1 [D:\reactos\drivers\filesystems\udfs\udfdata.cpp @ 230]
+fe7e7630 fe1aa23e ffbc1130 ffa2a008 ffa2a008 nt!IofCallDriver+0x45
+fe7e76a4 fe1aa644 ffbc1130 ffa2a008 ffa2a190 fltMgr!FltpFsControlMountVolume+0x186
+fe7e76d4 80828e83 ffbc1130 ffa2a008 ffa2a1b4 fltMgr!FltpFsControl+0x5a
+fe7e76e8 fe40c27c 81606b40 815b49c0 815b08a0 nt!IofCallDriver+0x45
+fe7e7710 80828e83 8146b808 ffa2a008 ffa2a008 Dfs!DfsFilterFsControl+0x82
+fe7e7724 808fabb7 80a71908 815b08a0 00000000 nt!IofCallDriver+0x45
+fe7e7774 80816af3 8146b808 ffa2b600 00000000 nt!IopMountVolume+0x1b4
+fe7e77a0 80907715 ffa2b6c8 815b0801 fe7e78dc nt!IopCheckVpbMounted+0x54
+fe7e7898 80902e44 815b08a0 00000000 ffa2b150 nt!IopParseDevice+0x3d4
+fe7e7918 80906840 00000000 fe7e7958 00000240 nt!ObpLookupObjectName+0x5b0
+fe7e796c 80905f6a 00000000 00000000 61472800 nt!ObOpenObjectByName+0xea
+fe7e79e8 8092afcb fe7e7b90 0012019f fe7e7b68 nt!IopCreateFile+0x447
+fe7e7a44 8092c721 fe7e7b90 0012019f fe7e7b68 nt!IoCreateFile+0xa3
+fe7e7a84 808234cb fe7e7b90 0012019f fe7e7b68 nt!NtCreateFile+0x30
+fe7e7a84 808215c0 fe7e7b90 0012019f fe7e7b68 nt!KiFastCallEntry+0xf8
+fe7e7b28 fe3d943e fe7e7b90 0012019f fe7e7b68 nt!ZwCreateFile+0x11
+fe7e7b94 fe3dd31a d685c201 00000000 81615c28 MountMgr!OpenRemoteDatabase+0xf8
+fe7e7d20 fe3d5321 ffb891cc 81606b40 81615b70 MountMgr!ReconcileThisDatabaseWithMasterWorker+0x190
+fe7e7d6c 809237aa 81615b70 81615c28 808b059c MountMgr!WorkerThread+0x10b
+fe7e7d80 8082050b ffb89308 00000000 81606b40 nt!IopProcessWorkItem+0x13
+fe7e7dac 80905b5b ffb89308 00000000 00000000 nt!ExpWorkerThread+0xeb
+fe7e7ddc 808286ad 8082044e 00000001 00000000 nt!PspSystemThreadStartup+0x2e
+00000000 00000000 00000000 00000000 00000000 nt!KiThreadStartup+0x16
+
+
+STACK_COMMAND:  kb
+
+FOLLOWUP_IP: 
+udfs!UDFGetPartFreeSpace+a1 [D:\reactos\drivers\filesystems\udfs\udf_info\alloc.cpp @ 866]
+b9f38ad1 0fb602          movzx   eax,byte ptr [edx]
+
+SYMBOL_STACK_INDEX:  6
+
+SYMBOL_NAME:  udfs!UDFGetPartFreeSpace+a1
+
+FOLLOWUP_NAME:  MachineOwner
+
+FAILURE_BUCKET_ID:  0x50_udfs!UDFGetPartFreeSpace+a1
+
+BUCKET_ID:  0x50_udfs!UDFGetPartFreeSpace+a1
+
+Followup: MachineOwner
+---------
+

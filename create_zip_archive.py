@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def iter_directory_entries(
-    directory: Path, excluded_file: Path | None = None
+    directory: Path, output_to_exclude: Path | None = None
 ) -> Generator[tuple[Path, str, bool], None, None]:
     """Yield archive entries for a directory tree.
 
@@ -37,7 +37,7 @@ def iter_directory_entries(
 
         for filename in files:
             file_path = current_path / filename
-            if excluded_file is not None and file_path == excluded_file:
+            if output_to_exclude is not None and file_path == output_to_exclude:
                 continue
             arcname = file_path.relative_to(parent).as_posix()
             yield file_path, arcname, False
@@ -48,7 +48,7 @@ def main() -> int:
     args = parse_args()
 
     output_path = Path(args.output).resolve()
-    input_directories = [Path(directory_path).resolve() for directory_path in args.directories]
+    input_directories = [Path(dir_path).resolve() for dir_path in args.directories]
 
     for directory in input_directories:
         if not directory.exists():
@@ -58,9 +58,9 @@ def main() -> int:
 
     with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:
-            excluded_file = output_path if output_path.is_relative_to(directory) else None
+            output_to_exclude = output_path if output_path.is_relative_to(directory) else None
             for source_path, arcname, is_empty_dir in iter_directory_entries(
-                directory, excluded_file=excluded_file
+                directory, output_to_exclude=output_to_exclude
             ):
 
                 if is_empty_dir:

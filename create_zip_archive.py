@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 from pathlib import Path
 from typing import Generator
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -47,28 +48,37 @@ def main() -> int:
     """Create the archive from CLI arguments and return an exit status code."""
     args = parse_args()
 
-    output_path = Path(args.output).resolve()
-    input_directories = [Path(dir_path).resolve() for dir_path in args.directories]
+    try:
+        output_path = Path(args.output).resolve()
+        input_directories = [Path(dir_path).resolve() for dir_path in args.directories]
 
-    for directory in input_directories:
-        if not directory.exists():
-            raise FileNotFoundError(f"Directory does not exist: {directory}")
-        if not directory.is_dir():
-            raise NotADirectoryError(f"Not a directory: {directory}")
-
-    with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:
-            output_to_exclude = output_path if output_path.is_relative_to(directory) else None
-            for source_path, arcname, is_empty_dir in iter_directory_entries(
-                directory, output_to_exclude=output_to_exclude
-            ):
+            if not directory.exists():
+                raise FileNotFoundError(f"Directory does not exist: {directory}")
+            if not directory.is_dir():
+                raise NotADirectoryError(f"Not a directory: {directory}")
 
-                if is_empty_dir:
-                    archive.writestr(arcname, "")
-                else:
-                    archive.write(source_path, arcname)
+        with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
+            for directory in input_directories:
+                try:
+                    output_path.relative_to(directory)
+                    output_to_exclude = output_path
+                except ValueError:
+                    output_to_exclude = None
 
-    return 0
+                for source_path, arcname, is_empty_dir in iter_directory_entries(
+                    directory, output_to_exclude=output_to_exclude
+                ):
+
+                    if is_empty_dir:
+                        archive.writestr(arcname, "")
+                    else:
+                        archive.write(source_path, arcname)
+
+        return 0
+    except (FileNotFoundError, NotADirectoryError) as exc:
+        print(exc, file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

@@ -18,6 +18,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def iter_directory_entries(directory: Path):
+    """Yield archive entries for a directory tree.
+
+    Yields tuples of (source_path, arcname, is_empty_dir), where `arcname`
+    is the path to store inside the zip archive.
+    """
     parent = directory.parent
 
     for current_root, subdirs, files in os.walk(directory):
@@ -34,6 +39,7 @@ def iter_directory_entries(directory: Path):
 
 
 def main() -> int:
+    """Create the archive from CLI arguments and return an exit status code."""
     args = parse_args()
 
     output_path = Path(args.output).resolve()
@@ -41,9 +47,14 @@ def main() -> int:
 
     for directory in input_directories:
         if not directory.exists():
-            raise FileNotFoundError(f"Directory does not exist: {directory}")
+            raise FileNotFoundError(
+                f"Directory does not exist: {directory}. "
+                "Please verify the path and try again."
+            )
         if not directory.is_dir():
-            raise NotADirectoryError(f"Not a directory: {directory}")
+            raise NotADirectoryError(
+                f"Not a directory: {directory}. Please provide a directory path."
+            )
 
     with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:

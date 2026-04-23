@@ -44,7 +44,7 @@ def main() -> int:
     args = parse_args()
 
     output_path = Path(args.output).resolve()
-    input_directories = [Path(path).resolve() for path in args.directories]
+    input_directories = [Path(directory_path).resolve() for directory_path in args.directories]
 
     for directory in input_directories:
         if not directory.exists():
@@ -59,8 +59,9 @@ def main() -> int:
 
     with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:
+            contains_output = output_path.is_relative_to(directory)
             for source_path, arcname, is_empty_dir in iter_directory_entries(directory):
-                if source_path.resolve() == output_path:
+                if contains_output and not is_empty_dir and source_path == output_path:
                     continue
 
                 if is_empty_dir:

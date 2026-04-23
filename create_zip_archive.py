@@ -18,7 +18,9 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def iter_directory_entries(directory: Path) -> Generator[tuple[Path, str, bool], None, None]:
+def iter_directory_entries(
+    directory: Path, excluded_file: Path | None = None
+) -> Generator[tuple[Path, str, bool], None, None]:
     """Yield archive entries for a directory tree.
 
     Yields tuples of (source_path, arcname, is_empty_dir), where `arcname`
@@ -35,6 +37,8 @@ def iter_directory_entries(directory: Path) -> Generator[tuple[Path, str, bool],
 
         for filename in files:
             file_path = current_path / filename
+            if excluded_file is not None and file_path == excluded_file:
+                continue
             arcname = file_path.relative_to(parent).as_posix()
             yield file_path, arcname, False
 
@@ -48,21 +52,16 @@ def main() -> int:
 
     for directory in input_directories:
         if not directory.exists():
-            raise FileNotFoundError(
-                f"Directory does not exist: {directory}. "
-                "Please verify the path and try again."
-            )
+            raise FileNotFoundError(f"Directory does not exist: {directory}")
         if not directory.is_dir():
-            raise NotADirectoryError(
-                f"Not a directory: {directory}. Please provide a directory path."
-            )
+            raise NotADirectoryError(f"Not a directory: {directory}")
 
     with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:
-            contains_output = output_path.is_relative_to(directory)
-            for source_path, arcname, is_empty_dir in iter_directory_entries(directory):
-                if contains_output and not is_empty_dir and source_path == output_path:
-                    continue
+            excluded_file = output_path if output_path.is_relative_to(directory) else None
+            for source_path, arcname, is_empty_dir in iter_directory_entries(
+                directory, excluded_file=excluded_file
+            ):
 
                 if is_empty_dir:
                     archive.writestr(arcname, "")

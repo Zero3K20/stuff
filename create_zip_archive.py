@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import os
 from pathlib import Path
+from typing import Generator
 from zipfile import ZIP_DEFLATED, ZipFile
 
 
@@ -17,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def iter_directory_entries(directory: Path):
+def iter_directory_entries(directory: Path) -> Generator[tuple[Path, str, bool], None, None]:
     """Yield archive entries for a directory tree.
 
     Yields tuples of (source_path, arcname, is_empty_dir), where `arcname`
@@ -59,7 +60,7 @@ def main() -> int:
     with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
         for directory in input_directories:
             for source_path, arcname, is_empty_dir in iter_directory_entries(directory):
-                if source_path == output_path:
+                if source_path.resolve() == output_path:
                     continue
 
                 if is_empty_dir:

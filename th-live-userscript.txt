@@ -1,0 +1,159 @@
+th-live.online — Userscript: Removing the Login Requirement
+============================================================
+
+Short answer
+------------
+A userscript CAN suppress the client-side redirect to /login, but it
+CANNOT make the server serve live-stream data without a real session
+token.  Read the full analysis below before deciding whether a
+userscript is worth writing.
+
+
+Architecture of the login wall
+-------------------------------
+There are TWO independent layers of authentication:
+
+  Layer 1 — Client-side Vuex state guard (bypassable)
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Every action that requires a session runs:
+
+      if (!this.member) return this.$router.push("/login");
+
+  or
+
+      if (!sessionStorage.getItem("token")) {
+          this.$store.commit("setState", { member: null });
+          this.$router.push("/login");
+      }
+
+  `this.member` is a Vuex state object persisted to sessionStorage under
+  the key "project-live" (via vuex-persistedstate).
+
+  A userscript can forge both values to bypass all such checks.
+
+  Layer 2 — Server-side HTTP authentication (NOT bypassable)
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Every API request sent by the app (Axios) includes:
+
+      Authorization: HSBox <token>
+
+  where <token> = sessionStorage.getItem("token").
+
+  The server validates this token.  If the token is missing or invalid,
+  the API returns one of the internal error codes:
+
+      991 / 992 / 993 / 1040 / 424
+
+  On receiving any of those codes, the response interceptor executes:
+
+      router.replace("/login");
+      store.dispatch("loginOutTm");   // clear session + logout
+
+  Even if the userscript forges the client state, every live-room API
+  call (fetching stream URLs, room info, chat tokens, etc.) will come
+  back with an auth error and the app will clear state and redirect to
+  /login again.
+
+  There is no way for a client-side script to forge a server-accepted
+  token without knowing the server's secret — this requires an actual
+  account.
+
+
+What a userscript can realistically achieve
+--------------------------------------------
+1. See the home page model grid — Already works without any userscript;
+   no login is required for the home page list (see th-live-guest-browsing.txt).
+
+2. Navigate to /liveRoom without being immediately redirected — The
+   client-side guard fires synchronously on page load.  A userscript
+   that injects a fake member object can suppress that redirect.
+
+3. See the live-room UI shell — Components that only inspect
+   this.member for rendering decisions (e.g. displaying the anchor's
+   name, gift buttons) will render.
+
+4. Cause all data-loading API calls to fail silently — The stream
+   player, chat log, room statistics, etc. all require server data.
+   Without a valid token every one of those calls will fail.  The room
+   will be an empty skeleton with no video and no chat.
+
+
+Proof-of-concept Tampermonkey script
+--------------------------------------
+The script below demonstrates exactly what is (and is not) possible.
+It does the following:
+
+  a) Before the Vue app boots, writes a minimal fake "member" object and
+     a dummy token into sessionStorage so the app never fires the
+     client-side login redirect.
+
+  b) Intercepts (monkey-patches) XMLHttpRequest.open to detect when the
+     server returns auth-error codes and silently drops the resulting
+     router.replace("/login") call — otherwise the app's own response
+     interceptor would clear state and send the user back to /login.
+
+  c) Opens the URL of your choosing directly.
+
+IMPORTANT: Even with this script active, the live room will show an
+empty state (no video, no chat, no room info) because the server will
+reject all API calls that carry the fake token.
+
+The full userscript is in th-live-userscript.user.js.
+
+
+Why the script still cannot play streams
+-----------------------------------------
+After the script runs you will observe:
+
+  - You can navigate to any live-room URL without being sent to /login.
+  - The live-room page renders (anchor name from URL params, UI chrome).
+  - The video player sends a request to the API for the HLS stream URL.
+    The server returns error code 991/992 (invalid token).
+    The script suppresses the redirect, so you stay on the page —
+    but the video player receives no URL and shows a loading spinner
+    or error state forever.
+  - The Tencent IM chat SDK also requires a real `imToken` (separate
+    from the session token), which the server will not issue to a fake
+    account.  Chat history will be empty.
+
+The script can be extended to also suppress the push (not replace) to
+/login by overriding history.pushState in the same way, but this changes
+nothing about the server-side reality.
+
+
+The only scenario where the userscript IS useful
+-------------------------------------------------
+If you already have a valid token from an existing logged-in session
+(e.g. copied from another browser tab's sessionStorage), you can inject
+that real token into a fresh tab:
+
+  sessionStorage.setItem('token', '<paste-real-token-here>');
+
+  // Also copy the full member object from the logged-in tab:
+  sessionStorage.setItem('project-live', '<paste-project-live-json-here>');
+
+Then reload the page.  The app will treat the tab as logged in and all
+API calls will succeed.  This is just a manual session copy, not a true
+bypass, and requires you to have a valid account in the first place.
+
+
+Recommended approach
+---------------------
+Register a free account.  The th-live-phone-validation.txt file lists
+several free virtual Thai phone number services (section 3) that can
+receive the SMS OTP needed for sign-up at no cost.  Once registered,
+watching streams is free.
+
+
+Summary
+-------
+
+  Capability                          | Userscript can do this?
+  ------------------------------------|------------------------
+  Suppress client-side /login redirect| YES (Step 1+2 above)
+  Navigate to live-room URL           | YES
+  Render live-room UI chrome          | YES
+  Play the actual video stream        | NO (server rejects fake token)
+  Load chat history                   | NO (IM SDK requires real imToken)
+  Use any feature requiring the API   | NO
+  Share a session from a real account | YES (with real token copy)

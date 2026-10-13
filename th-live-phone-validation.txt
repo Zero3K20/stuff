@@ -1,0 +1,66 @@
+th-live.online Phone Number Validation (Registration)
+======================================================
+
+Source: https://th-live.online/js/app.af6c1ab3.js
+
+Validation regex: /^0\d{9}$/
+
+Rules:
+- Must start with the digit 0
+- Followed by exactly 9 more digits
+- Total length: exactly 10 digits
+- Only digits are accepted (non-digit characters are stripped automatically)
+
+Example of a valid phone number: 0812345678
+
+This matches the standard Thai mobile phone number format (e.g. 08x, 09x, 06x numbers).
+
+The field has a maxlength of 10 characters and strips any non-digit input via onKeyup handler:
+  registerForm.phone = registerForm.phone.replace(/[^\d]/g, "")
+
+If the phone number does not match the regex, the site shows the error:
+  "กรุณากรอกหมายเลขโทรศัพท์ที่ถูกต้อง" (TH) - "Please enter a valid phone number"
+  "请输入正确的电话号码" (ZH)
+  "Mời nhập chính xác số điện thoại" (VN)
+
+Where to get a valid number
+---------------------------
+
+Because registration requires an SMS OTP, you need a real or virtual Thai
+mobile number. Options:
+
+1. Thai SIM card — If you are in Thailand, any prepaid SIM from AIS, DTAC,
+   or TRUE Move H gives you a 10-digit Thai number starting with 0.
+
+2. Paid virtual-number services — Several services sell one-time-use Thai
+   numbers that can receive SMS. Examples include:
+     - https://sms-activate.org  (search for "Thailand")
+     - https://smspva.com        (search for "TH")
+     - https://5sim.net          (search for "Thailand")
+   Choose a number, buy it, enter it on the registration form, then retrieve
+   the OTP from the service's dashboard and enter it to complete sign-up.
+
+3. Free virtual-number services — Some sites provide temporary phone numbers
+   at no cost. The numbers are shared/public (everyone can read incoming
+   messages), so they work best for low-sensitivity registrations.
+   Thai numbers are available on:
+     - https://receive-smss.com        (browse Thai numbers under "Thailand")
+     - https://receivesms.co           (filter by "Thailand")
+     - https://quackr.io               (filter by "Thailand")
+     - https://sms24.me                (filter by "Thailand")
+   Steps:
+     a. Open one of the sites above and pick any displayed Thai number.
+     b. Enter that number in the registration form.
+     c. Reload the site's inbox page until the OTP SMS arrives, then enter
+        the code to complete registration.
+
+   ⚠ Caveats for free services:
+     - Numbers are shared publicly — anyone visiting the page can see your OTP.
+       Complete registration quickly after requesting the OTP.
+     - Popular numbers are often already registered on many sites. If the site
+       says the number is taken, choose a different number from the list.
+     - Free services sometimes remove numbers without notice; if a number no
+       longer appears, try another service from the list above.
+
+Note: if all virtual numbers (free or paid) are rejected as already
+registered, a physical Thai SIM card (option 1) is the most reliable fallback.

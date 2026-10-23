@@ -1,0 +1,1292 @@
+2026-10-23T01:44:01.808-04:00| vmx| I005: Log for VMware Player pid=21612 version=15.5.6 build=build-16341506 option=Release
+2026-10-23T01:44:01.808-04:00| vmx| I005: The process is 64-bit.
+2026-10-23T01:44:01.808-04:00| vmx| I005: Host codepage=windows-1252 encoding=windows-1252
+2026-10-23T01:44:01.808-04:00| vmx| I005: Host is Windows 7 Professional, 64-bit Service Pack 1 (Build 7601)
+2026-10-23T01:44:01.742-04:00| vmx| I005: VTHREAD 21528 "vmx"
+2026-10-23T01:44:01.749-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\ProgramData\VMware\vCenterServer\cfg\vsphereFeatures\techPreview.cfg": The system cannot find the path specified.
+2026-10-23T01:44:01.749-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\ProgramData\VMware\vCenterServer\cfg\vsphereFeatures\techPreview.cfg": The system cannot find the path specified.
+2026-10-23T01:44:01.749-04:00| vmx| I005: FeatureStateLib: Error while loading tech preview config file: C:\ProgramData\VMware\vCenterServer\cfg\vsphereFeatures\techPreview.cfg, using default (disabled) for all Tech Preview features.
+2026-10-23T01:44:01.750-04:00| vmx| I005: LOCALE windows-1252 -> NULL User=409 System=409
+2026-10-23T01:44:01.750-04:00| vmx| I005: Msg_SetLocaleEx: HostLocale=windows-1252 UserLocale=NULL
+2026-10-23T01:44:01.756-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\Users\Bryan\AppData\Roaming\VMware\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.756-04:00| vmx| I005: Msg_Reset:
+2026-10-23T01:44:01.756-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\Users\Bryan\AppData\Roaming\VMware\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.756-04:00| vmx| I005: ----------------------------------------
+2026-10-23T01:44:01.756-04:00| vmx| I005: ConfigDB: Failed to load C:\Users\Bryan\AppData\Roaming\VMware\config.ini
+2026-10-23T01:44:01.758-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmpl", ...) failed, error: 2
+2026-10-23T01:44:01.761-04:00| vmx| I005: OBJLIB-LIB: Objlib initialized.
+2026-10-23T01:44:01.763-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\ProgramData\VMware\VMware Player\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.763-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\ProgramData\VMware\VMware Player\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.763-04:00| vmx| I005: PREF Optional preferences file not found at C:\ProgramData\VMware\VMware Player\config.ini. Using default values.
+2026-10-23T01:44:01.764-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\ProgramData\VMware\VMware Player\settings.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\ProgramData\VMware\VMware Player\settings.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: PREF Optional preferences file not found at C:\ProgramData\VMware\VMware Player\settings.ini. Using default values.
+2026-10-23T01:44:01.764-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\ProgramData\VMware\VMware Player\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\ProgramData\VMware\VMware Player\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: PREF Optional preferences file not found at C:\ProgramData\VMware\VMware Player\config.ini. Using default values.
+2026-10-23T01:44:01.764-04:00| vmx| I005: DictionaryLoad: Cannot open file "C:\Users\Bryan\AppData\Roaming\VMware\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: [msg.dictionary.load.openFailed] Cannot open file "C:\Users\Bryan\AppData\Roaming\VMware\config.ini": The system cannot find the file specified.
+2026-10-23T01:44:01.764-04:00| vmx| I005: PREF Optional preferences file not found at C:\Users\Bryan\AppData\Roaming\VMware\config.ini. Using default values.
+2026-10-23T01:44:01.766-04:00| vmx| I005: UUID: SMBIOS UUID is reported as '7b fb 82 1a 9f f5 82 f2-ca 09 56 68 86 12 74 de'.
+2026-10-23T01:44:01.803-04:00| vmx| I005: lib/ssl: OpenSSL using FIPS_drbg for RAND
+2026-10-23T01:44:01.805-04:00| vmx| I005: lib/ssl: protocol list tls1.2
+2026-10-23T01:44:01.805-04:00| vmx| I005: lib/ssl: protocol list tls1.2 (openssl flags 0x17000000)
+2026-10-23T01:44:01.805-04:00| vmx| I005: lib/ssl: cipher list ECDHE+AESGCM:RSA+AESGCM:ECDHE+AES:RSA+AES
+2026-10-23T01:44:01.805-04:00| vmx| I005: lib/ssl: curves list prime256v1:secp384r1:secp521r1
+2026-10-23T01:44:01.809-04:00| vmx| I005: Hostname=Bryan-PC
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::1d15:d348:6f8:606f%13
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::6932:745c:ce18:301b%14
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::f9f3:2f16:1da4:505c%18
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::c057:a4ef:20f1:b679%19
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::603f:322f:6bbb:789d%20
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::cbb:b008:c970:44f2%21
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=2600:1700:9830:4680::40
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=2600:1700:9830:4680:1d15:d348:6f8:606f
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=2600:1700:9830:4680:8911:1537:6e30:2eb9
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::64af:ee0e:c61a:10ee%107
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=fe80::284b:9a1d:1e02:85a9%109
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=169.254.164.211
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.1.3
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.56.1
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.196.2
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.229.2
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.189.2
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.106.1
+2026-10-23T01:44:01.812-04:00| vmx| I005: IP=192.168.177.1
+2026-10-23T01:44:01.833-04:00| vmx| I005: System uptime 830439329700 us
+2026-10-23T01:44:01.833-04:00| vmx| I005: Command line: "C:\Program Files (x86)\VMware\VMware Player\x64\vmware-vmx.exe" "-ssnapshot.numRollingTiers=0" "-sRemoteDisplay.vnc.enabled=FALSE" "-s" "vmx.stdio.keep=TRUE" "-#" "product=4;name=VMware Player;version=15.5.6;buildnumber=16341506;licensename=VMware Player;licenseversion=15.0;" "-@" "pipe=\\.\pipe\vmxba5b4a2a021e5cc7;msgs=ui" "C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmx"
+2026-10-23T01:44:01.833-04:00| vmx| I005: Msg_SetLocaleEx: HostLocale=windows-1252 UserLocale=NULL
+2026-10-23T01:44:01.883-04:00| vmx| I005: WQPoolAllocPoll : pollIx = 1, signalHandle = 328
+2026-10-23T01:44:01.883-04:00| vmx| I005: WQPoolAllocPoll : pollIx = 2, signalHandle = 428
+2026-10-23T01:44:01.887-04:00| vmx| I005: VigorTransport listening on fd 440
+2026-10-23T01:44:01.887-04:00| vmx| I005: Vigor_Init 1
+2026-10-23T01:44:01.887-04:00| vmx| I005: Connecting 'ui' to pipe '\\.\pipe\vmxba5b4a2a021e5cc7' with user '(null)'
+2026-10-23T01:44:01.887-04:00| vmx| I005: VMXVmdb: Local connection timeout: 60000 ms.
+2026-10-23T01:44:01.903-04:00| vmx| I005: VmdbAddConnection: cnxPath=/db/connection/#1/, cnxIx=1
+2026-10-23T01:44:01.904-04:00| vmx| I005: Vix: [mainDispatch.c:486]: VMAutomation: Initializing VMAutomation.
+2026-10-23T01:44:01.904-04:00| vmx| I005: Vix: [mainDispatch.c:738]: VMAutomationOpenListenerSocket() listening
+2026-10-23T01:44:01.917-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=0, newAppState=1870, success=1 additionalError=0
+2026-10-23T01:44:01.917-04:00| vmx| I005: Transitioned vmx/execState/val to poweredOff
+2026-10-23T01:44:01.917-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=1, newAppState=1873, success=1 additionalError=0
+2026-10-23T01:44:01.917-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=2, newAppState=1877, success=1 additionalError=0
+2026-10-23T01:44:01.917-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=3, newAppState=1881, success=1 additionalError=0
+2026-10-23T01:44:01.923-04:00| vmx| W003: WHPProbeCapabilities: Failed to obtain WHP capabilities with exception 0xc06d007e.
+2026-10-23T01:44:01.932-04:00| vmx| I005: IOPL_VBSRunning: Failed to connect to WMI namespace[error=0x8004100e]
+2026-10-23T01:44:01.933-04:00| vmx| I005: HD: host version is 6.1.7601
+2026-10-23T01:44:01.934-04:00| vmx| I005: HD: dcc90
+2026-10-23T01:44:01.934-04:00| vmx| I005: IOCTL_VMX86_SET_MEMORY_PARAMS already set
+2026-10-23T01:44:01.936-04:00| vmx| I005: FeatureCompat: No EVC masks.
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID vendor: GenuineIntel
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID family: 0x6 model: 0x5e stepping: 0x3
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID codename: Skylake-S
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID name: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000000, 0: 0x00000016 0x756e6547 0x6c65746e 0x49656e69
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000001, 0: 0x000506e3 0x00100800 0x7ffafbbf 0xbfebfbff
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000002, 0: 0x76036301 0x00f0b6ff 0x00000000 0x00c30000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000003, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000004, 0: 0x1c004121 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000004, 1: 0x1c004122 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000004, 2: 0x1c004143 0x00c0003f 0x000003ff 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000004, 3: 0x1c03c163 0x02c0003f 0x00001fff 0x00000006
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000004, 4: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000005, 0: 0x00000040 0x00000040 0x00000003 0x00142120
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000006, 0: 0x000027f7 0x00000002 0x00000009 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000007, 0: 0x00000000 0x029c67af 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000008, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000009, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000a, 0: 0x07300804 0x00000000 0x00000000 0x00000603
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000b, 0: 0x00000001 0x00000001 0x00000100 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000b, 1: 0x00000004 0x00000004 0x00000201 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000b, 2: 0x00000000 0x00000000 0x00000002 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000c, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 0: 0x0000001f 0x00000340 0x00000440 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 1: 0x0000000f 0x00000340 0x00000100 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 2: 0x00000100 0x00000240 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 3: 0x00000040 0x000003c0 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 4: 0x00000040 0x00000400 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 5: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 6: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 7: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000d, 8: 0x00000080 0x00000000 0x00000001 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000e, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000f, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 0000000f, 1: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000010, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000010, 1: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000010, 2: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000010, 3: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000011, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000012, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000012, 1: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000012, 2: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000012, 3: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000013, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000014, 0: 0x00000001 0x0000000f 0x00000007 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000014, 1: 0x02490002 0x003f3fff 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000015, 0: 0x00000002 0x000000e2 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 00000016, 0: 0x00000a8c 0x00000ce4 0x00000064 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000000, 0: 0x80000008 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000001, 0: 0x00000000 0x00000000 0x00000121 0x2c100800
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000002, 0: 0x65746e49 0x2952286c 0x726f4320 0x4d542865
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000003, 0: 0x35692029 0x3034362d 0x50432030 0x20402055
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000004, 0: 0x30372e32 0x007a4847 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000005, 0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000006, 0: 0x00000000 0x00000000 0x01006040 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000007, 0: 0x00000000 0x00000000 0x00000000 0x00000100
+2026-10-23T01:44:01.939-04:00| vmx| I005: hostCPUID level 80000008, 0: 0x00003027 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:01.939-04:00| vmx| I005: CPUID differences from hostCPUID.
+2026-10-23T01:44:01.939-04:00| vmx| I005: Physical APIC IDs: 0,2,4,6
+2026-10-23T01:44:01.939-04:00| vmx| I005: Physical X2APIC IDs: 0,2,4,6
+2026-10-23T01:44:01.939-04:00| vmx| I005: CPUID Maximum Physical Address Bits supported across all CPUs: 39
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR       0x3a =                0x5
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x480 =   0xda040000000004
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x481 =       0x7f00000016
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x482 = 0xfff9fffe0401e172
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x483 =  0x1ffffff00036dff
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x484 =    0x3ffff000011ff
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x485 =         0x7004c1e7
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x486 =         0x80000021
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x487 =         0xffffffff
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x488 =             0x2000
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x489 =           0x3727ff
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48a =               0x2e
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48b =   0x1ffcff00000000
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48c =      0xf0106334141
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48d =       0x7f00000016
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48e = 0xfff9fffe04006172
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x48f =  0x1ffffff00036dfb
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x490 =    0x3ffff000011fb
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x491 =                0x1
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR 0xc0010114 =                  0
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR       0xce =    0x80838f1011b00
+2026-10-23T01:44:01.940-04:00| vmx| I005: Common: MSR      0x10a =                  0
+2026-10-23T01:44:01.941-04:00| vmx| I005: VMMon_GetkHzEstimate: Calculated 2712039 kHz
+2026-10-23T01:44:01.941-04:00| vmx| I005: HOSTINFO: Host supports constant rate TSC.
+2026-10-23T01:44:01.941-04:00| vmx| I005: TSC kHz estimates: vmmon 2712039, remembered 0, osReported 2701000. Using 2712039 kHz.
+2026-10-23T01:44:01.941-04:00| vmx| I005: TSC first measured delta 223
+2026-10-23T01:44:01.941-04:00| vmx| I005: TSC min delta 150
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: RefClockToPTSC 0 @ 2648476Hz -> 0 @ 2712039000Hz
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: RefClockToPTSC ((x * 4294966625) >> 22) + -2252182550772278
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: tscOffset -2252153390139047
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: using TSC
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: hardware TSCs are synchronized.
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: hardware TSCs may have been adjusted by the host.
+2026-10-23T01:44:01.941-04:00| vmx| I005: PTSC: current PTSC=130680
+2026-10-23T01:44:01.944-04:00| vmx| I005: WQPoolAllocPoll : pollIx = 3, signalHandle = 588
+2026-10-23T01:44:01.991-04:00| vmx| I005: ConfigCheck: No rules file found. Checks are disabled.
+2026-10-23T01:44:01.991-04:00| vmx| I005: changing directory to C:\Users\Bryan\Documents\Virtual Machines\ReactOS\.
+2026-10-23T01:44:01.992-04:00| vmx| I005: Config file: C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmx
+2026-10-23T01:44:01.992-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=1, newAppState=1873, success=1 additionalError=0
+2026-10-23T01:44:01.992-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=2, newAppState=1878, success=1 additionalError=0
+2026-10-23T01:44:02.031-04:00| vmx| W003: PowerOn
+2026-10-23T01:44:02.031-04:00| vmx| I005: VMX_PowerOn: VMX build 16341506, UI build 16341506
+2026-10-23T01:44:02.031-04:00| vmx| I005: HostWin32: WIN32 NUMA node 0, CPU mask 0x000000000000000f
+2026-10-23T01:44:02.039-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=0, newAppState=1871, success=1 additionalError=0
+2026-10-23T01:44:02.040-04:00| vmx| I005: HOST Windows version 6.1, build 7601, platform 2, "Service Pack 1"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- GLOBAL SETTINGS C:\ProgramData\VMware\VMware Player\settings.ini
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- NON PERSISTENT (null)
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- USER PREFERENCES C:\Users\Bryan\AppData\Roaming\VMware\preferences.ini
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT pref.keyboardAndMouse.vmHotKey.enabled = "FALSE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT pref.keyboardAndMouse.vmHotKey.count = "0"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT pref.vmplayer.firstRunDismissedVersion = "15.0.4"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT         vmWizard.guestKey = "winnetstandard"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT vmWizard.installMediaType = "later"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT      pref.mruVM0.filename = "C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmx"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT   pref.mruVM0.displayName = "ReactOS"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT         pref.mruVM0.index = "0"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT vmWizard.isoLocationMRU.count = "1"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT vmWizard.isoLocationMRU0.location = "C:\VBox_Shared\bootcd.iso"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- USER DEFAULTS C:\Users\Bryan\AppData\Roaming\VMware\config.ini
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- HOST DEFAULTS C:\ProgramData\VMware\VMware Player\config.ini
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- SITE DEFAULTS C:\ProgramData\VMware\VMware Player\config.ini
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- NONPERSISTENT
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT  snapshot.numRollingTiers = "0"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT RemoteDisplay.vnc.enabled = "FALSE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT            vmx.stdio.keep = "TRUE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT             gui.available = "TRUE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- COMMAND LINE
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT  snapshot.numRollingTiers = "0"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT RemoteDisplay.vnc.enabled = "FALSE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT            vmx.stdio.keep = "TRUE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT             gui.available = "TRUE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT --- RECORDING
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT  snapshot.numRollingTiers = "0"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT RemoteDisplay.vnc.enabled = "FALSE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT            vmx.stdio.keep = "TRUE"
+2026-10-23T01:44:02.040-04:00| vmx| I005: DICT             gui.available = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT --- CONFIGURATION C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmx 
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT            config.version = "8"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         virtualHW.version = "16"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        pciBridge0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        pciBridge4.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     pciBridge4.virtualDev = "pcieRootPort"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      pciBridge4.functions = "8"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        pciBridge5.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     pciBridge5.virtualDev = "pcieRootPort"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      pciBridge5.functions = "8"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        pciBridge6.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     pciBridge6.virtualDev = "pcieRootPort"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      pciBridge6.functions = "8"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        pciBridge7.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     pciBridge7.virtualDev = "pcieRootPort"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      pciBridge7.functions = "8"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             vmci0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             hpet0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT               displayName = "ReactOS"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                   guestOS = "winnetstandard"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                     nvram = "ReactOS.nvram"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT virtualHW.productCompatibility = "hosted"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          gui.exitOnCLIHLT = "FALSE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        powerType.powerOff = "soft"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         powerType.powerOn = "soft"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         powerType.suspend = "soft"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT           powerType.reset = "soft"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT            tools.syncTime = "FALSE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          sound.autoDetect = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT            sound.fileName = "-1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             sound.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                   memsize = "2048"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          scsi0.virtualDev = "lsilogic"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             scsi0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          scsi0:0.fileName = "C:\Users\Bryan\VirtualBox VMs\ReactOS\ReactOS.vhd"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         ide1:0.deviceType = "cdrom-image"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT           ide1:0.fileName = "C:\VBox_Shared\bootcd.iso"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT            ide1:0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT               usb.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT              ehci.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  ethernet0.connectionType = "nat"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     ethernet0.addressType = "generated"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      ethernet0.virtualDev = "e1000"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          serial0.fileType = "thinprint"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          serial0.fileName = "thinprint"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         ethernet0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        extendedConfigFile = "ReactOS.vmxf"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT           floppy0.present = "FALSE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT      numa.autosize.cookie = "10012"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT numa.autosize.vcpu.maxPerVirtualNode = "1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                 uuid.bios = "56 4d 21 d9 67 c5 2a 49-24 4d aa 0f af fe b7 2e"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             uuid.location = "56 4d 21 d9 67 c5 2a 49-24 4d aa 0f af fe b7 2e"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT              scsi0:0.redo = ""
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  pciBridge0.pciSlotNumber = "17"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  pciBridge4.pciSlotNumber = "21"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  pciBridge5.pciSlotNumber = "22"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  pciBridge6.pciSlotNumber = "23"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  pciBridge7.pciSlotNumber = "24"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT       scsi0.pciSlotNumber = "16"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT         usb.pciSlotNumber = "32"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT   ethernet0.pciSlotNumber = "33"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT       sound.pciSlotNumber = "34"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT        ehci.pciSlotNumber = "35"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT       vmci0.pciSlotNumber = "36"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT  vmotion.checkpointFBSize = "134217728"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT vmotion.checkpointSVGAPrimarySize = "268435456"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT ethernet0.generatedAddress = "00:0c:29:fe:b7:2e"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT ethernet0.generatedAddressOffset = "0"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                  vmci0.id = "-1342261458"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT    monitor.phys_bits_used = "43"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             cleanShutdown = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT              softPowerOff = "FALSE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT               usb:1.speed = "2"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             usb:1.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          usb:1.deviceType = "hub"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                usb:1.port = "1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT              usb:1.parent = "-1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          serial1.fileName = "\\.\pipe\ros"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT       serial1.tryNoRxLoss = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT toolsInstallManager.updateCounter = "1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             svga.vramSize = "268435456"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT           serial1.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT    serial1.startConnected = "FALSE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          serial1.fileType = "pipe"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT     serial1.pipe.endPoint = "client"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             usb:0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          usb:0.deviceType = "hid"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT                usb:0.port = "0"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT              usb:0.parent = "-1"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT             sata0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          sata0:0.fileName = "C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT           sata0:0.present = "TRUE"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT --- USER DEFAULTS C:\Users\Bryan\AppData\Roaming\VMware\config.ini 
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT --- HOST DEFAULTS C:\ProgramData\VMware\VMware Workstation\config.ini 
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.simplifiedUI = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.autoSoftwareUpdateEnabled = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.autoSoftwareUpdateEnabled.epoch = "23830"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.componentDownloadEnabled = "yes"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.dataCollectionEnabled = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.dataCollectionEnabled.epoch = "23830"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT --- SITE DEFAULTS C:\ProgramData\VMware\VMware Workstation\config.ini 
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.simplifiedUI = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.autoSoftwareUpdateEnabled = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.autoSoftwareUpdateEnabled.epoch = "23830"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.componentDownloadEnabled = "yes"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.dataCollectionEnabled = "no"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT installerDefaults.dataCollectionEnabled.epoch = "23830"
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT --- GLOBAL SETTINGS C:\ProgramData\VMware\VMware Workstation\settings.ini 
+2026-10-23T01:44:02.041-04:00| vmx| I005: DICT          printers.enabled = "FALSE"
+2026-10-23T01:44:02.042-04:00| vmx| I005: Powering on unsupported guestOS 'winnetstandard' using the configuration for 'winNetStandard'.
+2026-10-23T01:44:02.043-04:00| vmx| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:44:02.043-04:00| vmx| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:44:02.045-04:00| vmx| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:44:02.045-04:00| vmx| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:44:02.046-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=1, newAppState=1873, success=1 additionalError=0
+2026-10-23T01:44:02.048-04:00| vmx| I005: Monitor Mode: CPL0
+2026-10-23T01:44:02.083-04:00| vmx| I005: OvhdMem_PowerOn: initial admission: paged   508188 nonpaged    36010 anonymous     5160
+2026-10-23T01:44:02.083-04:00| vmx| I005: VMMEM: Initial Reservation: 2145MB (MainMem=2048MB)
+2026-10-23T01:44:02.083-04:00| vmx| I005: MemSched_PowerOn: balloon minGuestSize 26214 (80% of min required size 32768)
+2026-10-23T01:44:02.083-04:00| vmx| I005: MemSched: reserved mem (in MB) min 128 max 13770 recommended 13770
+2026-10-23T01:44:02.083-04:00| vmx| I005: MemSched: pg 508188 np 36010 anon 5160 mem 524288
+2026-10-23T01:44:02.146-04:00| vmx| I005: MemSched: numvm 1 locked pages: num 0 max 3388765
+2026-10-23T01:44:02.146-04:00| vmx| I005: MemSched: locked Page Limit: host 3396957 config 3525120 dynam 8589934591
+2026-10-23T01:44:02.146-04:00| vmx| I005: MemSched: minmempct 50 minalloc 0 admitted 1
+2026-10-23T01:44:02.147-04:00| WinNotifyThread| I005: VTHREAD 22124 "WinNotifyThread"
+2026-10-23T01:44:02.147-04:00| WinNotifyThread| I005: WinNotify thread is alive
+2026-10-23T01:44:02.147-04:00| vmx| I005: LICENSE: Running unlicensed VMX (VMware Player)
+2026-10-23T01:44:02.151-04:00| vthread-13864| I005: VTHREAD 13864 "vthread-13864"
+2026-10-23T01:44:02.152-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmpl", ...) failed, error: 2
+2026-10-23T01:44:02.152-04:00| vmx| I005: PolicyVMXFindPolicyKey: policy file does not exist.
+2026-10-23T01:44:02.152-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmpl", ...) failed, error: 2
+2026-10-23T01:44:02.152-04:00| vmx| I005: PolicyVMXFindPolicyKey: policy file does not exist.
+2026-10-23T01:44:02.155-04:00| vmx| I005: ToolsISO: Refreshing imageName for 'winnetstandard' (refreshCount=1, lastCount=1).
+2026-10-23T01:44:02.155-04:00| vmx| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:44:02.155-04:00| vmx| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:44:02.156-04:00| vmx| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:44:02.156-04:00| vmx| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:44:02.157-04:00| deviceThread| I005: VTHREAD 23520 "deviceThread"
+2026-10-23T01:44:02.157-04:00| deviceThread| I005: Device thread is alive
+2026-10-23T01:44:02.157-04:00| vmx| I005: Host VT-x Capabilities:
+2026-10-23T01:44:02.157-04:00| vmx| I005: Basic VMX Information (0x00da040000000004)
+2026-10-23T01:44:02.157-04:00| vmx| I005:   VMCS revision ID                   4
+2026-10-23T01:44:02.157-04:00| vmx| I005:   VMCS region length              1024
+2026-10-23T01:44:02.157-04:00| vmx| I005:   VMX physical-address width   natural
+2026-10-23T01:44:02.157-04:00| vmx| I005:   SMM dual-monitor mode            yes
+2026-10-23T01:44:02.157-04:00| vmx| I005:   Advanced INS/OUTS info           yes
+2026-10-23T01:44:02.157-04:00| vmx| I005:   True VMX MSRs                    yes
+2026-10-23T01:44:02.157-04:00| vmx| I005:   VMCS memory type                  WB
+2026-10-23T01:44:02.157-04:00| vmx| I005: True Pin-Based VM-Execution Controls (0x0000007f00000016)
+2026-10-23T01:44:02.157-04:00| vmx| I005:   External-interrupt exiting               {0,1}
+2026-10-23T01:44:02.157-04:00| vmx| I005:   NMI exiting                              {0,1}
+2026-10-23T01:44:02.157-04:00| vmx| I005:   Virtual NMIs                             {0,1}
+2026-10-23T01:44:02.157-04:00| vmx| I005:   Activate VMX-preemption timer            {0,1}
+2026-10-23T01:44:02.157-04:00| vmx| I005:   Process posted interrupts                { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005: True Primary Processor-Based VM-Execution Controls (0xfff9fffe04006172)
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Interrupt-window exiting                 {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use TSC offsetting                       {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   HLT exiting                              {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   INVLPG exiting                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   MWAIT exiting                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   RDPMC exiting                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   RDTSC exiting                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   CR3-load exiting                         {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   CR3-store exiting                        {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   CR8-load exiting                         {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   CR8-store exiting                        {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use TPR shadow                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   NMI-window exiting                       {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   MOV-DR exiting                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Unconditional I/O exiting                {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use I/O bitmaps                          {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Monitor trap flag                        {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use MSR bitmaps                          {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   MONITOR exiting                          {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   PAUSE exiting                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Activate secondary controls              {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005: Secondary Processor-Based VM-Execution Controls (0x001ffcff00000000)
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Virtualize APIC accesses                 {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable EPT                               {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Descriptor-table exiting                 {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable RDTSCP                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Virtualize x2APIC mode                   {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable VPID                              {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   WBINVD exiting                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Unrestricted guest                       {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   APIC-register virtualization             { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Virtual-interrupt delivery               { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005:   PAUSE-loop exiting                       {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   RDRAND exiting                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable INVPCID                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable VM Functions                      {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use VMCS shadowing                       {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   ENCLS exiting                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   RDSEED exiting                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable PML                               {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   EPT-violation #VE                        {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable XSAVES/XRSTORS                    {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Mode-based execute control for EPT       { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Use TSC scaling                          { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable ENCLV in VMX non-root mode        { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Enable EPC Virtualization Extensions     { 0 }
+2026-10-23T01:44:02.158-04:00| vmx| I005: True VM-Exit Controls (0x01ffffff00036dfb)
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Save debug controls                      {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Host address-space size                  {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_PERF_GLOBAL_CTRL               {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Acknowledge interrupt on exit            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Save IA32_PAT                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_PAT                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Save IA32_EFER                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_EFER                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Save VMX-preemption timer                {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005: True VM-Entry Controls (0x0003ffff000011fb)
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load debug controls                      {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   IA-32e mode guest                        {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Entry to SMM                             {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Deactivate dual-monitor mode             {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_PERF_GLOBAL_CTRL               {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_PAT                            {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Load IA32_EFER                           {0,1}
+2026-10-23T01:44:02.158-04:00| vmx| I005: VPID and EPT Capabilities (0x00000f0106334141)
+2026-10-23T01:44:02.158-04:00| vmx| I005:   R=0/W=0/X=1                      yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Page-walk length 3               yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   EPT memory type WB               yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   2MB super-page                   yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   1GB super-page                   yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   INVEPT support                   yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Access & Dirty Bits              yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Advanced VM exit information for EPT violations    no
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Type 1 INVEPT                    yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Type 2 INVEPT                    yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   INVVPID support                  yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Type 0 INVVPID                   yes
+2026-10-23T01:44:02.158-04:00| vmx| I005:   Type 1 INVVPID                   yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Type 2 INVVPID                   yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Type 3 INVVPID                   yes
+2026-10-23T01:44:02.159-04:00| vmx| I005: Miscellaneous VMX Data (0x000000007004c1e7)
+2026-10-23T01:44:02.159-04:00| vmx| I005:   TSC to preemption timer ratio      7
+2026-10-23T01:44:02.159-04:00| vmx| I005:   VM-Exit saves EFER.LMA           yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Activity State HLT               yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Activity State shutdown          yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Activity State wait-for-SIPI     yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   CR3 targets supported              4
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Maximum MSR list size            512
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Allow all VMWRITEs               yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Allow zero instruction length    yes
+2026-10-23T01:44:02.159-04:00| vmx| I005:   MSEG revision ID                   0
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Processor trace in VMX           yes
+2026-10-23T01:44:02.159-04:00| vmx| I005: VMX-Fixed Bits in CR0 (0x0000000080000021/0x00000000ffffffff)
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Fixed to 0        0xffffffff00000000
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Fixed to 1        0x0000000080000021
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Variable          0x000000007fffffde
+2026-10-23T01:44:02.159-04:00| vmx| I005: VMX-Fixed Bits in CR4 (0x0000000000002000/0x00000000003727ff)
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Fixed to 0        0xffffffffffc8d800
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Fixed to 1        0x0000000000002000
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Variable          0x00000000003707ff
+2026-10-23T01:44:02.159-04:00| vmx| I005: VMCS Enumeration (0x000000000000002e)
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Highest index                   0x17
+2026-10-23T01:44:02.159-04:00| vmx| I005: VM Functions (0x0000000000000001)
+2026-10-23T01:44:02.159-04:00| vmx| I005:   Function  0 (EPTP-switching) supported.
+2026-10-23T01:44:02.159-04:00| vmx| I005: Monitor_PowerOn: HostedVSMP skew tracking is disabled
+2026-10-23T01:44:02.160-04:00| vmx| I005: Loaded crosspage: .crosspage. Size = 4096 bytes.
+2026-10-23T01:44:02.160-04:00| vmx| I005: vmm64-modules: [vmm.vmm64, vmce-vmce.vmm64, viommu-none.vmm64, vprobe-none.vmm64, hv-vt.vmm64, gphys-ept.vmm64, callstack-none.vmm64, gi-none.vmm64, gmm-none.vmm64, ahci-ahci.vmm64, !ahciRegs=0x0, !ahciShared=0x1000, !e1000Shared=0x1c00, !vmSamples=0x2480, !theIOSpace=0x24c0, !ttGPPerVcpu=0x8800, {UseUnwind}=0x0, numVCPUsAsAddr=0x1, {SharedAreaReservations}=0x8840, {rodataSize}=0x21115, {textAddr}=0xfffffffffc000000, {textSize}=0x9137e, <MonSrcFile>]
+2026-10-23T01:44:02.160-04:00| vmx| I005: vmm64-vcpus:   1
+2026-10-23T01:44:02.251-04:00| vmx| I005: KHZEstimate 2712039
+2026-10-23T01:44:02.251-04:00| vmx| I005: MHZEstimate 2712
+2026-10-23T01:44:02.251-04:00| vmx| I005: NumVCPUs 1
+2026-10-23T01:44:02.252-04:00| vmx| I005: MonTimer: host does not have high resolution timers.
+2026-10-23T01:44:02.253-04:00| vmx| I005: AIOGNRC: numThreads=2 ide=0, scsi=0, passthru=1
+2026-10-23T01:44:02.253-04:00| vmx| I005: WORKER: Creating new group with maxThreads=2 (2)
+2026-10-23T01:44:02.262-04:00| vmx| I005: WORKER: Creating new group with maxThreads=1 (3)
+2026-10-23T01:44:02.262-04:00| vmx| I005: MainMem: CPT Host WZ=0 PF=2048 D=0
+2026-10-23T01:44:02.262-04:00| vmx| I005: MainMem: CPT PLS=1 PLR=1 BS=1 BlkP=32 Mult=4 W=50
+2026-10-23T01:44:02.266-04:00| vmx| I005: MainMem: Opened paging file, 'C:\Users\Bryan\Documents\Virtual Machines\ReactOS\564d21d9-67c5-2a49-244d-aa0faffeb72e.vmem'.
+2026-10-23T01:44:02.266-04:00| vmx| I005: MStat: Creating Stat vm.uptime
+2026-10-23T01:44:02.266-04:00| vmx| I005: MStat: Creating Stat vm.suspendTime
+2026-10-23T01:44:02.266-04:00| vmx| I005: MStat: Creating Stat vm.powerOnTimeStamp
+2026-10-23T01:44:02.267-04:00| aioCompletion| I005: VTHREAD 14148 "aioCompletion"
+2026-10-23T01:44:02.267-04:00| vmx| I005: VMXAIOMGR: Using: simple=Compl
+2026-10-23T01:44:02.269-04:00| vmx| I005: WORKER: Creating new group with maxThreads=1 (4)
+2026-10-23T01:44:02.272-04:00| vmx| I005: WORKER: Creating new group with maxThreads=16 (20)
+2026-10-23T01:44:02.274-04:00| vmx| I005: FeatureCompat: No VM masks.
+2026-10-23T01:44:02.274-04:00| vmx| I005: TimeTracker host to guest rate conversion 902325030 @ 2712039000Hz -> 0 @ 2712039000Hz
+2026-10-23T01:44:02.274-04:00| vmx| I005: TimeTracker host to guest rate conversion ((x * 2147483648) >> 31) + -902325030
+2026-10-23T01:44:02.274-04:00| vmx| I005: Disabling TSC scaling since host does not support it.
+2026-10-23T01:44:02.274-04:00| vmx| I005: TSC offsetting enabled.
+2026-10-23T01:44:02.275-04:00| vmx| I005: timeTracker.globalProgressMaxAllowanceMS: 2000
+2026-10-23T01:44:02.275-04:00| vmx| I005: timeTracker.globalProgressToAllowanceNS: 1000
+2026-10-23T01:44:02.275-04:00| vmx| I005: MKS PowerOn
+2026-10-23T01:44:02.276-04:00| mks| I005: VTHREAD 23364 "mks"
+2026-10-23T01:44:02.276-04:00| mks| I005: MKS thread is alive
+2026-10-23T01:44:02.280-04:00| mouse| I005: VTHREAD 13868 "mouse"
+2026-10-23T01:44:02.280-04:00| kbh| I005: VTHREAD 15540 "kbh"
+2026-10-23T01:44:02.281-04:00| mks| I005: MKS Win32: Registering top level window (0x542b9a) to receive session change notification.
+2026-10-23T01:44:02.283-04:00| mks| I005: Current Display Settings:
+2026-10-23T01:44:02.283-04:00| mks| I005:    Display: 0 size: 1920x1080  position: (0, 0) name: \\.\DISPLAY1  
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS Win32: MIL: 0x3000
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS-RenderMain: PowerOn allowed MKSBasicOps 
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS-RenderMain: Collecting RenderOps caps from MKSBasicOps
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS-RenderMain: Started MKSBasicOps
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS-RenderMain: Found Full Renderer: MKSBasicOps
+2026-10-23T01:44:02.283-04:00| mks| I005: MKS-RenderMain: MinimalCaps: maxTextureSize=32768
+2026-10-23T01:44:02.286-04:00| mks| I005: KHBKL: Unable to parse keystring at: ''
+2026-10-23T01:44:02.286-04:00| mks| I005: MKSRemoteMgr: Set default display name: ReactOS
+2026-10-23T01:44:02.286-04:00| mks| I005: MKSRemoteMgr: Loading VNC Configuration from VM config file
+2026-10-23T01:44:02.288-04:00| vmx| I005: VLANCE: send cluster threshold is 80, size = 2 recalcInterval is 20000 us
+2026-10-23T01:44:02.288-04:00| vmx| I005: VMXNET: send cluster threshold is 80, size = 2 recalcInterval is 20000 ticks, dontClusterSize is 128
+2026-10-23T01:44:02.290-04:00| vmx| I005: Chipset version: 0x13
+2026-10-23T01:44:02.293-04:00| vmx| I005: SOUNDLIB: Creating the Wave sound backend.
+2026-10-23T01:44:02.295-04:00| vmx| I005: MigrateBusMemPrealloc: BusMem preallocation begins.
+2026-10-23T01:44:02.295-04:00| vmx| I005: MigrateBusMemPrealloc: BusMem preallocation completes.
+2026-10-23T01:44:02.295-04:00| vmx| A000: ConfigDB: Setting sata0:0.redo = ""
+2026-10-23T01:44:02.295-04:00| vmx| I005: DISK: OPEN sata0:0 'C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd' persistent R[]
+2026-10-23T01:44:02.301-04:00| vmx| I005: DISKLIB-LINK  : Opened 'C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd' (0xa): vpcFlat, 67108864 sectors / 32 GB.
+2026-10-23T01:44:02.301-04:00| vmx| I005: DISKLIB-LIB   : Opened "C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd" (flags 0xa, type vpcFlat).
+2026-10-23T01:44:02.302-04:00| vmx| I005: DISKLIB-LIB_MISC   : DiskLib_GetStorageBlockSizes: Failed to get storage block sizes, The virtual disk requires a feature not supported by this program.
+2026-10-23T01:44:02.302-04:00| vmx| I005: DiskGetGeometry: Reading of disk partition table
+2026-10-23T01:44:02.302-04:00| vmx| I005: DISK: Disk 'C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd' has no UUID
+2026-10-23T01:44:02.302-04:00| vmx| I005: DISK: OPEN 'C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd' Geo (4177/255/63) BIOS Geo (4177/255/63)
+2026-10-23T01:44:02.303-04:00| vmx| I005: DISKUTILWIN32: DiskUtilW32IsATASSDDevice: Reported rotation rate = 1
+2026-10-23T01:44:02.303-04:00| vmx| I005: DISK: DiskConfigureVirtualSSD:  Disk 'sata0:0' identified as Virtual SSD device.
+2026-10-23T01:44:02.305-04:00| vmx| I005: DISK: Opening disks took 9 ms.
+2026-10-23T01:44:02.307-04:00| vmx| I005: USB: Initializing 'Virtual Hub' backend
+2026-10-23T01:44:02.307-04:00| vmx| I005: USB: Initializing 'Generic' backend
+2026-10-23T01:44:02.307-04:00| vmx| I005: USB: Initializing 'Virtual HID' backend
+2026-10-23T01:44:02.308-04:00| sensorThread| I005: VTHREAD 22160 "sensorThread"
+2026-10-23T01:44:02.308-04:00| vmx| I005: USB: Initializing 'Remote Device' backend
+2026-10-23T01:44:02.308-04:00| vmx| I005: RemoteUSBVMX: Retrieved hostId [7b fb 82 1a 9f f5 82 f2-ca 09 56 68 86 12 74 de]
+2026-10-23T01:44:02.308-04:00| vmx| I005: RemoteUSBVMX: Protocol version min:15 current:17
+2026-10-23T01:44:02.308-04:00| vmx| I005: RemoteUSBVMX: no delay setting is TRUE.
+2026-10-23T01:44:02.308-04:00| vmx| I005: USB: Initializing 'Virtual Mass Storage' backend
+2026-10-23T01:44:02.308-04:00| vmx| I005: USB: Initializing 'Virtual RNG' backend
+2026-10-23T01:44:02.308-04:00| vmx| I005: USB: Initializing 'Virtual CCID' backend
+2026-10-23T01:44:02.316-04:00| vmx| I005: USB-CCID: Could not establish context: SCARD_E_NO_SERVICE(0x8010001d).
+2026-10-23T01:44:02.316-04:00| vmx| I005: USB-CCID: Could not establish context: SCARD_E_NO_SERVICE(0x8010001d).
+2026-10-23T01:44:02.316-04:00| usbCCIDEnumCards| I005: VTHREAD 10944 "usbCCIDEnumCards"
+2026-10-23T01:44:02.316-04:00| vmx| I005: USB: Initializing 'Virtual Bluetooth' backend
+2026-10-23T01:44:02.316-04:00| vmx| I005: USB: Initializing 'Virtual Audio' backend
+2026-10-23T01:44:02.316-04:00| vmx| I005: USB: Initializing 'Virtual Video' backend
+2026-10-23T01:44:02.316-04:00| usbCCIDEnumCards| I005: USB-CCID: Card enum thread created.
+2026-10-23T01:44:02.322-04:00| vmx| I005: USBGW: Skipping disk backing for file (C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmx).
+2026-10-23T01:44:02.322-04:00| vmx| I005: USBGW: Skipping disk backing for file (C:\Users\Bryan\VirtualBox VMs\Windows 7 Lite\Windows 7 Lite (UDF).vhd).
+2026-10-23T01:44:02.323-04:00| vmx| I005: USBGW: Skipping disk backing for file (C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmsd).
+2026-10-23T01:44:02.323-04:00| vmx| I005: USBGW: Skipping disk backing for file (C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.nvram).
+2026-10-23T01:44:02.324-04:00| usbCCIDEnumCards| I005: USB-CCID: Could not establish context: SCARD_E_NO_SERVICE(0x8010001d).
+2026-10-23T01:44:02.326-04:00| vmx| A000: ConfigDB: Setting pciBridge4.pciSlotNumber = "-1"
+2026-10-23T01:44:02.326-04:00| vmx| A000: ConfigDB: Setting pciBridge5.pciSlotNumber = "-1"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge6.pciSlotNumber = "-1"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge7.pciSlotNumber = "-1"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge4.pciSlotNumber = "21"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge5.pciSlotNumber = "22"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge6.pciSlotNumber = "23"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting pciBridge7.pciSlotNumber = "24"
+2026-10-23T01:44:02.327-04:00| vmx| A000: ConfigDB: Setting sata0.pciSlotNumber = "37"
+2026-10-23T01:44:02.338-04:00| vmx| I005: SCSI DEVICE (ide1:0): Computed value of ide1:0.useBounceBuffers: default
+2026-10-23T01:44:02.338-04:00| vmx| I005: DISKUTIL: ide1:0 : capacity=0 logical sector size=2048
+2026-10-23T01:44:02.338-04:00| vmx| I005: DISKUTIL: ide1:0 : geometry=0/0/0
+2026-10-23T01:44:02.338-04:00| vmx| I005: SCSI: scsi0: intr coalescing: on period=50msec cifTh=4 iopsTh=2000 hlt=0
+2026-10-23T01:44:02.338-04:00| vmx| I005: SCSI0: UNTAGGED commands will be converted to ORDER tags.
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Config settings: autodetect=1, numDisplays=1, maxWidth=2560, maxHeight=1600
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Desired maximum display topology: wh(6688, 5016)
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Autodetected target gfbSize = 268435456
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Using Initial       gfbSize = 134217728
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: MaxPrimaryMem      register = 268435456
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Max wh(6688, 5016), number of displays: 10
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGA-GFB: Allocated gfbSize=134217728
+2026-10-23T01:44:02.339-04:00| vmx| A000: ConfigDB: Setting vmotion.checkpointFBSize = "134217728"
+2026-10-23T01:44:02.339-04:00| vmx| A000: ConfigDB: Setting vmotion.checkpointSVGAPrimarySize = "268435456"
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGACaps: Device       caps : 0xfdff83e2
+2026-10-23T01:44:02.339-04:00| vmx| I005: SVGACaps: Device       caps2: 0x00000007
+2026-10-23T01:44:02.340-04:00| vmx| I005: SVGA: mobMaxSize=134217728
+2026-10-23T01:44:02.340-04:00| vmx| I005: SVGA: graphicsMemoryKB=262144
+2026-10-23T01:44:02.340-04:00| vmx| I005: SVGA: FIFO capabilities 0x0000077f
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp: Renderer Provides     BC67Level:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp: Renderer Provides BaseCapsLevel:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp: Renderer Provides    ClampLevel:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dCaps: host, at power on: 3d disabled
+2026-10-23T01:44:02.341-04:00| vmx| I005:   cap[ 19]: 0x00002000 (MAX_TEXTURE_WIDTH)
+2026-10-23T01:44:02.341-04:00| vmx| I005:   cap[ 20]: 0x00002000 (MAX_TEXTURE_HEIGHT)
+2026-10-23T01:44:02.341-04:00| vmx| I005:   cap[ 93]: 0x00000001 (TS_COLOR_KEY)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:     Host Provides     BC67Level:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:     Host Provides BaseCapsLevel:     0 (    0,     4)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:     Host Provides    ClampLevel:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dCaps: guest, compatibility level: 8
+2026-10-23T01:44:02.341-04:00| vmx| I005:   cap[ 19]: 0x00002000 (MAX_TEXTURE_WIDTH)
+2026-10-23T01:44:02.341-04:00| vmx| I005:   cap[ 20]: 0x00002000 (MAX_TEXTURE_HEIGHT)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:    Guest Requires     BC67Level:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:    Guest Requires BaseCapsLevel:     0 (    0,     0)
+2026-10-23T01:44:02.341-04:00| vmx| I005: SVGA3dClamp:    Guest Requires    ClampLevel:     0 (    0,     0)
+2026-10-23T01:44:02.342-04:00| svga| I005: VTHREAD 16912 "svga"
+2026-10-23T01:44:02.342-04:00| vmx| I005: USB: Initializing 'UHCI' host controller
+2026-10-23T01:44:02.342-04:00| vmx| A000: ConfigDB: Setting usb:0.present = "TRUE"
+2026-10-23T01:44:02.342-04:00| vmx| A000: ConfigDB: Setting usb:0.deviceType = "hid"
+2026-10-23T01:44:02.342-04:00| vmx| A000: ConfigDB: Setting usb:0.port = "0"
+2026-10-23T01:44:02.342-04:00| vmx| A000: ConfigDB: Setting usb:0.parent = "-1"
+2026-10-23T01:44:02.350-04:00| vmx| A000: ConfigDB: Setting usb:1.speed = "2"
+2026-10-23T01:44:02.351-04:00| vmx| I005: Ethernet0 MAC Address: 00:0c:29:fe:b7:2e
+2026-10-23T01:44:02.353-04:00| vmx| I005: USB: Initializing 'EHCI' host controller
+2026-10-23T01:44:02.354-04:00| vmx| A000: ConfigDB: Setting vmci0.id = "-1342261458"
+2026-10-23T01:44:02.361-04:00| vmx| I005: AHCI:Successfully created adapter 'sata0' as num 0
+2026-10-23T01:44:02.361-04:00| vmx| I005: AHCI:Creating Hard Disk on SATA adapter.
+2026-10-23T01:44:02.361-04:00| vmx| I005: SCSI DEVICE (sata0:0): Computed value of sata0:0.useBounceBuffers: default
+2026-10-23T01:44:02.361-04:00| vmx| I005: DISKUTIL: sata0:0 : capacity=67108864 logical sector size=512
+2026-10-23T01:44:02.361-04:00| vmx| I005: DISKUTIL: sata0:0 : geometry=4177/255/63
+2026-10-23T01:44:02.361-04:00| vmx| I005: DISKUTIL: sata0:0 : capacity=67108864 logical sector size=512
+2026-10-23T01:44:02.361-04:00| vmx| I005: AHCI-USER: capacity: 15481935 lba_capacity: 67108864 lba48_capacity: 67108864
+2026-10-23T01:44:02.361-04:00| vmx| I005: AHCI-USER: sata0:0 does not have WWN, deactivating WWN reporting.
+2026-10-23T01:44:02.361-04:00| vmx| I005: AHCI:Successfully created device: sata0:0
+2026-10-23T01:44:02.365-04:00| vmx| I005: WORKER: Creating new group with maxThreads=1 (21)
+2026-10-23T01:44:02.365-04:00| vmx| I005: DISKUTIL: sata0:0 : max toolsVersion = 1, type = 0
+2026-10-23T01:44:02.365-04:00| vmx| I005: TOOLS setting legacy tools version to '1' type 0, manifest status is 9
+2026-10-23T01:44:02.365-04:00| worker-13864| I005: ToolsISO: Refreshing imageName for 'winnetstandard' (refreshCount=1, lastCount=1).
+2026-10-23T01:44:02.365-04:00| vmx| I005: Tools: sending 'OS_PowerOn' (state = 3) state change request
+2026-10-23T01:44:02.365-04:00| vmx| I005: Tools: Delaying state change request to state 3.
+2026-10-23T01:44:02.365-04:00| worker-13864| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:44:02.365-04:00| vmx| I005: TOOLS INSTALL initializing state to IDLE on power on.
+2026-10-23T01:44:02.365-04:00| worker-13864| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: GetHostManifests: Extracting C:\Users\Bryan\AppData\Local\Temp\vmware-Bryan\manifest.txt.13864.iso.shipped manifest file.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Failed to open Tools ISO C:\Program Files (x86)\VMware\VMware Player\winPreVista.iso (FileIOResult=6).
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: Error getting host tools manifest files.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Refreshing imageName for 'winnetstandard' (refreshCount=1, lastCount=1).
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:44:02.366-04:00| vmx| I005: P9FS_PowerOn: 9PFS server is not enabled.
+2026-10-23T01:44:02.366-04:00| vmx| I005: HgfsServerManagerVigorInit: Initialize: dev api
+2026-10-23T01:44:02.366-04:00| vmx| I005: DEPLOYPKG: No pending deploy package name set
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: GetHostManifests: Extracting C:\Users\Bryan\AppData\Local\Temp\vmware-Bryan\manifest.txt.13864.iso.shipped manifest file.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsISO: Failed to open Tools ISO C:\Program Files (x86)\VMware\VMware Player\winPreVista.iso (FileIOResult=6).
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: Error getting host tools manifest files.
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: Using ToolsMinVersion = 8384
+2026-10-23T01:44:02.366-04:00| worker-13864| I005: ToolsVersionGetStatusWorkerThread: Tools status 1 derived from environment
+2026-10-23T01:44:02.367-04:00| vmx| I005: DEPLOYPKG: ToolsDeployPkgPublishState: state=0, code=0, message=(null)
+2026-10-23T01:44:02.369-04:00| vmx| I005: MonPmc: ctrBase 0x4c1 selBase 0x186/1 PGC 1/1 SMM 1 drain 0 AMD 0
+2026-10-23T01:44:02.369-04:00| vmx| I005+ MonPmc:   gen counters num: 8 width 48 write width 48
+2026-10-23T01:44:02.369-04:00| vmx| I005+ MonPmc:   fix counters num: 3 width 48; version 4
+2026-10-23T01:44:02.369-04:00| vmx| I005+ MonPmc:   unavailable counters: 0
+2026-10-23T01:44:02.371-04:00| vmx| A000: ConfigDB: Setting monitor.phys_bits_used = "43"
+2026-10-23T01:44:02.371-04:00| vmx| I005: Full guest CPUID with differences from hostCPUID highlighted.
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest vendor: GenuineIntel
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest family: 0x6 model: 0x5e stepping: 0x3
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest codename: Skylake-S
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest name: Intel(R) Core(TM) i5-6400 CPU @ 2.70GHz
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID       level eaxIn, ecxIn:        eax        ebx        ecx        edx
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000000,  0: 0x00000016 0x756e6547 0x6c65746e 0x49656e69
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000001,  0: 0x000506e3 0x00010800 0xf7fa3203 0x0f8bbbff
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000001,  0: 0x000506e3 0x00100800 0x7ffafbbf 0xbfebfbff
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000002,  0: 0x76036301 0x00f0b6ff 0x00000000 0x00c30000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000004,  0: 0x00000121 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000004,  0: 0x1c004121 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000004,  1: 0x00000122 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000004,  1: 0x1c004122 0x01c0003f 0x0000003f 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000004,  2: 0x00000143 0x00c0003f 0x000003ff 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000004,  2: 0x1c004143 0x00c0003f 0x000003ff 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000004,  3: 0x00000163 0x02c0003f 0x00001fff 0x00000006
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000004,  3: 0x1c03c163 0x02c0003f 0x00001fff 0x00000006
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000006,  0: 0x00000004 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000006,  0: 0x000027f7 0x00000002 0x00000009 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 00000007,  0: 0x00000000 0x009c27ab 0x00000000 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 00000007,  0: 0x00000000 0x029c67af 0x00000000 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 0000000a,  0: 0x07300801 0x000000ff 0x00000000 0x00000000
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID *host level 0000000a,  0: 0x07300804 0x00000000 0x00000000 0x00000603
+2026-10-23T01:44:02.371-04:00| vmx| I005: guest vs. host CPUID guest level 0000000b,  0: 0x00000000 0x00000001 0x00000100 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 0000000b,  0: 0x00000001 0x00000001 0x00000100 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 0000000b,  1: 0x00000000 0x00000001 0x00000201 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 0000000b,  1: 0x00000004 0x00000004 0x00000201 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 0000000d,  0: 0x00000007 0x00000340 0x00000440 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 0000000d,  0: 0x0000001f 0x00000340 0x00000440 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 0000000d,  1: 0x0000000b 0x00000340 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 0000000d,  1: 0x0000000f 0x00000340 0x00000100 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 0000000d,  2: 0x00000100 0x00000240 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 00000015,  0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 00000015,  0: 0x00000002 0x000000e2 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 00000016,  0: 0x00000000 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 00000016,  0: 0x00000a8c 0x00000ce4 0x00000064 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000000,  0: 0x40000010 0x61774d56 0x4d566572 0x65726177
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000001,  0: 0x31237648 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000003,  0: 0x00000a72 0x00000000 0x00000000 0x00000508
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000004,  0: 0x00000020 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000005,  0: 0xffffffff 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 40000010,  0: 0x002961e7 0x000101d0 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000000,  0: 0x80000008 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000001,  0: 0x00000000 0x00000000 0x00000121 0x2c100800
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000002,  0: 0x65746e49 0x2952286c 0x726f4320 0x4d542865
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000003,  0: 0x35692029 0x3034362d 0x50432030 0x20402055
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000004,  0: 0x30372e32 0x007a4847 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000006,  0: 0x00000000 0x00000000 0x01006040 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000007,  0: 0x00000000 0x00000000 0x00000000 0x00000100
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID guest level 80000008,  0: 0x0000302b 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: guest vs. host CPUID *host level 80000008,  0: 0x00003027 0x00000000 0x00000000 0x00000000
+2026-10-23T01:44:02.372-04:00| vmx| I005: Minimum ucode level: 0x00000084
+2026-10-23T01:44:02.372-04:00| vmx| I005: VPMC: events will use hybrid freeze.
+2026-10-23T01:44:02.372-04:00| vmx| I005: VPMC: gen counters: num 8 mask 0xffffffffffff
+2026-10-23T01:44:02.372-04:00| vmx| I005: VPMC: fix counters: num 0 mask 0; version 1
+2026-10-23T01:44:02.372-04:00| vmx| I005: VPMC: hardware counters: 0
+2026-10-23T01:44:02.372-04:00| vmx| I005: VPMC: perf capabilities: 0x2000
+2026-10-23T01:44:02.372-04:00| vmx| I005: SVGA-PCI: BAR gfbSize=134217728, fifoSize=8388608
+2026-10-23T01:44:02.372-04:00| vmx| I005: SVGA: SVGA_REG_MEMORY_SIZE=134217728
+2026-10-23T01:44:02.372-04:00| vmx| I005: SVGA: SVGA_REG_VRAM_SIZE=134217728
+2026-10-23T01:44:02.372-04:00| vmx| I005: BusMemSampleSetUpStats: touched: initPct 75 pages 393216 : dirtied: initPct 75 pages 393216
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: caller 0 numvm 1 locked pages: num 2076 max 3396923
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: locked Page Limit: host 3405115 config 3525120 dynam 8589934591
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: minmempct 50  timestamp 830439
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: VM 0 min 302866 max 565010 shares 524288 paged 508188 nonpaged 35562 anonymous 5160 locked 2076 touchedPct 75 dirtiedPct 75 timestamp 830439 vmResponsive is 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: locked 2076 target 565010 balloon 0 0 0 swapped 0 0 allocd 0 512 state 0 100
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: states: 0 1 : 1 0 : 2 0 : 3 0
+2026-10-23T01:44:02.373-04:00| vmx| I005: MemSched: Balloon enabled 1 guestType 0 maxSize 0
+2026-10-23T01:44:02.373-04:00| vmx| I005: PStrIntern expansion: nBkts=256
+2026-10-23T01:44:02.373-04:00| vmx| I005: FeatureCompat: Capabilities:
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.sse3 = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.pclmulqdq = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.mwait = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.vmx = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.ssse3 = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.fma = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.cmpxchg16b = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.pcid = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.sse41 = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.sse42 = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.movbe = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.popcnt = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.aes = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.xsave = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.avx = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.f16c = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.rdrand = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.ds = 1
+2026-10-23T01:44:02.373-04:00| vmx| I005: Capability Found: cpuid.ss = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.fsgsbase = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.bmi1 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.avx2 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.smep = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.bmi2 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.enfstrg = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.invpcid = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.mpx = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.rdseed = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.adx = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.smap = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.clflushopt = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xcr0_master_sse = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xcr0_master_ymm_h = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xcr0_master_bndregs = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xcr0_master_bndcsr = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xsaveopt = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xsavec = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xgetbv_ecx1 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.xsaves = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.lahf64 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.abm = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.3dnprefetch = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.nx = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.pdpe1gb = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.rdtscp = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.lm = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: cpuid.intel = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: hv.capable = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vt.realmode = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: misc.cpuidfaulting = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vt.eptad = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vt.ple = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vt.zeroinstlen = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.microarchitecture.skylake = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.numgenctrs = 8
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.numfixedctrs = 3
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genwidth = 0x30
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.fixedwidth = 0x30
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.version = 4
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.0 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.1 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.2 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.3 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.4 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.5 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.6 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.genctr.7 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.fixctr.0 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.fixctr.1 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: Capability Found: vpmc.fixctr.2 = 1
+2026-10-23T01:44:02.374-04:00| vmx| I005: FeatureCompat: Requirements:
+2026-10-23T01:44:02.374-04:00| vmx| I005: VM Features Required: cpuid.sse3 - Bool:Min:1
+2026-10-23T01:44:02.374-04:00| vmx| I005: VM Features Required: cpuid.pclmulqdq - Bool:Min:1
+2026-10-23T01:44:02.374-04:00| vmx| I005: VM Features Required: cpuid.ssse3 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.fma - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.cmpxchg16b - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.pcid - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.sse41 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.sse42 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.movbe - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.popcnt - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.aes - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xsave - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.avx - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.f16c - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.rdrand - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.ss - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.fsgsbase - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.bmi1 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.avx2 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.smep - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.bmi2 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.enfstrg - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.invpcid - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.rdseed - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.adx - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.smap - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.clflushopt - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xcr0_master_sse - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xcr0_master_ymm_h - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xsaveopt - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xsavec - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.xsaves - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.lahf64 - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.abm - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.3dnprefetch - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.nx - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.pdpe1gb - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.rdtscp - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.lm - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: cpuid.intel - Bool:Min:1
+2026-10-23T01:44:02.375-04:00| vmx| I005: VM Features Required: misc.cpuidfaulting - Bool:Min:1
+2026-10-23T01:44:02.376-04:00| vmx| I005: TOOLS received request in VMX to set option 'enableDnD' -> '1'
+2026-10-23T01:44:02.377-04:00| vmx| I005: Active HV capabilities
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Address space identifiers
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Flush by ASID
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Full decode
+2026-10-23T01:44:02.377-04:00| vmx| I005:    MSR permission bitmap
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Nested paging A/D bits
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Next RIP
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Real-address mode
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Skip debug state
+2026-10-23T01:44:02.377-04:00| vmx| I005:    X2APIC virtualization
+2026-10-23T01:44:02.377-04:00| vmx| I005:    BNDCFGS/MPX
+2026-10-23T01:44:02.377-04:00| vmx| I005:    INVEPT single-context
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Page-modification logging
+2026-10-23T01:44:02.377-04:00| vmx| I005:    ENCLS exiting
+2026-10-23T01:44:02.377-04:00| vmx| I005:    PAUSE-loop exiting
+2026-10-23T01:44:02.377-04:00| vmx| I005:    EPT-violation virtualization exception
+2026-10-23T01:44:02.377-04:00| vmx| I005:    Event injection with instruction length zero
+2026-10-23T01:44:02.377-04:00| vmx| I005: 
+2026-10-23T01:44:02.377-04:00| vmx| I005+ OvhdMem: Static (Power On) Overheads
+2026-10-23T01:44:02.377-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem excluded                                  cur    max    avg |    cur    max    avg
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem OvhdUser_MainMem                    :  524288 524288      - |      0      0      -
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem OvhdUser_VmxText                    :    7168   7168      - |      0      0      -
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem OvhdUser_VmxTextLibs                :   15360  15360      - |      0      0      -
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem Total excluded                      :  546816 546816      - |      -      -      -
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem Actual maximum                      :         546816        |             -
+2026-10-23T01:44:02.377-04:00| vmx| I005+ 
+2026-10-23T01:44:02.377-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem paged                                     cur    max    avg |    cur    max    avg
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem OvhdUser_STATS_vmm                  :       2      2      - |      0      0      -
+2026-10-23T01:44:02.377-04:00| vmx| I005: OvhdMem OvhdUser_STATS_device               :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SvgaMobFallback            :   32768  32768      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_DiskLibMemUsed             :    3075   3075      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SvgaSurfaceTable           :       6      6      - |      1      1      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SvgaBESurfaceTable         :      22     22      - |      6      6      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SvgaSDirtyCache            :      96     96      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SvgaCursor                 :      10     10      - |     10     10      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxGlobals                 :   10240  10240      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxGlobalsLibs             :    3584   3584      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxHeap                    :    8704   8704      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMks                     :      33     33      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksRenderOps            :     552    552      - |    552    552      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMks3d                   :  131072 131072      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksScreenTemp           :   69890  69890      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksVnc                  :   74936  74936      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksScreen               :  131075 131075      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksSVGAVO               :    4096   4096      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksSwbCursor            :    2560   2560      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxPhysMemErrPages         :      10     10      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxSLEntryBuf              :     128    128      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VmxThreads                 :   35328  35328      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Total paged                         :  508188 508188      - |    569    569      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Actual maximum                      :         508188        |           569
+2026-10-23T01:44:02.378-04:00| vmx| I005+ 
+2026-10-23T01:44:02.378-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem nonpaged                                  cur    max    avg |    cur    max    avg
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SharedArea                 :     108    108      - |     91     91      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_BusMemTraceBitmap          :      20     20      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_PFrame                     :    1845   2057      - |   1845   1845      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VIDE_KSEG                  :      16     16      - |     16     16      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VGA                        :      64     64      - |     64     64      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_BalloonMPN                 :       1      1      - |      1      1      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_P2MUpdateBuffer            :       3      3      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_ServicesMPN                :       3      3      - |      3      3      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_LocalApic                  :       2      2      - |      1      1      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_BusError                   :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_VBIOS                      :       8      8      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_LSIBIOS                    :       4      4      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_LSIRings                   :       4      4      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SAS1068BIOS                :       4      4      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SBIOS                      :      16     16      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_AHCIBIOS                   :      16     16      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_FlashRam                   :     128    128      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SVGAFB                     :   32768  32768      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_SVGAMEM                    :      64    512      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_HDAudioReg                 :       3      3      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_EHCIRegister               :       1      1      - |      1      1      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_XhciRegister               :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_HyperV                     :       2      2      - |      1      1      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_ExtCfg                     :       4      4      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_vhvCachedVMCS              :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_vhvNestedAPIC              :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_MonWired                   :      33     33      - |     33     33      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_MonNuma                    :     228    228      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdUser_NVDC                       :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Total nonpaged                      :   35350  36010      - |   2056   2056      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Actual maximum                      :          36010        |          2056
+2026-10-23T01:44:02.378-04:00| vmx| I005+ 
+2026-10-23T01:44:02.378-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem anonymous                                 cur    max    avg |    cur    max    avg
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_Alloc                       :      97     97      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BusMemFrame                 :     609    618      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BusMem2MInfo                :       8      8      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BusMem1GInfo                :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BusMemZapListMPN            :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_MonAS                       :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_GuestMem                    :      24     24      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_TC                          :     513    513      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BusMemMonAS                 :       5      5      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_PlatformMonAS               :       7      7      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_HVNuma                      :       2      2      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_HV                          :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_HVMSRBitmap                 :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_VHVGuestMSRBitmap           :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_VHV                         :       3      3      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_Numa                        :      24     24      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_NumaTextRodata              :     201    201      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_NumaDataBss                 :      27     27      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_BaseWired                   :      29     29      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_Bootstrap                   :    1703   1703      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_GPhysTraced                 :     264    264      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_GPhysHWMMU                  :    1254   1254      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_GPhysNoTrace                :     264    264      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_PhysMemGart                 :     104    104      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_PhysMemErr                  :       6      6      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem OvhdMon_VProbe                      :       1      1      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Total anonymous                     :    5151   5160      - |      0      0      -
+2026-10-23T01:44:02.378-04:00| vmx| I005: OvhdMem Actual maximum                      :           5160        |             0
+2026-10-23T01:44:02.378-04:00| vmx| I005+ 
+2026-10-23T01:44:02.378-04:00| vmx| I005: VMMEM: Precise Reservation: 2143MB (MainMem=2048MB)
+2026-10-23T01:44:02.379-04:00| vmx| I005: Vix: [mainDispatch.c:1050]: VMAutomation_PowerOn. Powering on.
+2026-10-23T01:44:02.380-04:00| vmx| I005: VMX_PowerOn: ModuleTable_PowerOn = 1
+2026-10-23T01:44:02.380-04:00| vmx| A000: ConfigDB: Setting cleanShutdown = "FALSE"
+2026-10-23T01:44:02.380-04:00| vmx| A000: ConfigDB: Setting softPowerOff = "FALSE"
+2026-10-23T01:44:02.383-04:00| vcpu-0| I005: VTHREAD 15160 "vcpu-0"
+2026-10-23T01:44:02.383-04:00| vmx| I005: ToolsISO: Refreshing imageName for 'winnetstandard' (refreshCount=1, lastCount=1).
+2026-10-23T01:44:02.383-04:00| vmx| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:44:02.383-04:00| vmx| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:44:02.384-04:00| vmx| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:44:02.384-04:00| vmx| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:44:02.384-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Program Files (x86)\VMware\VMware Player\winPreVista.iso", ...) failed, error: 2
+2026-10-23T01:44:02.384-04:00| vmx| I005: TOOLS updated cached value for isoImageExists to 0.
+2026-10-23T01:44:02.384-04:00| vmx| I005: VMXVmdb_SetToolsVersionStatus: status value set to 'notAvailable', 'tooOld', install impossible
+2026-10-23T01:44:02.389-04:00| vcpu-0| I005: MonTimer APIC:0/0 vec: 0
+2026-10-23T01:44:02.389-04:00| vcpu-0| I005: APIC: version = 0x15, max LVT = 6, LDR = 0x8000000, DFR = 0xffffffff
+2026-10-23T01:44:02.392-04:00| svga| I005: SVGA thread is alive
+2026-10-23T01:44:02.392-04:00| vcpu-0| I005: CPU reset: hard (mode Interp)
+2026-10-23T01:44:02.393-04:00| vcpu-0| I005: GuestRpc: Successfully created RPCI listening socket.
+2026-10-23T01:44:02.393-04:00| vcpu-0| I005: GuestRpc: Using vsocket for TCLO messaging is disabled.
+2026-10-23T01:44:02.393-04:00| vcpu-0| A000: ConfigDB: Unsetting all entries with prefix "usb:0."
+2026-10-23T01:44:02.402-04:00| vcpu-0| I005: USB: Disconnecting device 0x2000000400000000
+2026-10-23T01:44:02.403-04:00| vcpu-0| I005: USB: Connecting device desc:name:VMware\ Virtual\ USB\ Mouse vid:0e0f pid:0003 speed:full family:hid deviceType:virtual-hid info:0000005 version:3 id:0x200000050e0f0003
+2026-10-23T01:44:02.403-04:00| vcpu-0| I005: Policy_GetUSBDevAccess: allowConnect = YES
+2026-10-23T01:44:02.403-04:00| vcpu-0| A000: ConfigDB: Setting usb:0.present = "TRUE"
+2026-10-23T01:44:02.403-04:00| vcpu-0| A000: ConfigDB: Setting usb:0.deviceType = "hid"
+2026-10-23T01:44:02.403-04:00| vcpu-0| A000: ConfigDB: Setting usb:0.port = "0"
+2026-10-23T01:44:02.403-04:00| vcpu-0| A000: ConfigDB: Setting usb:0.parent = "-1"
+2026-10-23T01:44:02.413-04:00| vcpu-0| I005: memoryHotplug: Node 0: Present: 2047 MB (100 %) Size:2047 MB (100 %)
+2026-10-23T01:44:02.413-04:00| vcpu-0| I005: PIIX4: PM Resuming from suspend type 0x0, chipset.onlineStandby 0
+2026-10-23T01:44:02.433-04:00| vcpu-0| I005: SOUND 428.460882 ES1371Win32GetMixerCtl mixerGetLineInfo error 1024
+2026-10-23T01:44:02.433-04:00| vcpu-0| I005: VNET: 'ethernet0' enable link state propagation, lsp.state = 5
+2026-10-23T01:44:02.433-04:00| vcpu-0| I005: VNET: MACVNetConnectToNetwork 'ethernet0' lsp.state = 4
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: VNET: MACVNetConnectToNetwork 'Ethernet0' notify available.
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: CDROM: Connecting ide1:0 to 'C:\VBox_Shared\bootcd.iso'. type=2 remote=0
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: DMG_Open: Not an unencrypted .dmg file (footer signature 0x00000000).
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: DMG_Close: max cached entries 8
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: CDROM: Checking initial physical media state...
+2026-10-23T01:44:02.434-04:00| vcpu-0| I005: CDROM:  initial physical CDROM state is 1 (sense)
+2026-10-23T01:44:02.435-04:00| vcpu-0| I005: HGFSPublish: publishing 0 shares
+2026-10-23T01:44:02.438-04:00| vcpu-0| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmpl", ...) failed, error: 2
+2026-10-23T01:44:02.438-04:00| vcpu-0| I005: PolicyVMXFindPolicyKey: policy file does not exist.
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=0, newAppState=1872, success=1 additionalError=0
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Vix: [mainDispatch.c:4117]: VMAutomationReportPowerStateChange: Reporting power state change (opcode=0, err=0).
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Vix: [mainDispatch.c:4117]: VMAutomationReportPowerStateChange: Reporting power state change (opcode=2, err=0).
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Transitioned vmx/execState/val to poweredOn
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Tools: Adding Tools inactivity timer.
+2026-10-23T01:44:02.441-04:00| vmx| I005: VUsbUpdateVigorFieldsAndAutoconnect: New set of 3 USB devices
+2026-10-23T01:44:02.441-04:00| vmx| I005: USB: Found device [name:Realtek\ USB2.0-CRW vid:0bda pid:0153 path:1/9/0/4 speed:high family:storage,storage-bulk instanceId:USB\\VID_0BDA&PID_0153\\20120926571200000 serialnum:20120926571200000 arbRuntimeKey:1 version:3]
+2026-10-23T01:44:02.441-04:00| vcpu-0| I005: Intel VT: FlexPriority disabled, VPID enabled.
+2026-10-23T01:44:02.441-04:00| vmx| I005: USB: Found device [name:Intel(R)\ Wireless\ Bluetooth(R) vid:8087 pid:0a2a path:1/9/0/5 speed:full family:wireless,bluetooth instanceId:USB\\VID_8087&PID_0A2A\\5&D2CC3D4&0&5 arbRuntimeKey:2 version:3]
+2026-10-23T01:44:02.441-04:00| vmx| I005: USB: Found device [name:Virtual\ Bluetooth\ Adapter vid:0a12 pid:0001 speed:full family:wireless,bluetooth deviceType:virtual-bluetooth info:0000001 version:3]
+2026-10-23T01:44:02.447-04:00| vmx| I005: VNET: MACVNetLinkStateEventHandler: event, up:1, adapter:0
+2026-10-23T01:44:02.447-04:00| vmx| I005: VNET: MACVNetLinkStateEventHandler: 'ethernet0' state from 4 to 6.
+2026-10-23T01:44:02.519-04:00| mks| I005: MKSControlMgr: connected
+2026-10-23T01:44:02.529-04:00| mks| I005: KHBKL: Unable to parse keystring at: ''
+2026-10-23T01:44:02.529-04:00| mks| I005: KHBKL: Unable to parse keystring at: ''
+2026-10-23T01:44:02.529-04:00| mks| I005: MKS-VMDB: VMDB requested a screenshot
+2026-10-23T01:44:02.529-04:00| svga| I005: MKSScreenShotMgr: Taking a screenshot
+2026-10-23T01:44:02.537-04:00| vcpu-0| I005: UHCI: HCReset
+2026-10-23T01:44:02.627-04:00| vcpu-0| I005: SVGA: Registering MemSpace at 0xe8000000(0x0) and 0xfe000000(0x0)
+2026-10-23T01:44:02.628-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.632-04:00| vcpu-0| I005: SVGA: Unregistering MemSpace at 0xe8000000(0xe8000000) and 0xfe000000(0xfe000000)
+2026-10-23T01:44:02.632-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.684-04:00| mks| I005: SWBWindow: Number of MKSWindows changed: 1 rendering MKSWindow(s) of total 1.
+2026-10-23T01:44:02.684-04:00| mks| I005: GDI-Backend: successfully started by HWinMux to do window composition.
+2026-10-23T01:44:02.692-04:00| mks| I005: MKS-HWinMux: Started GDI presentation backend
+2026-10-23T01:44:02.776-04:00| vcpu-0| I005: SVGA: Registering MemSpace at 0xe8000000(0xe8000000) and 0xfe000000(0xfe000000)
+2026-10-23T01:44:02.776-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.780-04:00| vcpu-0| I005: SVGA: Unregistering MemSpace at 0xe8000000(0xe8000000) and 0xfe000000(0xfe000000)
+2026-10-23T01:44:02.781-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.781-04:00| vcpu-0| I005: SVGA: Registering IOSpace at 0x1070
+2026-10-23T01:44:02.781-04:00| vcpu-0| I005: SVGA: Registering MemSpace at 0xe8000000(0xe8000000) and 0xfe000000(0xfe000000)
+2026-10-23T01:44:02.781-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.784-04:00| vcpu-0| I005: PCIBridge4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.784-04:00| vcpu-0| I005: pciBridge4:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.784-04:00| vcpu-0| I005: pciBridge4:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.784-04:00| vcpu-0| I005: pciBridge4:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.785-04:00| vcpu-0| I005: pciBridge4:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.785-04:00| vcpu-0| I005: pciBridge4:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.785-04:00| vcpu-0| I005: pciBridge4:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.785-04:00| vcpu-0| I005: pciBridge4:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.786-04:00| vcpu-0| I005: PCIBridge5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.786-04:00| vcpu-0| I005: pciBridge5:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.786-04:00| vcpu-0| I005: pciBridge5:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.786-04:00| vcpu-0| I005: pciBridge5:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.787-04:00| vcpu-0| I005: pciBridge5:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.787-04:00| vcpu-0| I005: pciBridge5:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.787-04:00| vcpu-0| I005: pciBridge5:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.787-04:00| vcpu-0| I005: pciBridge5:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.787-04:00| vcpu-0| I005: PCIBridge6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.788-04:00| vcpu-0| I005: pciBridge6:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.788-04:00| vcpu-0| I005: pciBridge6:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.788-04:00| vcpu-0| I005: pciBridge6:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.788-04:00| vcpu-0| I005: pciBridge6:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.789-04:00| vcpu-0| I005: pciBridge6:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.789-04:00| vcpu-0| I005: pciBridge6:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.789-04:00| vcpu-0| I005: pciBridge6:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.789-04:00| vcpu-0| I005: PCIBridge7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.789-04:00| vcpu-0| I005: pciBridge7:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.790-04:00| vcpu-0| I005: pciBridge7:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.790-04:00| vcpu-0| I005: pciBridge7:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.790-04:00| vcpu-0| I005: pciBridge7:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.790-04:00| vcpu-0| I005: pciBridge7:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.791-04:00| vcpu-0| I005: pciBridge7:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.791-04:00| vcpu-0| I005: pciBridge7:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.808-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.810-04:00| vmx| I005: VNET: MACVNetLinkStateTimerHandler: 'ethernet0' state from 6 to 1.
+2026-10-23T01:44:02.815-04:00| vcpu-0| I005: SVGA: FIFO is already mapped
+2026-10-23T01:44:02.911-04:00| vcpu-0| I005: AHCI: Tried to enable/disable IO space.
+2026-10-23T01:44:02.912-04:00| vcpu-0| I005: PCIBridge4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.912-04:00| vcpu-0| I005: pciBridge4:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.913-04:00| vcpu-0| I005: pciBridge4:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.913-04:00| vcpu-0| I005: pciBridge4:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.913-04:00| vcpu-0| I005: pciBridge4:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.913-04:00| vcpu-0| I005: pciBridge4:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.914-04:00| vcpu-0| I005: pciBridge4:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.914-04:00| vcpu-0| I005: pciBridge4:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.915-04:00| vcpu-0| I005: PCIBridge5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.915-04:00| vcpu-0| I005: pciBridge5:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.915-04:00| vcpu-0| I005: pciBridge5:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.915-04:00| vcpu-0| I005: pciBridge5:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.916-04:00| vcpu-0| I005: pciBridge5:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.916-04:00| vcpu-0| I005: pciBridge5:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.916-04:00| vcpu-0| I005: pciBridge5:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.916-04:00| vcpu-0| I005: pciBridge5:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.917-04:00| vcpu-0| I005: PCIBridge6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.917-04:00| vcpu-0| I005: pciBridge6:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.917-04:00| vcpu-0| I005: pciBridge6:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.917-04:00| vcpu-0| I005: pciBridge6:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.917-04:00| vcpu-0| I005: pciBridge6:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.918-04:00| vcpu-0| I005: pciBridge6:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.918-04:00| vcpu-0| I005: pciBridge6:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.918-04:00| vcpu-0| I005: pciBridge6:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.918-04:00| vcpu-0| I005: PCIBridge7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.919-04:00| vcpu-0| I005: pciBridge7:1: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.919-04:00| vcpu-0| I005: pciBridge7:2: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.919-04:00| vcpu-0| I005: pciBridge7:3: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.920-04:00| vcpu-0| I005: pciBridge7:4: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.920-04:00| vcpu-0| I005: pciBridge7:5: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.920-04:00| vcpu-0| I005: pciBridge7:6: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:02.920-04:00| vcpu-0| I005: pciBridge7:7: ISA/VGA decoding enabled (ctrl 0004)
+2026-10-23T01:44:03.195-04:00| vcpu-0| I005: AHCI: Tried to enable/disable IO space.
+2026-10-23T01:44:03.196-04:00| vcpu-0| I005: AHCI-VMM:HBA reset issued on sata0.
+2026-10-23T01:44:03.316-04:00| vmx| I005: VUsbUpdateVigorFieldsAndAutoconnect: New set of 3 USB devices
+2026-10-23T01:44:03.316-04:00| vmx| I005: USB: Found device [name:Realtek\ USB2.0-CRW vid:0bda pid:0153 path:1/9/0/4 speed:high family:storage,storage-bulk instanceId:USB\\VID_0BDA&PID_0153\\20120926571200000 serialnum:20120926571200000 arbRuntimeKey:1 version:3]
+2026-10-23T01:44:03.316-04:00| vmx| I005: USB: Found device [name:Intel(R)\ Wireless\ Bluetooth(R) vid:8087 pid:0a2a path:1/9/0/5 speed:full family:wireless,bluetooth instanceId:USB\\VID_8087&PID_0A2A\\5&D2CC3D4&0&5 arbRuntimeKey:2 version:3]
+2026-10-23T01:44:03.316-04:00| vmx| I005: USB: Found device [name:Virtual\ Bluetooth\ Adapter vid:0a12 pid:0001 speed:full family:wireless,bluetooth deviceType:virtual-bluetooth info:0000001 version:3]
+2026-10-23T01:44:03.469-04:00| vcpu-0| I005: BIOS-UUID is 56 4d 21 d9 67 c5 2a 49-24 4d aa 0f af fe b7 2e
+2026-10-23T01:44:07.840-04:00| vcpu-0| I005: Unknown int 10h func 0x0000
+2026-10-23T01:44:08.990-04:00| vmx| I005: DISKLIB-LIB   : numIOs = 50000 numMergedIOs = 0 numSplitIOs = 0
+2026-10-23T01:44:09.421-04:00| vcpu-0| I005: Triple fault.
+2026-10-23T01:44:09.421-04:00| vcpu-0| I005: MsgHint: msg.monitorEvent.tripleFault
+2026-10-23T01:44:09.421-04:00| vcpu-0| I005+ A fault has occurred causing a virtual CPU to enter the shutdown state. If this fault had occurred outside of a virtual machine, it would have caused the physical machine to restart. The shutdown state can be reached by incorrectly configuring the virtual machine, a bug in the guest operating system, or a problem in VMware Player.---------------------------------------
+2026-10-23T01:45:15.203-04:00| vcpu-0| I005: CPU reset: hard (mode Interp)
+2026-10-23T01:45:15.204-04:00| vmx| I005: Stopping VCPU threads...
+2026-10-23T01:45:15.205-04:00| vmx| I005: GuestRpcSendTimedOut: message to toolbox-dnd timed out.
+2026-10-23T01:45:15.212-04:00| svga| I005: SVGA thread is exiting
+2026-10-23T01:45:15.214-04:00| mks| I005: GDI-Backend: stopped by HWinMux to do window composition.
+2026-10-23T01:45:15.215-04:00| mks| I005: SWBWindow: Number of MKSWindows changed: 0 rendering MKSWindow(s) of total 0.
+2026-10-23T01:45:15.215-04:00| vmx| I005: MKS thread is stopped
+2026-10-23T01:45:15.215-04:00| vmx| I005: USB: Disconnecting device 0x200000050e0f0003
+2026-10-23T01:45:15.216-04:00| vmx| I005: 
+2026-10-23T01:45:15.216-04:00| vmx| I005+ OvhdMem: Final (Power Off) Overheads
+2026-10-23T01:45:15.216-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem excluded                                  cur    max    avg |    cur    max    avg
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_MainMem                    :  524288 524288      - |  16171  16171      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxText                    :    7168   7168      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxTextLibs                :   15360  15360      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem Total excluded                      :  546816 546816      - |      -      -      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem Actual maximum                      :         546816        |             -
+2026-10-23T01:45:15.216-04:00| vmx| I005+ 
+2026-10-23T01:45:15.216-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem paged                                     cur    max    avg |    cur    max    avg
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_STATS_vmm                  :       2      2      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_STATS_device               :       1      1      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SvgaMobFallback            :   32768  32768      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_DiskLibMemUsed             :    3075   3075      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SvgaSurfaceTable           :       6      6      - |      1      1      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SvgaBESurfaceTable         :      22     22      - |      6      6      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SvgaSDirtyCache            :      96     96      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SvgaCursor                 :      10     10      - |     10     10      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxGlobals                 :   10240  10240      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxGlobalsLibs             :    3584   3584      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxHeap                    :    8704   8704      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMks                     :      33     33      - |      1      1      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksRenderOps            :     552    552      - |    552    552      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMks3d                   :  131072 131072      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksScreenTemp           :   69890  69890      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksVnc                  :   74936  74936      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksScreen               :  131075 131075      - |      0    376      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksSVGAVO               :    4096   4096      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxMksSwbCursor            :    2560   2560      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxPhysMemErrPages         :      10     10      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxSLEntryBuf              :     128    128      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VmxThreads                 :   35328  35328      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem Total paged                         :  508188 508188      - |    570    946      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem Actual maximum                      :         508188        |           946
+2026-10-23T01:45:15.216-04:00| vmx| I005+ 
+2026-10-23T01:45:15.216-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem nonpaged                                  cur    max    avg |    cur    max    avg
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SharedArea                 :     108    108      - |     91     91      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_BusMemTraceBitmap          :      20     20      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_PFrame                     :    1845   2057      - |   1845   1845      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VIDE_KSEG                  :      16     16      - |     16     16      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VGA                        :      64     64      - |     64     64      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_BalloonMPN                 :       1      1      - |      1      1      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_P2MUpdateBuffer            :       3      3      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_ServicesMPN                :       3      3      - |      3      3      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_LocalApic                  :       2      2      - |      1      1      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_BusError                   :       1      1      - |      1      1      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_VBIOS                      :       8      8      - |      8      8      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_LSIBIOS                    :       4      4      - |      2      2      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_LSIRings                   :       4      4      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SAS1068BIOS                :       4      4      - |      0      0      -
+2026-10-23T01:45:15.216-04:00| vmx| I005: OvhdMem OvhdUser_SBIOS                      :      16     16      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_AHCIBIOS                   :      16     16      - |      2      2      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_FlashRam                   :     128    128      - |     58     58      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_SVGAFB                     :   32768  32768      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_SVGAMEM                    :      64    512      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_HDAudioReg                 :       3      3      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_EHCIRegister               :       1      1      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_XhciRegister               :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_HyperV                     :       2      2      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_ExtCfg                     :       4      4      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_vhvCachedVMCS              :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_vhvNestedAPIC              :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_MonWired                   :      33     33      - |     33     33      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_MonNuma                    :     228    228      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdUser_NVDC                       :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem Total nonpaged                      :   35350  36010      - |   2129   2129      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem Actual maximum                      :          36010        |          2129
+2026-10-23T01:45:15.217-04:00| vmx| I005+ 
+2026-10-23T01:45:15.217-04:00| vmx| I005:                                                       reserved      |          used
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem anonymous                                 cur    max    avg |    cur    max    avg
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_Alloc                       :      97     97      - |     27     71      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BusMemFrame                 :     609    618      - |    609    609      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BusMem2MInfo                :       8      8      - |      8      8      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BusMem1GInfo                :       1      1      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BusMemZapListMPN            :       1      1      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_MonAS                       :       1      1      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_GuestMem                    :      24     24      - |     24     24      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_TC                          :     513    989      - |    477    954      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BusMemMonAS                 :       5      5      - |      5      5      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_PlatformMonAS               :       7      7      - |      5      5      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_HVNuma                      :       2      2      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_HV                          :       1      1      - |      1      1      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_HVMSRBitmap                 :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_VHVGuestMSRBitmap           :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_VHV                         :       3      3      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_Numa                        :      24     24      - |     14     24      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_NumaTextRodata              :     201    381      - |    180    360      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_NumaDataBss                 :      27     27      - |     26     26      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_NumaLargeData               :       0    512      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_BaseWired                   :      28     29      - |     20     21      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_Bootstrap                   :       0   1703      - |      0    324      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_GPhysTraced                 :     264    264      - |     84     84      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_GPhysHWMMU                  :    1254   1254      - |    176    176      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_GPhysNoTrace                :     264    264      - |     68     70      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_PhysMemGart                 :     104    104      - |     96     96      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_PhysMemErr                  :       6      6      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem OvhdMon_VProbe                      :       1      1      - |      0      0      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem Total anonymous                     :    3447   6328      - |   1823   2861      -
+2026-10-23T01:45:15.217-04:00| vmx| I005: OvhdMem Actual maximum                      :           5160        |          2348
+2026-10-23T01:45:15.217-04:00| vmx| I005+ 
+2026-10-23T01:45:15.217-04:00| vmx| I005: VMMEM: Maximum Reservation: 2150MB (MainMem=2048MB)
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: BALLOON HIST [0, 524288]: 9 9 0 0 0 0 0 0 0 0 0 0
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: BALLOON P50 1 P70 1 P90 1 MIN 0 MAX 0
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: SWAP HIST [0, 524288]: 9 9 0 0 0 0 0 0 0 0 0 0
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: SWAP P50 1 P70 1 P90 1 MIN 0 MAX 0
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: LOCK HIST [0, 524288]: 0 9 0 0 0 0 0 0 0 0 0 0
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: LOCK P50 10 P70 10 P90 10 MIN 2076 MAX 20139
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: LOCK_TARGET HIST [0, 524288]: 0 0 0 0 0 0 0 0 0 0 9 9
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: LOCK_TARGET P50 100 P70 100 P90 100 MIN 524288 MAX 565010
+2026-10-23T01:45:15.217-04:00| vmx| I005: MemSched: ACTIVE_PCT HIST [0, 100]: 0 0 0 0 0 0 0 0 9 0 0 0
+2026-10-23T01:45:15.218-04:00| vmx| I005: MemSched: ACTIVE_PCT P50 80 P70 80 P90 80 MIN 75 MAX 75
+2026-10-23T01:45:15.218-04:00| vmx| I005: MemSched: NUM_VMS HIST [0, 10]: 0 0 9 0 0 0 0 0 0 0 0 0
+2026-10-23T01:45:15.218-04:00| vmx| I005: MemSched: NUM_VMS P50 20 P70 20 P90 20 MIN 1 MAX 1
+2026-10-23T01:45:15.218-04:00| vmx| I005: MemSched: HOSTLOCK HIST [0, 3388765]: 0 9 0 0 0 0 0 0 0 0 0 0
+2026-10-23T01:45:15.218-04:00| vmx| I005: MemSched: HOSTLOCK P50 10 P70 10 P90 10 MIN 2076 MAX 20139
+2026-10-23T01:45:15.218-04:00| vmx| I005: TOOLS received request in VMX to set option 'enableDnD' -> '0'
+2026-10-23T01:45:15.218-04:00| vmx| I005: TOOLS received request in VMX to set option 'copypaste' -> '0'
+2026-10-23T01:45:15.219-04:00| vmx| I005: HgfsServerManagerVigorExit: Destroy:
+2026-10-23T01:45:15.219-04:00| vmx| I005: ToolsISO: Refreshing imageName for 'winnetstandard' (refreshCount=1, lastCount=1).
+2026-10-23T01:45:15.219-04:00| vmx| I005: ToolsISO: open of C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig failed: Could not find the file
+2026-10-23T01:45:15.219-04:00| vmx| I005: ToolsISO: Unable to read signature file 'C:\Program Files (x86)\VMware\VMware Player\isoimages_manifest.txt.sig', ignoring.
+2026-10-23T01:45:15.219-04:00| vmx| I005: ToolsISO: Updated cached value for imageName to 'winPreVista.iso'.
+2026-10-23T01:45:15.219-04:00| vmx| I005: ToolsISO: Selected Tools ISO 'winPreVista.iso' for 'winnetstandard' guest.
+2026-10-23T01:45:15.219-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Program Files (x86)\VMware\VMware Player\winPreVista.iso", ...) failed, error: 2
+2026-10-23T01:45:15.219-04:00| vmx| I005: TOOLS updated cached value for isoImageExists to 0.
+2026-10-23T01:45:15.220-04:00| vmx| I005: Tools: ToolsRunningStatus_Exit, delayedRequest is 0x35D03F0
+2026-10-23T01:45:15.220-04:00| vmx| I005: TOOLS: appName=toolbox-dnd, oldStatus=0, status=0, guestInitiated=0.
+2026-10-23T01:45:15.220-04:00| vmx| I005: Tools: [AppStatus] Last heartbeat value 0 (never received)
+2026-10-23T01:45:15.220-04:00| vmx| I005: TOOLS: appName=toolbox, oldStatus=0, status=0, guestInitiated=0.
+2026-10-23T01:45:15.223-04:00| vmx| I005: USB: Disconnecting device 0x10e0f0002
+2026-10-23T01:45:15.225-04:00| usbCCIDEnumCards| I005: USB-CCID: Card enum thread exiting.
+2026-10-23T01:45:15.236-04:00| vmx| I005: SOUNDLIB: Closing Wave sound backend.
+2026-10-23T01:45:15.237-04:00| vmx| I005: MKS thread was already stopped
+2026-10-23T01:45:15.237-04:00| mks| I005: MKSControlMgr: disconnected
+2026-10-23T01:45:15.237-04:00| mks| I005: MKS-RenderMain: Stopping MKSBasicOps
+2026-10-23T01:45:15.238-04:00| mks| I005: MKS PowerOff
+2026-10-23T01:45:15.238-04:00| mks| I005: MKS thread is exiting
+2026-10-23T01:45:15.239-04:00| vmx| W003: 
+2026-10-23T01:45:15.239-04:00| vmx| I005: sata0:0: numIOs = 54878 numMergedIOs = 0 numSplitIOs = 0 ( 0.0%)
+2026-10-23T01:45:15.239-04:00| vmx| I005: Closing disk 'sata0:0'
+2026-10-23T01:45:15.241-04:00| vmx| I005: AIOWIN32C: asyncOps=54879 syncOps=2 bufSize=0Kb fixedOps=0
+2026-10-23T01:45:15.241-04:00| aioCompletion| I005: AIO thread processed 54879 completions
+2026-10-23T01:45:15.250-04:00| deviceThread| I005: Device thread is exiting
+2026-10-23T01:45:15.279-04:00| vmx| I005: Vix: [mainDispatch.c:1163]: VMAutomationPowerOff: Powering off.
+2026-10-23T01:45:15.279-04:00| vmx| I005: Win32U_GetFileAttributes: GetFileAttributesExW("C:\Users\Bryan\Documents\Virtual Machines\ReactOS\ReactOS.vmpl", ...) failed, error: 2
+2026-10-23T01:45:15.279-04:00| vmx| I005: Policy_SavePolicyFile: invalid arguments to function.
+2026-10-23T01:45:15.279-04:00| vmx| I005: PolicyVMX_Exit: Could not write out policies: 15.
+2026-10-23T01:45:15.280-04:00| vmx| I005: WORKER: asyncOps=2 maxActiveOps=1 maxPending=1 maxCompleted=1
+2026-10-23T01:45:15.280-04:00| WinNotifyThread| I005: WinNotify thread exiting
+2026-10-23T01:45:15.304-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=1, newAppState=1873, success=1 additionalError=0
+2026-10-23T01:45:15.304-04:00| vmx| I005: Vix: [mainDispatch.c:4218]: VMAutomation: Ignoring ReportPowerOpFinished because the VMX is shutting down.
+2026-10-23T01:45:15.306-04:00| vmx| A000: ConfigDB: Setting cleanShutdown = "TRUE"
+2026-10-23T01:45:15.307-04:00| vmx| I005: Vix: [mainDispatch.c:4200]: VMAutomation_ReportPowerOpFinished: statevar=0, newAppState=1870, success=1 additionalError=0
+2026-10-23T01:45:15.308-04:00| vmx| I005: Vix: [mainDispatch.c:4218]: VMAutomation: Ignoring ReportPowerOpFinished because the VMX is shutting down.
+2026-10-23T01:45:15.308-04:00| vmx| I005: Transitioned vmx/execState/val to poweredOff
+2026-10-23T01:45:15.308-04:00| vmx| I005: VMX idle exit
+2026-10-23T01:45:15.308-04:00| vmx| I005: WQPoolFreePoll : pollIx = 3, signalHandle = 588
+2026-10-23T01:45:15.308-04:00| vmx| I005: Vix: [mainDispatch.c:815]: VMAutomation_LateShutdown()
+2026-10-23T01:45:15.308-04:00| vmx| I005: Vix: [mainDispatch.c:770]: VMAutomationCloseListenerSocket. Closing listener socket.
+2026-10-23T01:45:15.308-04:00| vmx| I005: Flushing VMX VMDB connections
+2026-10-23T01:45:15.308-04:00| vmx| I005: VmdbDbRemoveCnx: Removing Cnx from Db for '/db/connection/#1/'
+2026-10-23T01:45:15.308-04:00| vmx| I005: VmdbCnxDisconnect: Disconnect: closed pipe for pub cnx '/db/connection/#1/' (0)
+2026-10-23T01:45:15.309-04:00| vmx| I005: VigorTransport_ServerDestroy: server destroyed.
+2026-10-23T01:45:15.309-04:00| vmx| I005: WQPoolFreePoll : pollIx = 2, signalHandle = 428
+2026-10-23T01:45:15.309-04:00| vmx| I005: WQPoolFreePoll : pollIx = 1, signalHandle = 328
+2026-10-23T01:45:15.311-04:00| vmx| I005: VMX exit (0).
+2026-10-23T01:45:15.311-04:00| vmx| I005: OBJLIB-LIB: ObjLib cleanup done.
+2026-10-23T01:45:15.311-04:00| vmx| I005: AIOMGR-S : stat o=3 r=29 w=1 i=0 br=84480 bw=8192

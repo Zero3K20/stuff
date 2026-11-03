@@ -1,0 +1,2916 @@
+UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 29a00
+  FlushFE: 5986
+  FlushFI: offs 6ac
+    CcUninitializeCacheMap()
+  FlushFE: 5986
+  FlushFI: offs 6ac
+Thrd:b37319a8:    Opening file \ReactOS\inf\kscaptur.inf b3683428
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1132058 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e6ec (0:44e56c), len 108f6
+UDFReadMappingFromXEntry: mode 1, loc 5987, len 10
+  FExtInfo->Length 108f6
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BD448, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e5ab0, FO b3683428, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 10a00
+Thrd:b36a9020:UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 10a00
+UDFTeardownStructures, RemovedStartingFcb -> F
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 10a00
+  FlushFE: 5987
+  FlushFI: offs 6dc
+    CcUninitializeCacheMap()
+  FlushFE: 5987
+  FlushFI: offs 6dc
+Thrd:b37319a8:    Opening file \ReactOS\inf\legcydrv.inf b3681da0
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e771 (0:44e5f1), len b7c
+UDFReadMappingFromXEntry: mode 1, loc 5988, len 10
+  FExtInfo->Length b7c
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BD1F0, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e17bd350, FO b3681da0, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen c00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: c00
+  FlushFE: 5988
+  FlushFI: offs 710
+    CcUninitializeCacheMap()
+  FlushFE: 5988
+  FlushFI: offs 710
+Thrd:b37319a8:    Opening file \ReactOS\inf\machine.inf b36811f8
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll aee7e544
+Thrd:b36a9020:    FCB e1132058, FO aee7e544, Flags 40002
+Thrd:b36a9020:UDFGetBasicInformation: 
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e777 (0:44e5f7), len 15ec4
+UDFReadMappingFromXEntry: mode 1, loc 5989, len 10
+  FExtInfo->Length 15ec4
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E32B0, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e3008, FO b36811f8, Flags 40002
+    CcFlushCache()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 16000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+Thrd:b36a9020:UDFTeardownStructures, StartingFcb E1132058 Flat
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll b3689e48
+Thrd:b36a9020:    FCB e1132058, FO b3689e48, Flags 40002
+Thrd:b36a9020:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b36a9020:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+ExtLen 16000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 16000
+  FlushFE: 5989
+  FlushFI: offs 744
+    CcUninitializeCacheMap()
+  FlushFE: 5989
+  FlushFI: offs 744
+Thrd:b37319a8:    Opening file \ReactOS\inf\monitor.inf b368d620
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1132058 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e827 (0:44e6a7), len 19de
+UDFReadMappingFromXEntry: mode 1, loc 598a, len 10
+  FExtInfo->Length 19de
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E5008, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e31b8, FO b368d620, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1a00
+Thrd:b36a9020:UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1a00
+  FlushFE: 598a
+  FlushFI: offs 778
+    CcUninitializeCacheMap()
+  FlushFE: 598a
+  FlushFI: offs 778
+Thrd:b37319a8:    Opening file \ReactOS\inf\msmouse.inf b367f9b8
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+UDFTeardownStructures, RemovedStartingFcb -> F
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e834 (0:44e6b4), len 9a10
+UDFReadMappingFromXEntry: mode 1, loc 598b, len 10
+  FExtInfo->Length 9a10
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E52D8, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e5438, FO b367f9b8, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 9c00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 9c00
+  FlushFE: 598b
+  FlushFI: offs 7ac
+    CcUninitializeCacheMap()
+  FlushFE: 598b
+  FlushFI: offs 7ac
+Thrd:b37319a8:    Opening file \ReactOS\inf\ndisuio.inf b367f1d0
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+  AcqForCreateSection()
+ExtLen 866400
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2dc34
+Thrd:b3789d58:    FCB e1721438, FO aef2dc34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+LnExt: type 0, loc 44e882 (0:44e702), len c26
+UDFReadMappingFromXEntry: mode 1, loc 598c, len 10
+  FExtInfo->Length c26
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BD6B8, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e51a8, FO b367f1d0, Flags 40002
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll aee7e544
+Thrd:b36a9020:    FCB e1132058, FO aee7e544, Flags 40002
+Thrd:b36a9020:UDFGetBasicInformation: 
+    CcFlushCache()
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 598c
+  FlushFI: offs 800
+    CcUninitializeCacheMap()
+  FlushFE: 598c
+  FlushFI: offs 800
+Thrd:b37319a8:    Opening file \ReactOS\inf\NET_NIC.inf b367e468
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1132058 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e889 (0:44e709), len e9e
+UDFReadMappingFromXEntry: mode 1, loc 598e, len 10
+  FExtInfo->Length e9e
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BD9D0, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e17bdb30, FO b367e468, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1000
+Thrd:b36a9020:UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1000
+  FlushFE: 598e
+  FlushFI: offs 834
+    CcUninitializeCacheMap()
+  FlushFE: 598e
+  FlushFI: offs 834
+Thrd:b37319a8:    Opening file \ReactOS\inf\nettcpip.inf b378d960
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+UDFTeardownStructures, RemovedStartingFcb -> F
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e891 (0:44e711), len 952c
+UDFReadMappingFromXEntry: mode 1, loc 598f, len 10
+  FExtInfo->Length 952c
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DB008, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e17bd8d8, FO b378d960, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll b367d268
+Thrd:b36a9020:    FCB e1132058, FO b367d268, Flags 40002
+Thrd:b36a9020:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b36a9020:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+ExtLen 9600
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 9600
+  FlushFE: 598f
+  FlushFI: offs 868
+    CcUninitializeCacheMap()
+  FlushFE: 598f
+  FlushFI: offs 868
+Thrd:b37319a8:    Opening file \ReactOS\inf\ports.inf b367cf08
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1132058 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e8dc (0:44e75c), len 34ac
+UDFReadMappingFromXEntry: mode 1, loc 5990, len 10
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll aee7e544
+Thrd:b36a9020:    FCB e1132058, FO aee7e544, Flags 40002
+Thrd:b36a9020:UDFGetBasicInformation: 
+  FExtInfo->Length 34ac
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DB3F0, AllocationSize=0xCC, sizeof(LCB)=144, NameLength=60
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e3aa8, FO b367cf08, Flags 40002
+    CcFlushCache()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 3600
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 3600
+  FlushFE: 5990
+  FlushFI: offs 89c
+    CcUninitializeCacheMap()
+  FlushFE: 5990
+  FlushFI: offs 89c
+Thrd:b37319a8:    Opening file \ReactOS\inf\scsi.inf b367c4d0
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1132058 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e8f7 (0:44e777), len 27f8
+UDFReadMappingFromXEntry: mode 1, loc 5991, len 10
+  FExtInfo->Length 27f8
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DB198, AllocationSize=0xC8, sizeof(LCB)=144, NameLength=56
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18db2f8, FO b367c4d0, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 2800
+Thrd:b36a9020:UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2800
+  FlushFE: 5991
+  FlushFI: offs 8cc
+    CcUninitializeCacheMap()
+  FlushFE: 5991
+  FlushFI: offs 8cc
+Thrd:b37319a8:    Opening file \ReactOS\inf\shortcuts.inf b367b9a0
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+UDFTeardownStructures, RemovedStartingFcb -> F
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e90b (0:44e78b), len 1ce98
+UDFReadMappingFromXEntry: mode 1, loc 5992, len 10
+  FExtInfo->Length 1ce98
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E4308, AllocationSize=0xF4, sizeof(LCB)=144, NameLength=100
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e4008, FO b367b9a0, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1d000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1d000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1d000
+  FlushFE: 5992
+  FlushFI: offs 8fc
+    CcUninitializeCacheMap()
+  FlushFE: 5992
+  FlushFI: offs 8fc
+Thrd:b37319a8:    Opening file \ReactOS\inf\unknown.inf b367ad40
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e9f3 (0:44e873), len a00
+UDFReadMappingFromXEntry: mode 1, loc 5993, len 10
+  FExtInfo->Length a00
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E4EA8, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e4210, FO b367ad40, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen a00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: a00
+  FlushFE: 5993
+  FlushFI: offs 960
+    CcUninitializeCacheMap()
+  FlushFE: 5993
+  FlushFI: offs 960
+Thrd:b37319a8:    Opening file \ReactOS\inf\usb.inf b367a5b0
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll aee7e544
+Thrd:b36a9020:    FCB e1132058, FO aee7e544, Flags 40002
+Thrd:b36a9020:UDFGetBasicInformation: 
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44e9f8 (0:44e878), len 1e24
+UDFReadMappingFromXEntry: mode 1, loc 5994, len 10
+  FExtInfo->Length 1e24
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E4BB0, AllocationSize=0xC4, sizeof(LCB)=144, NameLength=52
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e4d78, FO b367a5b0, Flags 40002
+    CcFlushCache()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 2000
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+Thrd:b36a9020:UDFTeardownStructures, StartingFcb E1132058 Flat
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll b36796a8
+Thrd:b36a9020:    FCB e1132058, FO b36796a8, Flags 40002
+Thrd:b36a9020:UDFGetStandardInformation: 
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2000
+  FlushFE: 5994
+  FlushFI: offs 994
+    CcUninitializeCacheMap()
+  FlushFE: 5994
+  FlushFI: offs 994
+Thrd:b37319a8:    Opening file \ReactOS\inf\usbport.inf b3679498
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2dc34
+Thrd:b3789d58:    FCB e1721438, FO aef2dc34, Flags 40002
+  AcqForCreateSection()
+Thrd:b36a9020:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b3789d58:UDFGetBasicInformation: 
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea08 (0:44e888), len 5390
+UDFReadMappingFromXEntry: mode 1, loc 5995, len 10
+  FExtInfo->Length 5390
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DB880, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18dba18, FO b3679498, Flags 40002
+    CcFlushCache()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 5400
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 5400
+  FlushFE: 5995
+  FlushFI: offs 9c4
+    CcUninitializeCacheMap()
+  FlushFE: 5995
+  FlushFI: offs 9c4
+Thrd:b37319a8:    Opening file \ReactOS\inf\volume.inf b3678308
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b3789d58:ExtLen 3fffc000
+ExtLen 3fffc000
+UDFTeardownStructures, StartingFcb E1721438 Flat
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea32 (0:44e8b2), len e1e
+UDFReadMappingFromXEntry: mode 1, loc 5997, len 10
+  FExtInfo->Length e1e
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DAEA8, AllocationSize=0xD0, sizeof(LCB)=144, NameLength=64
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18db708, FO b3678308, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1000
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b36a9020:UDFTeardownStructures, StartingFcb E1132058 Flat
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+ExtLen 866400
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1000
+  FlushFE: 5997
+  FlushFI: offs a18
+    CcUninitializeCacheMap()
+  FlushFE: 5997
+  FlushFI: offs a18
+Thrd:b37319a8:    Opening file \ReactOS\inf\wdmaudio.inf b36796a8
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll aee7e544
+Thrd:b36a9020:    FCB e1132058, FO aee7e544, Flags 40002
+Thrd:b36a9020:UDFGetBasicInformation: 
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea3a (0:44e8ba), len 5ad4
+UDFReadMappingFromXEntry: mode 1, loc 5998, len 10
+  FExtInfo->Length 5ad4
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E4958, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e4ab8, FO b36796a8, Flags 40002
+    CcFlushCache()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+Thrd:b36a9020:UDFTeardownStructures, StartingFcb E1132058 Flat
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b36a9020:    Opening file \ReactOS\system32\SHELL32.dll b3784ca0
+Thrd:b36a9020:    FCB e1132058, FO b3784ca0, Flags 40002
+Thrd:b36a9020:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b36a9020:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b36a9020:UDFSetFileSizeInDirNdx: 866400
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+    CcUninitializeCacheMap()
+  FlushFE: 58a1
+  FlushFI: offs 79d0
+Thrd:b36a9020:UDFTeardownStructures, StartingFcb E1132058 Flat
+Thrd:b36a9020:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 5c00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 5c00
+  FlushFE: 5998
+  FlushFI: offs a4c
+    CcUninitializeCacheMap()
+  FlushFE: 5998
+  FlushFI: offs a4c
+Thrd:b37319a8:    Opening file \ReactOS\inf\wmiacpi.inf b3676a60
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea68 (0:44e8e8), len d9a
+UDFReadMappingFromXEntry: mode 1, loc 5999, len 10
+  FExtInfo->Length d9a
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18E47F8, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18e5538, FO b3676a60, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 5999
+  FlushFI: offs a80
+    CcUninitializeCacheMap()
+  FlushFE: 5999
+  FlushFI: offs a80
+Thrd:b37319a8:    Opening file \ReactOS\inf\defltwk.inf b36762e8
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea6f (0:44e8ef), len 173d
+UDFReadMappingFromXEntry: mode 1, loc 599a, len 10
+  FExtInfo->Length 173d
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DBBF8, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18da6b0, FO b36762e8, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 1800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1800
+  FlushFE: 599a
+  FlushFI: offs ab4
+    CcUninitializeCacheMap()
+  FlushFE: 599a
+  FlushFI: offs ab4
+Thrd:b37319a8:    Opening file \ReactOS\inf\font.inf b3675498
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea7b (0:44e8fb), len 2c94
+UDFReadMappingFromXEntry: mode 1, loc 599b, len 10
+  FExtInfo->Length 2c94
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18B7978, AllocationSize=0xC8, sizeof(LCB)=144, NameLength=56
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18c5f10, FO b3675498, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 2e00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2e00
+  FlushFE: 599b
+  FlushFI: offs ae8
+    CcUninitializeCacheMap()
+  FlushFE: 599b
+  FlushFI: offs ae8
+Thrd:b37319a8:    Opening file \ReactOS\inf\intl.inf b3680410
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44ea92 (0:44e912), len 18af9
+UDFReadMappingFromXEntry: mode 1, loc 599c, len 10
+  FExtInfo->Length 18af9
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BA660, AllocationSize=0xC8, sizeof(LCB)=144, NameLength=56
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18b6b00, FO b3680410, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 18c00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 18c00
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 18c00
+  FlushFE: 599c
+  FlushFI: offs b18
+    CcUninitializeCacheMap()
+  FlushFE: 599c
+  FlushFI: offs b18
+Thrd:b37319a8:    Opening file \ReactOS\inf\layout.inf b36738e8
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFReadMappingFromXEntry: mode 3, loc ffffffff, len 43
+ExtLen 3fffc000
+  FExtInfo->Length 43
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E17BA500, AllocationSize=0xD0, sizeof(LCB)=144, NameLength=64
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18b6a08, FO b36738e8, Flags 40003
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+Thrd:b37319a8:Read ExtInfo b3673478, Mapping b3673220
+ExtLen 200
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 200
+  FlushFE: 599d
+  FlushFI: offs b48
+    CcUninitializeCacheMap()
+  FlushFE: 599d
+  FlushFI: offs b48
+Thrd:b37319a8:    Opening file \ReactOS\inf\syssetup.inf b3672a48
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+Thrd:b3789d58:    Opening file \ReactOS\system32\kbswitch.exe aef2ec34
+Thrd:b3789d58:Read ExtInfo b39b78c0, Mapping b4727008
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 44eb58 (0:44e9d8), len dfd
+UDFReadMappingFromXEntry: mode 1, loc 599e, len 10
+  FExtInfo->Length dfd
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DBDB0, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18c5e18, FO b3672a48, Flags 40002
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 40cb8a (0:40ca0a), len 14000
+UDFReadMappingFromXEntry: mode 1, loc 5657, len 10
+  FExtInfo->Length 14000
+Thrd:b3789d58:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18D8DB0, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b3789d58:    FCB e18d8f10, FO aef2ec34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 14000
+  FlushFE: 5657
+  FlushFI: offs d4c
+    CcUninitializeCacheMap()
+  FlushFE: 5657
+  FlushFI: offs d4c
+Thrd:b3789d58:    Opening file \ReactOS\system32\kbswitch.exe aef2ec34
+Thrd:b3789d58:    FCB e18d8f10, FO aef2ec34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 14000
+  FlushFE: 5657
+  FlushFI: offs d4c
+    CcUninitializeCacheMap()
+  FlushFE: 5657
+  FlushFI: offs d4c
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E18D8F10 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\system32\kbswitch.exe b3671e50
+Thrd:b3789d58:    FCB e18d8f10, FO b3671e50, Flags 40002
+  AcqForCreateSection()
+ExtLen 14000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+Thrd:b3789d58:    Opening file \ReactOS\system32\apphelp.dll aef2ec34
+Thrd:b3789d58:    FCB e1714930, FO aef2ec34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 1c400
+  FlushFE: 56e2
+  FlushFI: offs 2504
+    CcUninitializeCacheMap()
+  FlushFE: 56e2
+  FlushFI: offs 2504
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1714930 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\system32\apphelp.dll b36719e0
+Thrd:b3789d58:    FCB e1714930, FO b36719e0, Flags 40002
+  AcqForCreateSection()
+Thrd:b3789d58:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 1c400
+  FlushFE: 56e2
+  FlushFI: offs 2504
+    CcUninitializeCacheMap()
+  FlushFE: 56e2
+  FlushFI: offs 2504
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1714930 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b3789d58:    Opening file \ReactOS\system32\apphelp.dll aef2ec34
+Thrd:b3789d58:    FCB e1714930, FO aef2ec34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 1c400
+  FlushFE: 56e2
+  FlushFI: offs 2504
+    CcUninitializeCacheMap()
+  FlushFE: 56e2
+  FlushFI: offs 2504
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1714930 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\system32\apphelp.dll b36719e0
+Thrd:b3789d58:    FCB e1714930, FO b36719e0, Flags 40002
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 1c400
+  FlushFE: 56e2
+  FlushFI: offs 2504
+    CcUninitializeCacheMap()
+  FlushFE: 56e2
+  FlushFI: offs 2504
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1714930 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\AppPatch\sysmain.sdb b36719e0
+Thrd:b3789d58:    FCB e1714328, FO b36719e0, Flags 40002
+Thrd:b3789d58:UDFGetStandardInformation: 
+Thrd:b3789d58:    Opening file \ReactOS\system32\kbswitch.exe aef2ec34
+Thrd:b3789d58:    FCB e18d8f10, FO aef2ec34, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcUninitializeCacheMap()
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E18D8F10 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    FCB e1117aa0, FO b3671530, Flags 4001a
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b4738100
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e00
+  DirInfoToNT: ReactOS
+    FileInfo
+    Fcb
+    SYS_ATTR
+  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+    CcUninitializeCacheMap()
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1117AA0 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS b3671530
+Thrd:b3789d58:    FCB e1117e48, FO b3671530, Flags 4000a
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b5174100
+  DirInfoToNT: system32
+    FileInfo
+    Fcb
+    SYS_ATTR
+  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+    CcUninitializeCacheMap()
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1117E48 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\system32 b3671530
+Thrd:b3789d58:    FCB e1117590, FO b3671530, Flags 4000a
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b39a9080
+  DirInfoToNT: kbswitch.exe
+    FileInfo
+    Fcb
+  get_attr  AllocationSize=14000, NTFileInfo->EndOfFile=14000
+    CcUninitializeCacheMap()
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1117590 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 2200
+  FlushFE: 5a27
+  FlushFI: offs 90
+    CcUninitializeCacheMap()
+  FlushFE: 5a27
+  FlushFI: offs 90
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1714328 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:UDFGetFullNameInformation
+Thrd:b3789d58:UDFGetFullNameInformation
+  AcqForCreateSection()
+ExtLen 14000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 599e
+  FlushFI: offs b7c
+    CcUninitializeCacheMap()
+  FlushFE: 599e
+  FlushFI: offs b7c
+Thrd:b37319a8:    Opening file \ReactOS\inf\bochsmp.inf b3671530
+Thrd:b37319a8:Read ExtInfo b36c1e88, Mapping b36c1d90
+ExtLen 200
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 14000
+ExtLen 3fffc000
+ExtLen 3fffc000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 4583c5 (0:458245), len a84
+UDFReadMappingFromXEntry: mode 1, loc 5a4c, len 10
+  FExtInfo->Length a84
+Thrd:b37319a8:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18D87D0, AllocationSize=0xD4, sizeof(LCB)=144, NameLength=68
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b37319a8:    FCB e18d8930, FO b3671530, Flags 40002
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 14000
+  FlushFE: 5657
+  FlushFI: offs d4c
+    CcUninitializeCacheMap()
+  FlushFE: 5657
+  FlushFI: offs d4c
+Thrd:b3789d58:    Opening file \Documents and Settings\All Users\Start Menu\Programs\Startup aef2ec34
+Thrd:b3789d58:Read ExtInfo b36b8f48, Mapping b37a98f8
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFReadMappingFromXEntry: mode 3, loc ffffffff, len 28
+ExtLen 3fffc000
+  FExtInfo->Length 28
+UDF: scaning directory
+Thrd:b3789d58:Read ExtInfo b366edc0, Mapping b366eb68
+ExtLen 200
+  ExtInfo->Length 28
+  Offset 0
+ExtLen 200
+ExtLen 3fffc000
+  final Offset 28
+  Count 1
+ExtLen 3fffc000
+ExtLen 200
+ExtLen 3fffc000
+  FileId: offs 0, filen 0, iulen 0
+  DirNdx: Length 28, Charact a
+  parent
+..
+Thrd:b3789d58:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DFEA8, AllocationSize=0xC4, sizeof(LCB)=144, NameLength=52
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b3789d58:    FCB e18df008, FO aef2ec34, Flags 4000a
+Thrd:b3789d58:UDFGetBasicInformation: 
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\system32\kbswitch.exe.manifest b3670f80
+Thrd:b366f9d0:    Can't open file
+Thrd:b366f9d0:    File doesn't exist
+Thrd:b366f9d0:UDF: CREATE FAILED RC=c0000034 Fcb=00000000 Name='\ReactOS\system32\kbswitch.exe.manifest' Disp=1 DesAccess=120089
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E1117590 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+  FlushFE: 5aa5
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 5aa5
+  FlushFI: offs 28
+Thrd:b3789d58:    Opening file \Documents and Settings\All Users\Start Menu\Programs\Startup b366c028
+Thrd:b3789d58:    FCB e18df008, FO b366c028, Flags 4000a
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b366d000
+  DirInfoToNT: .
+    FileInfo
+    Fcb
+  get_attr  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b366d080
+  DirInfoToNT: ..
+    FileInfo
+    Fcb
+  get_attr  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+UDFCommonDirControl: 
+  FlushFE: 5aa5
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 5aa5
+  FlushFI: offs 28
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E18DF008 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \Documents and Settings\Administrator\Start Menu\Programs\Startup aef2ec34
+Thrd:b3789d58:Read ExtInfo b36b9f48, Mapping b36b9eb0
+ExtLen 200
+ExtLen 3fffc000
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\systemcompatible.manifest b3670f80
+Thrd:b366f9d0:    FCB e112b410, FO b3670f80, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+ExtLen c00
+ExtLen 3fffc000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFReadMappingFromXEntry: mode 3, loc ffffffff, len 28
+ExtLen 3fffc000
+  FExtInfo->Length 28
+UDF: scaning directory
+Thrd:b3789d58:Read ExtInfo b366cde0, Mapping b366cf60
+ExtLen 200
+  ExtInfo->Length 28
+  Offset 0
+ExtLen 200
+ExtLen 3fffc000
+  final Offset 28
+  Count 1
+ExtLen 3fffc000
+ExtLen 200
+ExtLen 3fffc000
+  FileId: offs 0, filen 0, iulen 0
+  DirNdx: Length 28, Charact a
+  parent
+..
+Thrd:b3789d58:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DFC50, AllocationSize=0xC4, sizeof(LCB)=144, NameLength=52
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b3789d58:    FCB e18dfdb0, FO aef2ec34, Flags 4000a
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 400
+  FlushFE: 5a37
+  FlushFI: offs 2e4
+    CcUninitializeCacheMap()
+  FlushFE: 5a37
+  FlushFI: offs 2e4
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: c00
+  FlushFE: 5a4c
+  FlushFI: offs bb0
+    CcUninitializeCacheMap()
+  FlushFE: 5a4c
+  FlushFI: offs bb0
+UDFCommonDirControl: 
+  FlushFE: 558a
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18A63C8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\acpi.inf b36c1f80
+Thrd:b37319a8:    FCB e18a6b10, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1800
+  FlushFE: 58fe
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 58fe
+  FlushFI: offs 28
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18A6B10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\btrfs.inf b36c1f80
+Thrd:b37319a8:    FCB e18b5c08, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2000
+  FlushFE: 58ff
+  FlushFI: offs 58
+    CcUninitializeCacheMap()
+  FlushFE: 58ff
+  FlushFI: offs 58
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B5C08 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\net21x4.inf b36c1f80
+Thrd:b37319a8:    FCB e18b2f10, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2600
+  FlushFE: 5910
+  FlushFI: offs 88
+    CcUninitializeCacheMap()
+  FlushFE: 5910
+  FlushFI: offs 88
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B2F10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\nete1000.inf b36c1f80
+Thrd:b37319a8:    FCB e18b71f0, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 6000
+  FlushFE: 5913
+  FlushFI: offs bc
+    CcUninitializeCacheMap()
+  FlushFE: 5913
+  FlushFI: offs bc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B71F0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\netne.inf b36c1f80
+Thrd:b37319a8:    FCB e18cd1c0, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2000
+  FlushFE: 5915
+  FlushFI: offs f0
+    CcUninitializeCacheMap()
+  FlushFE: 5915
+  FlushFI: offs f0
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CD1C0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\netkvm.inf b36c1f80
+Thrd:b37319a8:    FCB e18b7db0, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 7a00
+  FlushFE: 5918
+  FlushFI: offs 140
+    CcUninitializeCacheMap()
+  FlushFE: 5918
+  FlushFI: offs 140
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B7DB0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\netnv.inf b36c1f80
+Thrd:b37319a8:    FCB e18cd748, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 6000
+  FlushFE: 591a
+  FlushFI: offs 174
+    CcUninitializeCacheMap()
+  FlushFE: 591a
+  FlushFI: offs 174
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CD748 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\netamd.inf b36c1f80
+Thrd:b37319a8:    FCB e18cdd48, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B410 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b3670f80
+Thrd:b366f9d0:    FCB e112b698, FO b3670f80, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf2c78fc, FileDirNdx b38f4100
+  DirInfoToNT: x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=800, NTFileInfo->EndOfFile=7ee
+UDFCommonDirControl: 
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef.manifest b3670f80
+Thrd:b366f9d0:    FCB e112ef10, FO b3670f80, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e0
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 57e0
+  FlushFI: offs 28
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112EF10 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b3670f80
+Thrd:b366f9d0:    FCB e112b698, FO b3670f80, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf2c78fc, FileDirNdx b38f4200
+  DirInfoToNT: x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=200, NTFileInfo->EndOfFile=14b
+UDFCommonDirControl: 
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef.manifest b3670f80
+Thrd:b366f9d0:    FCB e112eba8, FO b3670f80, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+Thrd:b3789d58:UDFGetBasicInformation: 
+  FlushFE: 5b6a
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 5b6a
+  FlushFI: offs 28
+Thrd:b3789d58:    Opening file \Documents and Settings\Administrator\Start Menu\Programs\Startup b366c028
+Thrd:b3789d58:    FCB e18dfdb0, FO b366c028, Flags 4000a
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b366b000
+  DirInfoToNT: .
+    FileInfo
+    Fcb
+  get_attr  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+UDFCommonDirControl: 
+@=0xaef2e8fc, FileDirNdx b366b080
+  DirInfoToNT: ..
+    FileInfo
+    Fcb
+  get_attr  FILE_DIRECTORY  AllocationSize=0, NTFileInfo->EndOfFile=0
+UDFCommonDirControl: 
+  FlushFE: 5b6a
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 5b6a
+  FlushFI: offs 28
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E18DFDB0 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 591c
+  FlushFI: offs 1a4
+    CcUninitializeCacheMap()
+  FlushFE: 591c
+  FlushFI: offs 1a4
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CDD48 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\netrtl.inf b36c1f80
+Thrd:b37319a8:    FCB e18cdaf0, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2200
+  FlushFE: 591e
+  FlushFI: offs 1d8
+    CcUninitializeCacheMap()
+  FlushFE: 591e
+  FlushFI: offs 1d8
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CDAF0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\cpu.inf b36c1f80
+Thrd:b37319a8:    FCB e18dc6b8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e000
+  FlushFE: 5928
+  FlushFI: offs 20c
+    CcUninitializeCacheMap()
+  FlushFE: 5928
+  FlushFI: offs 20c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DC6B8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\cdrom.inf b36c1f80
+Thrd:b37319a8:    FCB e18dc318, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 3800
+  FlushFE: 592b
+  FlushFI: offs 23c
+    CcUninitializeCacheMap()
+  FlushFE: 592b
+  FlushFI: offs 23c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DC318 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\disk.inf b36c1f80
+Thrd:b37319a8:    FCB e18c5430, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 4a00
+  FlushFE: 592c
+  FlushFI: offs 26c
+    CcUninitializeCacheMap()
+  FlushFE: 592c
+  FlushFI: offs 26c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18C5430 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\ramdisk.inf b36c1f80
+Thrd:b37319a8:    FCB e18c51d8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1200
+  FlushFE: 592d
+  FlushFI: offs 29c
+    CcUninitializeCacheMap()
+  FlushFE: 592d
+  FlushFI: offs 29c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18C51D8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\uniata_comm.inf b36c1f80
+Thrd:b37319a8:    FCB e18ce3d0, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1000
+  FlushFE: 592e
+  FlushFI: offs 2d0
+    CcUninitializeCacheMap()
+  FlushFE: 592e
+  FlushFI: offs 2d0
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CE3D0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\usbstor.inf b36c1f80
+Thrd:b37319a8:    FCB e18dcd70, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1c00
+  FlushFE: 592f
+  FlushFI: offs 338
+    CcUninitializeCacheMap()
+  FlushFE: 592f
+  FlushFI: offs 338
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DCD70 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\ac97.inf b36c1f80
+Thrd:b37319a8:    FCB e18ceb58, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 200
+  FlushFE: 5802
+  FlushFI: offs 190
+    CcUninitializeCacheMap()
+  FlushFE: 5802
+  FlushFI: offs 190
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112EBA8 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS b3670f80
+Thrd:b366f9d0:    FCB e1117e48, FO b3670f80, Flags 4000a
+Thrd:b366f9d0:    Opening file \ReactOS\system32\kbswitch.exe.Local af2c7c34
+Thrd:b366f9d0:    Can't open file
+Thrd:b366f9d0:    File doesn't exist
+Thrd:b366f9d0:UDF: CREATE FAILED RC=c0000034 Fcb=00000000 Name='\ReactOS\system32\kbswitch.exe.Local' Disp=1 DesAccess=80
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E1117590 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+ExtLen 14000
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: ba00
+  FlushFE: 5932
+  FlushFI: offs 36c
+    CcUninitializeCacheMap()
+  FlushFE: 5932
+  FlushFI: offs 36c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CEB58 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\CM8738-x32.inf b36c1f80
+Thrd:b37319a8:    FCB e18cea60, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 3200
+  FlushFE: 5937
+  FlushFI: offs 39c
+    CcUninitializeCacheMap()
+  FlushFE: 5937
+  FlushFI: offs 39c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18CEA60 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\hdaudbus.inf b36c1f80
+Thrd:b37319a8:    FCB e18d1c50, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 3000
+  FlushFE: 593c
+  FlushFI: offs 404
+    CcUninitializeCacheMap()
+  FlushFE: 593c
+  FlushFI: offs 404
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18D1C50 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\audio.inf b36c1f80
+Thrd:b37319a8:    FCB e18e5828, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1400
+  FlushFE: 5979
+  FlushFI: offs 438
+    CcUninitializeCacheMap()
+  FlushFE: 5979
+  FlushFI: offs 438
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5828 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\battery.inf b36c1f80
+Thrd:b37319a8:    FCB e18e5f10, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2400
+  FlushFE: 597a
+  FlushFI: offs 468
+    CcUninitializeCacheMap()
+  FlushFE: 597a
+  FlushFI: offs 468
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5F10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\bda.inf b36c1f80
+Thrd:b37319a8:    FCB e18e5cb8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 5800
+  FlushFE: 597b
+  FlushFI: offs 49c
+    CcUninitializeCacheMap()
+  FlushFE: 597b
+  FlushFI: offs 49c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5CB8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\bth.inf b36c1f80
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b366c028
+Thrd:b366f9d0:    FCB e112b698, FO b366c028, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf2c78fc, FileDirNdx b38f4180
+  DirInfoToNT: x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=800, NTFileInfo->EndOfFile=649
+UDFCommonDirControl: 
+Thrd:b37319a8:    FCB e18d1518, FO b36c1f80, Flags 40002
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest b366c028
+Thrd:b366f9d0:    FCB e170f6a0, FO b366c028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e1
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+  FlushFE: 57e1
+  FlushFI: offs dc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170F6A0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef\comctl32.dll b366c028
+Thrd:b366f9d0:    FCB e186b298, FO b366c028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 139e00
+  FlushFE: 57df
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 57df
+  FlushFI: offs 28
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E186B298 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef\comctl32.dll af2c7c34
+Thrd:b366f9d0:    FCB e186b298, FO af2c7c34, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 139e00
+  FlushFE: 57df
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 57df
+  FlushFI: offs 28
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E186B298 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef\comctl32.dll b366c028
+Thrd:b366f9d0:    FCB e186b298, FO b366c028, Flags 40002
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 139e00
+  FlushFE: 57df
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 57df
+  FlushFI: offs 28
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E186B298 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b366c028
+Thrd:b366f9d0:    FCB e112b698, FO b366c028, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf2c78fc, FileDirNdx b38f4180
+  DirInfoToNT: x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=800, NTFileInfo->EndOfFile=649
+UDFCommonDirControl: 
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest b366c028
+Thrd:b366f9d0:    FCB e170f6a0, FO b366c028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1800
+  FlushFE: 597c
+  FlushFI: offs 4cc
+    CcUninitializeCacheMap()
+  FlushFE: 597c
+  FlushFI: offs 4cc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18D1518 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\c_image.inf b36c1f80
+Thrd:b37319a8:    FCB e18d1190, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 597d
+  FlushFI: offs 4fc
+    CcUninitializeCacheMap()
+  FlushFE: 597d
+  FlushFI: offs 4fc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18D1190 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\display.inf b36c1f80
+Thrd:b37319a8:    FCB e17ba008, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2200
+  FlushFE: 597e
+  FlushFI: offs 530
+    CcUninitializeCacheMap()
+  FlushFE: 597e
+  FlushFI: offs 530
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BA008 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\fdc.inf b36c1f80
+Thrd:b37319a8:    FCB e17bad08, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2400
+  FlushFE: 597f
+  FlushFI: offs 564
+    CcUninitializeCacheMap()
+  FlushFE: 597f
+  FlushFI: offs 564
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BAD08 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\flpydisk.inf b36c1f80
+Thrd:b37319a8:    FCB e17bdf10, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1800
+  FlushFE: 5980
+  FlushFI: offs 594
+    CcUninitializeCacheMap()
+  FlushFE: 5980
+  FlushFI: offs 594
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BDF10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\hal.inf b36c1f80
+Thrd:b37319a8:    FCB e17bdcb8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2400
+  FlushFE: 5981
+  FlushFI: offs 5c8
+    CcUninitializeCacheMap()
+  FlushFE: 5981
+  FlushFI: offs 5c8
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BDCB8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\hdc.inf b36c1f80
+Thrd:b37319a8:    FCB e18d17a8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 70e00
+  FlushFE: 5983
+  FlushFI: offs 618
+    CcUninitializeCacheMap()
+  FlushFE: 5983
+  FlushFI: offs 618
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18D17A8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\input.inf b36c1f80
+Thrd:b37319a8:    FCB e18e3f10, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2600
+  FlushFE: 5984
+  FlushFI: offs 648
+    CcUninitializeCacheMap()
+  FlushFE: 5984
+  FlushFI: offs 648
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E3F10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\keyboard.inf b36c1f80
+Thrd:b37319a8:    FCB e18e3cb8, FO b36c1f80, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e1
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+  FlushFE: 57e1
+  FlushFI: offs dc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170F6A0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b366c028
+Thrd:b366f9d0:    FCB e112b698, FO b366c028, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf2c78fc, FileDirNdx b38f4180
+  DirInfoToNT: x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=800, NTFileInfo->EndOfFile=649
+UDFCommonDirControl: 
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest b366c028
+Thrd:b366f9d0:    FCB e170f6a0, FO b366c028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e1
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+  FlushFE: 57e1
+  FlushFI: offs dc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170F6A0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2c00
+  FlushFE: 5985
+  FlushFI: offs 678
+    CcUninitializeCacheMap()
+  FlushFE: 5985
+  FlushFI: offs 678
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E3CB8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\ks.inf b366c028
+Thrd:b37319a8:    FCB e17ba920, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 29a00
+  FlushFE: 5986
+  FlushFI: offs 6ac
+    CcUninitializeCacheMap()
+  FlushFE: 5986
+  FlushFI: offs 6ac
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BA920 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\kscaptur.inf b366c028
+Thrd:b37319a8:    FCB e18e5ab0, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 10a00
+  FlushFE: 5987
+  FlushFI: offs 6dc
+    CcUninitializeCacheMap()
+  FlushFE: 5987
+  FlushFI: offs 6dc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5AB0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\legcydrv.inf b366c028
+Thrd:b37319a8:    FCB e17bd350, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: c00
+  FlushFE: 5988
+  FlushFI: offs 710
+    CcUninitializeCacheMap()
+  FlushFE: 5988
+  FlushFI: offs 710
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BD350 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\machine.inf b366c028
+Thrd:b37319a8:    FCB e18e3008, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 16000
+  FlushFE: 5989
+  FlushFI: offs 744
+    CcUninitializeCacheMap()
+  FlushFE: 5989
+  FlushFI: offs 744
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E3008 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\monitor.inf b366c028
+Thrd:b37319a8:    FCB e18e31b8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1a00
+  FlushFE: 598a
+  FlushFI: offs 778
+    CcUninitializeCacheMap()
+  FlushFE: 598a
+  FlushFI: offs 778
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E31B8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\msmouse.inf b366c028
+Thrd:b37319a8:    FCB e18e5438, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 9c00
+  FlushFE: 598b
+  FlushFI: offs 7ac
+    CcUninitializeCacheMap()
+  FlushFE: 598b
+  FlushFI: offs 7ac
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5438 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\ndisuio.inf b366c028
+Thrd:b37319a8:    FCB e18e51a8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 598c
+  FlushFI: offs 800
+    CcUninitializeCacheMap()
+  FlushFE: 598c
+  FlushFI: offs 800
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E51A8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\NET_NIC.inf b366c028
+Thrd:b37319a8:    FCB e17bdb30, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\system32\userenv.DLL af2c7c34
+Thrd:b366f9d0:    FCB e170fe70, FO af2c7c34, Flags 40002
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1000
+  FlushFE: 598e
+  FlushFI: offs 834
+    CcUninitializeCacheMap()
+  FlushFE: 598e
+  FlushFI: offs 834
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BDB30 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\nettcpip.inf b366c028
+Thrd:b37319a8:    FCB e17bd8d8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 9600
+  FlushFE: 598f
+  FlushFI: offs 868
+    CcUninitializeCacheMap()
+  FlushFE: 598f
+  FlushFI: offs 868
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E17BD8D8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\ports.inf b366c028
+Thrd:b37319a8:    FCB e18e3aa8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 3600
+  FlushFE: 5990
+  FlushFI: offs 89c
+    CcUninitializeCacheMap()
+  FlushFE: 5990
+  FlushFI: offs 89c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E3AA8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\scsi.inf b366c028
+Thrd:b37319a8:    FCB e18db2f8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2800
+  FlushFE: 5991
+  FlushFI: offs 8cc
+    CcUninitializeCacheMap()
+  FlushFE: 5991
+  FlushFI: offs 8cc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DB2F8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\shortcuts.inf b366c028
+Thrd:b37319a8:    FCB e18e4008, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1d000
+  FlushFE: 5992
+  FlushFI: offs 8fc
+    CcUninitializeCacheMap()
+  FlushFE: 5992
+  FlushFI: offs 8fc
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E4008 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\unknown.inf b366c028
+Thrd:b37319a8:    FCB e18e4210, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: a00
+  FlushFE: 5993
+  FlushFI: offs 960
+    CcUninitializeCacheMap()
+  FlushFE: 5993
+  FlushFI: offs 960
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E4210 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\usb.inf b366c028
+Thrd:b37319a8:    FCB e18e4d78, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2000
+  FlushFE: 5994
+  FlushFI: offs 994
+    CcUninitializeCacheMap()
+  FlushFE: 5994
+  FlushFI: offs 994
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E4D78 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\usbport.inf b366c028
+Thrd:b37319a8:    FCB e18dba18, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 5400
+  FlushFE: 5995
+  FlushFI: offs 9c4
+    CcUninitializeCacheMap()
+  FlushFE: 5995
+  FlushFI: offs 9c4
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DBA18 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\volume.inf b366c028
+Thrd:b37319a8:    FCB e18db708, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:Thrd:b366f9d0:UDFGetBasicInformation: 
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 2a800
+  FlushFE: 58c8
+  FlushFI: offs 80cc
+    CcUninitializeCacheMap()
+  FlushFE: 58c8
+  FlushFI: offs 80cc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170FE70 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\userenv.DLL b36680f8
+Thrd:b366f9d0:    FCB e170fe70, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 2a800
+  FlushFE: 58c8
+  FlushFI: offs 80cc
+    CcUninitializeCacheMap()
+  FlushFE: 58c8
+  FlushFI: offs 80cc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170FE70 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\lpk.dll af05cc34
+Thrd:b366f9d0:    FCB e16a2c68, FO af05cc34, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 9600
+  FlushFE: 5825
+  FlushFI: offs 6234
+    CcUninitializeCacheMap()
+  FlushFE: 5825
+  FlushFI: offs 6234
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E16A2C68 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\lpk.dll b36680f8
+Thrd:b366f9d0:    FCB e16a2c68, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 9600
+  FlushFE: 5825
+  FlushFI: offs 6234
+    CcUninitializeCacheMap()
+  FlushFE: 5825
+  FlushFI: offs 6234
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E16A2C68 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\System32\imm32.dll af05cc34
+Thrd:b366f9d0:    FCB e11371b8, FO af05cc34, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 43200
+  FlushFE: 5a62
+  FlushFI: offs a908
+    CcUninitializeCacheMap()
+  FlushFE: 5a62
+  FlushFI: offs a908
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E11371B8 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\System32\imm32.dll af05cc34
+Thrd:b366f9d0:    FCB e11371b8, FO af05cc34, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 43200
+  FlushFE: 5a62
+  FlushFI: offs a908
+    CcUninitializeCacheMap()
+  FlushFE: 5a62
+  FlushFI: offs a908
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E11371B8 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef.manifest b36680f8
+Thrd:b366f9d0:    FCB e112ef10, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1000
+  FlushFE: 5997
+  FlushFI: offs a18
+    CcUninitializeCacheMap()
+  FlushFE: 5997
+  FlushFI: offs a18
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DB708 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\wdmaudio.inf b366c028
+Thrd:b37319a8:    FCB e18e4ab8, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 5c00
+  FlushFE: 5998
+  FlushFI: offs a4c
+    CcUninitializeCacheMap()
+  FlushFE: 5998
+  FlushFI: offs a4c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E4AB8 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\wmiacpi.inf b366c028
+Thrd:b37319a8:    FCB e18e5538, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 5999
+  FlushFI: offs a80
+    CcUninitializeCacheMap()
+  FlushFE: 5999
+  FlushFI: offs a80
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18E5538 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\defltwk.inf b366c028
+Thrd:b37319a8:    FCB e18da6b0, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 1800
+  FlushFE: 599a
+  FlushFI: offs ab4
+    CcUninitializeCacheMap()
+  FlushFE: 599a
+  FlushFI: offs ab4
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18DA6B0 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\font.inf b366c028
+Thrd:b37319a8:    FCB e18c5f10, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 2e00
+  FlushFE: 599b
+  FlushFI: offs ae8
+    CcUninitializeCacheMap()
+  FlushFE: 599b
+  FlushFI: offs ae8
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18C5F10 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\intl.inf b366c028
+Thrd:b37319a8:    FCB e18b6b00, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 18c00
+  FlushFE: 599c
+  FlushFI: offs b18
+    CcUninitializeCacheMap()
+  FlushFE: 599c
+  FlushFI: offs b18
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B6B00 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\layout.inf b366c028
+Thrd:b37319a8:    FCB e18b6a08, FO b366c028, Flags 40003
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: 200
+  FlushFE: 599d
+  FlushFI: offs b48
+    CcUninitializeCacheMap()
+  FlushFE: 599d
+  FlushFI: offs b48
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18B6A08 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\syssetup.inf b366c028
+Thrd:b37319a8:    FCB e18c5e18, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: e00
+  FlushFE: 599e
+  FlushFI: offs b7c
+    CcUninitializeCacheMap()
+  FlushFE: 599e
+  FlushFI: offs b7c
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18C5E18 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b37319a8:    Opening file \ReactOS\inf\bochsmp.inf b366c028
+Thrd:b37319a8:    FCB e18d8930, FO b366c028, Flags 40002
+Thrd:b37319a8:UDFGetStandardInformation: 
+  AcqForCreateSection()
+Thrd:b37319a8:    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e0
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+  FlushFE: 57e0
+  FlushFI: offs 28
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112EF10 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest b36680f8
+Thrd:b366f9d0:    FCB e170f6a0, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e1
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+  FlushFE: 57e1
+  FlushFI: offs dc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170F6A0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests b36680f8
+Thrd:b366f9d0:    FCB e112b698, FO b36680f8, Flags 4000a
+UDFCommonDirControl: 
+@=0xaf05c8fc, FileDirNdx b38f4180
+  DirInfoToNT: x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
+    FileInfo
+    Fcb
+    SYS_ATTR
+  !UDF_FI_FLAG_DOS  AllocationSize=800, NTFileInfo->EndOfFile=649
+UDFCommonDirControl: 
+  FlushFE: 55c1
+  FlushFI: offs 28
+    CcUninitializeCacheMap()
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E112B698 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\winsxs\manifests\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest b36680f8
+Thrd:b366f9d0:    FCB e170f6a0, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 800
+  FlushFE: 57e1
+  FlushFI: offs dc
+    CcUninitializeCacheMap()
+  FlushFE: 57e1
+  FlushFI: offs dc
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E170F6A0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+ExtLen 14000
+UDFGetStandardInformation: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b37319a8:UDFSetFileSizeInDirNdx: c00
+  FlushFE: 5a4c
+  FlushFI: offs bb0
+    CcUninitializeCacheMap()
+  FlushFE: 5a4c
+  FlushFI: offs bb0
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E18D8930 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+err:(dll\win32\newdev\newdev.c:1026) DevInstallW failed with error 259
+  AcqForCreateSection()
+  RelFromCreateSection()
+    CcUninitializeCacheMap()
+Thrd:b37319a8:UDFTeardownStructures, StartingFcb E1117590 Flat
+Thrd:b37319a8:UDFTeardownStructures, RemovedStartingFcb -> F
+(base\services\umpnpmgr\install.c:245) InstallDevice failed for DeviceInstance 'Root\VgaSave\0000'
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen 14000
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\system32\uxtheme.dll af05c774
+Thrd:b366f9d0:    FCB e171c270, FO af05c774, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 2f000
+  FlushFE: 58ca
+  FlushFI: offs 8130
+    CcUninitializeCacheMap()
+  FlushFE: 58ca
+  FlushFI: offs 8130
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E171C270 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\uxtheme.dll b36680f8
+Thrd:b366f9d0:    FCB e171c270, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 2f000
+  FlushFE: 58ca
+  FlushFI: offs 8130
+    CcUninitializeCacheMap()
+  FlushFE: 58ca
+  FlushFI: offs 8130
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E171C270 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\indicdll.dll af05c3e4
+Thrd:b366f9d0:Read ExtInfo b39b78c0, Mapping b4727008
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 40cc2a (0:40caaa), len e800
+UDFReadMappingFromXEntry: mode 1, loc 5658, len 10
+  FExtInfo->Length e800
+Thrd:b366f9d0:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E18DA4C8, AllocationSize=0xD8, sizeof(LCB)=144, NameLength=72
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b366f9d0:    FCB e18dfb58, FO af05c3e4, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: e800
+  FlushFE: 5658
+  FlushFI: offs d80
+    CcUninitializeCacheMap()
+  FlushFE: 5658
+  FlushFI: offs d80
+Thrd:b366f9d0:    Opening file \ReactOS\system32\indicdll.dll b36680f8
+Thrd:b366f9d0:    FCB e18dfb58, FO b36680f8, Flags 40002
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: e800
+  FlushFE: 5658
+  FlushFI: offs d80
+    CcUninitializeCacheMap()
+  FlushFE: 5658
+  FlushFI: offs d80
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+ExtLen e800
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\system32\input.dll af05c3e4
+Thrd:b366f9d0:Read ExtInfo b39b78c0, Mapping b4727008
+ExtLen 200
+ExtLen 3fffc000
+ExtLen 3fffc000
+ExtLen 3fffc000
+  UDFLoadExtInfo:
+Extended FileEntry
+UDFLongAllocDescToMapping: len=10, depth=0
+LnExt: type 0, loc 416c8a (0:416b0a), len 50600
+UDFReadMappingFromXEntry: mode 1, loc 56ef, len 10
+  FExtInfo->Length 50600
+Thrd:b366f9d0:UDFFirstOpenFile
+UDFInsertPrefix: Lcb=E187D008, AllocationSize=0xCC, sizeof(LCB)=144, NameLength=60
+  BytesToZero=0x90 (min of AllocationSize and UDF_LCB_BASE_SIZE=0x90)
+Thrd:b366f9d0:    FCB e1882ee0, FO af05c3e4, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 50600
+  FlushFE: 56ef
+  FlushFI: offs 2708
+    CcUninitializeCacheMap()
+  FlushFE: 56ef
+  FlushFI: offs 2708
+Thrd:b366f9d0:    Opening file \ReactOS\system32\input.dll b3661028
+Thrd:b366f9d0:    FCB e1882ee0, FO b3661028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 50600
+  FlushFE: 56ef
+  FlushFI: offs 2708
+    CcUninitializeCacheMap()
+  FlushFE: 56ef
+  FlushFI: offs 2708
+  AcqForCreateSection()
+ExtLen 50600
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b366f9d0:    Opening file \ReactOS\system32\input.dll af05c3e4
+Thrd:b366f9d0:    FCB e1882ee0, FO af05c3e4, Flags 40002
+Thrd:b366f9d0:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 50600
+  FlushFE: 56ef
+  FlushFI: offs 2708
+    CcUninitializeCacheMap()
+  FlushFE: 56ef
+  FlushFI: offs 2708
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E1882EE0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b366f9d0:    Opening file \ReactOS\system32\input.dll b366c028
+Thrd:b366f9d0:    FCB e1882ee0, FO b366c028, Flags 40002
+  AcqForCreateSection()
+Thrd:b366f9d0:UDFGetStandardInformation: 
+  RelFromCreateSection()
+    CcFlushCache()
+Thrd:b366f9d0:UDFSetFileSizeInDirNdx: 50600
+  FlushFE: 56ef
+  FlushFI: offs 2708
+    CcUninitializeCacheMap()
+  FlushFE: 56ef
+  FlushFI: offs 2708
+Thrd:b366f9d0:UDFTeardownStructures, StartingFcb E1882EE0 Flat
+Thrd:b366f9d0:UDFTeardownStructures, RemovedStartingFcb -> F
+  AcqForCreateSection()
+ExtLen 50600
+UDFUnlockCallersBuffer: 
+  RelFromCreateSection()
+  AcqForCreateSection()
+  RelFromCreateSection()
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+    Write NonCachedIo
+ExtLen 72400
+ExtLen 72400
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 12a600
+
+    Write NonCachedIo
+ExtLen 72400
+ExtLen 72400
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 12a600
+
+UDFFlushAFile: 
+  FlushFE: 5a6e
+  FlushFI: offs ec
+  FlushFE: 5584
+  FlushFI: offs 28
+  FlushFE: 5583
+  FlushFI: offs 28
+  FlushFE: 5582
+  FlushFI: offs 28
+  FlushFE: 5581
+    Write NonCachedIo
+ExtLen 72400
+ExtLen 72400
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 12a600
+
+UDFFlushAFile: 
+  FlushFE: 5a6e
+  FlushFI: offs ec
+  FlushFE: 5584
+  FlushFI: offs 28
+  FlushFE: 5583
+  FlushFI: offs 28
+  FlushFE: 5582
+  FlushFI: offs 28
+  FlushFE: 5581
+    Write NonCachedIo
+ExtLen 2000
+ExtLen 2000
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 200000
+
+    Write NonCachedIo
+ExtLen 2000
+ExtLen 2000
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 200000
+
+UDFFlushAFile: 
+  FlushFE: 5a6b
+  FlushFI: offs 58
+  FlushFE: 5584
+  FlushFI: offs 28
+  FlushFE: 5583
+  FlushFI: offs 28
+  FlushFE: 5582
+  FlushFI: offs 28
+  FlushFE: 5581
+    Write NonCachedIo
+ExtLen 2000
+ExtLen 2000
+UDFUnlockCallersBuffer: 
+Thrd:b5166b10:UDFSetFileSizeInDirNdx: 200000
+
+UDFFlushAFile: 
+  FlushFE: 5a6b
+  FlushFI: offs 58
+  FlushFE: 5584
+  FlushFI: offs 28
+  FlushFE: 5583
+  FlushFI: offs 28
+  FlushFE: 5582
+  FlushFI: offs 28
+  FlushFE: 5581
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:    Opening file \ReactOS\System32\stobject.dll aef2e504
+Thrd:b3789d58:    FCB e1721438, FO aef2e504, Flags 40002
+Thrd:b3789d58:UDFGetBasicInformation: 
+    CcFlushCache()
+Thrd:b3789d58:UDFSetFileSizeInDirNdx: 4ba00
+  FlushFE: 57be
+  FlushFI: offs 5134
+    CcUninitializeCacheMap()
+  FlushFE: 57be
+  FlushFI: offs 5134
+Thrd:b3789d58:UDFTeardownStructures, StartingFcb E1721438 Flat
+Thrd:b3789d58:UDFTeardownStructures, RemovedStartingFcb -> F
+Thrd:b3789d58:

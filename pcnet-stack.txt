@@ -1,0 +1,3057 @@
+Break instruction exception - code 80000003 (first chance)
+*******************************************************************************
+*                                                                             *
+*   You are seeing this message because you pressed either                    *
+*       CTRL+C (if you run kd.exe) or,                                        *
+*       CTRL+BREAK (if you run WinDBG),                                       *
+*   on your debugger machine's keyboard.                                      *
+*                                                                             *
+*                   THIS IS NOT A BUG OR A SYSTEM CRASH                       *
+*                                                                             *
+* If you did not intend to break into the debugger, press the "g" key, then   *
+* press the "Enter" key now.  This message might immediately reappear.  If it *
+* does, press "g" and "Enter" again.                                          *
+*                                                                             *
+*******************************************************************************
+nt!RtlpBreakWithStatusInstruction:
+83479788 cc              int     3
+kd> .reload -u
+Unloaded all modules
+kd> .reload -f
+Connected to Windows 7 7601 x86 compatible target at (Thu Nov 19 16:34:28.092 2026 (UTC - 5:00)), ptr64 FALSE
+Loading Kernel Symbols
+..*** ERROR: Module load completed but symbols could not be loaded for kdbazis.dll
+.............*** ERROR: Module load completed but symbols could not be loaded for ksbus.sys
+.....*** WARNING: Unable to verify timestamp for volmgrx.sys
+*** ERROR: Module load completed but symbols could not be loaded for volmgrx.sys
+.........*** ERROR: Module load completed but symbols could not be loaded for KScsiPrt.sys
+..*** WARNING: Unable to verify timestamp for msrpc.sys
+*** ERROR: Module load completed but symbols could not be loaded for msrpc.sys
+..*** ERROR: Module load completed but symbols could not be loaded for OCDE.sys
+........*** ERROR: Module load completed but symbols could not be loaded for VBoxGuest.sys
+..*** WARNING: Unable to verify timestamp for Fs_Rec.sys
+*** ERROR: Module load completed but symbols could not be loaded for Fs_Rec.sys
+....*** WARNING: Unable to verify timestamp for vmstorfl.sys
+*** ERROR: Module load completed but symbols could not be loaded for vmstorfl.sys
+..*** ERROR: Module load completed but symbols could not be loaded for spldr.sys
+........*** WARNING: Unable to verify timestamp for Null.SYS
+*** ERROR: Module load completed but symbols could not be loaded for Null.SYS
+......
+..*** WARNING: Unable to verify timestamp for Msfs.SYS
+*** ERROR: Module load completed but symbols could not be loaded for Msfs.SYS
+........*** ERROR: Module load completed but symbols could not be loaded for npcap.sys
+..*** ERROR: Module load completed but symbols could not be loaded for VBoxSF.sys
+.............*** ERROR: Module load completed but symbols could not be loaded for VBoxMouse.sys
+..*** ERROR: Module load completed but symbols could not be loaded for VBoxWddm.sys
+.....*** ERROR: Module load completed but symbols could not be loaded for drmk.sys
+...............*** ERROR: Module load completed but symbols could not be loaded for Neo_0047.sys
+.................
+........*** ERROR: Module load completed but symbols could not be loaded for aspi32.sys
+.*** ERROR: Module load completed but symbols could not be loaded for peauth.sys
+.....*** ERROR: Module load completed but symbols could not be loaded for lancepci.sys
+.
+Loading User Symbols
+
+Loading unloaded module list
+.......
+kd> kv
+ChildEBP RetAddr  Args to Child              
+83547a70 83479780 00000001 83479752 00000000 nt!RtlpBreakWithStatusInstruction (FPO: [1,0,0])
+83547a78 83479752 00000000 00000000 0001a39e nt!KdCheckForDebugBreak+0x22 (FPO: [0,0,0])
+83547aa8 834795e0 83857160 85a7d018 00000000 nt!KeUpdateRunTime+0x164
+83547b04 83478de3 876ca102 876ca102 000000d1 nt!KeUpdateSystemTime+0x613
+83547b04 942605d6 876ca102 876ca102 000000d1 nt!KeUpdateSystemTimeAssist+0x13 (FPO: [0,2] TrapFrame @ 83547b18)
+83547b88 94261dcd 40008000 8347e840 86684688 intelppm!C1Halt+0x4 (FPO: [0,0,0])
+83547b90 8347e840 86684688 83551d00 80b97000 intelppm!C1Idle+0x17 (FPO: [0,0,4])
+83547c20 834760e5 00000000 0000000e 00000000 nt!PoIdle+0x54e
+83547c24 00000000 0000000e 00000000 00000000 nt!KiIdleLoop+0xd (FPO: [0,0,0])
+kd> !thread
+THREAD 83551d00  Cid 0000.0000  Teb: 00000000 Win32Thread: 00000000 RUNNING on processor 0
+Not impersonating
+DeviceMap                 88607008
+Owning Process            83551fc0       Image:         Idle
+Attached Process          84e3c8c8       Image:         System
+Wait Start TickCount      29981          Ticks: 16160 (0:00:04:12.500)
+Context Switch Count      204966             
+UserTime                  00:00:00.000
+KernelTime                00:10:06.875
+Win32 Start Address nt!KiIdleLoop (0x834760d8)
+Stack Init 83547ed0 Current 83547c1c Base 83548000 Limit 83545000 Call 0
+Priority 0 BasePriority 0 UnusualBoost 0 ForegroundBoost 0 IoPriority 0 PagePriority 0
+ChildEBP RetAddr  Args to Child              
+83547a70 83479780 00000001 83479752 00000000 nt!RtlpBreakWithStatusInstruction (FPO: [1,0,0])
+83547a78 83479752 00000000 00000000 0001a39e nt!KdCheckForDebugBreak+0x22 (FPO: [0,0,0])
+83547aa8 834795e0 83857160 85a7d018 00000000 nt!KeUpdateRunTime+0x164
+83547b04 83478de3 876ca102 876ca102 000000d1 nt!KeUpdateSystemTime+0x613
+83547b04 942605d6 876ca102 876ca102 000000d1 nt!KeUpdateSystemTimeAssist+0x13 (FPO: [0,2] TrapFrame @ 83547b18)
+83547b88 94261dcd 40008000 8347e840 86684688 intelppm!C1Halt+0x4 (FPO: [0,0,0])
+83547b90 8347e840 86684688 83551d00 80b97000 intelppm!C1Idle+0x17 (FPO: [0,0,4])
+83547c20 834760e5 00000000 0000000e 00000000 nt!PoIdle+0x54e
+83547c24 00000000 0000000e 00000000 00000000 nt!KiIdleLoop+0xd (FPO: [0,0,0])
+
+kd> !locks
+**** DUMP OF ALL RESOURCE OBJECTS ****
+KD: Scanning for held locks.............................................................................................................................................................................................
+6045 total locks
+kd> !stacks 2
+Proc.Thread  .Thread  Ticks   ThreadState Blocker
+
+Max cache size is       : 1048576 bytes (0x400 KB) 
+Total memory in cache   : 0 bytes (0 KB) 
+Number of regions cached: 0
+0 full reads broken into 0 partial reads
+    counts: 0 cached/0 uncached, 0.00% cached
+    bytes : 0 cached/0 uncached, 0.00% cached
+** Prototype PTEs are implicitly decoded
+                            [84e3c8c8 System]
+   4.000008  84e3c5f0 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForGate+0x158
+                                        nt!MmZeroPageThread+0x208
+                                        nt!Phase1Initialization+0x14
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00000c  84e4ac38 000b3f8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!PopIrpWorkerControl+0x25
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000010  84e4a960 000b3f4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!PopIrpWorker+0x12b
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000014  84e4a688 000b3f4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!PopIrpWorker+0x12b
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000018  84e4b020 00009fd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00001c  84e4bd48 00009fd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000020  84e4ba70 000197d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000024  84e4b798 0000006 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000028  84e4b4c0 000017d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00002c  84e4c020 0008b74 Blocked    Stack paged out
+   4.000030  84e4cd48 0008b74 Blocked    Stack paged out
+   4.000034  84e4ca70 0008b20 Blocked    Stack paged out
+   4.000038  84e4c798 000003d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00003c  84e4c4c0 000002a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000040  84e4e020 000b205 Blocked    Stack paged out
+   4.000044  84e4ed48 0005abd Blocked    Stack paged out
+   4.000048  84e4ea70 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!ExpWorkerThread+0xe5
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00004c  84e4e798 000003c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ExpWorkerThreadBalanceManager+0x6a
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000050  84e4f4b0 00003b4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForGate+0x158
+                                        nt!KiExecuteDpc+0x82
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000054  84e57b78 0000d59 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!MiDereferenceSegmentThread+0x65
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000058  84e577d8 000142f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForGate+0x158
+                                        nt!MiModifiedPageWriter+0x39
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00005c  84e57500 0000030 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!KeBalanceSetManager+0xe6
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000060  84e57228 0000030 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!KeSwapProcessOrStack+0x28
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000068  84e54708 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!CcQueueLazyWriteScanThread+0x4a
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00006c  84e529c0 000b3f8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!FsRtlWorkerThread+0x41
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000070  84e526e8 000b3f8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!FsRtlWorkerThread+0x41
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000074  84e52410 0000c24 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        nt!ZwAlpcSendWaitReceivePort+0x11
+                                        nt!PopUmpoMessageThread+0x83
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000078  84e8d020 0001d7d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00007c  84e8dca0 000547c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!MiMappedPageWriter+0x66
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000080  84e9a020 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000084  84e9aa88 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000088  84ea6d48 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00008c  84ea67b0 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000094  856f1540 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000098  856f3a88 00082f1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00009c  85700a48 0000ef0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!WdipSemCheckTimeout+0x21d
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000a0  84dce178 000b207 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        ACPI!ACPIWorkerThread+0x47
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000a4  84e0c380 000b3f4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        ACPI!PciRootBusBiosMethodDispatcherOnResume+0x30
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000ac  84e0a348 0009277 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        KScsiPrt+0x530b
+                                        nt!PspSystemThreadStartup+0x159
+                                        hal!KfLowerIrql+0x61
+                                        nt!KiThreadStartup+0x19
+   4.0000b0  84e18a50 0000010 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        KScsiPrt+0xbe2a
+   4.0000b4  85b6e9f8 000b24c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        NDIS!ndisThreadPoolTimerHandler+0xd9
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000b8  85b6e720 000b20c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        NDIS!ndisWorkerThread+0x22
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000bc  85b6f498 00006d2 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        NDIS!ndisCmWaitThread+0x5b
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000cc  85db3200 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000d0  8c914020 0000036 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x90
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000d4  8c914798 0000036 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x90
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000d8  8c9144c0 0008b86 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x90
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000dc  85eaf020 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000e0  85eaf888 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000e4  85eaf5b0 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000e8  85c6a020 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000ec  85c6a8b8 000b328 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        volsnap!VspWorkerThread+0x52
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000f4  85c72718 000b28c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        watchdog!SMgrGdiCalloutThread+0x35
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000f8  85e74ba8 000b28c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        VBoxSF+0x7f47
+                                        VBoxSF+0x3e73f
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0000fc  85e748d0 0008290 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        VBoxSF+0x7f47
+                                        VBoxSF+0x3e73f
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000100  85e745f8 0008d16 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        VBoxSF+0x7f47
+                                        VBoxSF+0x3e73f
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000104  85e74320 0000d8c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        VBoxSF+0x7d92
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000108  85e95020 0000438 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        rdbss!RxSpinUpRequestsDispatcher+0x87
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00010c  85ea1bd0 000b20c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        blbdrive!BlbIoWorkerThread+0x1e
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000110  85e62b60 0002939 Blocked    Stack paged out
+   4.00011c  85ee1538 000b20c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        dxgkrnl!DpiPdoPollingThread+0x39
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000120  85ee3a48 000b20c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        dxgkrnl!DpiPowerArbiterThread+0x41
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000124  85f58d48 000b207 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        raspptp!MainPassiveLevelThread+0x2e
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000128  85c61020 000858c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        NDIS!ndisWorkerThread+0x22
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00012c  85c61d48 0008b20 Blocked    Stack paged out
+   4.000184  86199030 000b181 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        dxgmms1!VidSchiWaitForSchedulerEvents+0x176
+                                        dxgmms1!VidSchiScheduleCommandToRun+0xaa
+                                        dxgmms1!VidSchiRun_PriorityTable+0xf
+                                        dxgmms1!VidSchiWorkerThread+0x7f
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0001dc  861e8790 000b173 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0001f8  8618a928 0001110 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtRemoveIoCompletionEx+0x14c
+                                        nt!KiSystemServicePostCall
+                                        nt!ZwRemoveIoCompletionEx+0x11
+                                        msrpc+0xa551
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0002cc  86237d48 00019d0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        luafv!SynchronousFsControl+0x18f
+                                        luafv!UsnThread+0x180
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000370  86270d48 000b14c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000380  8627dd48 0000305 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000398  86287d48 000b147 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0003a4  86293d48 000b13f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0003b4  862a1d48 000b13e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0004b4  862f4888 000b125 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        csc!CscEnpEvictAutoThread+0x127
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0004b8  862f45a0 000b125 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        csc!CscEnpEvictAutoThread+0x127
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000568  8633ca48 0009507 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        HTTP!UlpTimedWaitOnEvent+0x18
+                                        HTTP!UlpThreadPoolWorker+0x115
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00056c  8633c720 0009307 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        HTTP!UlpTimedWaitOnEvent+0x18
+                                        HTTP!UlpThreadPoolWorker+0x115
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000570  8633c448 0001330 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        HTTP!UlpScavengerThread+0x5e
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0005f4  863a4b60 000b0f1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        mpsdrv!MpsWorkerThread+0x31
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0006e0  85e54d48 000b071 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        srv2!SrvProcWorkerThread+0x113
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0006c0  85e49d48 000b070 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        srv2!SrvProcWorkerThread+0x113
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.00067c  85e5a020 000b06f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        srv2!SrvProcWorkerThread+0x113
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000704  8ca87020 000b06e Blocked    Stack paged out
+   4.00075c  85e3c020 000b06d Blocked    Stack paged out
+   4.00076c  85e3dd48 000b06c Blocked    Stack paged out
+   4.000a38  85d209b0 00000b3 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        HTTP!UlpTimedWaitOnEvent+0x18
+                                        HTTP!UlpThreadPoolWorker+0x115
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000a3c  85d1d2d8 00001fd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        rdbss!RxpWorkerThreadDispatcher+0x89
+                                        rdbss!RxWorkerThreadDispatcher+0x1a
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000b00  85bb7d48 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!KeRemoveQueue+0x1b
+                                        rdbss!RxpWorkerThreadDispatcher+0x89
+                                        rdbss!RxWorkerThreadDispatcher+0x1a
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000c08  86349030 000003d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000c54  86199460 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!PfTLoggingWorker+0x67
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000d2c  85c97650 000a1e0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!EtwpLogger+0xd0
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.000608  85e68ad0 0000333 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        HTTP!UlpTimedWaitOnEvent+0x18
+                                        HTTP!UlpThreadPoolWorker+0x115
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0005fc  85e563c0 00000b3 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        HTTP!UlpTimedWaitOnEvent+0x18
+                                        HTTP!UlpThreadPoolWorker+0x115
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+   4.0004e4  85e17648 0008b3c Blocked    Stack paged out
+
+                            [85e62660 smss.exe]
+ 114.000118  85e62388 000b17a Blocked    Stack paged out
+ 114.000160  860dca60 000b17a Blocked    Stack paged out
+
+                            [861c5030 csrss.exe]
+ 16c.000188  85bd6950 000b0d1 Blocked    Stack paged out
+ 16c.00018c  861f0030 000946e Blocked    Stack paged out
+ 16c.000190  85c92668 000011d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 16c.000194  860e4278 000b17a Blocked    Stack paged out
+ 16c.0001b4  86165d48 00001d8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 16c.000204  860f0a60 0000001 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!RawInputThread+0x486
+                                        win32k!xxxCreateSystemThreads+0x4a
+                                        win32k!NtUserCallNoParam+0x1e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 16c.00020c  860f0490 00019a8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxMsgWaitForMultipleObjects+0xe9
+                                        win32k!xxxDesktopThread+0x1af
+                                        win32k!xxxCreateSystemThreads+0x54
+                                        win32k!NtUserCallNoParam+0x1e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 16c.000230  85ee83f0 0008b33 Blocked    Stack paged out
+ 16c.0003d0  862b39b0 000a23b Blocked    Stack paged out
+ 16c.000ea4  8d3ff920 000025b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86199d20 wininit.exe]
+ 1a0.0001a4  86165030 000b166 Blocked    Stack paged out
+ 1a0.0001e8  861906c0 0000c73 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1a0.000910  862d2030 0000c73 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86154bf8 csrss.exe]
+ 1ac.0001b8  861f0d48 000b174 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        cdd!CddSqmThread+0x9a
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+ 1ac.0001bc  86164d48 0000013 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        cdd!PresentWorkerThread+0x417
+                                        nt!PspSystemThreadStartup+0x159
+                                        nt!KiThreadStartup+0x19
+ 1ac.0001c0  861f0a10 00040ca Blocked    Stack paged out
+ 1ac.0001c4  861f0728 000946e Blocked    Stack paged out
+ 1ac.0001c8  86177b48 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1ac.0001cc  861e9b08 000b174 Blocked    Stack paged out
+ 1ac.0001d8  861eb958 000012f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1ac.000200  860f0d48 0000002 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!RawInputThread+0x486
+                                        win32k!xxxCreateSystemThreads+0x4a
+                                        win32k!NtUserCallNoParam+0x1e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1ac.000208  860f0778 0000fae Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxMsgWaitForMultipleObjects+0xe9
+                                        win32k!xxxDesktopThread+0x1af
+                                        win32k!xxxCreateSystemThreads+0x54
+                                        win32k!NtUserCallNoParam+0x1e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1ac.000820  85c04b60 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [861ea678 winlogon.exe]
+ 1d0.0001d4  861ebd48 000b054 Blocked    Stack paged out
+ 1d0.0001e0  861e84a8 0000c73 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 1d0.000e40  85e13ca0 0001df0 Blocked    Stack paged out
+ 1d0.0005c0  862f9030 0000c73 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [861e2c28 services.exe]
+ 214.000264  861d0be0 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 214.000274  861d4d48 0003efd Blocked    Stack paged out
+ 214.0002c8  85ea2938 000a8d1 Blocked    Stack paged out
+ 214.000454  85c646b8 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 214.000f84  8715dd48 0002939 Blocked    Stack paged out
+ 214.000808  856437a0 0001df1 Blocked    Stack paged out
+ 214.000288  85d13b70 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 214.000850  85bb8758 0000aa7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [861b7638 lsass.exe]
+ 220.000234  861e3030 000b167 Blocked    Stack paged out
+ 220.000238  8deac030 000adae Blocked    Stack paged out
+ 220.00023c  86172268 0000c62 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 220.000240  86174bc8 000b055 Blocked    Stack paged out
+ 220.000244  861744b8 000002a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 220.0003e0  862b6098 0002939 Blocked    Stack paged out
+
+                            [861804c0 lsm.exe]
+ 228.00022c  86183d48 000b13e Blocked    Stack paged out
+ 228.000290  861db030 00082d1 Blocked    Stack paged out
+ 228.000338  86253c50 000858c Blocked    Stack paged out
+ 228.000344  8625b6a0 000858c Blocked    Stack paged out
+ 228.00034c  862600c0 00040ca Blocked    Stack paged out
+ 228.000350  86261a08 000858f Blocked    Stack paged out
+ 228.000354  86261590 000b0e6 Blocked    Stack paged out
+ 228.000358  86261258 000b13d Blocked    Stack paged out
+ 228.000698  8626b030 0000723 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 228.0009f8  85c1c030 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [861dbd20 svchost.exe]
+ 294.000298  861db608 000adae Blocked    Stack paged out
+ 294.0002a8  861ed6e0 00004cf Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 294.0002b4  861ee4c0 000858c Blocked    Stack paged out
+ 294.0002bc  861ff910 000b04e Blocked    Stack paged out
+ 294.0002c0  86200030 00040ca Blocked    Stack paged out
+ 294.0002c4  86200d48 0000c24 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveMessage+0x1b8
+                                        nt!NtAlpcSendWaitReceivePort+0x12d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 294.000324  8624b720 000b14f Blocked    Stack paged out
+ 294.000328  8624ca58 000b14f Blocked    Stack paged out
+ 294.00038c  8667d150 00008ea Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 294.000828  86284d48 000002a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85ea2030 VBoxService.ex]
+ 2d0.0002d4  86237a70 000adac Blocked    Stack paged out
+ 2d0.0002e0  86239668 000b151 Blocked    Stack paged out
+ 2d0.0002e4  8623a508 00004d2 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.0002e8  8623b6f0 000b152 Blocked    Stack paged out
+ 2d0.0002ec  8623ad48 000024b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.0002f0  8623b290 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.0002f4  8623c030 0000108 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.0002f8  8623c588 000003e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.0002fc  8623cd48 0000c51 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.000300  8623dac8 000b0fa Blocked    Stack paged out
+ 2d0.000bac  85c962b0 00004d2 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 2d0.000f5c  861cf020 0001def Blocked    Stack paged out
+ 2d0.0008b4  87175998 00004d2 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86247d20 svchost.exe]
+ 308.00030c  862425d0 000adae Blocked    Stack paged out
+ 308.000320  8624b030 0001c37 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000330  8624ec10 00004b7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000334  862462d0 00088c1 Blocked    Stack paged out
+ 308.000e80  85e13518 0000577 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000dfc  862da320 0000577 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000904  85c36ad0 0000d57 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000490  85bfe768 00000d1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 308.000e78  85ce79a8 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [8625a928 svchost.exe]
+ 33c.000340  8625cd48 0008b36 Blocked    Stack paged out
+ 33c.000348  862603f8 000057b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.0003d4  862b0bb0 000b13a Blocked    Stack paged out
+ 33c.0003d8  862b4148 0000c32 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.0003f4  862c2840 0000bfd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.0003f8  862c2558 00057fd Blocked    Stack paged out
+ 33c.0003fc  862c4030 00089fd Blocked    Stack paged out
+ 33c.000460  862d8a40 000b0eb Blocked    Stack paged out
+ 33c.000470  862dcd48 000b128 Blocked    Stack paged out
+ 33c.000500  86303738 0008b39 Blocked    Stack paged out
+ 33c.000520  86309568 0001d61 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.0009d4  85601a28 000954b Blocked    Stack paged out
+ 33c.0009f0  85637d48 0008529 Blocked    Stack paged out
+ 33c.000bd8  85651030 000796d Blocked    Stack paged out
+ 33c.000be4  85651498 000796d Blocked    Stack paged out
+ 33c.000be0  856519c0 0008530 Blocked    Stack paged out
+ 33c.0004d0  860db4d0 0006c8d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        afd!AfdCleanupCore+0x6bd
+                                        afd!AfdDispatch+0x125
+                                        nt!IofCallDriver+0x63
+                                        nt!IopCloseFile+0x2f3
+                                        nt!ObpDecrementHandleCount+0x139
+                                        nt!ObpCloseHandleTableEntry+0x215
+                                        nt!ObpCloseHandle+0x7f
+                                        nt!NtClose+0x4e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.000588  856de460 0008b33 Blocked    Stack paged out
+ 33c.000400  8566f1c0 0008b32 Blocked    Stack paged out
+ 33c.000db8  85657998 0006861 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        afd!AfdCleanupCore+0x6bd
+                                        afd!AfdDispatch+0x125
+                                        nt!IofCallDriver+0x63
+                                        nt!IopCloseFile+0x2f3
+                                        nt!ObpDecrementHandleCount+0x139
+                                        nt!ObpCloseHandleTableEntry+0x215
+                                        nt!ObpCloseHandle+0x7f
+                                        nt!NtClose+0x4e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.0005ac  861a3d48 0003964 Blocked    Stack paged out
+ 33c.000fe0  84fca398 0000805 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.000930  8710cd48 0001df0 Blocked    Stack paged out
+ 33c.000fb0  8d59e420 0001d61 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 33c.000e14  8622f570 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86265d20 svchost.exe]
+ 3e4.0003e8  86265608 000412d Blocked    Stack paged out
+ 3e4.0003ec  862b99f8 000412a Blocked    Stack paged out
+ 3e4.00044c  862d6938 000b12d Blocked    Stack paged out
+ 3e4.000450  862cdce0 000b0ca Blocked    Stack paged out
+ 3e4.000480  862de570 0000c24 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3e4.0004b0  862f1950 000b0cf Blocked    Stack paged out
+ 3e4.0004bc  862f5d48 000877e Blocked    Stack paged out
+ 3e4.0004c0  862f5688 00088be Blocked    Stack paged out
+ 3e4.0004c4  862f8300 00067b9 Blocked    Stack paged out
+ 3e4.0004d4  862fad48 000b124 Blocked    Stack paged out
+ 3e4.0004f0  862ff490 000b0c3 Blocked    Stack paged out
+ 3e4.000408  85d41b88 000007d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3e4.000624  85d53478 0008a3f Blocked    Stack paged out
+ 3e4.000c58  8634ad48 000a67d Blocked    Stack paged out
+ 3e4.0005a8  8563d480 0009545 Blocked    Stack paged out
+ 3e4.0000c0  85650998 000914b Blocked    Stack paged out
+ 3e4.000b04  856504e0 0009545 Blocked    Stack paged out
+ 3e4.000b0c  856530a8 0009545 Blocked    Stack paged out
+ 3e4.000b28  8565a030 0009545 Blocked    Stack paged out
+ 3e4.000b78  8565ab18 0009545 Blocked    Stack paged out
+ 3e4.000900  85c59448 0000577 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3e4.000c30  8d28fd48 000412a Blocked    Stack paged out
+ 3e4.000f44  862d95a8 0001df0 Blocked    Stack paged out
+
+                            [8627cd20 svchost.exe]
+ 40c.000410  862c6030 000956f Blocked    Stack paged out
+ 40c.000414  8627b9d8 0000009 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 40c.000444  862d6030 000b05b Blocked    Stack paged out
+ 40c.000448  862d6d48 000403e Blocked    Stack paged out
+ 40c.0004dc  862fc4b0 0005577 Blocked    Stack paged out
+ 40c.000874  85e33d48 0009622 Blocked    Stack paged out
+ 40c.00088c  85c5d8f0 0007b29 Blocked    Stack paged out
+ 40c.0008c4  866cc3b0 000b040 Blocked    Stack paged out
+ 40c.000ffc  85e6f238 0007b29 Blocked    Stack paged out
+ 40c.000a34  8566dc70 0008529 Blocked    Stack paged out
+ 40c.000650  8694fd48 0001df1 Blocked    Stack paged out
+ 40c.000d94  85ebb3c0 00019a4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 40c.000ddc  856208d0 00006c9 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 40c.000cf8  8c1dd320 0000d24 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 40c.000940  85e9c580 0000009 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [862cc410 svchost.exe]
+ 424.000428  862ca918 0003ffd Blocked    Stack paged out
+ 424.00042c  862cf9b8 0000026 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.00049c  862e8938 000b126 Blocked    Stack paged out
+ 424.0004a0  862e8d48 000b054 Blocked    Stack paged out
+ 424.000534  86312c48 000858b Blocked    Stack paged out
+ 424.000538  863116c8 0007385 Blocked    Stack paged out
+ 424.00053c  86317bf0 0005666 Blocked    Stack paged out
+ 424.00054c  8632b460 0001b29 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000560  86338cb8 000b060 Blocked    Stack paged out
+ 424.00077c  8663a438 000b0c6 Blocked    Stack paged out
+ 424.000178  866a6ca0 000937f Blocked    Stack paged out
+ 424.0004ac  85d49608 000151e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000628  85d54718 00001d8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000758  85c365a8 000b06b Blocked    Stack paged out
+ 424.00064c  85e2c988 000adb5 Blocked    Stack paged out
+ 424.000804  85e2b5d8 0003ef0 Blocked    Stack paged out
+ 424.000880  86111650 0001a36 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000f04  84f4ca60 0009638 Blocked    Stack paged out
+ 424.000f08  84f4bd48 0009637 Blocked    Stack paged out
+ 424.000f0c  84f4ba60 0009637 Blocked    Stack paged out
+ 424.000f38  85bcfc08 0003ef0 Blocked    Stack paged out
+ 424.000f70  85c1c318 0003ef0 Blocked    Stack paged out
+ 424.000f98  85eb1550 0003ef0 Blocked    Stack paged out
+ 424.000fbc  861379e0 0003ef0 Blocked    Stack paged out
+ 424.000d04  85bf1030 0006536 Blocked    Stack paged out
+ 424.000b68  856a5728 000858c Blocked    Stack paged out
+ 424.000da0  8569e278 0003814 Blocked    Stack paged out
+ 424.000bc8  85627b68 00083f0 Blocked    Stack paged out
+ 424.000e94  85e4b478 0009014 Blocked    Stack paged out
+ 424.000a58  8565bd48 0008529 Blocked    Stack paged out
+ 424.000f00  85e3c7b0 0003ef0 Blocked    Stack paged out
+ 424.000388  86662608 0000026 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000b8c  86283d48 0003ffd Blocked    Stack paged out
+ 424.000e4c  85ed8030 0003ff0 Blocked    Stack paged out
+ 424.000268  8618c250 0000468 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.0005c4  85bead48 0001def Blocked    Stack paged out
+ 424.000ff8  84f26030 0000b65 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 424.000718  862a3d48 0000d9f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [862de260 svchost.exe]
+ 484.000488  862d5d48 000adb1 Blocked    Stack paged out
+ 484.00048c  862e79f8 000a226 Blocked    Stack paged out
+ 484.000548  86329ae8 000b106 Blocked    Stack paged out
+ 484.0005ec  863a13b8 000b03a Blocked    Stack paged out
+ 484.000814  86220558 000042d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86306490 svchost.exe]
+ 508.00050c  862ee880 0008b37 Blocked    Stack paged out
+ 508.000510  86307c80 0000005 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000524  8630d570 0001b1f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000528  8630f798 0008143 Blocked    Stack paged out
+ 508.00052c  8630f4b0 00088ae Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        afd!AfdCleanupCore+0x6bd
+                                        afd!AfdDispatch+0x125
+                                        nt!IofCallDriver+0x63
+                                        nt!IopCloseFile+0x2f3
+                                        nt!ObpDecrementHandleCount+0x139
+                                        nt!ObpCloseHandleTableEntry+0x215
+                                        nt!ObpCloseHandle+0x7f
+                                        nt!NtClose+0x4e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000530  863109d8 0008802 Blocked    Stack paged out
+ 508.0006e8  8660a870 00092c5 Blocked    Stack paged out
+ 508.00013c  866ef928 0006c6d Blocked    Stack paged out
+ 508.000618  85d55300 0006c5c Blocked    Stack paged out
+ 508.0008ac  860a67e8 000b045 Blocked    Stack paged out
+ 508.000fac  85eba030 0000005 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000fc0  85ebb030 0001785 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000ff4  85dff4f0 0003edc Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        afd!AfdCleanupCore+0x6bd
+                                        afd!AfdDispatch+0x125
+                                        nt!IofCallDriver+0x63
+                                        nt!IopCloseFile+0x2f3
+                                        nt!ObpDecrementHandleCount+0x139
+                                        nt!ObpCloseHandleTableEntry+0x215
+                                        nt!ObpCloseHandle+0x7f
+                                        nt!NtClose+0x4e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 508.000b08  85658af8 0009545 Blocked    Stack paged out
+ 508.000d84  85becd48 0008b59 Blocked    Stack paged out
+ 508.000224  84f1e4e0 00088c1 Blocked    Stack paged out
+ 508.000888  856c0cb8 0001df0 Blocked    Stack paged out
+
+                            [8634b1e0 spoolsv.exe]
+ 578.00057c  86344280 000adad Blocked    Stack paged out
+ 578.000594  8635c5f0 0000a1b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 578.000598  8635dd48 000b0ff Blocked    Stack paged out
+ 578.00059c  86351030 0001adb Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 578.0005a0  863617b8 0009622 Blocked    Stack paged out
+ 578.00068c  865efbc8 000858c Blocked    Stack paged out
+ 578.000694  865f2a10 000858c Blocked    Stack paged out
+ 578.0006a8  865f5030 000b0db Blocked    Stack paged out
+ 578.0006b0  865f53b8 000858b Blocked    Stack paged out
+ 578.0006b8  865f6678 000b0db Blocked    Stack paged out
+ 578.0006d0  865fea90 000b018 Blocked    Stack paged out
+ 578.0006d4  865ff030 000b0d6 Blocked    Stack paged out
+ 578.0006dc  86602408 000a1d0 Blocked    Stack paged out
+ 578.000c34  85e0b348 0001dec Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!EtwpReceiveNotification+0xf4
+                                        nt!NtTraceControl+0x329
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86352d20 taskeng.exe]
+ 58c.000590  863528b8 0003fb2 Blocked    Stack paged out
+ 58c.0008f0  8c828718 000a139 Blocked    Stack paged out
+ 58c.0008f4  85c3f118 000b03a Blocked    Stack paged out
+ 58c.00090c  85e1f150 000b030 Blocked    Stack paged out
+ 58c.000314  84fb5290 0000a69 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 58c.000dc4  85e3e650 0001df0 Blocked    Stack paged out
+ 58c.000ba8  8c827998 0001b28 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86363d20 svchost.exe]
+ 5b0.0005b4  86367030 000adaf Blocked    Stack paged out
+ 5b0.0005bc  86367478 00038c5 Blocked    Stack paged out
+ 5b0.0005e0  86399548 000b0f4 Blocked    Stack paged out
+ 5b0.0005e4  8639f250 000b0f2 Blocked    Stack paged out
+ 5b0.000644  863bd860 0008afe Blocked    Stack paged out
+ 5b0.000660  865c2278 000b0e7 Blocked    Stack paged out
+ 5b0.000684  865dac80 0007b2d Blocked    Stack paged out
+ 5b0.0006f8  8660b030 000b0d2 Blocked    Stack paged out
+ 5b0.0006fc  8660b8f8 000b045 Blocked    Stack paged out
+ 5b0.000700  8660b540 000796d Blocked    Stack paged out
+ 5b0.00070c  86662bd8 00001d8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 5b0.000b9c  86282d48 0001df0 Blocked    Stack paged out
+ 5b0.000d1c  85c8f338 00001d8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [863a9d20 taskhost.exe]
+ 600.000604  863acd48 0009581 Blocked    Stack paged out
+ 600.00060c  863adb10 000001e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 600.000620  8632eb60 000858c Blocked    Stack paged out
+ 600.0006c8  865fd5d8 000858c Blocked    Stack paged out
+ 600.0006f4  865d2030 000b0d2 Blocked    Stack paged out
+ 600.000920  85d3db88 0001110 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 600.000824  85bf84b8 0008a3c Blocked    Stack paged out
+ 600.000b34  85da4d48 0001df0 Blocked    Stack paged out
+ 600.000e74  85e58a98 000041e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 600.000750  85cddca8 000001e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [863c0748 dwm.exe]
+ 658.00065c  865c2658 000858c Blocked    Stack paged out
+ 658.000668  865ce408 0001474 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 658.00066c  865cfd48 000a1e0 Blocked    Stack paged out
+ 658.000248  85c35418 0001dec Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!EtwpReceiveNotification+0xf4
+                                        nt!NtTraceControl+0x329
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [865c6d20 explorer.exe]
+ 670.000674  865c6a38 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealWaitMessageEx+0x12
+                                        win32k!NtUserWaitMessage+0x14
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.000680  865d9030 0000574 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0006a0  865f32f8 0000bd8 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0006ac  865f69a0 0000394 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0006bc  865f7a30 000b0db Blocked    Stack paged out
+ 670.000788  8570d030 0001454 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.000794  8665d9a0 000b0bf Blocked    Stack paged out
+ 670.0007ac  866628f0 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0007c0  8667e9b8 0000c7e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0000c8  8668d920 000858c Blocked    Stack paged out
+ 670.00025c  866cb030 00010b1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.0007e4  85e43130 000adb5 Blocked    Stack paged out
+ 670.00055c  85e36bd8 000af5d Blocked    Stack paged out
+ 670.000a4c  86363a38 000197a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.000a50  86368720 0004177 Blocked    Stack paged out
+ 670.000a54  86368030 0005537 Blocked    Stack paged out
+ 670.000a60  85d1e6b0 000858c Blocked    Stack paged out
+ 670.000a90  85c48288 0009111 Blocked    Stack paged out
+ 670.000acc  86111b70 000820e Blocked    Stack paged out
+ 670.000af4  85c09180 000190d Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.000b10  86339758 000ae3a Blocked    Stack paged out
+ 670.000d08  85d73ac8 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 670.000de4  85e59410 0004177 Blocked    Stack paged out
+ 670.000514  86222d48 0003920 Blocked    Stack paged out
+ 670.000db4  8682f020 0001df0 Blocked    Stack paged out
+
+                            [8660a190 clcSrvc.exe]
+ 6ec.0006f0  865d29a0 000adb5 Blocked    Stack paged out
+ 6ec.000710  86620030 000b0ce Blocked    Stack paged out
+ 6ec.00071c  86621d48 000009c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 6ec.00072c  86620998 0000450 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 6ec.000bc4  8665ac20 0000450 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 6ec.000e00  85c35bb8 0001df0 Blocked    Stack paged out
+ 6ec.000f48  85ccdd48 0000450 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86620438 Everything.exe]
+ 724.000728  8661dd48 000adb4 Blocked    Stack paged out
+ 724.000738  86624030 000a94e Blocked    Stack paged out
+ 724.000760  86628030 00001ce Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 724.000764  86628d48 000b0c7 Blocked    Stack paged out
+ 724.000dcc  84fbe940 0001ded Blocked    Stack paged out
+
+                            [86626030 clcMgr.exe]
+ 730.000734  86625d48 000004c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 730.00073c  866271c0 000a94e Blocked    Stack paged out
+ 730.000740  8662a7c8 000004b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 730.000744  8662a490 000b0ce Blocked    Stack paged out
+ 730.000748  8662b030 000b0ce Blocked    Stack paged out
+
+                            [86638030 NetTimeService]
+ 774.000778  86643af8 000858c Blocked    Stack paged out
+ 774.000784  86650420 000adaf Blocked    Stack paged out
+ 774.0007ec  86687750 000b0a2 Blocked    Stack paged out
+ 774.000144  8669e030 000858c Blocked    Stack paged out
+ 774.000180  866a4d48 0009453 Blocked    Stack paged out
+ 774.000170  866a6608 000003c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 774.000168  866a6320 0000027 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 774.000164  866a5030 000001c Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 774.000148  866b3a98 000041b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 774.000be8  85e39278 000041b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 774.0004f8  8563d778 000041b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86684030 VBoxTray.exe]
+ 7cc.0007d0  866843a0 0000008 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.0007f4  866904d8 0000425 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000064  8669bd48 000858c Blocked    Stack paged out
+ 7cc.000140  8668d230 0000027 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        VBoxGuest+0x15406
+                                        VBoxGuest+0x154c8
+                                        VBoxGuest+0x156ab
+                                        VBoxGuest+0x69f0
+                                        VBoxGuest+0x727b
+                                        VBoxGuest+0x25ae
+                                        VBoxGuest+0x32b6
+                                        nt!IofCallDriver+0x63
+                                        nt!IopSynchronousServiceTail+0x1f8
+                                        nt!IopXxxControlFile+0x82f
+                                        nt!NtDeviceIoControlFile+0x2a
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000198  866b17e0 0000f18 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000258  866b7450 0000f18 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        VBoxGuest+0x153d0
+                                        VBoxGuest+0x154c8
+                                        VBoxGuest+0x1569a
+                                        VBoxGuest+0x5110
+                                        VBoxGuest+0x51c5
+                                        VBoxGuest+0x9928
+                                        VBoxGuest+0x9cf3
+                                        VBoxGuest+0x5462
+                                        VBoxGuest+0x55a6
+                                        VBoxGuest+0x70e1
+                                        VBoxGuest+0x25ae
+                                        VBoxGuest+0x32b6
+                                        nt!IofCallDriver+0x63
+                                        nt!IopSynchronousServiceTail+0x1f8
+                                        nt!IopXxxControlFile+0x82f
+                                        nt!NtDeviceIoControlFile+0x2a
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.00015c  866c1030 0000033 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        VBoxGuest+0x15406
+                                        VBoxGuest+0x154c8
+                                        VBoxGuest+0x156ab
+                                        VBoxGuest+0x69f0
+                                        VBoxGuest+0x727b
+                                        VBoxGuest+0x25ae
+                                        VBoxGuest+0x32b6
+                                        nt!IofCallDriver+0x63
+                                        nt!IopSynchronousServiceTail+0x1f8
+                                        nt!IopXxxControlFile+0x82f
+                                        nt!NtDeviceIoControlFile+0x2a
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000254  866cb618 0000089 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        VBoxGuest+0x15406
+                                        VBoxGuest+0x154c8
+                                        VBoxGuest+0x156ab
+                                        VBoxGuest+0x69f0
+                                        VBoxGuest+0x727b
+                                        VBoxGuest+0x25ae
+                                        VBoxGuest+0x32b6
+                                        nt!IofCallDriver+0x63
+                                        nt!IopSynchronousServiceTail+0x1f8
+                                        nt!IopXxxControlFile+0x82f
+                                        nt!NtDeviceIoControlFile+0x2a
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000318  866ee208 0000085 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.0003cc  85d44170 0000047 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000420  85d18908 0005647 Blocked    Stack paged out
+ 7cc.000498  85d4b7f0 000b086 Blocked    Stack paged out
+ 7cc.000bd4  863659a0 0000425 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000e04  84fbed48 0001def Blocked    Stack paged out
+ 7cc.0008c0  86263030 0000425 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7cc.000c20  84eee788 0000425 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [86630830 Everything.exe]
+ 7d4.0007d8  86630548 0000002 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealWaitMessageEx+0x12
+                                        win32k!NtUserWaitMessage+0x14
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.0007f8  8669ad48 00067b9 Blocked    Stack paged out
+ 7d4.00019c  866b1030 00011ee Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.00036c  866ee780 00011ac Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.0008ec  85e4ba00 00011ee Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.000dd8  85e46550 0000632 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.000e50  85d788d0 0000f37 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7d4.000840  85d63d48 0001def Blocked    Stack paged out
+
+                            [86687d20 NetTime.exe]
+ 7dc.0007e0  86687a38 000000a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealWaitMessageEx+0x12
+                                        win32k!NtUserWaitMessage+0x14
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7dc.00017c  8669f640 000a91f Blocked    Stack paged out
+ 7dc.0001b0  866a5848 0009453 Blocked    Stack paged out
+ 7dc.000de0  85f92268 0001ded Blocked    Stack paged out
+
+                            [866a13c8 srvstub.exe]
+ 14c.000154  86689d48 000adae Blocked    Stack paged out
+ 14c.000210  866b9428 000a91a Blocked    Stack paged out
+ 14c.0002a4  866cc750 000019a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 14c.0004ec  8c9e5a18 000b084 Blocked    Stack paged out
+
+                            [85d47248 ProcessGoverno]
+ 4e0.0004f4  85d445a8 000b081 Blocked    Stack paged out
+ 4e0.000550  85cd8030 000047b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 4e0.0005d0  85d16d48 000003b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 4e0.0005d8  86868828 000003f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 4e0.000614  85d58388 000b041 Blocked    Stack paged out
+ 4e0.0008b8  85df4860 000a282 Blocked    Stack paged out
+ 4e0.0008bc  85d5ec40 000003f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 4e0.0009f4  85e53d48 000a232 Blocked    Stack paged out
+ 4e0.000218  85bea678 0001df1 Blocked    Stack paged out
+ 4e0.000090  85bee920 000047b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85e42448 svchost.exe]
+ 868.00086c  86292030 000adae Blocked    Stack paged out
+ 868.00087c  85c66988 000796d Blocked    Stack paged out
+ 868.0008cc  85c5e658 0006c67 Blocked    Stack paged out
+ 868.0008d4  85e503a0 000796d Blocked    Stack paged out
+ 868.00027c  84f7b3c0 00007e7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85e36418 svchost.exe]
+ 890.000894  8e010190 000adac Blocked    Stack paged out
+ 890.0008d8  863b65d0 00003a1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.0008dc  85e335e0 000921a Blocked    Stack paged out
+ 890.0009a0  85e30130 0000c27 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.0009a4  85c42160 0005d1a Blocked    Stack paged out
+ 890.0009a8  85e19150 000b023 Blocked    Stack paged out
+ 890.0009ac  85d73150 0000d59 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.000c0c  85e22680 0000bbd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.000d78  862b4d48 0000d0f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.000d7c  86675620 0003d11 Blocked    Stack paged out
+ 890.000e34  8d7fd7b0 00071a4 Blocked    Stack paged out
+ 890.000938  86663d48 000713b Blocked    Stack paged out
+ 890.000e68  870b96e8 00003a1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 890.000a98  85619020 0001def Blocked    Stack paged out
+
+                            [8e010d20 taskeng.exe]
+ 914.000918  85d437f0 0003fab Blocked    Stack paged out
+ 914.00091c  85d3c728 000a132 Blocked    Stack paged out
+ 914.000924  85d3e308 000b032 Blocked    Stack paged out
+ 914.000978  85d23b60 000b02b Blocked    Stack paged out
+ 914.000988  86160030 000b02a Blocked    Stack paged out
+ 914.000f68  866e3030 0000232 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 914.000ee4  85bc3d48 0001df0 Blocked    Stack paged out
+
+                            [85d16180 MicrosoftEdgeU]
+ 948.00094c  85d127c0 000858c Blocked    Stack paged out
+ 948.000954  85c547e0 0000d42 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 948.000960  84db37b0 0001b1f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 948.000bf8  85e35c38 0000d42 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 948.0005dc  861de020 0001deb Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!EtwpReceiveNotification+0xf4
+                                        nt!NtTraceControl+0x329
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 948.000d9c  870ad260 0000d42 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85d15b38 bitsumsessiona]
+ 980.000984  866adb50 0000022 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 980.00099c  8c4e0160 0000021 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85d47d20 ProcessLasso.e]
+ 98c.000990  8d47f180 000002a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 98c.000a20  85e20b70 000076a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 98c.000a24  85c46378 000858c Blocked    Stack paged out
+ 98c.000ca8  85d4aa80 0000d10 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 98c.000cac  86605b68 000a2d4 Blocked    Stack paged out
+ 98c.000cb0  86606d48 000a2d4 Blocked    Stack paged out
+ 98c.000cb4  85e40030 000a2d4 Blocked    Stack paged out
+ 98c.000cb8  862adb68 000a2ab Blocked    Stack paged out
+ 98c.000cbc  8633b880 000a2b6 Blocked    Stack paged out
+ 98c.000cc0  86345030 000a2a2 Blocked    Stack paged out
+ 98c.000cc4  85e41ca0 000a2b2 Blocked    Stack paged out
+ 98c.000cc8  86199760 000a2b2 Blocked    Stack paged out
+ 98c.000ccc  8633a030 000a2b2 Blocked    Stack paged out
+ 98c.000cd4  8634aa60 000a16b Blocked    Stack paged out
+ 98c.000cd8  85e13030 000a2ab Blocked    Stack paged out
+ 98c.000cdc  86339a60 0000003 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 98c.000ce4  8619a030 000a2a7 Blocked    Stack paged out
+ 98c.000ee8  8567c600 0001df1 Blocked    Stack paged out
+ 98c.0001f4  85631d48 000076a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [8d1ead20 SearchIndexer.]
+ a68.000a6c  85c4b6e8 000adab Blocked    Stack paged out
+ a68.000a70  85e38340 0000020 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000a7c  862abd48 000911c Blocked    Stack paged out
+ a68.000a88  8c43b718 000146f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtRemoveIoCompletion+0x106
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000a9c  85e545d8 000147a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000aa4  85e44510 00001fd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000aa8  85e47640 000503d Blocked    Stack paged out
+ a68.000aac  8636e308 00011ee Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000ab0  85e5cbf0 00001fd Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.00041c  84ff92f8 000146f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000eac  856c3d48 000147b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000e60  86936908 0001df0 Blocked    Stack paged out
+ a68.000474  85cc4030 000146f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000bcc  85ca2030 00002a0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ a68.000458  85e18818 0000020 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85e04030 TGitCache.exe]
+ d24.000d28  866a8030 0006ec0 Blocked    Stack paged out
+ d24.000d30  85e1eb70 00092d9 Blocked    Stack paged out
+ d24.000d38  8cb339b0 0006ec0 Blocked    Stack paged out
+ d24.000d3c  85e25a50 00059c8 Blocked    Stack paged out
+ d24.000d40  8631b358 00059c6 Blocked    Stack paged out
+ d24.000d44  85c48a98 0009e17 Blocked    Stack paged out
+ d24.000d48  85dfabd8 000a1d0 Blocked    Stack paged out
+ d24.000d4c  85d58d48 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d24.000d50  85e32d48 0009a57 Blocked    Stack paged out
+ d24.000d60  85d54400 0000bcf Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d24.000da8  85c02b38 0009d14 Blocked    Stack paged out
+ d24.000ed0  85c79d48 0001def Blocked    Stack paged out
+ d24.000fe8  85bc18f8 0000ad1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d24.00085c  856134e8 0000011 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85d785c0 mmc.exe]
+ e24.000e28  8c828d48 0000f83 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ e24.000e2c  85c3a928 0009967 Blocked    Stack paged out
+ e24.000e30  85e0a7c0 00082e6 Blocked    Stack paged out
+ e24.000e70  85e39798 000965d Blocked    Stack paged out
+ e24.00079c  84f60d48 0000ce6 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ e24.000968  86957020 0001def Blocked    Stack paged out
+
+                            [84fc9550 svchost.exe]
+ 3a8.0002b0  85c1ba88 0009521 Blocked    Stack paged out
+ 3a8.000720  84f5f1c8 00067fc Blocked    Stack paged out
+ 3a8.000860  85db5d48 0009545 Blocked    Stack paged out
+ 3a8.0003bc  85c51d48 00089a1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        afd!AfdCleanupCore+0x6bd
+                                        afd!AfdDispatch+0x125
+                                        nt!IofCallDriver+0x63
+                                        nt!IopCloseFile+0x2f3
+                                        nt!ObpDecrementHandleCount+0x139
+                                        nt!ObpCloseHandleTableEntry+0x215
+                                        nt!ObpCloseHandle+0x7f
+                                        nt!NtClose+0x4e
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3a8.0003b8  84f7c620 000796d Blocked    Stack paged out
+ 3a8.00093c  84f7c030 000955d Blocked    Stack paged out
+ 3a8.0009b4  85628528 000955d Blocked    Stack paged out
+ 3a8.0009d0  84f7cd48 000955d Blocked    Stack paged out
+ 3a8.0009cc  85628d48 00089a1 Blocked    Stack paged out
+ 3a8.0009e4  84ff3c10 00089a1 Blocked    Stack paged out
+ 3a8.0007b0  85632d48 0004dcb Blocked    Stack paged out
+ 3a8.000aa0  8560c588 00089a1 Blocked    Stack paged out
+ 3a8.000ab4  8565a7e0 00087a2 Blocked    Stack paged out
+ 3a8.000b24  84fcdb68 0008991 Blocked    Stack paged out
+ 3a8.0008e4  85664970 0008b11 Blocked    Stack paged out
+ 3a8.000b20  85c18870 0008965 Blocked    Stack paged out
+ 3a8.000b18  85c1e030 0008918 Blocked    Stack paged out
+ 3a8.000c90  8568d510 0008b0d Blocked    Stack paged out
+ 3a8.000c80  86231cd0 0008962 Blocked    Stack paged out
+ 3a8.0001ec  85e6e610 0000b54 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3a8.00062c  85edd7b0 0008962 Blocked    Stack paged out
+ 3a8.0007a8  8560e030 0008910 Blocked    Stack paged out
+ 3a8.0003c8  85c12d48 0009014 Blocked    Stack paged out
+ 3a8.000efc  85d22858 0008901 Blocked    Stack paged out
+ 3a8.000ef4  86687030 00088f1 Blocked    Stack paged out
+ 3a8.000ef0  85ce85c0 00088c1 Blocked    Stack paged out
+ 3a8.000eec  85e17d48 0007b67 Blocked    Stack paged out
+ 3a8.000610  86826d48 00087a2 Blocked    Stack paged out
+ 3a8.000b54  856d2d48 0007b5f Blocked    Stack paged out
+ 3a8.000ce8  85c1e868 0000b54 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3a8.000c7c  863736f0 0007b2d Blocked    Stack paged out
+ 3a8.0009dc  863be7a0 000796d Blocked    Stack paged out
+ 3a8.000f50  85da20c0 00008a1 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 3a8.000f8c  87152680 0001df0 Blocked    Stack paged out
+
+                            [856012a0 wmpnetwk.exe]
+ 9c4.0009c0  86109b80 0009555 Blocked    Stack paged out
+ 9c4.000a04  85e587b0 00000a7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 9c4.000a00  85625030 000002f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 9c4.000a08  8563bd48 0008b0d Blocked    Stack paged out
+ 9c4.0009ec  866b6b78 000002a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 9c4.000654  85650d48 000858c Blocked    Stack paged out
+ 9c4.000b98  84f30af8 0000026 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 9c4.000a2c  85644030 0009531 Blocked    Stack paged out
+ 9c4.000a30  85644ac8 0009531 Blocked    Stack paged out
+ 9c4.000ba4  85bfb378 0006c67 Blocked    Stack paged out
+ 9c4.000130  85e6ed48 00017af Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 9c4.000d8c  86332030 0008b11 Blocked    Stack paged out
+ 9c4.000adc  84fa3778 0001df0 Blocked    Stack paged out
+ 9c4.00037c  85d4f198 000002f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [8560fd20 svchost.exe]
+ 5a4.000a5c  856084b8 0007b64 Blocked    Stack paged out
+ 5a4.0006e4  8560cc38 0006c63 Blocked    Stack paged out
+ 5a4.000b80  85661678 0006e05 Blocked    Stack paged out
+ 5a4.000f10  862e17d0 00007e3 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 5a4.000e90  87158c20 0001df0 Blocked    Stack paged out
+
+                            [856716c0 WmiPrvSE.exe]
+ b70.000c10  85648d48 000858c Blocked    Stack paged out
+ b70.000c1c  85648a60 000681e Blocked    Stack paged out
+ b70.000304  8565fb00 000951d Blocked    Stack paged out
+ b70.000b5c  85648030 0001c9e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ b70.000970  85e36120 0000bde Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ b70.000c94  863aa4f0 0000d9f Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [8568bcb8 notepad.exe]
+ 844.000584  85f31370 0004132 Blocked    Stack paged out
+ 844.0009bc  8681cd48 0001df0 Blocked    Stack paged out
+
+                            [84fc5290 mmc.exe]
+ ea8.000884  8631dad0 0000f83 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000ae8  84f622a0 000822a Blocked    Stack paged out
+ ea8.000ec4  85f2dd48 0006baa Blocked    Stack paged out
+ ea8.000fa0  856034f0 0008223 Blocked    Stack paged out
+ ea8.000fa4  862ae628 00013b0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000f9c  861aa930 000000a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealWaitMessageEx+0x12
+                                        win32k!NtUserWaitMessage+0x14
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000f80  8560e4e0 000000a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000fdc  85bc5030 0008210 Blocked    Stack paged out
+ ea8.000798  85bec548 0008208 Blocked    Stack paged out
+ ea8.000ca4  85c627c0 0000008 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000c44  85c7fce8 000000a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.000d6c  8564c998 00005ae Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ ea8.00096c  86955d48 0001df1 Blocked    Stack paged out
+
+                            [862daa58 Wireshark.exe]
+ 934.000ca0  8e0106b0 0000002 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 934.000c3c  8618a640 00040fe Blocked    Stack paged out
+ 934.0008a0  85645490 00031d0 Blocked    Stack paged out
+ 934.000b6c  8660d030 0001050 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 934.000d80  861a3a60 000404f Blocked    Stack paged out
+ 934.000994  85bcd030 0000413 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 934.000b30  8712e6c8 0004033 Blocked    Stack paged out
+ 934.000eb4  85c57cc0 0001df1 Blocked    Stack paged out
+
+                            [87198a40 dumpcap.exe]
+ cfc.------  NOTHREADS
+
+                            [856d70c0 dumpcap.exe]
+ dec.000b40  85e2dd48 0000009 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ dec.000e98  8715f3f0 0003081 Blocked    Stack paged out
+ dec.000fe4  865e07c8 0001df1 Blocked    Stack paged out
+
+                            [85be46c8 conhost.exe]
+ d70.000b74  85d91468 0001df1 Blocked    Stack paged out
+ d70.000c50  862d3af8 0003f82 Blocked    Stack paged out
+
+                            [8622cb50 cmd.exe]
+ 81c.000d98  86305450 0003965 Blocked    Stack paged out
+
+                            [85e19aa0 conhost.exe]
+ f28.00035c  85ce8030 0001df1 Blocked    Stack paged out
+ f28.000c74  86661d48 000123e Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [8563fa78 ipconfig.exe]
+ c04.00028c  8632dad8 0003964 Blocked    Stack paged out
+ c04.00097c  86230938 00031e4 Blocked    Stack paged out
+ c04.000d54  85d76d48 0001df1 Blocked    Stack paged out
+
+                            [856e8128 MicrosoftEdgeU]
+ 270.000e7c  861abd48 0000001 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 270.00024c  86326738 00004a7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 270.000c64  870bbd48 00002e0 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 270.000f4c  8ca47938 0000d5a Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 270.000ac4  86684688 0000001 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [856ebd20 MpCmdRun.exe]
+ 7fc.0005f8  87130b90 0000aa7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7fc.000574  8c43ba30 0000027 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7fc.000c60  856b25d8 00019a4 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7fc.0001fc  85c67830 00008a7 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ 7fc.000818  861d5a60 0000027 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [861ee850 cmd.exe]
+ 468.000464  84ffb030 0001329 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpSignalAndWait+0x7b
+                                        nt!AlpcpReceiveSynchronousReply+0x27
+                                        nt!AlpcpProcessSynchronousRequest+0x282
+                                        nt!LpcpRequestWaitReplyPort+0x6a
+                                        nt!NtRequestWaitReplyPort+0x4c
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85639550 conhost.exe]
+ de8.000494  84fae180 0000f83 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!AlpcpReceiveMessagePort+0x421
+                                        nt!AlpcpReceiveLegacyMessage+0x197
+                                        nt!NtReplyWaitReceivePortEx+0x10e
+                                        nt!NtReplyWaitReceivePort+0x18
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ de8.000b58  8561bd48 000001b Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+                            [85c6d8c8 MicrosoftEdgeU]
+ d18.000a40  8ca448f0 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForSingleObject+0x393
+                                        nt!NtWaitForSingleObject+0xc6
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000e1c  85c40690 0000001 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000944  86246658 0000024 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000c2c  856a34c8 0000d25 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000c88  85bf87b0 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        win32k!xxxRealSleepThread+0x20b
+                                        win32k!xxxSleepThread+0x2d
+                                        win32k!xxxRealInternalGetMessage+0x4b2
+                                        win32k!NtUserGetMessage+0x4d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000580  85d32030 0000d58 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeDelayExecutionThread+0x2aa
+                                        nt!NtDelayExecution+0x8d
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000a10  8685d030 0000d24 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeWaitForMultipleObjects+0x535
+                                        nt!ObpWaitForMultipleObjects+0x265
+                                        nt!NtWaitForMultipleObjects+0xcd
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+ d18.000df4  85e59b68 0000d26 Blocked    nt!KiSwapContext+0x26
+                                        nt!KiSwapThread+0x266
+                                        nt!KiCommitThreadWait+0x1df
+                                        nt!KeRemoveQueueEx+0x4f8
+                                        nt!IoRemoveIoCompletion+0x2e
+                                        nt!NtWaitForWorkViaWorkerFactory+0x1a1
+                                        nt!KiSystemServicePostCall
+                                        +0x77566b94
+
+
+Threads Processed: 648
+
+Max cache size is       : 1048576 bytes (0x400 KB) 
+Total memory in cache   : 0 bytes (0 KB) 
+Number of regions cached: 0
+0 full reads broken into 0 partial reads
+    counts: 0 cached/0 uncached, 0.00% cached
+    bytes : 0 cached/0 uncached, 0.00% cached
+** Transition PTEs are implicitly decoded
+** Prototype PTEs are implicitly decoded

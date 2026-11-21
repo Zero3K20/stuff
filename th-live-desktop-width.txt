@@ -1,0 +1,226 @@
+QTM Live Platform — Desktop Width Fix (th-live.online / qqlive.online / etc.)
+==============================================================================
+
+Short answer
+------------
+These sites are built as phone-only apps.  On a wide desktop display the
+Vue app fills the full browser window width, producing an ugly stretched
+layout.  The userscript fixes this in six complementary ways (v0.7):
+
+  1. It overrides window.innerWidth and document.documentElement.clientWidth
+     at document-start (before any site JavaScript runs) so that flexible.js,
+     Vant Sticky, and all other layout code see 390 px instead of the real
+     desktop viewport width.  This is the primary fix for text sizing and
+     fixed-element positioning.
+
+  2. It emulates touch capability — the same way Chrome DevTools Device
+     Toolbar does — by overriding navigator.maxTouchPoints to 5 and
+     setting window.ontouchstart to null.  Without this, Vue/Vant skip swipe
+     gesture handlers, bottom-sheet pull-to-close, tap ripple effects, and
+     other mobile-only code paths, making the page feel like a desktop site
+     even inside the 390 px column.
+
+  3. It overrides the page's <meta name="viewport"> to width=390.  This makes
+     the browser lay out the entire page as if the viewport were a phone
+     (390 CSS px wide), so the site's own CSS works as the designers intended.
+
+  4. It pins the HTML root font-size to 39 px in CSS with !important as a
+     belt-and-suspenders fix in case flexible.js fires before the override in
+     step 1 can be installed.
+
+  5. It injects CSS that (a) centers the #app column on a dark desktop
+     background, (b) repositions known Vant UI fixed-position components
+     (bottom nav bar, top nav bar, popups, overlays) into the phone column,
+     and (c) after page load scans all elements by computed style (not by
+     class name) to constrain any remaining fixed-position elements —
+     including site-specific custom navigation bars.
+
+  6. It hooks history.pushState, history.replaceState, and the popstate event
+     to detect Vue Router SPA navigations (including the browser back/forward
+     buttons).  On each navigation it re-applies the viewport lock and
+     re-runs a fresh 6-second fixed-element scan burst, so every new page
+     rendered by the router is constrained the same way as the initial load.
+
+A small toggle button in the top-right corner lets you switch back to
+full-width at any time without editing the script.
+
+
+Why the site looks stretched
+-----------------------------
+The app bundle (app.*.js) uses Vant UI, a component library built for
+mobile.  Its components are designed for a ~390 px wide viewport:
+
+  - The root component sets the #app element to width:100%.
+  - Icon sizes, font sizes, padding, and grid columns are all tuned for
+    ~360–430 px.
+  - There are no CSS breakpoints for desktop widths — none are needed on
+    a phone.
+
+When viewed in a desktop browser the 100% width stretches across 1 000–
+2 000 px, so every component is proportionally oversized.
+
+
+Why overriding the viewport meta is the right fix
+--------------------------------------------------
+The CSS-only alternatives (max-width: 390px on #app; transform: scale)
+cannot change the value reported by window.innerWidth or CSS viewport
+units (vw / vh / dvh).  Media queries and calc() expressions that
+reference those units still see the full desktop width and render
+incorrectly.
+
+Setting <meta name="viewport" content="width=390"> tells the browser to
+treat the layout viewport as 390 px wide.  Every CSS length unit, every
+media query, and every JS window.innerWidth call then sees 390 px, and
+the site renders identically to how it looks on an actual phone.
+
+The browser scales the result up to fill the physical window (just as it
+does when you open a desktop page on a phone without a viewport tag) but
+the layout itself is computed at 390 px.
+
+
+Why the viewport override alone is not enough
+----------------------------------------------
+Even with the viewport locked to 390 px, Vant UI's navigation and overlay
+components use  position:fixed; left:0; right:0  which attaches them to
+the viewport edges, not to the #app container.  This means:
+
+  - .van-tabbar  (bottom navigation bar)
+  - .van-nav-bar (top title bar)
+  - .van-overlay / popups / action sheets
+
+…would all span the full desktop viewport even after the viewport meta is
+overridden, because the browser still needs a CSS rule to constrain them.
+
+The script therefore also includes explicit CSS for all known Vant UI
+fixed components:
+
+    left:  max(0px, calc(50vw - 195px))
+    width: min(390px, 100vw)
+    right: auto
+
+This positions them exactly over the phone column regardless of the
+viewport width, and works even if the viewport override fails (e.g. the
+browser ignores the late meta change).
+
+
+How the layout is fixed (v0.6)
+------------------------------
+Five bugs / gaps cumulatively caused the stretched layout and oversized
+text seen on desktop in v0.3 and earlier:
+
+Bug 1 — Duplicate viewport meta (fixed in v0.3)
+  The script runs at document-start before the HTML is parsed, so any
+  <meta name="viewport"> it creates is inserted *before* the site's own
+  tag.  Browsers use the *last* duplicate viewport meta, so the site's
+  later-parsed tag silently won.
+
+  Fix: applyViewport() uses querySelectorAll to find and lock *every*
+  viewport meta.  A MutationObserver fires when the site's tag is parsed
+  and immediately corrects and watches it.
+
+Bug 2 — Font size computed from desktop clientWidth (fixed in v0.3 / v0.4)
+  flexible.js runs: html.style.fontSize = clientWidth / 10 + 'px'.
+  On a 1440 px desktop it sets 144 px instead of 39 px.
+
+  Fix (CSS, v0.3): html { font-size: 39px !important }.
+  Fix (JS, v0.4):  override document.documentElement.clientWidth to
+  return 390 before any site JS runs, so flexible.js computes 39 px
+  naturally without needing the CSS override to fight it.
+
+Bug 3 — Vant Sticky reads window.innerWidth for fixed-element width (v0.4)
+  Vant Sticky initialises by calling window.innerWidth to determine the
+  width it should give to fixed-position elements.  On a 1440 px desktop
+  (where the viewport meta override may not have propagated yet) it sets
+  style="width: 1440px" on the sticky bar, making it span the full screen.
+
+  Fix: override window.innerWidth at document-start to return PHONE_WIDTH
+  (390).  All Vant Sticky initialisation therefore computes 390 px widths.
+  When the toggle button switches to full-width mode, the override is
+  deleted so native values are restored automatically.
+
+Bug 4 — Custom navigation bars not covered by Vant CSS selectors (v0.4)
+  QTM Live sites include custom Vue components (home-page section tabs,
+  live-room controls) that use position:fixed but have site-specific class
+  names not in the Vant selector list.  CSS alone cannot constrain them.
+
+  Fix: after page load, a JS scan iterates every element in the DOM, finds
+  those whose *computed* position is "fixed" (regardless of class name),
+  and applies left/width/right constraints via inline style with !important.
+  The scan repeats every 500 ms for 6 seconds to catch elements that
+  become fixed during Vue's mounted() lifecycle or after lazy hydration.
+
+Gap 5 — No touch capability (fixed in v0.5)
+  Chrome DevTools Device Toolbar does more than resize the viewport — it
+  also enables touch event emulation.  Without this, Vue/Vant detect a
+  desktop (navigator.maxTouchPoints === 0, 'ontouchstart' not in window)
+  and skip swipe gesture handlers, bottom-sheet pull-to-close, tap ripple
+  effects, and other mobile-only code paths.
+
+  Fix: override navigator.maxTouchPoints to 5 and set window.ontouchstart
+  to null at document-start.  This is exactly what DevTools device toolbar
+  does when you click it, and it activates the same mobile code paths the
+  site runs on a real phone.
+
+Gap 6 — SPA navigation reverts phone-width constraints (fixed in v0.6)
+  QTM Live sites are Vue Router SPAs (history mode).  Using the browser
+  back/forward buttons, or clicking navigation links, does NOT trigger a
+  page reload — Vue Router re-renders the page in-place.  The initial
+  DOMContentLoaded / load listeners only fire once, so after the first
+  6-second scan window expires, newly mounted fixed-position components on
+  later pages are never constrained.  Additionally, some routes reset the
+  viewport meta in their own mounted() hook.
+
+  Fix: wrap history.pushState and history.replaceState (the methods Vue
+  Router uses for programmatic navigation), and listen to the popstate
+  event (back/forward buttons).  On each SPA navigation, re-apply the
+  viewport lock and start a fresh 6-second fixAllFixedEls polling burst.
+  This ensures every route rendered by the SPA receives the same
+  phone-width treatment as the initial page load.
+
+Additionally, a 500 ms interval runs for 5 seconds after DOMContentLoaded
+to catch any late SPA viewport reset.
+
+
+The full userscript is in th-live-desktop-width.user.js.
+
+
+What to expect
+~~~~~~~~~~~~~~
+  - Install the script in Tampermonkey (or any GM-compatible extension).
+  - Open https://th-live.online (or qqlive.online) in a desktop browser.
+  - The page will render in a narrow ~390 px column centered on a dark
+    background, exactly as it looks on a phone.
+  - A small "⊞ Full width" button appears in the top-right corner.
+    Clicking it restores the full-width layout for the current tab.
+    Clicking it again re-applies the phone-width fix.
+  - The button only appears after the page has fully loaded.  During the
+    initial load the phone-width layout is already active via the
+    viewport meta override.
+
+
+Adding more domains
+~~~~~~~~~~~~~~~~~~~~
+Any site running the same QTM Live Hub codebase will be fixed by the
+same script.  To add a domain:
+
+  1. Open the Tampermonkey editor for this script.
+  2. Add a new @match line, e.g.:
+       // @match  https://example-clone.com/*
+  3. Save.
+
+Sites on this platform can be identified by:
+  - The same pink (#eb457e) color scheme.
+  - Avatar images loaded from oss-th*.qtmlivehub.com.
+  - The Tencent IM SDK (tim-js.js) in the page source.
+
+
+Known limitations
+~~~~~~~~~~~~~~~~~
+  - The JS fixed-element scan runs once at page load and then every 500 ms
+    for 6 seconds.  A fixed element added after that window (e.g. opened
+    very late by user interaction) will be constrained by the CSS Vant
+    selectors only; if it uses a custom class it may still appear full-width.
+    In that case, identify its class in DevTools and add a CSS rule to the
+    script's FIXED_SELECTORS list.
+  - The dark (#111) surround color can be changed by editing the CSS
+    block in the script.

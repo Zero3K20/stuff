@@ -1,0 +1,78 @@
+th-live.online — Viewing Models Without Logging In
+====================================================
+
+Short answer
+------------
+Partially. You can SEE the model list (thumbnails, nicknames, live viewer
+count) on the home page without an account, but you CANNOT enter or watch
+any live stream without being logged in.
+
+Detail
+------
+
+1. What you can do WITHOUT logging in
+   - Open https://th-live.online in a browser.
+   - The home page loads and shows the "Live" tab with a grid of model cards,
+     each showing:
+       * The model's avatar/thumbnail
+       * Their nickname
+       * Viewer count (rq)
+     This list refreshes automatically.
+   - No personal information is exposed and no account is required for this
+     view.
+
+2. What triggers the login redirect
+   Clicking on any model card calls the internal goLive() function, which
+   contains the check:
+
+       if (!this.member) return this.$router.push("/login");
+
+   This means every attempt to enter a live room immediately redirects an
+   unauthenticated visitor to the /login page. There is no "watch as guest"
+   option in the official UI.
+
+3. Is there a direct URL that bypasses login?
+   The live room is a Vue SPA route. Navigating directly to a URL such as
+   https://th-live.online/#/liveRoom (or similar) still loads the same Vue
+   app, which checks for a logged-in session before rendering the stream.
+   Without a valid session token in localStorage/sessionStorage the
+   navigation guard redirects you back to /login.
+
+   No known public API endpoint exposes the raw stream URL without
+   authentication.
+
+4. Can developer tools help?
+   Some users inspect network traffic (e.g. via browser DevTools → Network
+   tab) while watching a stream on a device that is logged in, to find the
+   raw CDN/HLS stream URL. If the CDN URL itself is not token-protected it
+   may be viewable directly.  However:
+     * Stream URLs are typically short-lived signed URLs.
+     * This requires access to a logged-in account first.
+     * Whether this is permitted by the site's terms of service is unclear.
+
+Summary table
+-------------
+
+  Action                         | Login required?
+  -------------------------------|----------------
+  View model list on home page   | No
+  See model thumbnail / nickname | No
+  Enter a live room / watch      | Yes
+  Send gifts or chat             | Yes
+  Play casino / lottery games    | Yes
+
+Practical options
+-----------------
+If you want to watch streams without creating an account, there is no
+built-in guest mode. Your options are:
+
+  a) Create a free account using one of the free virtual Thai numbers
+     listed in th-live-phone-validation.txt (section 3).
+  b) Use a paid virtual number service from the same file (section 2) if
+     free numbers have already been registered.
+  c) Use a physical Thai SIM (section 1 of that file) as the most reliable
+     fallback.
+
+Once registered and logged in, you can watch streams freely without
+additional payment (watching itself is free; gifts and betting cost in-app
+currency).

@@ -1,0 +1,196 @@
+th-live.online — "I Don't See the Email Registration Tab"
+==========================================================
+
+Short answer
+------------
+The email registration tab does not exist in the current production
+version of th-live.online.  It was removed from the UI at some point
+but left orphaned code and translation strings behind in the app
+bundle.  No language setting, URL parameter, or browser workaround
+can bring it back — the HTML is simply never rendered.
+
+
+Evidence from the app source
+-----------------------------
+Source: https://th-live.online/js/app.af6c1ab3.js
+
+1. Registration render function (Vl / component Br, route "/register")
+   The actual rendered HTML template is produced by a single Vue3
+   render function (function Tr, bytes 177987–190674 in the bundle).
+   That render function:
+
+     - Contains ZERO occurrences of "email", "emailRegister", or
+       "van-tab" / "van-tabs".
+     - Renders only: title bar, avatar picker, nickname, sex toggle,
+       phone field (maxlength 10), OTP field + "Get code" button,
+       password, confirm-password, and submit.
+     - Has no tab bar, no toggle, and no conditional branches that
+       would show a different form based on language, device, or any
+       flag.
+
+2. i18n translation strings exist — but are never called
+   The bundle contains JSON translation blobs (ZH / TH / VN) that
+   define these keys:
+
+       register.emailRegister  — "邮箱注册" / "ลงทะเบียนผ่านอีเมล" / "Đăng ký email"
+       register.suEmailTitle   — subtitle prompting for email address
+       register.entryEmailTip  — input placeholder for email
+       register.confirmEmailTips
+       register.checkEmailError
+       register.hasEmailRegister
+
+   Not one of these keys is ever called via $t() in any render
+   function.  They are orphaned strings left over from a previous
+   version.
+
+3. registerForm data object has no email field
+   The component's data() initialiser:
+
+       registerForm: {
+         phone: "", code: "", password: "", confirmPassword: "",
+         nickname: "", phoneHide: ""
+       }
+
+   There is no email property.  Any code branch that referenced
+   this.registerForm.email would receive undefined.
+
+4. Dead-code branches in the component logic
+   The component's methods (isRegiste, sendVcoderegister, regInfo,
+   codeValidate) all contain branches like:
+
+       0 == this.active
+         ? (o.mobile = this.registerForm.phone, t = phoneAPI)
+         : (o.email  = this.registerForm.email, t = emailAPI)
+
+   Because the render function never shows a tab-switching UI element,
+   this.active is always 0 and the email branch is permanently
+   unreachable.
+
+5. Login page also limited to Thai numbers
+   The login page's username field has maxlength:10 — too short for
+   any email address — even though the login() method has the same
+   phone-or-email branching logic in its code.
+
+6. There is only one registration route
+   The Vue Router configuration contains exactly one registration
+   route:
+
+       { path: "/register", name: "register", component: Br }
+
+   There is no /register2, no /register?type=email, and no alternate
+   path.  The bundle has no lazy-loaded chunks for an email registration
+   page.
+
+
+Why does this happen?
+----------------------
+A feature-flag approach appears to have been used during development:
+the code was written to support both phone and email registration, but
+the product configuration for this deployment removed the email tab
+from the UI while leaving the underlying API calls and translation
+strings intact.  The backend APIs for email registration still exist:
+
+    POST /center-client/sys/user/email/isRegiste
+    POST /order/email/config/send/vcode
+    POST /center-client/sys/auth/email/reg/codeValidate
+    POST /center-client/sys/auth/email/reg/info
+
+They are simply unreachable from the UI.
+
+
+Can a userscript restore the email tab?
+----------------------------------------
+Technically, a Tampermonkey script could:
+
+  a) After Vue mounts, locate the component instance for the
+     /register route (via __vue_app__ or similar).
+  b) Force this.active to a non-zero value.
+  c) Inject an email field into this.registerForm.
+  d) Intercept the "Get code" click to call sendVcoderegister()
+     instead of getAccountCode().
+
+If the backend email APIs are live and accepting requests this would
+allow email registration.  However:
+
+  - Injecting into a production minified Vue3 app's component instance
+    requires non-trivial tooling (finding the fiber/internal, etc.).
+  - The backend may have the email OTP endpoint disabled server-side
+    even if the route exists.
+  - It is far simpler to use a free virtual Thai number (see
+    th-live-phone-validation.txt) which takes about 2 minutes.
+
+A proof-of-concept userscript is shown below.  Run it with
+Tampermonkey, then navigate to https://th-live.online/register.
+It adds a "Register with Email" button that patches the component
+state and calls the email OTP flow directly.
+
+The full userscript is in th-live-email-tab-missing.user.js.
+
+What to expect when running the script (v0.3)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Key change in v0.3: the overlay now appears immediately on the
+  /register page without needing to locate the Vue component first.
+  The component is looked up lazily when you click a button.
+
+  - Navigate to https://th-live.online/register.  Within one second
+    the pink "Register with Email (experimental)" panel will appear
+    at the top of the page.
+  - If the backend /order/email/config/send/vcode endpoint is live,
+    "Send OTP" will request an OTP to the entered address and the app
+    will show its "Code sent successfully" toast.
+  - If the backend has that endpoint disabled, the app will show an
+    error toast with the server's error message.
+  - If the OTP is received and verified, registration proceeds normally
+    (the codeValidate → reg/info flow is the same as for phone).
+  - If the status field shows "Page not ready — wait a moment and try
+    again", wait 2–3 s for Vue to finish mounting, then click again.
+
+
+Practical recommendation
+-------------------------
+The fastest, most reliable path is still a virtual Thai number:
+
+  1. Go to https://sms-activate.org (paid) or https://receive-smss.com
+     (free, public/shared numbers) and get a Thai mobile number that
+     starts with 0.
+  2. Enter it in the normal registration form.
+  3. Retrieve the OTP from the service's inbox page.
+  4. Complete registration.
+
+Total time: ≈2 minutes.  See th-live-phone-validation.txt for a full
+list of virtual-number services and important caveats.
+
+Security note: free virtual-number services use publicly visible
+shared inboxes — anyone browsing the site can read the OTP.  Complete
+registration promptly after requesting the code, and do not reuse the
+same number for any account where security matters.  For higher
+security, use a paid one-time-use number or a physical Thai SIM.
+
+
+Are there clones of th-live.online that support email registration?
+--------------------------------------------------------------------
+th-live.online is one of several sites built on the same underlying
+QTM Live Hub platform (assets are served from oss-th18.qtmlivehub.com,
+tim-js.js is the Tencent IM SDK, etc.).  Different deployments of this
+platform may have the email-registration UI enabled or disabled
+independently — it is a feature-flag decision by each operator, not a
+code change.
+
+Known related sites (same platform code, different operator config):
+  - Deployments vary; look for the same CSS colour scheme (#eb457e
+    pink), the identical registration form fields, and avatar images
+    from oss-th*.qtmlivehub.com — those are reliable fingerprints of
+    the same platform codebase.
+
+No publicly confirmed clone currently has email registration fully
+enabled end-to-end:
+  - Some deployments expose the email tab in the UI (i.e. this.active
+    can switch to 1) but the backend OTP endpoint is disabled, so the
+    flow fails at "Send OTP".
+  - Others have the backend endpoint live but the UI tab removed,
+    exactly as on th-live.online — which is what this userscript is
+    designed to work around.
+
+Bottom line: there is no known clone where email registration works
+out of the box without a workaround.  The fastest path everywhere
+remains a virtual Thai mobile number (see th-live-phone-validation.txt).

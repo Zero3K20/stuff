@@ -1,0 +1,176 @@
+th-live.online — Bypassing console-ban.js with uBlock Origin
+=============================================================
+
+Short answer
+------------
+The QTM Live sites bundle the `console-ban` npm package inside their
+app.*.js bundle.  Its entry point is:
+
+    e.prototype.prepare = function () {
+        this.clear(), this.bfcache(), this.debug()
+    }
+
+Three uBlock Origin scriptlet lines are sufficient to neutralise it
+completely, without blocking the whole app bundle:
+
+    th-live.online##+js(set-constant, console.clear, noopFunc)
+    th-live.online##+js(no-setInterval-if, debugger)
+    th-live.online##+js(remove-event-listener-if, pageshow)
+
+Copy those three lines into your uBlock Origin "My filters" list
+(Settings → Filter lists → scroll to the bottom → "My filters" tab).
+
+Repeat for every QTM-clone domain you want to cover, e.g.:
+
+    qqlive.online##+js(set-constant, console.clear, noopFunc)
+    qqlive.online##+js(no-setInterval-if, debugger)
+    qqlive.online##+js(remove-event-listener-if, pageshow)
+
+    www.qqlive.online##+js(set-constant, console.clear, noopFunc)
+    www.qqlive.online##+js(no-setInterval-if, debugger)
+    www.qqlive.online##+js(remove-event-listener-if, pageshow)
+
+
+What each of the three methods does
+------------------------------------
+
+1. clear()
+~~~~~~~~~~
+The `clear()` method registers a setInterval that calls console.clear()
+every few hundred milliseconds.  This floods the DevTools console panel
+with blank frames so error messages and log output disappear.
+
+Neutralise with:
+    domain##+js(set-constant, console.clear, noopFunc)
+
+This replaces window.console.clear with an empty function before any
+page script runs.  The library's setInterval still fires, but each call
+is now a harmless no-op instead of clearing the console.
+
+
+2. debug()
+~~~~~~~~~~
+The `debug()` method registers a setInterval that contains a `debugger`
+statement.  When DevTools is open the browser pauses on the debugger
+statement every tick, making the page unusable for inspection.
+
+Neutralise with:
+    domain##+js(no-setInterval-if, debugger)
+
+This suppresses any setInterval registration whose callback source
+contains the string "debugger".  The interval is never created.
+
+If the site uses a minified form such as `eval` or an obfuscated
+function that does not contain the literal word "debugger", you can
+also try:
+    domain##+js(no-setInterval-if, /debugger|eval/)
+
+
+3. bfcache()
+~~~~~~~~~~~~
+The `bfcache()` method adds a `pageshow` event listener.  If the event
+has `persisted === true` (i.e. the browser served the page from the
+back-forward cache) it calls location.reload(), forcing a full reload
+and clearing whatever you had open in DevTools.
+
+Neutralise with:
+    domain##+js(remove-event-listener-if, pageshow)
+
+This removes any `pageshow` event listener whose handler source
+contains "pageshow".  (More precisely, uBlock Origin matches the type
+string of addEventListener calls; this removes all handlers registered
+for the "pageshow" event that were added by inline or eval'd code.)
+
+
+Ready-to-paste filter block
+-----------------------------
+Paste the block below into uBlock Origin → My filters, then click
+"Apply changes":
+
+    ! console-ban.js neutralisation — QTM Live platform
+    ! Prevents console clearing, debugger pausing, and bfcache reloads
+    th-live.online##+js(set-constant, console.clear, noopFunc)
+    th-live.online##+js(no-setInterval-if, debugger)
+    th-live.online##+js(remove-event-listener-if, pageshow)
+    qqlive.online##+js(set-constant, console.clear, noopFunc)
+    qqlive.online##+js(no-setInterval-if, debugger)
+    qqlive.online##+js(remove-event-listener-if, pageshow)
+    www.qqlive.online##+js(set-constant, console.clear, noopFunc)
+    www.qqlive.online##+js(no-setInterval-if, debugger)
+    www.qqlive.online##+js(remove-event-listener-if, pageshow)
+
+
+How to verify the filters are working
+---------------------------------------
+1. Apply the filters and hard-reload the page (Ctrl+Shift+R).
+2. Open DevTools (F12).
+3. Switch to the Console tab.
+4. Leave it open for 10–15 seconds.
+   - Before fix: the console clears itself every few hundred
+     milliseconds and the Sources panel keeps pausing on "debugger".
+   - After fix: the console stays intact and execution is not paused.
+5. Press the browser back button to go to a previous page, then
+   forward again.
+   - Before fix: the page reloads (bfcache prevented).
+   - After fix: the page is restored from cache instantly with no
+     reload.
+
+
+Troubleshooting
+---------------
+
+Q: The `no-setInterval-if` filter isn't stopping the debugger pauses.
+A: Some versions of the bundle obfuscate the debugger statement so that
+   the literal string "debugger" is not present.  Try the broader pattern:
+       domain##+js(no-setInterval-if, /0x/)
+   (most obfuscators produce hex-encoded property names like `_0x1a2b`).
+   Or use DevTools → Sources → "Deactivate breakpoints" (Ctrl+F8) as a
+   manual workaround.
+
+Q: The filters work locally but a different QTM-clone domain is still
+   affected.
+A: Add three more lines for the new domain.  All QTM Live clone sites
+   share the same app bundle, so the same scriptlets apply.
+
+Q: uBlock Origin shows "Filter(s) are invalid" for one of the lines.
+A: The `remove-event-listener-if` scriptlet is only available in
+   uBlock Origin 1.41 or later.  Update the extension, or omit that
+   line (the bfcache reload is the least disruptive of the three
+   behaviours).
+
+Q: Can I use Violentmonkey / Tampermonkey instead of uBlock Origin?
+A: Yes.  The equivalent approach in a userscript is:
+
+       // @run-at document-start
+       console.clear = function () {};
+       const _sI = window.setInterval;
+       window.setInterval = function (fn, delay) {
+           if (typeof fn === 'function' &&
+               fn.toString().indexOf('debugger') !== -1) return 0;
+           return _sI.apply(this, arguments);
+       };
+       window.addEventListener = (function (orig) {
+           return function (type, handler, opts) {
+               if (type === 'pageshow') return;
+               return orig.call(this, type, handler, opts);
+           };
+       }(window.addEventListener));
+
+   Run this at document-start before any site JavaScript executes.
+
+
+Background: what console-ban.js is
+------------------------------------
+`console-ban` (https://github.com/fz6m/console-ban) is a small npm
+package that website owners embed to deter reverse-engineering.  It
+detects an open DevTools panel via the debugger-pause timing trick and
+retaliates with:
+
+  - Continuously clearing the console output.
+  - Pausing JavaScript execution inside a tight setInterval loop.
+  - Reloading the page when it is restored from the browser cache.
+
+None of these mechanisms affect the server side; they are purely
+client-side annoyances.  The uBlock Origin scriptlets above neutralise
+all three before the library's `prepare()` call can register any of
+them.
